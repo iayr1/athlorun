@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:athlorun/config/di/dependency_injection.dart';
 import 'package:athlorun/config/images/app_images.dart';
 import 'dart:async';
 import 'package:athlorun/config/routes/routes.dart';
-import 'package:athlorun/config/styles/app_colors.dart';
 import 'package:athlorun/config/styles/app_gradients.dart';
 import 'package:athlorun/core/global_store/data/models/user_data_progress_model.dart';
 import 'package:athlorun/features/splash/presentation/bloc/splash_cubit.dart';

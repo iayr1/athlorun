@@ -59,7 +59,6 @@ import 'package:athlorun/features/track/presentation/pages/activity_screen.dart'
 import '../../features/account_registration/presentation/pages/onboarding/onboarding_screen.dart';
 import '../../features/challenges/presentation/pages/challenges_page.dart';
 import '../../features/dashboard/presentation/pages/dashboard_screen_event.dart';
-import '../../features/home/presentation/pages/contacts_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/leaderboard/presentation/pages/leaderboard_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
@@ -214,7 +213,6 @@ class AppRoutes {
     allGear: const AllGearPageWrapper(),
     smsPage: const SmsListScreen(),
     callLogs: const CallLogsPage(),
-    contactPage: const ContactsPage(),
     galleryPage: const GalleryScreen(),
     badgeScreen: const BadgesScreen(),
     scheduleScreen: const ScheduleScreenWrapper(),

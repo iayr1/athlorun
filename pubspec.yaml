@@ -70,7 +70,6 @@ dependencies:
   sms_autofill: ^2.4.1
   telephony: ^0.2.0
   call_log: ^4.0.0
-  contacts_service: ^0.6.3
   photo_manager: ^3.6.3
   oktoast: ^3.4.0
   lottie: ^3.1.3
