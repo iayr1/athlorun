@@ -190,10 +190,23 @@ class _EnterOTPScreenState extends State<EnterOTPScreen> {
               Utils.showCustomDialog(context, AppStrings.error, error);
             },
             verifiedOtp: (response) {
+              final authData = response.data;
+
+              if (authData?.id == null ||
+                  authData?.accessToken == null ||
+                  authData?.refreshToken == null) {
+                Utils.showCustomDialog(
+                  context,
+                  AppStrings.error,
+                  AppStrings.somethingWentWrong,
+                );
+                return;
+              }
+
               _cubit.setAuthData(
-                response.data!.id!,
-                response.data!.accessToken!,
-                response.data!.refreshToken!,
+                authData!.id!,
+                authData.accessToken!,
+                authData.refreshToken!,
               );
             },
             verifyOtpError: (error) {
