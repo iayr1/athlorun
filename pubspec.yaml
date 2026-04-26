@@ -140,7 +140,6 @@ flutter:
     - assets/map/
     - assets/gif/
     - assets/gear/
-    - assets/lottie/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -153,13 +152,8 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: Rubik
-      fonts:
-        - asset: assets/fonts/Rubik-Bold.ttf
-        - asset: assets/fonts/Rubik-Medium.ttf
-        - asset: assets/fonts/Rubik-Regular.ttf
-        - asset: assets/fonts/Rubik-SemiBold.ttf
+  # Custom Rubik font files are not shipped in this repository.
+  # Keep Flutter using the default system fonts until font assets are added.
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
