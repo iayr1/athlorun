@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TrackPageState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -49,7 +49,7 @@ mixin _$TrackPageState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -80,7 +80,7 @@ mixin _$TrackPageState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -112,7 +112,7 @@ mixin _$TrackPageState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -137,7 +137,7 @@ mixin _$TrackPageState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -162,7 +162,7 @@ mixin _$TrackPageState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -244,7 +244,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -272,13 +272,13 @@ class _$InitialImpl implements _Initial {
     required TResult Function(String error) loadGearError,
     required TResult Function(String error) trackingError,
   }) {
-    return initial();
+    return comitial();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -306,13 +306,13 @@ class _$InitialImpl implements _Initial {
     TResult? Function(String error)? loadGearError,
     TResult? Function(String error)? trackingError,
   }) {
-    return initial?.call();
+    return comitial?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -341,8 +341,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(String error)? trackingError,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (comitial != null) {
+      return comitial();
     }
     return orElse();
   }
@@ -350,7 +350,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -372,13 +372,13 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_LoadGearError value) loadGearError,
     required TResult Function(_TrackingError value) trackingError,
   }) {
-    return initial(this);
+    return comitial(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -400,13 +400,13 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_LoadGearError value)? loadGearError,
     TResult? Function(_TrackingError value)? trackingError,
   }) {
-    return initial?.call(this);
+    return comitial?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -429,8 +429,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(_TrackingError value)? trackingError,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (comitial != null) {
+      return comitial(this);
     }
     return orElse();
   }
@@ -504,7 +504,7 @@ class _$SportChangedImpl implements _SportChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -538,7 +538,7 @@ class _$SportChangedImpl implements _SportChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -572,7 +572,7 @@ class _$SportChangedImpl implements _SportChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -610,7 +610,7 @@ class _$SportChangedImpl implements _SportChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -638,7 +638,7 @@ class _$SportChangedImpl implements _SportChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -666,7 +666,7 @@ class _$SportChangedImpl implements _SportChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -743,7 +743,7 @@ class _$LoadingLocationImpl implements _LoadingLocation {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -777,7 +777,7 @@ class _$LoadingLocationImpl implements _LoadingLocation {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -811,7 +811,7 @@ class _$LoadingLocationImpl implements _LoadingLocation {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -849,7 +849,7 @@ class _$LoadingLocationImpl implements _LoadingLocation {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -877,7 +877,7 @@ class _$LoadingLocationImpl implements _LoadingLocation {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -905,7 +905,7 @@ class _$LoadingLocationImpl implements _LoadingLocation {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -1005,7 +1005,7 @@ class _$LoadedLocationImpl implements _LoadedLocation {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -1039,7 +1039,7 @@ class _$LoadedLocationImpl implements _LoadedLocation {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -1073,7 +1073,7 @@ class _$LoadedLocationImpl implements _LoadedLocation {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -1111,7 +1111,7 @@ class _$LoadedLocationImpl implements _LoadedLocation {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -1139,7 +1139,7 @@ class _$LoadedLocationImpl implements _LoadedLocation {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -1167,7 +1167,7 @@ class _$LoadedLocationImpl implements _LoadedLocation {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -1272,7 +1272,7 @@ class _$LoadLocationErrorImpl implements _LoadLocationError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -1306,7 +1306,7 @@ class _$LoadLocationErrorImpl implements _LoadLocationError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -1340,7 +1340,7 @@ class _$LoadLocationErrorImpl implements _LoadLocationError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -1378,7 +1378,7 @@ class _$LoadLocationErrorImpl implements _LoadLocationError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -1406,7 +1406,7 @@ class _$LoadLocationErrorImpl implements _LoadLocationError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -1434,7 +1434,7 @@ class _$LoadLocationErrorImpl implements _LoadLocationError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -1513,7 +1513,7 @@ class _$LoadingSaveActivityImpl implements _LoadingSaveActivity {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -1547,7 +1547,7 @@ class _$LoadingSaveActivityImpl implements _LoadingSaveActivity {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -1581,7 +1581,7 @@ class _$LoadingSaveActivityImpl implements _LoadingSaveActivity {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -1619,7 +1619,7 @@ class _$LoadingSaveActivityImpl implements _LoadingSaveActivity {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -1647,7 +1647,7 @@ class _$LoadingSaveActivityImpl implements _LoadingSaveActivity {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -1675,7 +1675,7 @@ class _$LoadingSaveActivityImpl implements _LoadingSaveActivity {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -1747,7 +1747,7 @@ class _$ActivitySavedImpl implements _ActivitySaved {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -1781,7 +1781,7 @@ class _$ActivitySavedImpl implements _ActivitySaved {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -1815,7 +1815,7 @@ class _$ActivitySavedImpl implements _ActivitySaved {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -1853,7 +1853,7 @@ class _$ActivitySavedImpl implements _ActivitySaved {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -1881,7 +1881,7 @@ class _$ActivitySavedImpl implements _ActivitySaved {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -1909,7 +1909,7 @@ class _$ActivitySavedImpl implements _ActivitySaved {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -2008,7 +2008,7 @@ class _$SaveActivityErrorImpl implements _SaveActivityError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -2042,7 +2042,7 @@ class _$SaveActivityErrorImpl implements _SaveActivityError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -2076,7 +2076,7 @@ class _$SaveActivityErrorImpl implements _SaveActivityError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -2114,7 +2114,7 @@ class _$SaveActivityErrorImpl implements _SaveActivityError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -2142,7 +2142,7 @@ class _$SaveActivityErrorImpl implements _SaveActivityError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -2170,7 +2170,7 @@ class _$SaveActivityErrorImpl implements _SaveActivityError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -2248,7 +2248,7 @@ class _$LoadingSportsImpl implements _LoadingSports {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -2282,7 +2282,7 @@ class _$LoadingSportsImpl implements _LoadingSports {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -2316,7 +2316,7 @@ class _$LoadingSportsImpl implements _LoadingSports {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -2354,7 +2354,7 @@ class _$LoadingSportsImpl implements _LoadingSports {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -2382,7 +2382,7 @@ class _$LoadingSportsImpl implements _LoadingSports {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -2410,7 +2410,7 @@ class _$LoadingSportsImpl implements _LoadingSports {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -2514,7 +2514,7 @@ class _$LoadedSportsImpl implements _LoadedSports {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -2548,7 +2548,7 @@ class _$LoadedSportsImpl implements _LoadedSports {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -2582,7 +2582,7 @@ class _$LoadedSportsImpl implements _LoadedSports {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -2620,7 +2620,7 @@ class _$LoadedSportsImpl implements _LoadedSports {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -2648,7 +2648,7 @@ class _$LoadedSportsImpl implements _LoadedSports {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -2676,7 +2676,7 @@ class _$LoadedSportsImpl implements _LoadedSports {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -2781,7 +2781,7 @@ class _$LoadSportsErrorImpl implements _LoadSportsError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -2815,7 +2815,7 @@ class _$LoadSportsErrorImpl implements _LoadSportsError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -2849,7 +2849,7 @@ class _$LoadSportsErrorImpl implements _LoadSportsError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -2887,7 +2887,7 @@ class _$LoadSportsErrorImpl implements _LoadSportsError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -2915,7 +2915,7 @@ class _$LoadSportsErrorImpl implements _LoadSportsError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -2943,7 +2943,7 @@ class _$LoadSportsErrorImpl implements _LoadSportsError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -3099,7 +3099,7 @@ class _$TrackingStartedImpl implements _TrackingStarted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -3133,7 +3133,7 @@ class _$TrackingStartedImpl implements _TrackingStarted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -3167,7 +3167,7 @@ class _$TrackingStartedImpl implements _TrackingStarted {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -3205,7 +3205,7 @@ class _$TrackingStartedImpl implements _TrackingStarted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -3233,7 +3233,7 @@ class _$TrackingStartedImpl implements _TrackingStarted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -3261,7 +3261,7 @@ class _$TrackingStartedImpl implements _TrackingStarted {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -3424,7 +3424,7 @@ class _$TrackingUpdatedImpl implements _TrackingUpdated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -3458,7 +3458,7 @@ class _$TrackingUpdatedImpl implements _TrackingUpdated {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -3492,7 +3492,7 @@ class _$TrackingUpdatedImpl implements _TrackingUpdated {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -3530,7 +3530,7 @@ class _$TrackingUpdatedImpl implements _TrackingUpdated {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -3558,7 +3558,7 @@ class _$TrackingUpdatedImpl implements _TrackingUpdated {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -3586,7 +3586,7 @@ class _$TrackingUpdatedImpl implements _TrackingUpdated {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -3749,7 +3749,7 @@ class _$TrackingStoppedImpl implements _TrackingStopped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -3783,7 +3783,7 @@ class _$TrackingStoppedImpl implements _TrackingStopped {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -3817,7 +3817,7 @@ class _$TrackingStoppedImpl implements _TrackingStopped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -3855,7 +3855,7 @@ class _$TrackingStoppedImpl implements _TrackingStopped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -3883,7 +3883,7 @@ class _$TrackingStoppedImpl implements _TrackingStopped {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -3911,7 +3911,7 @@ class _$TrackingStoppedImpl implements _TrackingStopped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -3995,7 +3995,7 @@ class _$GettingUserProfileImpl implements _GettingUserProfile {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -4029,7 +4029,7 @@ class _$GettingUserProfileImpl implements _GettingUserProfile {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -4063,7 +4063,7 @@ class _$GettingUserProfileImpl implements _GettingUserProfile {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -4101,7 +4101,7 @@ class _$GettingUserProfileImpl implements _GettingUserProfile {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -4129,7 +4129,7 @@ class _$GettingUserProfileImpl implements _GettingUserProfile {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -4157,7 +4157,7 @@ class _$GettingUserProfileImpl implements _GettingUserProfile {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -4257,7 +4257,7 @@ class _$GotUserProfileImpl implements _GotUserProfile {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -4291,7 +4291,7 @@ class _$GotUserProfileImpl implements _GotUserProfile {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -4325,7 +4325,7 @@ class _$GotUserProfileImpl implements _GotUserProfile {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -4363,7 +4363,7 @@ class _$GotUserProfileImpl implements _GotUserProfile {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -4391,7 +4391,7 @@ class _$GotUserProfileImpl implements _GotUserProfile {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -4419,7 +4419,7 @@ class _$GotUserProfileImpl implements _GotUserProfile {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -4524,7 +4524,7 @@ class _$GetUserProfileErrorImpl implements _GetUserProfileError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -4558,7 +4558,7 @@ class _$GetUserProfileErrorImpl implements _GetUserProfileError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -4592,7 +4592,7 @@ class _$GetUserProfileErrorImpl implements _GetUserProfileError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -4630,7 +4630,7 @@ class _$GetUserProfileErrorImpl implements _GetUserProfileError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -4658,7 +4658,7 @@ class _$GetUserProfileErrorImpl implements _GetUserProfileError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -4686,7 +4686,7 @@ class _$GetUserProfileErrorImpl implements _GetUserProfileError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -4764,7 +4764,7 @@ class _$LoadingGearImpl implements _LoadingGear {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -4798,7 +4798,7 @@ class _$LoadingGearImpl implements _LoadingGear {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -4832,7 +4832,7 @@ class _$LoadingGearImpl implements _LoadingGear {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -4870,7 +4870,7 @@ class _$LoadingGearImpl implements _LoadingGear {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -4898,7 +4898,7 @@ class _$LoadingGearImpl implements _LoadingGear {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -4926,7 +4926,7 @@ class _$LoadingGearImpl implements _LoadingGear {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -5025,7 +5025,7 @@ class _$LoadedGearImpl implements _LoadedGear {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -5059,7 +5059,7 @@ class _$LoadedGearImpl implements _LoadedGear {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -5093,7 +5093,7 @@ class _$LoadedGearImpl implements _LoadedGear {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -5131,7 +5131,7 @@ class _$LoadedGearImpl implements _LoadedGear {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -5159,7 +5159,7 @@ class _$LoadedGearImpl implements _LoadedGear {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -5187,7 +5187,7 @@ class _$LoadedGearImpl implements _LoadedGear {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -5291,7 +5291,7 @@ class _$LoadGearErrorImpl implements _LoadGearError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -5325,7 +5325,7 @@ class _$LoadGearErrorImpl implements _LoadGearError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -5359,7 +5359,7 @@ class _$LoadGearErrorImpl implements _LoadGearError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -5397,7 +5397,7 @@ class _$LoadGearErrorImpl implements _LoadGearError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -5425,7 +5425,7 @@ class _$LoadGearErrorImpl implements _LoadGearError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -5453,7 +5453,7 @@ class _$LoadGearErrorImpl implements _LoadGearError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,
@@ -5556,7 +5556,7 @@ class _$TrackingErrorImpl implements _TrackingError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function(String sport) sportChanged,
     required TResult Function() loadingLocation,
     required TResult Function(LatLng currentLocation) loadedLocation,
@@ -5590,7 +5590,7 @@ class _$TrackingErrorImpl implements _TrackingError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function(String sport)? sportChanged,
     TResult? Function()? loadingLocation,
     TResult? Function(LatLng currentLocation)? loadedLocation,
@@ -5624,7 +5624,7 @@ class _$TrackingErrorImpl implements _TrackingError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function(String sport)? sportChanged,
     TResult Function()? loadingLocation,
     TResult Function(LatLng currentLocation)? loadedLocation,
@@ -5662,7 +5662,7 @@ class _$TrackingErrorImpl implements _TrackingError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_SportChanged value) sportChanged,
     required TResult Function(_LoadingLocation value) loadingLocation,
     required TResult Function(_LoadedLocation value) loadedLocation,
@@ -5690,7 +5690,7 @@ class _$TrackingErrorImpl implements _TrackingError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_SportChanged value)? sportChanged,
     TResult? Function(_LoadingLocation value)? loadingLocation,
     TResult? Function(_LoadedLocation value)? loadedLocation,
@@ -5718,7 +5718,7 @@ class _$TrackingErrorImpl implements _TrackingError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_SportChanged value)? sportChanged,
     TResult Function(_LoadingLocation value)? loadingLocation,
     TResult Function(_LoadedLocation value)? loadedLocation,

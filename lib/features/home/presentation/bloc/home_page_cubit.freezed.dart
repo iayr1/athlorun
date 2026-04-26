@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomePageState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -66,7 +66,7 @@ mixin _$HomePageState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -114,7 +114,7 @@ mixin _$HomePageState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -163,7 +163,7 @@ mixin _$HomePageState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -229,7 +229,7 @@ mixin _$HomePageState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -290,7 +290,7 @@ mixin _$HomePageState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -406,7 +406,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -451,13 +451,13 @@ class _$InitialImpl implements _Initial {
     required TResult Function(UserData userData) loadedUserProfile,
     required TResult Function(String error) loadUserProfileError,
   }) {
-    return initial();
+    return comitial();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -502,13 +502,13 @@ class _$InitialImpl implements _Initial {
     TResult? Function(UserData userData)? loadedUserProfile,
     TResult? Function(String error)? loadUserProfileError,
   }) {
-    return initial?.call();
+    return comitial?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -554,8 +554,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(String error)? loadUserProfileError,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (comitial != null) {
+      return comitial();
     }
     return orElse();
   }
@@ -563,7 +563,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -626,13 +626,13 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_LoadedUserProfile value) loadedUserProfile,
     required TResult Function(_LoadUserProfileError value) loadUserProfileError,
   }) {
-    return initial(this);
+    return comitial(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -690,13 +690,13 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_LoadedUserProfile value)? loadedUserProfile,
     TResult? Function(_LoadUserProfileError value)? loadUserProfileError,
   }) {
-    return initial?.call(this);
+    return comitial?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -753,8 +753,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(_LoadUserProfileError value)? loadUserProfileError,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (comitial != null) {
+      return comitial(this);
     }
     return orElse();
   }
@@ -805,7 +805,7 @@ class _$CheckingHealthSdkStatusImpl implements _CheckingHealthSdkStatus {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -856,7 +856,7 @@ class _$CheckingHealthSdkStatusImpl implements _CheckingHealthSdkStatus {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -907,7 +907,7 @@ class _$CheckingHealthSdkStatusImpl implements _CheckingHealthSdkStatus {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -962,7 +962,7 @@ class _$CheckingHealthSdkStatusImpl implements _CheckingHealthSdkStatus {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -1031,7 +1031,7 @@ class _$CheckingHealthSdkStatusImpl implements _CheckingHealthSdkStatus {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -1095,7 +1095,7 @@ class _$CheckingHealthSdkStatusImpl implements _CheckingHealthSdkStatus {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -1230,7 +1230,7 @@ class _$CheckedHealthSdkStatusImpl implements _CheckedHealthSdkStatus {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -1281,7 +1281,7 @@ class _$CheckedHealthSdkStatusImpl implements _CheckedHealthSdkStatus {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -1332,7 +1332,7 @@ class _$CheckedHealthSdkStatusImpl implements _CheckedHealthSdkStatus {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -1387,7 +1387,7 @@ class _$CheckedHealthSdkStatusImpl implements _CheckedHealthSdkStatus {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -1456,7 +1456,7 @@ class _$CheckedHealthSdkStatusImpl implements _CheckedHealthSdkStatus {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -1520,7 +1520,7 @@ class _$CheckedHealthSdkStatusImpl implements _CheckedHealthSdkStatus {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -1661,7 +1661,7 @@ class _$CheckHealthSdkStatusErrorImpl implements _CheckHealthSdkStatusError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -1712,7 +1712,7 @@ class _$CheckHealthSdkStatusErrorImpl implements _CheckHealthSdkStatusError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -1763,7 +1763,7 @@ class _$CheckHealthSdkStatusErrorImpl implements _CheckHealthSdkStatusError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -1818,7 +1818,7 @@ class _$CheckHealthSdkStatusErrorImpl implements _CheckHealthSdkStatusError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -1887,7 +1887,7 @@ class _$CheckHealthSdkStatusErrorImpl implements _CheckHealthSdkStatusError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -1951,7 +1951,7 @@ class _$CheckHealthSdkStatusErrorImpl implements _CheckHealthSdkStatusError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -2063,7 +2063,7 @@ class _$SettingVisibilityImpl implements _SettingVisibility {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -2114,7 +2114,7 @@ class _$SettingVisibilityImpl implements _SettingVisibility {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -2165,7 +2165,7 @@ class _$SettingVisibilityImpl implements _SettingVisibility {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -2220,7 +2220,7 @@ class _$SettingVisibilityImpl implements _SettingVisibility {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -2289,7 +2289,7 @@ class _$SettingVisibilityImpl implements _SettingVisibility {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -2353,7 +2353,7 @@ class _$SettingVisibilityImpl implements _SettingVisibility {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -2486,7 +2486,7 @@ class _$SetVisibilityImpl implements _SetVisibility {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -2537,7 +2537,7 @@ class _$SetVisibilityImpl implements _SetVisibility {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -2588,7 +2588,7 @@ class _$SetVisibilityImpl implements _SetVisibility {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -2643,7 +2643,7 @@ class _$SetVisibilityImpl implements _SetVisibility {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -2712,7 +2712,7 @@ class _$SetVisibilityImpl implements _SetVisibility {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -2776,7 +2776,7 @@ class _$SetVisibilityImpl implements _SetVisibility {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -2890,7 +2890,7 @@ class _$CheckingHealthPermissionsImpl implements _CheckingHealthPermissions {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -2941,7 +2941,7 @@ class _$CheckingHealthPermissionsImpl implements _CheckingHealthPermissions {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -2992,7 +2992,7 @@ class _$CheckingHealthPermissionsImpl implements _CheckingHealthPermissions {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -3047,7 +3047,7 @@ class _$CheckingHealthPermissionsImpl implements _CheckingHealthPermissions {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -3116,7 +3116,7 @@ class _$CheckingHealthPermissionsImpl implements _CheckingHealthPermissions {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -3180,7 +3180,7 @@ class _$CheckingHealthPermissionsImpl implements _CheckingHealthPermissions {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -3315,7 +3315,7 @@ class _$CheckedHealthPermissionsImpl implements _CheckedHealthPermissions {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -3366,7 +3366,7 @@ class _$CheckedHealthPermissionsImpl implements _CheckedHealthPermissions {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -3417,7 +3417,7 @@ class _$CheckedHealthPermissionsImpl implements _CheckedHealthPermissions {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -3472,7 +3472,7 @@ class _$CheckedHealthPermissionsImpl implements _CheckedHealthPermissions {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -3541,7 +3541,7 @@ class _$CheckedHealthPermissionsImpl implements _CheckedHealthPermissions {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -3605,7 +3605,7 @@ class _$CheckedHealthPermissionsImpl implements _CheckedHealthPermissions {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -3747,7 +3747,7 @@ class _$CheckHealthPermissionsErrorImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -3798,7 +3798,7 @@ class _$CheckHealthPermissionsErrorImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -3849,7 +3849,7 @@ class _$CheckHealthPermissionsErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -3904,7 +3904,7 @@ class _$CheckHealthPermissionsErrorImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -3973,7 +3973,7 @@ class _$CheckHealthPermissionsErrorImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -4037,7 +4037,7 @@ class _$CheckHealthPermissionsErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -4153,7 +4153,7 @@ class _$RequestingHealthPermissionsImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -4204,7 +4204,7 @@ class _$RequestingHealthPermissionsImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -4255,7 +4255,7 @@ class _$RequestingHealthPermissionsImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -4310,7 +4310,7 @@ class _$RequestingHealthPermissionsImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -4379,7 +4379,7 @@ class _$RequestingHealthPermissionsImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -4443,7 +4443,7 @@ class _$RequestingHealthPermissionsImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -4579,7 +4579,7 @@ class _$RequestedHealthPermissionsImpl implements _RequestedHealthPermissions {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -4630,7 +4630,7 @@ class _$RequestedHealthPermissionsImpl implements _RequestedHealthPermissions {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -4681,7 +4681,7 @@ class _$RequestedHealthPermissionsImpl implements _RequestedHealthPermissions {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -4736,7 +4736,7 @@ class _$RequestedHealthPermissionsImpl implements _RequestedHealthPermissions {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -4805,7 +4805,7 @@ class _$RequestedHealthPermissionsImpl implements _RequestedHealthPermissions {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -4869,7 +4869,7 @@ class _$RequestedHealthPermissionsImpl implements _RequestedHealthPermissions {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -5013,7 +5013,7 @@ class _$RequestHealthPermissionsErrorImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -5064,7 +5064,7 @@ class _$RequestHealthPermissionsErrorImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -5115,7 +5115,7 @@ class _$RequestHealthPermissionsErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -5170,7 +5170,7 @@ class _$RequestHealthPermissionsErrorImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -5239,7 +5239,7 @@ class _$RequestHealthPermissionsErrorImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -5303,7 +5303,7 @@ class _$RequestHealthPermissionsErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -5420,7 +5420,7 @@ class _$GettingTotalStepsInIntervalImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -5471,7 +5471,7 @@ class _$GettingTotalStepsInIntervalImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -5522,7 +5522,7 @@ class _$GettingTotalStepsInIntervalImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -5577,7 +5577,7 @@ class _$GettingTotalStepsInIntervalImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -5646,7 +5646,7 @@ class _$GettingTotalStepsInIntervalImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -5710,7 +5710,7 @@ class _$GettingTotalStepsInIntervalImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -5846,7 +5846,7 @@ class _$GotTotalStepsInIntervalImpl implements _GotTotalStepsInInterval {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -5897,7 +5897,7 @@ class _$GotTotalStepsInIntervalImpl implements _GotTotalStepsInInterval {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -5948,7 +5948,7 @@ class _$GotTotalStepsInIntervalImpl implements _GotTotalStepsInInterval {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -6003,7 +6003,7 @@ class _$GotTotalStepsInIntervalImpl implements _GotTotalStepsInInterval {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -6072,7 +6072,7 @@ class _$GotTotalStepsInIntervalImpl implements _GotTotalStepsInInterval {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -6136,7 +6136,7 @@ class _$GotTotalStepsInIntervalImpl implements _GotTotalStepsInInterval {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -6280,7 +6280,7 @@ class _$GetTotalStepsInIntervalErrorImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -6331,7 +6331,7 @@ class _$GetTotalStepsInIntervalErrorImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -6382,7 +6382,7 @@ class _$GetTotalStepsInIntervalErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -6437,7 +6437,7 @@ class _$GetTotalStepsInIntervalErrorImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -6506,7 +6506,7 @@ class _$GetTotalStepsInIntervalErrorImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -6570,7 +6570,7 @@ class _$GetTotalStepsInIntervalErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -6684,7 +6684,7 @@ class _$LoadingNotificationsImpl implements _LoadingNotifications {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -6735,7 +6735,7 @@ class _$LoadingNotificationsImpl implements _LoadingNotifications {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -6786,7 +6786,7 @@ class _$LoadingNotificationsImpl implements _LoadingNotifications {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -6841,7 +6841,7 @@ class _$LoadingNotificationsImpl implements _LoadingNotifications {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -6910,7 +6910,7 @@ class _$LoadingNotificationsImpl implements _LoadingNotifications {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -6974,7 +6974,7 @@ class _$LoadingNotificationsImpl implements _LoadingNotifications {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -7109,7 +7109,7 @@ class _$LoadedNotificationsImpl implements _LoadedNotifications {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -7160,7 +7160,7 @@ class _$LoadedNotificationsImpl implements _LoadedNotifications {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -7211,7 +7211,7 @@ class _$LoadedNotificationsImpl implements _LoadedNotifications {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -7266,7 +7266,7 @@ class _$LoadedNotificationsImpl implements _LoadedNotifications {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -7335,7 +7335,7 @@ class _$LoadedNotificationsImpl implements _LoadedNotifications {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -7399,7 +7399,7 @@ class _$LoadedNotificationsImpl implements _LoadedNotifications {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -7540,7 +7540,7 @@ class _$LoadNotificationsErrorImpl implements _LoadNotificationsError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -7591,7 +7591,7 @@ class _$LoadNotificationsErrorImpl implements _LoadNotificationsError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -7642,7 +7642,7 @@ class _$LoadNotificationsErrorImpl implements _LoadNotificationsError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -7697,7 +7697,7 @@ class _$LoadNotificationsErrorImpl implements _LoadNotificationsError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -7766,7 +7766,7 @@ class _$LoadNotificationsErrorImpl implements _LoadNotificationsError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -7830,7 +7830,7 @@ class _$LoadNotificationsErrorImpl implements _LoadNotificationsError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -7945,7 +7945,7 @@ class _$MarkingNotificationAsSeenImpl implements _MarkingNotificationAsSeen {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -7996,7 +7996,7 @@ class _$MarkingNotificationAsSeenImpl implements _MarkingNotificationAsSeen {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -8047,7 +8047,7 @@ class _$MarkingNotificationAsSeenImpl implements _MarkingNotificationAsSeen {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -8102,7 +8102,7 @@ class _$MarkingNotificationAsSeenImpl implements _MarkingNotificationAsSeen {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -8171,7 +8171,7 @@ class _$MarkingNotificationAsSeenImpl implements _MarkingNotificationAsSeen {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -8235,7 +8235,7 @@ class _$MarkingNotificationAsSeenImpl implements _MarkingNotificationAsSeen {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -8371,7 +8371,7 @@ class _$MarkedNotificationAsSeenImpl implements _MarkedNotificationAsSeen {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -8422,7 +8422,7 @@ class _$MarkedNotificationAsSeenImpl implements _MarkedNotificationAsSeen {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -8473,7 +8473,7 @@ class _$MarkedNotificationAsSeenImpl implements _MarkedNotificationAsSeen {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -8528,7 +8528,7 @@ class _$MarkedNotificationAsSeenImpl implements _MarkedNotificationAsSeen {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -8597,7 +8597,7 @@ class _$MarkedNotificationAsSeenImpl implements _MarkedNotificationAsSeen {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -8661,7 +8661,7 @@ class _$MarkedNotificationAsSeenImpl implements _MarkedNotificationAsSeen {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -8803,7 +8803,7 @@ class _$MarkNotificationAsSeenErrorImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -8854,7 +8854,7 @@ class _$MarkNotificationAsSeenErrorImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -8905,7 +8905,7 @@ class _$MarkNotificationAsSeenErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -8960,7 +8960,7 @@ class _$MarkNotificationAsSeenErrorImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -9029,7 +9029,7 @@ class _$MarkNotificationAsSeenErrorImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -9093,7 +9093,7 @@ class _$MarkNotificationAsSeenErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -9206,7 +9206,7 @@ class _$EnablingNotificationImpl implements _EnablingNotification {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -9257,7 +9257,7 @@ class _$EnablingNotificationImpl implements _EnablingNotification {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -9308,7 +9308,7 @@ class _$EnablingNotificationImpl implements _EnablingNotification {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -9363,7 +9363,7 @@ class _$EnablingNotificationImpl implements _EnablingNotification {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -9432,7 +9432,7 @@ class _$EnablingNotificationImpl implements _EnablingNotification {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -9496,7 +9496,7 @@ class _$EnablingNotificationImpl implements _EnablingNotification {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -9630,7 +9630,7 @@ class _$EnabledNotificationImpl implements _EnabledNotification {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -9681,7 +9681,7 @@ class _$EnabledNotificationImpl implements _EnabledNotification {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -9732,7 +9732,7 @@ class _$EnabledNotificationImpl implements _EnabledNotification {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -9787,7 +9787,7 @@ class _$EnabledNotificationImpl implements _EnabledNotification {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -9856,7 +9856,7 @@ class _$EnabledNotificationImpl implements _EnabledNotification {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -9920,7 +9920,7 @@ class _$EnabledNotificationImpl implements _EnabledNotification {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -10062,7 +10062,7 @@ class _$EnableNotificationErrorImpl implements _EnableNotificationError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -10113,7 +10113,7 @@ class _$EnableNotificationErrorImpl implements _EnableNotificationError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -10164,7 +10164,7 @@ class _$EnableNotificationErrorImpl implements _EnableNotificationError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -10219,7 +10219,7 @@ class _$EnableNotificationErrorImpl implements _EnableNotificationError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -10288,7 +10288,7 @@ class _$EnableNotificationErrorImpl implements _EnableNotificationError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -10352,7 +10352,7 @@ class _$EnableNotificationErrorImpl implements _EnableNotificationError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -10469,7 +10469,7 @@ class _$RequestingNotificationPermissiionImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -10520,7 +10520,7 @@ class _$RequestingNotificationPermissiionImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -10571,7 +10571,7 @@ class _$RequestingNotificationPermissiionImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -10626,7 +10626,7 @@ class _$RequestingNotificationPermissiionImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -10695,7 +10695,7 @@ class _$RequestingNotificationPermissiionImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -10759,7 +10759,7 @@ class _$RequestingNotificationPermissiionImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -10899,7 +10899,7 @@ class _$RequestedNotificationPermissiionImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -10950,7 +10950,7 @@ class _$RequestedNotificationPermissiionImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -11001,7 +11001,7 @@ class _$RequestedNotificationPermissiionImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -11056,7 +11056,7 @@ class _$RequestedNotificationPermissiionImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -11125,7 +11125,7 @@ class _$RequestedNotificationPermissiionImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -11189,7 +11189,7 @@ class _$RequestedNotificationPermissiionImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -11335,7 +11335,7 @@ class _$RequestNotificationPermissiionErrorImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -11386,7 +11386,7 @@ class _$RequestNotificationPermissiionErrorImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -11437,7 +11437,7 @@ class _$RequestNotificationPermissiionErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -11492,7 +11492,7 @@ class _$RequestNotificationPermissiionErrorImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -11561,7 +11561,7 @@ class _$RequestNotificationPermissiionErrorImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -11625,7 +11625,7 @@ class _$RequestNotificationPermissiionErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -11738,7 +11738,7 @@ class _$FetchingFcmTokenImpl implements _FetchingFcmToken {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -11789,7 +11789,7 @@ class _$FetchingFcmTokenImpl implements _FetchingFcmToken {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -11840,7 +11840,7 @@ class _$FetchingFcmTokenImpl implements _FetchingFcmToken {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -11895,7 +11895,7 @@ class _$FetchingFcmTokenImpl implements _FetchingFcmToken {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -11964,7 +11964,7 @@ class _$FetchingFcmTokenImpl implements _FetchingFcmToken {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -12028,7 +12028,7 @@ class _$FetchingFcmTokenImpl implements _FetchingFcmToken {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -12162,7 +12162,7 @@ class _$FetchedFcmTokenImpl implements _FetchedFcmToken {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -12213,7 +12213,7 @@ class _$FetchedFcmTokenImpl implements _FetchedFcmToken {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -12264,7 +12264,7 @@ class _$FetchedFcmTokenImpl implements _FetchedFcmToken {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -12319,7 +12319,7 @@ class _$FetchedFcmTokenImpl implements _FetchedFcmToken {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -12388,7 +12388,7 @@ class _$FetchedFcmTokenImpl implements _FetchedFcmToken {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -12452,7 +12452,7 @@ class _$FetchedFcmTokenImpl implements _FetchedFcmToken {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -12591,7 +12591,7 @@ class _$FetchFcmTokenErrorImpl implements _FetchFcmTokenError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -12642,7 +12642,7 @@ class _$FetchFcmTokenErrorImpl implements _FetchFcmTokenError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -12693,7 +12693,7 @@ class _$FetchFcmTokenErrorImpl implements _FetchFcmTokenError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -12748,7 +12748,7 @@ class _$FetchFcmTokenErrorImpl implements _FetchFcmTokenError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -12817,7 +12817,7 @@ class _$FetchFcmTokenErrorImpl implements _FetchFcmTokenError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -12881,7 +12881,7 @@ class _$FetchFcmTokenErrorImpl implements _FetchFcmTokenError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -12993,7 +12993,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -13044,7 +13044,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -13095,7 +13095,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -13150,7 +13150,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -13219,7 +13219,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -13283,7 +13283,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -13416,7 +13416,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -13467,7 +13467,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -13518,7 +13518,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -13573,7 +13573,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -13642,7 +13642,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -13706,7 +13706,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -13845,7 +13845,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -13896,7 +13896,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -13947,7 +13947,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -14002,7 +14002,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -14071,7 +14071,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -14135,7 +14135,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -14246,7 +14246,7 @@ class _$UpdatingStepDataImpl implements _UpdatingStepData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -14297,7 +14297,7 @@ class _$UpdatingStepDataImpl implements _UpdatingStepData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -14348,7 +14348,7 @@ class _$UpdatingStepDataImpl implements _UpdatingStepData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -14403,7 +14403,7 @@ class _$UpdatingStepDataImpl implements _UpdatingStepData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -14472,7 +14472,7 @@ class _$UpdatingStepDataImpl implements _UpdatingStepData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -14536,7 +14536,7 @@ class _$UpdatingStepDataImpl implements _UpdatingStepData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -14669,7 +14669,7 @@ class _$UpdatedStepDataImpl implements _UpdatedStepData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -14720,7 +14720,7 @@ class _$UpdatedStepDataImpl implements _UpdatedStepData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -14771,7 +14771,7 @@ class _$UpdatedStepDataImpl implements _UpdatedStepData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -14826,7 +14826,7 @@ class _$UpdatedStepDataImpl implements _UpdatedStepData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -14895,7 +14895,7 @@ class _$UpdatedStepDataImpl implements _UpdatedStepData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -14959,7 +14959,7 @@ class _$UpdatedStepDataImpl implements _UpdatedStepData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -15098,7 +15098,7 @@ class _$UpdateStepDataErrorImpl implements _UpdateStepDataError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -15149,7 +15149,7 @@ class _$UpdateStepDataErrorImpl implements _UpdateStepDataError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -15200,7 +15200,7 @@ class _$UpdateStepDataErrorImpl implements _UpdateStepDataError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -15255,7 +15255,7 @@ class _$UpdateStepDataErrorImpl implements _UpdateStepDataError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -15324,7 +15324,7 @@ class _$UpdateStepDataErrorImpl implements _UpdateStepDataError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -15388,7 +15388,7 @@ class _$UpdateStepDataErrorImpl implements _UpdateStepDataError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -15500,7 +15500,7 @@ class _$LoadingWalletImpl implements _LoadingWallet {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -15551,7 +15551,7 @@ class _$LoadingWalletImpl implements _LoadingWallet {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -15602,7 +15602,7 @@ class _$LoadingWalletImpl implements _LoadingWallet {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -15657,7 +15657,7 @@ class _$LoadingWalletImpl implements _LoadingWallet {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -15726,7 +15726,7 @@ class _$LoadingWalletImpl implements _LoadingWallet {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -15790,7 +15790,7 @@ class _$LoadingWalletImpl implements _LoadingWallet {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -15922,7 +15922,7 @@ class _$LoadedWalletImpl implements _LoadedWallet {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -15973,7 +15973,7 @@ class _$LoadedWalletImpl implements _LoadedWallet {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -16024,7 +16024,7 @@ class _$LoadedWalletImpl implements _LoadedWallet {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -16079,7 +16079,7 @@ class _$LoadedWalletImpl implements _LoadedWallet {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -16148,7 +16148,7 @@ class _$LoadedWalletImpl implements _LoadedWallet {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -16212,7 +16212,7 @@ class _$LoadedWalletImpl implements _LoadedWallet {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -16351,7 +16351,7 @@ class _$LoadWalletErrorImpl implements _LoadWalletError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -16402,7 +16402,7 @@ class _$LoadWalletErrorImpl implements _LoadWalletError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -16453,7 +16453,7 @@ class _$LoadWalletErrorImpl implements _LoadWalletError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -16508,7 +16508,7 @@ class _$LoadWalletErrorImpl implements _LoadWalletError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -16577,7 +16577,7 @@ class _$LoadWalletErrorImpl implements _LoadWalletError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -16641,7 +16641,7 @@ class _$LoadWalletErrorImpl implements _LoadWalletError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -16752,7 +16752,7 @@ class _$LoadingUserProfileImpl implements _LoadingUserProfile {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -16803,7 +16803,7 @@ class _$LoadingUserProfileImpl implements _LoadingUserProfile {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -16854,7 +16854,7 @@ class _$LoadingUserProfileImpl implements _LoadingUserProfile {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -16909,7 +16909,7 @@ class _$LoadingUserProfileImpl implements _LoadingUserProfile {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -16978,7 +16978,7 @@ class _$LoadingUserProfileImpl implements _LoadingUserProfile {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -17042,7 +17042,7 @@ class _$LoadingUserProfileImpl implements _LoadingUserProfile {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -17176,7 +17176,7 @@ class _$LoadedUserProfileImpl implements _LoadedUserProfile {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -17227,7 +17227,7 @@ class _$LoadedUserProfileImpl implements _LoadedUserProfile {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -17278,7 +17278,7 @@ class _$LoadedUserProfileImpl implements _LoadedUserProfile {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -17333,7 +17333,7 @@ class _$LoadedUserProfileImpl implements _LoadedUserProfile {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -17402,7 +17402,7 @@ class _$LoadedUserProfileImpl implements _LoadedUserProfile {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -17466,7 +17466,7 @@ class _$LoadedUserProfileImpl implements _LoadedUserProfile {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?
@@ -17606,7 +17606,7 @@ class _$LoadUserProfileErrorImpl implements _LoadUserProfileError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkingHealthSdkStatus,
     required TResult Function(bool status) checkedHealthSdkStatus,
     required TResult Function(String error) checkHealthSdkStatusError,
@@ -17657,7 +17657,7 @@ class _$LoadUserProfileErrorImpl implements _LoadUserProfileError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkingHealthSdkStatus,
     TResult? Function(bool status)? checkedHealthSdkStatus,
     TResult? Function(String error)? checkHealthSdkStatusError,
@@ -17708,7 +17708,7 @@ class _$LoadUserProfileErrorImpl implements _LoadUserProfileError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkingHealthSdkStatus,
     TResult Function(bool status)? checkedHealthSdkStatus,
     TResult Function(String error)? checkHealthSdkStatusError,
@@ -17763,7 +17763,7 @@ class _$LoadUserProfileErrorImpl implements _LoadUserProfileError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_CheckingHealthSdkStatus value)
         checkingHealthSdkStatus,
     required TResult Function(_CheckedHealthSdkStatus value)
@@ -17832,7 +17832,7 @@ class _$LoadUserProfileErrorImpl implements _LoadUserProfileError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult? Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult? Function(_CheckHealthSdkStatusError value)?
@@ -17896,7 +17896,7 @@ class _$LoadUserProfileErrorImpl implements _LoadUserProfileError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_CheckingHealthSdkStatus value)? checkingHealthSdkStatus,
     TResult Function(_CheckedHealthSdkStatus value)? checkedHealthSdkStatus,
     TResult Function(_CheckHealthSdkStatusError value)?

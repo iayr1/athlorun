@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ChallengesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -51,7 +51,7 @@ mixin _$ChallengesState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -82,7 +82,7 @@ mixin _$ChallengesState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -113,7 +113,7 @@ mixin _$ChallengesState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -145,7 +145,7 @@ mixin _$ChallengesState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -176,7 +176,7 @@ mixin _$ChallengesState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -263,7 +263,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -293,13 +293,13 @@ class _$InitialImpl implements _Initial {
         leftChallenge,
     required TResult Function(String error) leaveChallengeError,
   }) {
-    return initial();
+    return comitial();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -327,13 +327,13 @@ class _$InitialImpl implements _Initial {
         leftChallenge,
     TResult? Function(String error)? leaveChallengeError,
   }) {
-    return initial?.call();
+    return comitial?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -361,8 +361,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(String error)? leaveChallengeError,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (comitial != null) {
+      return comitial();
     }
     return orElse();
   }
@@ -370,7 +370,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -399,13 +399,13 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_LeftChallenge value) leftChallenge,
     required TResult Function(_LeaveChallengeError value) leaveChallengeError,
   }) {
-    return initial(this);
+    return comitial(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -433,13 +433,13 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_LeftChallenge value)? leftChallenge,
     TResult? Function(_LeaveChallengeError value)? leaveChallengeError,
   }) {
-    return initial?.call(this);
+    return comitial?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -467,8 +467,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(_LeaveChallengeError value)? leaveChallengeError,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (comitial != null) {
+      return comitial(this);
     }
     return orElse();
   }
@@ -516,7 +516,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -552,7 +552,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -586,7 +586,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -623,7 +623,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -658,7 +658,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -692,7 +692,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -796,7 +796,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -832,7 +832,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -866,7 +866,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -903,7 +903,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -938,7 +938,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -972,7 +972,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -1082,7 +1082,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -1118,7 +1118,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -1152,7 +1152,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -1189,7 +1189,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -1224,7 +1224,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -1258,7 +1258,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -1340,7 +1340,7 @@ class _$GettingChallengesImpl implements _GettingChallenges {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -1376,7 +1376,7 @@ class _$GettingChallengesImpl implements _GettingChallenges {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -1410,7 +1410,7 @@ class _$GettingChallengesImpl implements _GettingChallenges {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -1447,7 +1447,7 @@ class _$GettingChallengesImpl implements _GettingChallenges {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -1482,7 +1482,7 @@ class _$GettingChallengesImpl implements _GettingChallenges {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -1516,7 +1516,7 @@ class _$GettingChallengesImpl implements _GettingChallenges {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -1620,7 +1620,7 @@ class _$GotChallengesImpl implements _GotChallenges {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -1656,7 +1656,7 @@ class _$GotChallengesImpl implements _GotChallenges {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -1690,7 +1690,7 @@ class _$GotChallengesImpl implements _GotChallenges {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -1727,7 +1727,7 @@ class _$GotChallengesImpl implements _GotChallenges {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -1762,7 +1762,7 @@ class _$GotChallengesImpl implements _GotChallenges {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -1796,7 +1796,7 @@ class _$GotChallengesImpl implements _GotChallenges {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -1906,7 +1906,7 @@ class _$GetChallengesErrorImpl implements _GetChallengesError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -1942,7 +1942,7 @@ class _$GetChallengesErrorImpl implements _GetChallengesError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -1976,7 +1976,7 @@ class _$GetChallengesErrorImpl implements _GetChallengesError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -2013,7 +2013,7 @@ class _$GetChallengesErrorImpl implements _GetChallengesError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -2048,7 +2048,7 @@ class _$GetChallengesErrorImpl implements _GetChallengesError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -2082,7 +2082,7 @@ class _$GetChallengesErrorImpl implements _GetChallengesError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -2170,7 +2170,7 @@ class _$GettingParticipatedChallengesImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -2206,7 +2206,7 @@ class _$GettingParticipatedChallengesImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -2240,7 +2240,7 @@ class _$GettingParticipatedChallengesImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -2277,7 +2277,7 @@ class _$GettingParticipatedChallengesImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -2312,7 +2312,7 @@ class _$GettingParticipatedChallengesImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -2346,7 +2346,7 @@ class _$GettingParticipatedChallengesImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -2454,7 +2454,7 @@ class _$GotParticipatedChallengesImpl implements _GotParticipatedChallenges {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -2490,7 +2490,7 @@ class _$GotParticipatedChallengesImpl implements _GotParticipatedChallenges {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -2524,7 +2524,7 @@ class _$GotParticipatedChallengesImpl implements _GotParticipatedChallenges {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -2561,7 +2561,7 @@ class _$GotParticipatedChallengesImpl implements _GotParticipatedChallenges {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -2596,7 +2596,7 @@ class _$GotParticipatedChallengesImpl implements _GotParticipatedChallenges {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -2630,7 +2630,7 @@ class _$GotParticipatedChallengesImpl implements _GotParticipatedChallenges {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -2746,7 +2746,7 @@ class _$GetParticipatedChallengesErrorImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -2782,7 +2782,7 @@ class _$GetParticipatedChallengesErrorImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -2816,7 +2816,7 @@ class _$GetParticipatedChallengesErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -2853,7 +2853,7 @@ class _$GetParticipatedChallengesErrorImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -2888,7 +2888,7 @@ class _$GetParticipatedChallengesErrorImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -2922,7 +2922,7 @@ class _$GetParticipatedChallengesErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -3011,7 +3011,7 @@ class _$LoadingParticipatedChallengesImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -3047,7 +3047,7 @@ class _$LoadingParticipatedChallengesImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -3081,7 +3081,7 @@ class _$LoadingParticipatedChallengesImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -3118,7 +3118,7 @@ class _$LoadingParticipatedChallengesImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -3153,7 +3153,7 @@ class _$LoadingParticipatedChallengesImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -3187,7 +3187,7 @@ class _$LoadingParticipatedChallengesImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -3298,7 +3298,7 @@ class _$LoadedParticipatedChallengesImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -3334,7 +3334,7 @@ class _$LoadedParticipatedChallengesImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -3368,7 +3368,7 @@ class _$LoadedParticipatedChallengesImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -3405,7 +3405,7 @@ class _$LoadedParticipatedChallengesImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -3440,7 +3440,7 @@ class _$LoadedParticipatedChallengesImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -3474,7 +3474,7 @@ class _$LoadedParticipatedChallengesImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -3591,7 +3591,7 @@ class _$LoadedParticipatedChallengesErrorImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -3627,7 +3627,7 @@ class _$LoadedParticipatedChallengesErrorImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -3661,7 +3661,7 @@ class _$LoadedParticipatedChallengesErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -3698,7 +3698,7 @@ class _$LoadedParticipatedChallengesErrorImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -3733,7 +3733,7 @@ class _$LoadedParticipatedChallengesErrorImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -3767,7 +3767,7 @@ class _$LoadedParticipatedChallengesErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -3854,7 +3854,7 @@ class _$ParticipatingInChallengeImpl implements _ParticipatingInChallenge {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -3890,7 +3890,7 @@ class _$ParticipatingInChallengeImpl implements _ParticipatingInChallenge {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -3924,7 +3924,7 @@ class _$ParticipatingInChallengeImpl implements _ParticipatingInChallenge {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -3961,7 +3961,7 @@ class _$ParticipatingInChallengeImpl implements _ParticipatingInChallenge {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -3996,7 +3996,7 @@ class _$ParticipatingInChallengeImpl implements _ParticipatingInChallenge {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -4030,7 +4030,7 @@ class _$ParticipatingInChallengeImpl implements _ParticipatingInChallenge {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -4139,7 +4139,7 @@ class _$ParticipatedInChallengeImpl implements _ParticipatedInChallenge {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -4175,7 +4175,7 @@ class _$ParticipatedInChallengeImpl implements _ParticipatedInChallenge {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -4209,7 +4209,7 @@ class _$ParticipatedInChallengeImpl implements _ParticipatedInChallenge {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -4246,7 +4246,7 @@ class _$ParticipatedInChallengeImpl implements _ParticipatedInChallenge {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -4281,7 +4281,7 @@ class _$ParticipatedInChallengeImpl implements _ParticipatedInChallenge {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -4315,7 +4315,7 @@ class _$ParticipatedInChallengeImpl implements _ParticipatedInChallenge {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -4431,7 +4431,7 @@ class _$ParticipatingInChallengeErrorImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -4467,7 +4467,7 @@ class _$ParticipatingInChallengeErrorImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -4501,7 +4501,7 @@ class _$ParticipatingInChallengeErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -4538,7 +4538,7 @@ class _$ParticipatingInChallengeErrorImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -4573,7 +4573,7 @@ class _$ParticipatingInChallengeErrorImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -4607,7 +4607,7 @@ class _$ParticipatingInChallengeErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -4691,7 +4691,7 @@ class _$LeavingChallengeImpl implements _LeavingChallenge {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -4727,7 +4727,7 @@ class _$LeavingChallengeImpl implements _LeavingChallenge {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -4761,7 +4761,7 @@ class _$LeavingChallengeImpl implements _LeavingChallenge {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -4798,7 +4798,7 @@ class _$LeavingChallengeImpl implements _LeavingChallenge {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -4833,7 +4833,7 @@ class _$LeavingChallengeImpl implements _LeavingChallenge {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -4867,7 +4867,7 @@ class _$LeavingChallengeImpl implements _LeavingChallenge {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -4971,7 +4971,7 @@ class _$LeftChallengeImpl implements _LeftChallenge {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -5007,7 +5007,7 @@ class _$LeftChallengeImpl implements _LeftChallenge {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -5041,7 +5041,7 @@ class _$LeftChallengeImpl implements _LeftChallenge {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -5078,7 +5078,7 @@ class _$LeftChallengeImpl implements _LeftChallenge {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -5113,7 +5113,7 @@ class _$LeftChallengeImpl implements _LeftChallenge {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -5147,7 +5147,7 @@ class _$LeftChallengeImpl implements _LeftChallenge {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -5258,7 +5258,7 @@ class _$LeaveChallengeErrorImpl implements _LeaveChallengeError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -5294,7 +5294,7 @@ class _$LeaveChallengeErrorImpl implements _LeaveChallengeError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -5328,7 +5328,7 @@ class _$LeaveChallengeErrorImpl implements _LeaveChallengeError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -5365,7 +5365,7 @@ class _$LeaveChallengeErrorImpl implements _LeaveChallengeError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -5400,7 +5400,7 @@ class _$LeaveChallengeErrorImpl implements _LeaveChallengeError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -5434,7 +5434,7 @@ class _$LeaveChallengeErrorImpl implements _LeaveChallengeError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,

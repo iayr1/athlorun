@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SplashState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingAuthData,
     required TResult Function(UserAuthDataModel authData) loadedAuthData,
     required TResult Function(String error) loadAuthDataError,
@@ -38,7 +38,7 @@ mixin _$SplashState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingAuthData,
     TResult? Function(UserAuthDataModel authData)? loadedAuthData,
     TResult? Function(String error)? loadAuthDataError,
@@ -57,7 +57,7 @@ mixin _$SplashState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingAuthData,
     TResult Function(UserAuthDataModel authData)? loadedAuthData,
     TResult Function(String error)? loadAuthDataError,
@@ -77,7 +77,7 @@ mixin _$SplashState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingAuthData value) loadingAuthData,
     required TResult Function(_LoadedAuthData value) loadedAuthData,
     required TResult Function(_LoadAuthDataError value) loadAuthDataError,
@@ -100,7 +100,7 @@ mixin _$SplashState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingAuthData value)? loadingAuthData,
     TResult? Function(_LoadedAuthData value)? loadedAuthData,
     TResult? Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -119,7 +119,7 @@ mixin _$SplashState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingAuthData value)? loadingAuthData,
     TResult Function(_LoadedAuthData value)? loadedAuthData,
     TResult Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -195,7 +195,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingAuthData,
     required TResult Function(UserAuthDataModel authData) loadedAuthData,
     required TResult Function(String error) loadAuthDataError,
@@ -212,13 +212,13 @@ class _$InitialImpl implements _Initial {
     required TResult Function(UserData userData, String error)
         loadUserProgressDataError,
   }) {
-    return initial();
+    return comitial();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingAuthData,
     TResult? Function(UserAuthDataModel authData)? loadedAuthData,
     TResult? Function(String error)? loadAuthDataError,
@@ -234,13 +234,13 @@ class _$InitialImpl implements _Initial {
     TResult? Function(UserData userData, String error)?
         loadUserProgressDataError,
   }) {
-    return initial?.call();
+    return comitial?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingAuthData,
     TResult Function(UserAuthDataModel authData)? loadedAuthData,
     TResult Function(String error)? loadAuthDataError,
@@ -257,8 +257,8 @@ class _$InitialImpl implements _Initial {
         loadUserProgressDataError,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (comitial != null) {
+      return comitial();
     }
     return orElse();
   }
@@ -266,7 +266,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingAuthData value) loadingAuthData,
     required TResult Function(_LoadedAuthData value) loadedAuthData,
     required TResult Function(_LoadAuthDataError value) loadAuthDataError,
@@ -286,13 +286,13 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_LoadUserProgressDataError value)
         loadUserProgressDataError,
   }) {
-    return initial(this);
+    return comitial(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingAuthData value)? loadingAuthData,
     TResult? Function(_LoadedAuthData value)? loadedAuthData,
     TResult? Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -308,13 +308,13 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_LoadUserProgressDataError value)?
         loadUserProgressDataError,
   }) {
-    return initial?.call(this);
+    return comitial?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingAuthData value)? loadingAuthData,
     TResult Function(_LoadedAuthData value)? loadedAuthData,
     TResult Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -331,8 +331,8 @@ class _$InitialImpl implements _Initial {
         loadUserProgressDataError,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (comitial != null) {
+      return comitial(this);
     }
     return orElse();
   }
@@ -380,7 +380,7 @@ class _$LoadingAuthDataImpl implements _LoadingAuthData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingAuthData,
     required TResult Function(UserAuthDataModel authData) loadedAuthData,
     required TResult Function(String error) loadAuthDataError,
@@ -403,7 +403,7 @@ class _$LoadingAuthDataImpl implements _LoadingAuthData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingAuthData,
     TResult? Function(UserAuthDataModel authData)? loadedAuthData,
     TResult? Function(String error)? loadAuthDataError,
@@ -425,7 +425,7 @@ class _$LoadingAuthDataImpl implements _LoadingAuthData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingAuthData,
     TResult Function(UserAuthDataModel authData)? loadedAuthData,
     TResult Function(String error)? loadAuthDataError,
@@ -451,7 +451,7 @@ class _$LoadingAuthDataImpl implements _LoadingAuthData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingAuthData value) loadingAuthData,
     required TResult Function(_LoadedAuthData value) loadedAuthData,
     required TResult Function(_LoadAuthDataError value) loadAuthDataError,
@@ -477,7 +477,7 @@ class _$LoadingAuthDataImpl implements _LoadingAuthData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingAuthData value)? loadingAuthData,
     TResult? Function(_LoadedAuthData value)? loadedAuthData,
     TResult? Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -499,7 +499,7 @@ class _$LoadingAuthDataImpl implements _LoadingAuthData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingAuthData value)? loadingAuthData,
     TResult Function(_LoadedAuthData value)? loadedAuthData,
     TResult Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -593,7 +593,7 @@ class _$LoadedAuthDataImpl implements _LoadedAuthData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingAuthData,
     required TResult Function(UserAuthDataModel authData) loadedAuthData,
     required TResult Function(String error) loadAuthDataError,
@@ -616,7 +616,7 @@ class _$LoadedAuthDataImpl implements _LoadedAuthData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingAuthData,
     TResult? Function(UserAuthDataModel authData)? loadedAuthData,
     TResult? Function(String error)? loadAuthDataError,
@@ -638,7 +638,7 @@ class _$LoadedAuthDataImpl implements _LoadedAuthData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingAuthData,
     TResult Function(UserAuthDataModel authData)? loadedAuthData,
     TResult Function(String error)? loadAuthDataError,
@@ -664,7 +664,7 @@ class _$LoadedAuthDataImpl implements _LoadedAuthData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingAuthData value) loadingAuthData,
     required TResult Function(_LoadedAuthData value) loadedAuthData,
     required TResult Function(_LoadAuthDataError value) loadAuthDataError,
@@ -690,7 +690,7 @@ class _$LoadedAuthDataImpl implements _LoadedAuthData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingAuthData value)? loadingAuthData,
     TResult? Function(_LoadedAuthData value)? loadedAuthData,
     TResult? Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -712,7 +712,7 @@ class _$LoadedAuthDataImpl implements _LoadedAuthData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingAuthData value)? loadingAuthData,
     TResult Function(_LoadedAuthData value)? loadedAuthData,
     TResult Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -811,7 +811,7 @@ class _$LoadAuthDataErrorImpl implements _LoadAuthDataError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingAuthData,
     required TResult Function(UserAuthDataModel authData) loadedAuthData,
     required TResult Function(String error) loadAuthDataError,
@@ -834,7 +834,7 @@ class _$LoadAuthDataErrorImpl implements _LoadAuthDataError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingAuthData,
     TResult? Function(UserAuthDataModel authData)? loadedAuthData,
     TResult? Function(String error)? loadAuthDataError,
@@ -856,7 +856,7 @@ class _$LoadAuthDataErrorImpl implements _LoadAuthDataError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingAuthData,
     TResult Function(UserAuthDataModel authData)? loadedAuthData,
     TResult Function(String error)? loadAuthDataError,
@@ -882,7 +882,7 @@ class _$LoadAuthDataErrorImpl implements _LoadAuthDataError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingAuthData value) loadingAuthData,
     required TResult Function(_LoadedAuthData value) loadedAuthData,
     required TResult Function(_LoadAuthDataError value) loadAuthDataError,
@@ -908,7 +908,7 @@ class _$LoadAuthDataErrorImpl implements _LoadAuthDataError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingAuthData value)? loadingAuthData,
     TResult? Function(_LoadedAuthData value)? loadedAuthData,
     TResult? Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -930,7 +930,7 @@ class _$LoadAuthDataErrorImpl implements _LoadAuthDataError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingAuthData value)? loadingAuthData,
     TResult Function(_LoadedAuthData value)? loadedAuthData,
     TResult Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -1002,7 +1002,7 @@ class _$LoadingUserDataImpl implements _LoadingUserData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingAuthData,
     required TResult Function(UserAuthDataModel authData) loadedAuthData,
     required TResult Function(String error) loadAuthDataError,
@@ -1025,7 +1025,7 @@ class _$LoadingUserDataImpl implements _LoadingUserData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingAuthData,
     TResult? Function(UserAuthDataModel authData)? loadedAuthData,
     TResult? Function(String error)? loadAuthDataError,
@@ -1047,7 +1047,7 @@ class _$LoadingUserDataImpl implements _LoadingUserData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingAuthData,
     TResult Function(UserAuthDataModel authData)? loadedAuthData,
     TResult Function(String error)? loadAuthDataError,
@@ -1073,7 +1073,7 @@ class _$LoadingUserDataImpl implements _LoadingUserData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingAuthData value) loadingAuthData,
     required TResult Function(_LoadedAuthData value) loadedAuthData,
     required TResult Function(_LoadAuthDataError value) loadAuthDataError,
@@ -1099,7 +1099,7 @@ class _$LoadingUserDataImpl implements _LoadingUserData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingAuthData value)? loadingAuthData,
     TResult? Function(_LoadedAuthData value)? loadedAuthData,
     TResult? Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -1121,7 +1121,7 @@ class _$LoadingUserDataImpl implements _LoadingUserData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingAuthData value)? loadingAuthData,
     TResult Function(_LoadedAuthData value)? loadedAuthData,
     TResult Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -1215,7 +1215,7 @@ class _$LoadedUserDataImpl implements _LoadedUserData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingAuthData,
     required TResult Function(UserAuthDataModel authData) loadedAuthData,
     required TResult Function(String error) loadAuthDataError,
@@ -1238,7 +1238,7 @@ class _$LoadedUserDataImpl implements _LoadedUserData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingAuthData,
     TResult? Function(UserAuthDataModel authData)? loadedAuthData,
     TResult? Function(String error)? loadAuthDataError,
@@ -1260,7 +1260,7 @@ class _$LoadedUserDataImpl implements _LoadedUserData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingAuthData,
     TResult Function(UserAuthDataModel authData)? loadedAuthData,
     TResult Function(String error)? loadAuthDataError,
@@ -1286,7 +1286,7 @@ class _$LoadedUserDataImpl implements _LoadedUserData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingAuthData value) loadingAuthData,
     required TResult Function(_LoadedAuthData value) loadedAuthData,
     required TResult Function(_LoadAuthDataError value) loadAuthDataError,
@@ -1312,7 +1312,7 @@ class _$LoadedUserDataImpl implements _LoadedUserData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingAuthData value)? loadingAuthData,
     TResult? Function(_LoadedAuthData value)? loadedAuthData,
     TResult? Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -1334,7 +1334,7 @@ class _$LoadedUserDataImpl implements _LoadedUserData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingAuthData value)? loadingAuthData,
     TResult Function(_LoadedAuthData value)? loadedAuthData,
     TResult Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -1432,7 +1432,7 @@ class _$LoadUserDataErrorImpl implements _LoadUserDataError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingAuthData,
     required TResult Function(UserAuthDataModel authData) loadedAuthData,
     required TResult Function(String error) loadAuthDataError,
@@ -1455,7 +1455,7 @@ class _$LoadUserDataErrorImpl implements _LoadUserDataError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingAuthData,
     TResult? Function(UserAuthDataModel authData)? loadedAuthData,
     TResult? Function(String error)? loadAuthDataError,
@@ -1477,7 +1477,7 @@ class _$LoadUserDataErrorImpl implements _LoadUserDataError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingAuthData,
     TResult Function(UserAuthDataModel authData)? loadedAuthData,
     TResult Function(String error)? loadAuthDataError,
@@ -1503,7 +1503,7 @@ class _$LoadUserDataErrorImpl implements _LoadUserDataError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingAuthData value) loadingAuthData,
     required TResult Function(_LoadedAuthData value) loadedAuthData,
     required TResult Function(_LoadAuthDataError value) loadAuthDataError,
@@ -1529,7 +1529,7 @@ class _$LoadUserDataErrorImpl implements _LoadUserDataError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingAuthData value)? loadingAuthData,
     TResult? Function(_LoadedAuthData value)? loadedAuthData,
     TResult? Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -1551,7 +1551,7 @@ class _$LoadUserDataErrorImpl implements _LoadUserDataError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingAuthData value)? loadingAuthData,
     TResult Function(_LoadedAuthData value)? loadedAuthData,
     TResult Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -1626,7 +1626,7 @@ class _$LoadingOnboardingStatusImpl implements _LoadingOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingAuthData,
     required TResult Function(UserAuthDataModel authData) loadedAuthData,
     required TResult Function(String error) loadAuthDataError,
@@ -1649,7 +1649,7 @@ class _$LoadingOnboardingStatusImpl implements _LoadingOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingAuthData,
     TResult? Function(UserAuthDataModel authData)? loadedAuthData,
     TResult? Function(String error)? loadAuthDataError,
@@ -1671,7 +1671,7 @@ class _$LoadingOnboardingStatusImpl implements _LoadingOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingAuthData,
     TResult Function(UserAuthDataModel authData)? loadedAuthData,
     TResult Function(String error)? loadAuthDataError,
@@ -1697,7 +1697,7 @@ class _$LoadingOnboardingStatusImpl implements _LoadingOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingAuthData value) loadingAuthData,
     required TResult Function(_LoadedAuthData value) loadedAuthData,
     required TResult Function(_LoadAuthDataError value) loadAuthDataError,
@@ -1723,7 +1723,7 @@ class _$LoadingOnboardingStatusImpl implements _LoadingOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingAuthData value)? loadingAuthData,
     TResult? Function(_LoadedAuthData value)? loadedAuthData,
     TResult? Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -1745,7 +1745,7 @@ class _$LoadingOnboardingStatusImpl implements _LoadingOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingAuthData value)? loadingAuthData,
     TResult Function(_LoadedAuthData value)? loadedAuthData,
     TResult Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -1814,7 +1814,7 @@ class _$LoadedOnboardingStatusImpl implements _LoadedOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingAuthData,
     required TResult Function(UserAuthDataModel authData) loadedAuthData,
     required TResult Function(String error) loadAuthDataError,
@@ -1837,7 +1837,7 @@ class _$LoadedOnboardingStatusImpl implements _LoadedOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingAuthData,
     TResult? Function(UserAuthDataModel authData)? loadedAuthData,
     TResult? Function(String error)? loadAuthDataError,
@@ -1859,7 +1859,7 @@ class _$LoadedOnboardingStatusImpl implements _LoadedOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingAuthData,
     TResult Function(UserAuthDataModel authData)? loadedAuthData,
     TResult Function(String error)? loadAuthDataError,
@@ -1885,7 +1885,7 @@ class _$LoadedOnboardingStatusImpl implements _LoadedOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingAuthData value) loadingAuthData,
     required TResult Function(_LoadedAuthData value) loadedAuthData,
     required TResult Function(_LoadAuthDataError value) loadAuthDataError,
@@ -1911,7 +1911,7 @@ class _$LoadedOnboardingStatusImpl implements _LoadedOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingAuthData value)? loadingAuthData,
     TResult? Function(_LoadedAuthData value)? loadedAuthData,
     TResult? Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -1933,7 +1933,7 @@ class _$LoadedOnboardingStatusImpl implements _LoadedOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingAuthData value)? loadingAuthData,
     TResult Function(_LoadedAuthData value)? loadedAuthData,
     TResult Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -2028,7 +2028,7 @@ class _$LoadOnboardingStatusErrorImpl implements _LoadOnboardingStatusError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingAuthData,
     required TResult Function(UserAuthDataModel authData) loadedAuthData,
     required TResult Function(String error) loadAuthDataError,
@@ -2051,7 +2051,7 @@ class _$LoadOnboardingStatusErrorImpl implements _LoadOnboardingStatusError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingAuthData,
     TResult? Function(UserAuthDataModel authData)? loadedAuthData,
     TResult? Function(String error)? loadAuthDataError,
@@ -2073,7 +2073,7 @@ class _$LoadOnboardingStatusErrorImpl implements _LoadOnboardingStatusError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingAuthData,
     TResult Function(UserAuthDataModel authData)? loadedAuthData,
     TResult Function(String error)? loadAuthDataError,
@@ -2099,7 +2099,7 @@ class _$LoadOnboardingStatusErrorImpl implements _LoadOnboardingStatusError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingAuthData value) loadingAuthData,
     required TResult Function(_LoadedAuthData value) loadedAuthData,
     required TResult Function(_LoadAuthDataError value) loadAuthDataError,
@@ -2125,7 +2125,7 @@ class _$LoadOnboardingStatusErrorImpl implements _LoadOnboardingStatusError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingAuthData value)? loadingAuthData,
     TResult? Function(_LoadedAuthData value)? loadedAuthData,
     TResult? Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -2147,7 +2147,7 @@ class _$LoadOnboardingStatusErrorImpl implements _LoadOnboardingStatusError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingAuthData value)? loadingAuthData,
     TResult Function(_LoadedAuthData value)? loadedAuthData,
     TResult Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -2222,7 +2222,7 @@ class _$LoadingUserProgressDataImpl implements _LoadingUserProgressData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingAuthData,
     required TResult Function(UserAuthDataModel authData) loadedAuthData,
     required TResult Function(String error) loadAuthDataError,
@@ -2245,7 +2245,7 @@ class _$LoadingUserProgressDataImpl implements _LoadingUserProgressData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingAuthData,
     TResult? Function(UserAuthDataModel authData)? loadedAuthData,
     TResult? Function(String error)? loadAuthDataError,
@@ -2267,7 +2267,7 @@ class _$LoadingUserProgressDataImpl implements _LoadingUserProgressData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingAuthData,
     TResult Function(UserAuthDataModel authData)? loadedAuthData,
     TResult Function(String error)? loadAuthDataError,
@@ -2293,7 +2293,7 @@ class _$LoadingUserProgressDataImpl implements _LoadingUserProgressData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingAuthData value) loadingAuthData,
     required TResult Function(_LoadedAuthData value) loadedAuthData,
     required TResult Function(_LoadAuthDataError value) loadAuthDataError,
@@ -2319,7 +2319,7 @@ class _$LoadingUserProgressDataImpl implements _LoadingUserProgressData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingAuthData value)? loadingAuthData,
     TResult? Function(_LoadedAuthData value)? loadedAuthData,
     TResult? Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -2341,7 +2341,7 @@ class _$LoadingUserProgressDataImpl implements _LoadingUserProgressData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingAuthData value)? loadingAuthData,
     TResult Function(_LoadedAuthData value)? loadedAuthData,
     TResult Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -2446,7 +2446,7 @@ class _$LoadedUserProgressDataImpl implements _LoadedUserProgressData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingAuthData,
     required TResult Function(UserAuthDataModel authData) loadedAuthData,
     required TResult Function(String error) loadAuthDataError,
@@ -2469,7 +2469,7 @@ class _$LoadedUserProgressDataImpl implements _LoadedUserProgressData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingAuthData,
     TResult? Function(UserAuthDataModel authData)? loadedAuthData,
     TResult? Function(String error)? loadAuthDataError,
@@ -2491,7 +2491,7 @@ class _$LoadedUserProgressDataImpl implements _LoadedUserProgressData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingAuthData,
     TResult Function(UserAuthDataModel authData)? loadedAuthData,
     TResult Function(String error)? loadAuthDataError,
@@ -2517,7 +2517,7 @@ class _$LoadedUserProgressDataImpl implements _LoadedUserProgressData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingAuthData value) loadingAuthData,
     required TResult Function(_LoadedAuthData value) loadedAuthData,
     required TResult Function(_LoadAuthDataError value) loadAuthDataError,
@@ -2543,7 +2543,7 @@ class _$LoadedUserProgressDataImpl implements _LoadedUserProgressData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingAuthData value)? loadingAuthData,
     TResult? Function(_LoadedAuthData value)? loadedAuthData,
     TResult? Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -2565,7 +2565,7 @@ class _$LoadedUserProgressDataImpl implements _LoadedUserProgressData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingAuthData value)? loadingAuthData,
     TResult Function(_LoadedAuthData value)? loadedAuthData,
     TResult Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -2677,7 +2677,7 @@ class _$LoadUserProgressDataErrorImpl implements _LoadUserProgressDataError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingAuthData,
     required TResult Function(UserAuthDataModel authData) loadedAuthData,
     required TResult Function(String error) loadAuthDataError,
@@ -2700,7 +2700,7 @@ class _$LoadUserProgressDataErrorImpl implements _LoadUserProgressDataError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingAuthData,
     TResult? Function(UserAuthDataModel authData)? loadedAuthData,
     TResult? Function(String error)? loadAuthDataError,
@@ -2722,7 +2722,7 @@ class _$LoadUserProgressDataErrorImpl implements _LoadUserProgressDataError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingAuthData,
     TResult Function(UserAuthDataModel authData)? loadedAuthData,
     TResult Function(String error)? loadAuthDataError,
@@ -2748,7 +2748,7 @@ class _$LoadUserProgressDataErrorImpl implements _LoadUserProgressDataError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingAuthData value) loadingAuthData,
     required TResult Function(_LoadedAuthData value) loadedAuthData,
     required TResult Function(_LoadAuthDataError value) loadAuthDataError,
@@ -2774,7 +2774,7 @@ class _$LoadUserProgressDataErrorImpl implements _LoadUserProgressDataError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingAuthData value)? loadingAuthData,
     TResult? Function(_LoadedAuthData value)? loadedAuthData,
     TResult? Function(_LoadAuthDataError value)? loadAuthDataError,
@@ -2796,7 +2796,7 @@ class _$LoadUserProgressDataErrorImpl implements _LoadUserProgressDataError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingAuthData value)? loadingAuthData,
     TResult Function(_LoadedAuthData value)? loadedAuthData,
     TResult Function(_LoadAuthDataError value)? loadAuthDataError,

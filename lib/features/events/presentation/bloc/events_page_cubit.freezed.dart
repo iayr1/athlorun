@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventsPageState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -42,7 +42,7 @@ mixin _$EventsPageState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -65,7 +65,7 @@ mixin _$EventsPageState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -88,7 +88,7 @@ mixin _$EventsPageState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -112,7 +112,7 @@ mixin _$EventsPageState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -133,7 +133,7 @@ mixin _$EventsPageState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -211,7 +211,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -232,13 +232,13 @@ class _$InitialImpl implements _Initial {
         updatedTicketQuantity,
     required TResult Function(dynamic quantity) ticketLimitReached,
   }) {
-    return initial();
+    return comitial();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -258,13 +258,13 @@ class _$InitialImpl implements _Initial {
         updatedTicketQuantity,
     TResult? Function(dynamic quantity)? ticketLimitReached,
   }) {
-    return initial?.call();
+    return comitial?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -284,8 +284,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(dynamic quantity)? ticketLimitReached,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (comitial != null) {
+      return comitial();
     }
     return orElse();
   }
@@ -293,7 +293,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -314,13 +314,13 @@ class _$InitialImpl implements _Initial {
         updatedTicketQuantity,
     required TResult Function(TicketLimitReached value) ticketLimitReached,
   }) {
-    return initial(this);
+    return comitial(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -338,13 +338,13 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_UpdatedTicketQuantity value)? updatedTicketQuantity,
     TResult? Function(TicketLimitReached value)? ticketLimitReached,
   }) {
-    return initial?.call(this);
+    return comitial?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -363,8 +363,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(TicketLimitReached value)? ticketLimitReached,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (comitial != null) {
+      return comitial(this);
     }
     return orElse();
   }
@@ -412,7 +412,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -439,7 +439,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -465,7 +465,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -494,7 +494,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -521,7 +521,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -545,7 +545,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -640,7 +640,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -667,7 +667,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -693,7 +693,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -722,7 +722,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -749,7 +749,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -773,7 +773,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -874,7 +874,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -901,7 +901,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -927,7 +927,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -956,7 +956,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -983,7 +983,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -1007,7 +1007,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -1080,7 +1080,7 @@ class _$LoadingEventsImpl implements _LoadingEvents {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -1107,7 +1107,7 @@ class _$LoadingEventsImpl implements _LoadingEvents {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -1133,7 +1133,7 @@ class _$LoadingEventsImpl implements _LoadingEvents {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -1162,7 +1162,7 @@ class _$LoadingEventsImpl implements _LoadingEvents {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -1189,7 +1189,7 @@ class _$LoadingEventsImpl implements _LoadingEvents {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -1213,7 +1213,7 @@ class _$LoadingEventsImpl implements _LoadingEvents {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -1307,7 +1307,7 @@ class _$LoadedEventsImpl implements _LoadedEvents {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -1334,7 +1334,7 @@ class _$LoadedEventsImpl implements _LoadedEvents {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -1360,7 +1360,7 @@ class _$LoadedEventsImpl implements _LoadedEvents {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -1389,7 +1389,7 @@ class _$LoadedEventsImpl implements _LoadedEvents {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -1416,7 +1416,7 @@ class _$LoadedEventsImpl implements _LoadedEvents {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -1440,7 +1440,7 @@ class _$LoadedEventsImpl implements _LoadedEvents {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -1541,7 +1541,7 @@ class _$LoadEventsErrorImpl implements _LoadEventsError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -1568,7 +1568,7 @@ class _$LoadEventsErrorImpl implements _LoadEventsError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -1594,7 +1594,7 @@ class _$LoadEventsErrorImpl implements _LoadEventsError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -1623,7 +1623,7 @@ class _$LoadEventsErrorImpl implements _LoadEventsError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -1650,7 +1650,7 @@ class _$LoadEventsErrorImpl implements _LoadEventsError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -1674,7 +1674,7 @@ class _$LoadEventsErrorImpl implements _LoadEventsError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -1781,7 +1781,7 @@ class _$GenerateFormsImpl implements _GenerateForms {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -1808,7 +1808,7 @@ class _$GenerateFormsImpl implements _GenerateForms {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -1834,7 +1834,7 @@ class _$GenerateFormsImpl implements _GenerateForms {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -1863,7 +1863,7 @@ class _$GenerateFormsImpl implements _GenerateForms {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -1890,7 +1890,7 @@ class _$GenerateFormsImpl implements _GenerateForms {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -1914,7 +1914,7 @@ class _$GenerateFormsImpl implements _GenerateForms {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -1988,7 +1988,7 @@ class _$UpdateTicketHolderImpl implements _UpdateTicketHolder {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -2015,7 +2015,7 @@ class _$UpdateTicketHolderImpl implements _UpdateTicketHolder {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -2041,7 +2041,7 @@ class _$UpdateTicketHolderImpl implements _UpdateTicketHolder {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -2070,7 +2070,7 @@ class _$UpdateTicketHolderImpl implements _UpdateTicketHolder {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -2097,7 +2097,7 @@ class _$UpdateTicketHolderImpl implements _UpdateTicketHolder {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -2121,7 +2121,7 @@ class _$UpdateTicketHolderImpl implements _UpdateTicketHolder {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -2218,7 +2218,7 @@ class _$FormValidationUpdatedImpl implements _FormValidationUpdated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -2245,7 +2245,7 @@ class _$FormValidationUpdatedImpl implements _FormValidationUpdated {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -2271,7 +2271,7 @@ class _$FormValidationUpdatedImpl implements _FormValidationUpdated {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -2300,7 +2300,7 @@ class _$FormValidationUpdatedImpl implements _FormValidationUpdated {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -2327,7 +2327,7 @@ class _$FormValidationUpdatedImpl implements _FormValidationUpdated {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -2351,7 +2351,7 @@ class _$FormValidationUpdatedImpl implements _FormValidationUpdated {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -2425,7 +2425,7 @@ class _$BookingEventTicketImpl implements _BookingEventTicket {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -2452,7 +2452,7 @@ class _$BookingEventTicketImpl implements _BookingEventTicket {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -2478,7 +2478,7 @@ class _$BookingEventTicketImpl implements _BookingEventTicket {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -2507,7 +2507,7 @@ class _$BookingEventTicketImpl implements _BookingEventTicket {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -2534,7 +2534,7 @@ class _$BookingEventTicketImpl implements _BookingEventTicket {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -2558,7 +2558,7 @@ class _$BookingEventTicketImpl implements _BookingEventTicket {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -2654,7 +2654,7 @@ class _$BookedEventTicketImpl implements _BookedEventTicket {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -2681,7 +2681,7 @@ class _$BookedEventTicketImpl implements _BookedEventTicket {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -2707,7 +2707,7 @@ class _$BookedEventTicketImpl implements _BookedEventTicket {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -2736,7 +2736,7 @@ class _$BookedEventTicketImpl implements _BookedEventTicket {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -2763,7 +2763,7 @@ class _$BookedEventTicketImpl implements _BookedEventTicket {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -2787,7 +2787,7 @@ class _$BookedEventTicketImpl implements _BookedEventTicket {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -2890,7 +2890,7 @@ class _$BookingEventTicketErrorImpl implements _BookingEventTicketError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -2917,7 +2917,7 @@ class _$BookingEventTicketErrorImpl implements _BookingEventTicketError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -2943,7 +2943,7 @@ class _$BookingEventTicketErrorImpl implements _BookingEventTicketError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -2972,7 +2972,7 @@ class _$BookingEventTicketErrorImpl implements _BookingEventTicketError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -2999,7 +2999,7 @@ class _$BookingEventTicketErrorImpl implements _BookingEventTicketError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -3023,7 +3023,7 @@ class _$BookingEventTicketErrorImpl implements _BookingEventTicketError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -3133,7 +3133,7 @@ class _$IsAppliedCouponImpl implements _IsAppliedCoupon {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -3160,7 +3160,7 @@ class _$IsAppliedCouponImpl implements _IsAppliedCoupon {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -3186,7 +3186,7 @@ class _$IsAppliedCouponImpl implements _IsAppliedCoupon {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -3215,7 +3215,7 @@ class _$IsAppliedCouponImpl implements _IsAppliedCoupon {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -3242,7 +3242,7 @@ class _$IsAppliedCouponImpl implements _IsAppliedCoupon {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -3266,7 +3266,7 @@ class _$IsAppliedCouponImpl implements _IsAppliedCoupon {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -3368,7 +3368,7 @@ class _$AddSlotImpl implements _AddSlot {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -3395,7 +3395,7 @@ class _$AddSlotImpl implements _AddSlot {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -3421,7 +3421,7 @@ class _$AddSlotImpl implements _AddSlot {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -3450,7 +3450,7 @@ class _$AddSlotImpl implements _AddSlot {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -3477,7 +3477,7 @@ class _$AddSlotImpl implements _AddSlot {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -3501,7 +3501,7 @@ class _$AddSlotImpl implements _AddSlot {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -3623,7 +3623,7 @@ class _$UpdatedTicketQuantityImpl implements _UpdatedTicketQuantity {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -3651,7 +3651,7 @@ class _$UpdatedTicketQuantityImpl implements _UpdatedTicketQuantity {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -3678,7 +3678,7 @@ class _$UpdatedTicketQuantityImpl implements _UpdatedTicketQuantity {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -3708,7 +3708,7 @@ class _$UpdatedTicketQuantityImpl implements _UpdatedTicketQuantity {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -3735,7 +3735,7 @@ class _$UpdatedTicketQuantityImpl implements _UpdatedTicketQuantity {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -3759,7 +3759,7 @@ class _$UpdatedTicketQuantityImpl implements _UpdatedTicketQuantity {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,
@@ -3862,7 +3862,7 @@ class _$TicketLimitReachedImpl implements TicketLimitReached {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() gettingAuthData,
     required TResult Function(UserAuthDataModel authData) gotAuthData,
     required TResult Function(String error) getAuthDataError,
@@ -3889,7 +3889,7 @@ class _$TicketLimitReachedImpl implements TicketLimitReached {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? gettingAuthData,
     TResult? Function(UserAuthDataModel authData)? gotAuthData,
     TResult? Function(String error)? getAuthDataError,
@@ -3915,7 +3915,7 @@ class _$TicketLimitReachedImpl implements TicketLimitReached {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? gettingAuthData,
     TResult Function(UserAuthDataModel authData)? gotAuthData,
     TResult Function(String error)? getAuthDataError,
@@ -3944,7 +3944,7 @@ class _$TicketLimitReachedImpl implements TicketLimitReached {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_GettingAuthData value) gettingAuthData,
     required TResult Function(_GotAuthData value) gotAuthData,
     required TResult Function(_GetAuthDataError value) getAuthDataError,
@@ -3971,7 +3971,7 @@ class _$TicketLimitReachedImpl implements TicketLimitReached {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_GettingAuthData value)? gettingAuthData,
     TResult? Function(_GotAuthData value)? gotAuthData,
     TResult? Function(_GetAuthDataError value)? getAuthDataError,
@@ -3995,7 +3995,7 @@ class _$TicketLimitReachedImpl implements TicketLimitReached {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_GettingAuthData value)? gettingAuthData,
     TResult Function(_GotAuthData value)? gotAuthData,
     TResult Function(_GetAuthDataError value)? getAuthDataError,

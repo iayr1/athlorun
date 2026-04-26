@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$GlobalStoreState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() paymentProcessing,
     required TResult Function() paymentSuccess,
     required TResult Function() paymentFailure,
@@ -26,7 +26,7 @@ mixin _$GlobalStoreState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? paymentProcessing,
     TResult? Function()? paymentSuccess,
     TResult? Function()? paymentFailure,
@@ -34,7 +34,7 @@ mixin _$GlobalStoreState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? paymentProcessing,
     TResult Function()? paymentSuccess,
     TResult Function()? paymentFailure,
@@ -43,7 +43,7 @@ mixin _$GlobalStoreState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_PaymentProcessing value) paymentProcessing,
     required TResult Function(_PaymentSuccess value) paymentSuccess,
     required TResult Function(_PaymentFailure value) paymentFailure,
@@ -51,7 +51,7 @@ mixin _$GlobalStoreState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_PaymentProcessing value)? paymentProcessing,
     TResult? Function(_PaymentSuccess value)? paymentSuccess,
     TResult? Function(_PaymentFailure value)? paymentFailure,
@@ -59,7 +59,7 @@ mixin _$GlobalStoreState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_PaymentProcessing value)? paymentProcessing,
     TResult Function(_PaymentSuccess value)? paymentSuccess,
     TResult Function(_PaymentFailure value)? paymentFailure,
@@ -124,36 +124,36 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() paymentProcessing,
     required TResult Function() paymentSuccess,
     required TResult Function() paymentFailure,
   }) {
-    return initial();
+    return comitial();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? paymentProcessing,
     TResult? Function()? paymentSuccess,
     TResult? Function()? paymentFailure,
   }) {
-    return initial?.call();
+    return comitial?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? paymentProcessing,
     TResult Function()? paymentSuccess,
     TResult Function()? paymentFailure,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (comitial != null) {
+      return comitial();
     }
     return orElse();
   }
@@ -161,36 +161,36 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_PaymentProcessing value) paymentProcessing,
     required TResult Function(_PaymentSuccess value) paymentSuccess,
     required TResult Function(_PaymentFailure value) paymentFailure,
   }) {
-    return initial(this);
+    return comitial(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_PaymentProcessing value)? paymentProcessing,
     TResult? Function(_PaymentSuccess value)? paymentSuccess,
     TResult? Function(_PaymentFailure value)? paymentFailure,
   }) {
-    return initial?.call(this);
+    return comitial?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_PaymentProcessing value)? paymentProcessing,
     TResult Function(_PaymentSuccess value)? paymentSuccess,
     TResult Function(_PaymentFailure value)? paymentFailure,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (comitial != null) {
+      return comitial(this);
     }
     return orElse();
   }
@@ -238,7 +238,7 @@ class _$PaymentProcessingImpl implements _PaymentProcessing {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() paymentProcessing,
     required TResult Function() paymentSuccess,
     required TResult Function() paymentFailure,
@@ -249,7 +249,7 @@ class _$PaymentProcessingImpl implements _PaymentProcessing {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? paymentProcessing,
     TResult? Function()? paymentSuccess,
     TResult? Function()? paymentFailure,
@@ -260,7 +260,7 @@ class _$PaymentProcessingImpl implements _PaymentProcessing {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? paymentProcessing,
     TResult Function()? paymentSuccess,
     TResult Function()? paymentFailure,
@@ -275,7 +275,7 @@ class _$PaymentProcessingImpl implements _PaymentProcessing {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_PaymentProcessing value) paymentProcessing,
     required TResult Function(_PaymentSuccess value) paymentSuccess,
     required TResult Function(_PaymentFailure value) paymentFailure,
@@ -286,7 +286,7 @@ class _$PaymentProcessingImpl implements _PaymentProcessing {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_PaymentProcessing value)? paymentProcessing,
     TResult? Function(_PaymentSuccess value)? paymentSuccess,
     TResult? Function(_PaymentFailure value)? paymentFailure,
@@ -297,7 +297,7 @@ class _$PaymentProcessingImpl implements _PaymentProcessing {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_PaymentProcessing value)? paymentProcessing,
     TResult Function(_PaymentSuccess value)? paymentSuccess,
     TResult Function(_PaymentFailure value)? paymentFailure,
@@ -352,7 +352,7 @@ class _$PaymentSuccessImpl implements _PaymentSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() paymentProcessing,
     required TResult Function() paymentSuccess,
     required TResult Function() paymentFailure,
@@ -363,7 +363,7 @@ class _$PaymentSuccessImpl implements _PaymentSuccess {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? paymentProcessing,
     TResult? Function()? paymentSuccess,
     TResult? Function()? paymentFailure,
@@ -374,7 +374,7 @@ class _$PaymentSuccessImpl implements _PaymentSuccess {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? paymentProcessing,
     TResult Function()? paymentSuccess,
     TResult Function()? paymentFailure,
@@ -389,7 +389,7 @@ class _$PaymentSuccessImpl implements _PaymentSuccess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_PaymentProcessing value) paymentProcessing,
     required TResult Function(_PaymentSuccess value) paymentSuccess,
     required TResult Function(_PaymentFailure value) paymentFailure,
@@ -400,7 +400,7 @@ class _$PaymentSuccessImpl implements _PaymentSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_PaymentProcessing value)? paymentProcessing,
     TResult? Function(_PaymentSuccess value)? paymentSuccess,
     TResult? Function(_PaymentFailure value)? paymentFailure,
@@ -411,7 +411,7 @@ class _$PaymentSuccessImpl implements _PaymentSuccess {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_PaymentProcessing value)? paymentProcessing,
     TResult Function(_PaymentSuccess value)? paymentSuccess,
     TResult Function(_PaymentFailure value)? paymentFailure,
@@ -466,7 +466,7 @@ class _$PaymentFailureImpl implements _PaymentFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() paymentProcessing,
     required TResult Function() paymentSuccess,
     required TResult Function() paymentFailure,
@@ -477,7 +477,7 @@ class _$PaymentFailureImpl implements _PaymentFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? paymentProcessing,
     TResult? Function()? paymentSuccess,
     TResult? Function()? paymentFailure,
@@ -488,7 +488,7 @@ class _$PaymentFailureImpl implements _PaymentFailure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? paymentProcessing,
     TResult Function()? paymentSuccess,
     TResult Function()? paymentFailure,
@@ -503,7 +503,7 @@ class _$PaymentFailureImpl implements _PaymentFailure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_PaymentProcessing value) paymentProcessing,
     required TResult Function(_PaymentSuccess value) paymentSuccess,
     required TResult Function(_PaymentFailure value) paymentFailure,
@@ -514,7 +514,7 @@ class _$PaymentFailureImpl implements _PaymentFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_PaymentProcessing value)? paymentProcessing,
     TResult? Function(_PaymentSuccess value)? paymentSuccess,
     TResult? Function(_PaymentFailure value)? paymentFailure,
@@ -525,7 +525,7 @@ class _$PaymentFailureImpl implements _PaymentFailure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_PaymentProcessing value)? paymentProcessing,
     TResult Function(_PaymentSuccess value)? paymentSuccess,
     TResult Function(_PaymentFailure value)? paymentFailure,

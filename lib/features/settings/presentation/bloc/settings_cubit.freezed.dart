@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SettingsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() deletingUser,
     required TResult Function(DeleteUserResponseModel response) deletedUser,
     required TResult Function(String error) deleteUserError,
@@ -39,7 +39,7 @@ mixin _$SettingsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? deletingUser,
     TResult? Function(DeleteUserResponseModel response)? deletedUser,
     TResult? Function(String error)? deleteUserError,
@@ -60,7 +60,7 @@ mixin _$SettingsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? deletingUser,
     TResult Function(DeleteUserResponseModel response)? deletedUser,
     TResult Function(String error)? deleteUserError,
@@ -82,7 +82,7 @@ mixin _$SettingsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_DeletingUser value) deletingUser,
     required TResult Function(_DeletedUser value) deletedUser,
     required TResult Function(_DeleteUserError value) deleteUserError,
@@ -108,7 +108,7 @@ mixin _$SettingsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_DeletingUser value)? deletingUser,
     TResult? Function(_DeletedUser value)? deletedUser,
     TResult? Function(_DeleteUserError value)? deleteUserError,
@@ -134,7 +134,7 @@ mixin _$SettingsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_DeletingUser value)? deletingUser,
     TResult Function(_DeletedUser value)? deletedUser,
     TResult Function(_DeleteUserError value)? deleteUserError,
@@ -217,7 +217,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() deletingUser,
     required TResult Function(DeleteUserResponseModel response) deletedUser,
     required TResult Function(String error) deleteUserError,
@@ -235,13 +235,13 @@ class _$InitialImpl implements _Initial {
     required TResult Function(List<Datum> items) updatedNotificationPreferences,
     required TResult Function(String error) updateNotificationPreferencesError,
   }) {
-    return initial();
+    return comitial();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? deletingUser,
     TResult? Function(DeleteUserResponseModel response)? deletedUser,
     TResult? Function(String error)? deleteUserError,
@@ -259,13 +259,13 @@ class _$InitialImpl implements _Initial {
     TResult? Function(List<Datum> items)? updatedNotificationPreferences,
     TResult? Function(String error)? updateNotificationPreferencesError,
   }) {
-    return initial?.call();
+    return comitial?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? deletingUser,
     TResult Function(DeleteUserResponseModel response)? deletedUser,
     TResult Function(String error)? deleteUserError,
@@ -284,8 +284,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(String error)? updateNotificationPreferencesError,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (comitial != null) {
+      return comitial();
     }
     return orElse();
   }
@@ -293,7 +293,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_DeletingUser value) deletingUser,
     required TResult Function(_DeletedUser value) deletedUser,
     required TResult Function(_DeleteUserError value) deleteUserError,
@@ -316,13 +316,13 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_UpdateNotificationPreferencesError value)
         updateNotificationPreferencesError,
   }) {
-    return initial(this);
+    return comitial(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_DeletingUser value)? deletingUser,
     TResult? Function(_DeletedUser value)? deletedUser,
     TResult? Function(_DeleteUserError value)? deleteUserError,
@@ -345,13 +345,13 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_UpdateNotificationPreferencesError value)?
         updateNotificationPreferencesError,
   }) {
-    return initial?.call(this);
+    return comitial?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_DeletingUser value)? deletingUser,
     TResult Function(_DeletedUser value)? deletedUser,
     TResult Function(_DeleteUserError value)? deleteUserError,
@@ -375,8 +375,8 @@ class _$InitialImpl implements _Initial {
         updateNotificationPreferencesError,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (comitial != null) {
+      return comitial(this);
     }
     return orElse();
   }
@@ -424,7 +424,7 @@ class _$DeletingUserImpl implements _DeletingUser {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() deletingUser,
     required TResult Function(DeleteUserResponseModel response) deletedUser,
     required TResult Function(String error) deleteUserError,
@@ -448,7 +448,7 @@ class _$DeletingUserImpl implements _DeletingUser {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? deletingUser,
     TResult? Function(DeleteUserResponseModel response)? deletedUser,
     TResult? Function(String error)? deleteUserError,
@@ -472,7 +472,7 @@ class _$DeletingUserImpl implements _DeletingUser {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? deletingUser,
     TResult Function(DeleteUserResponseModel response)? deletedUser,
     TResult Function(String error)? deleteUserError,
@@ -500,7 +500,7 @@ class _$DeletingUserImpl implements _DeletingUser {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_DeletingUser value) deletingUser,
     required TResult Function(_DeletedUser value) deletedUser,
     required TResult Function(_DeleteUserError value) deleteUserError,
@@ -529,7 +529,7 @@ class _$DeletingUserImpl implements _DeletingUser {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_DeletingUser value)? deletingUser,
     TResult? Function(_DeletedUser value)? deletedUser,
     TResult? Function(_DeleteUserError value)? deleteUserError,
@@ -558,7 +558,7 @@ class _$DeletingUserImpl implements _DeletingUser {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_DeletingUser value)? deletingUser,
     TResult Function(_DeletedUser value)? deletedUser,
     TResult Function(_DeleteUserError value)? deleteUserError,
@@ -658,7 +658,7 @@ class _$DeletedUserImpl implements _DeletedUser {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() deletingUser,
     required TResult Function(DeleteUserResponseModel response) deletedUser,
     required TResult Function(String error) deleteUserError,
@@ -682,7 +682,7 @@ class _$DeletedUserImpl implements _DeletedUser {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? deletingUser,
     TResult? Function(DeleteUserResponseModel response)? deletedUser,
     TResult? Function(String error)? deleteUserError,
@@ -706,7 +706,7 @@ class _$DeletedUserImpl implements _DeletedUser {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? deletingUser,
     TResult Function(DeleteUserResponseModel response)? deletedUser,
     TResult Function(String error)? deleteUserError,
@@ -734,7 +734,7 @@ class _$DeletedUserImpl implements _DeletedUser {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_DeletingUser value) deletingUser,
     required TResult Function(_DeletedUser value) deletedUser,
     required TResult Function(_DeleteUserError value) deleteUserError,
@@ -763,7 +763,7 @@ class _$DeletedUserImpl implements _DeletedUser {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_DeletingUser value)? deletingUser,
     TResult? Function(_DeletedUser value)? deletedUser,
     TResult? Function(_DeleteUserError value)? deleteUserError,
@@ -792,7 +792,7 @@ class _$DeletedUserImpl implements _DeletedUser {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_DeletingUser value)? deletingUser,
     TResult Function(_DeletedUser value)? deletedUser,
     TResult Function(_DeleteUserError value)? deleteUserError,
@@ -898,7 +898,7 @@ class _$DeleteUserErrorImpl implements _DeleteUserError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() deletingUser,
     required TResult Function(DeleteUserResponseModel response) deletedUser,
     required TResult Function(String error) deleteUserError,
@@ -922,7 +922,7 @@ class _$DeleteUserErrorImpl implements _DeleteUserError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? deletingUser,
     TResult? Function(DeleteUserResponseModel response)? deletedUser,
     TResult? Function(String error)? deleteUserError,
@@ -946,7 +946,7 @@ class _$DeleteUserErrorImpl implements _DeleteUserError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? deletingUser,
     TResult Function(DeleteUserResponseModel response)? deletedUser,
     TResult Function(String error)? deleteUserError,
@@ -974,7 +974,7 @@ class _$DeleteUserErrorImpl implements _DeleteUserError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_DeletingUser value) deletingUser,
     required TResult Function(_DeletedUser value) deletedUser,
     required TResult Function(_DeleteUserError value) deleteUserError,
@@ -1003,7 +1003,7 @@ class _$DeleteUserErrorImpl implements _DeleteUserError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_DeletingUser value)? deletingUser,
     TResult? Function(_DeletedUser value)? deletedUser,
     TResult? Function(_DeleteUserError value)? deleteUserError,
@@ -1032,7 +1032,7 @@ class _$DeleteUserErrorImpl implements _DeleteUserError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_DeletingUser value)? deletingUser,
     TResult Function(_DeletedUser value)? deletedUser,
     TResult Function(_DeleteUserError value)? deleteUserError,
@@ -1110,7 +1110,7 @@ class _$LoggingOutImpl implements _LoggingOut {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() deletingUser,
     required TResult Function(DeleteUserResponseModel response) deletedUser,
     required TResult Function(String error) deleteUserError,
@@ -1134,7 +1134,7 @@ class _$LoggingOutImpl implements _LoggingOut {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? deletingUser,
     TResult? Function(DeleteUserResponseModel response)? deletedUser,
     TResult? Function(String error)? deleteUserError,
@@ -1158,7 +1158,7 @@ class _$LoggingOutImpl implements _LoggingOut {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? deletingUser,
     TResult Function(DeleteUserResponseModel response)? deletedUser,
     TResult Function(String error)? deleteUserError,
@@ -1186,7 +1186,7 @@ class _$LoggingOutImpl implements _LoggingOut {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_DeletingUser value) deletingUser,
     required TResult Function(_DeletedUser value) deletedUser,
     required TResult Function(_DeleteUserError value) deleteUserError,
@@ -1215,7 +1215,7 @@ class _$LoggingOutImpl implements _LoggingOut {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_DeletingUser value)? deletingUser,
     TResult? Function(_DeletedUser value)? deletedUser,
     TResult? Function(_DeleteUserError value)? deleteUserError,
@@ -1244,7 +1244,7 @@ class _$LoggingOutImpl implements _LoggingOut {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_DeletingUser value)? deletingUser,
     TResult Function(_DeletedUser value)? deletedUser,
     TResult Function(_DeleteUserError value)? deleteUserError,
@@ -1317,7 +1317,7 @@ class _$LoggedOutImpl implements _LoggedOut {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() deletingUser,
     required TResult Function(DeleteUserResponseModel response) deletedUser,
     required TResult Function(String error) deleteUserError,
@@ -1341,7 +1341,7 @@ class _$LoggedOutImpl implements _LoggedOut {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? deletingUser,
     TResult? Function(DeleteUserResponseModel response)? deletedUser,
     TResult? Function(String error)? deleteUserError,
@@ -1365,7 +1365,7 @@ class _$LoggedOutImpl implements _LoggedOut {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? deletingUser,
     TResult Function(DeleteUserResponseModel response)? deletedUser,
     TResult Function(String error)? deleteUserError,
@@ -1393,7 +1393,7 @@ class _$LoggedOutImpl implements _LoggedOut {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_DeletingUser value) deletingUser,
     required TResult Function(_DeletedUser value) deletedUser,
     required TResult Function(_DeleteUserError value) deleteUserError,
@@ -1422,7 +1422,7 @@ class _$LoggedOutImpl implements _LoggedOut {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_DeletingUser value)? deletingUser,
     TResult? Function(_DeletedUser value)? deletedUser,
     TResult? Function(_DeleteUserError value)? deleteUserError,
@@ -1451,7 +1451,7 @@ class _$LoggedOutImpl implements _LoggedOut {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_DeletingUser value)? deletingUser,
     TResult Function(_DeletedUser value)? deletedUser,
     TResult Function(_DeleteUserError value)? deleteUserError,
@@ -1550,7 +1550,7 @@ class _$LogOutErrorImpl implements _LogOutError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() deletingUser,
     required TResult Function(DeleteUserResponseModel response) deletedUser,
     required TResult Function(String error) deleteUserError,
@@ -1574,7 +1574,7 @@ class _$LogOutErrorImpl implements _LogOutError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? deletingUser,
     TResult? Function(DeleteUserResponseModel response)? deletedUser,
     TResult? Function(String error)? deleteUserError,
@@ -1598,7 +1598,7 @@ class _$LogOutErrorImpl implements _LogOutError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? deletingUser,
     TResult Function(DeleteUserResponseModel response)? deletedUser,
     TResult Function(String error)? deleteUserError,
@@ -1626,7 +1626,7 @@ class _$LogOutErrorImpl implements _LogOutError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_DeletingUser value) deletingUser,
     required TResult Function(_DeletedUser value) deletedUser,
     required TResult Function(_DeleteUserError value) deleteUserError,
@@ -1655,7 +1655,7 @@ class _$LogOutErrorImpl implements _LogOutError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_DeletingUser value)? deletingUser,
     TResult? Function(_DeletedUser value)? deletedUser,
     TResult? Function(_DeleteUserError value)? deleteUserError,
@@ -1684,7 +1684,7 @@ class _$LogOutErrorImpl implements _LogOutError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_DeletingUser value)? deletingUser,
     TResult Function(_DeletedUser value)? deletedUser,
     TResult Function(_DeleteUserError value)? deleteUserError,
@@ -1762,7 +1762,7 @@ class _$LoadingAuthDataImpl implements _LoadingAuthData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() deletingUser,
     required TResult Function(DeleteUserResponseModel response) deletedUser,
     required TResult Function(String error) deleteUserError,
@@ -1786,7 +1786,7 @@ class _$LoadingAuthDataImpl implements _LoadingAuthData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? deletingUser,
     TResult? Function(DeleteUserResponseModel response)? deletedUser,
     TResult? Function(String error)? deleteUserError,
@@ -1810,7 +1810,7 @@ class _$LoadingAuthDataImpl implements _LoadingAuthData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? deletingUser,
     TResult Function(DeleteUserResponseModel response)? deletedUser,
     TResult Function(String error)? deleteUserError,
@@ -1838,7 +1838,7 @@ class _$LoadingAuthDataImpl implements _LoadingAuthData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_DeletingUser value) deletingUser,
     required TResult Function(_DeletedUser value) deletedUser,
     required TResult Function(_DeleteUserError value) deleteUserError,
@@ -1867,7 +1867,7 @@ class _$LoadingAuthDataImpl implements _LoadingAuthData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_DeletingUser value)? deletingUser,
     TResult? Function(_DeletedUser value)? deletedUser,
     TResult? Function(_DeleteUserError value)? deleteUserError,
@@ -1896,7 +1896,7 @@ class _$LoadingAuthDataImpl implements _LoadingAuthData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_DeletingUser value)? deletingUser,
     TResult Function(_DeletedUser value)? deletedUser,
     TResult Function(_DeleteUserError value)? deleteUserError,
@@ -1997,7 +1997,7 @@ class _$LoadedAuthDataImpl implements _LoadedAuthData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() deletingUser,
     required TResult Function(DeleteUserResponseModel response) deletedUser,
     required TResult Function(String error) deleteUserError,
@@ -2021,7 +2021,7 @@ class _$LoadedAuthDataImpl implements _LoadedAuthData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? deletingUser,
     TResult? Function(DeleteUserResponseModel response)? deletedUser,
     TResult? Function(String error)? deleteUserError,
@@ -2045,7 +2045,7 @@ class _$LoadedAuthDataImpl implements _LoadedAuthData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? deletingUser,
     TResult Function(DeleteUserResponseModel response)? deletedUser,
     TResult Function(String error)? deleteUserError,
@@ -2073,7 +2073,7 @@ class _$LoadedAuthDataImpl implements _LoadedAuthData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_DeletingUser value) deletingUser,
     required TResult Function(_DeletedUser value) deletedUser,
     required TResult Function(_DeleteUserError value) deleteUserError,
@@ -2102,7 +2102,7 @@ class _$LoadedAuthDataImpl implements _LoadedAuthData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_DeletingUser value)? deletingUser,
     TResult? Function(_DeletedUser value)? deletedUser,
     TResult? Function(_DeleteUserError value)? deleteUserError,
@@ -2131,7 +2131,7 @@ class _$LoadedAuthDataImpl implements _LoadedAuthData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_DeletingUser value)? deletingUser,
     TResult Function(_DeletedUser value)? deletedUser,
     TResult Function(_DeleteUserError value)? deleteUserError,
@@ -2237,7 +2237,7 @@ class _$LoadAuthDataErrorImpl implements _LoadAuthDataError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() deletingUser,
     required TResult Function(DeleteUserResponseModel response) deletedUser,
     required TResult Function(String error) deleteUserError,
@@ -2261,7 +2261,7 @@ class _$LoadAuthDataErrorImpl implements _LoadAuthDataError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? deletingUser,
     TResult? Function(DeleteUserResponseModel response)? deletedUser,
     TResult? Function(String error)? deleteUserError,
@@ -2285,7 +2285,7 @@ class _$LoadAuthDataErrorImpl implements _LoadAuthDataError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? deletingUser,
     TResult Function(DeleteUserResponseModel response)? deletedUser,
     TResult Function(String error)? deleteUserError,
@@ -2313,7 +2313,7 @@ class _$LoadAuthDataErrorImpl implements _LoadAuthDataError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_DeletingUser value) deletingUser,
     required TResult Function(_DeletedUser value) deletedUser,
     required TResult Function(_DeleteUserError value) deleteUserError,
@@ -2342,7 +2342,7 @@ class _$LoadAuthDataErrorImpl implements _LoadAuthDataError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_DeletingUser value)? deletingUser,
     TResult? Function(_DeletedUser value)? deletedUser,
     TResult? Function(_DeleteUserError value)? deleteUserError,
@@ -2371,7 +2371,7 @@ class _$LoadAuthDataErrorImpl implements _LoadAuthDataError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_DeletingUser value)? deletingUser,
     TResult Function(_DeletedUser value)? deletedUser,
     TResult Function(_DeleteUserError value)? deleteUserError,
@@ -2455,7 +2455,7 @@ class _$LoadingNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() deletingUser,
     required TResult Function(DeleteUserResponseModel response) deletedUser,
     required TResult Function(String error) deleteUserError,
@@ -2479,7 +2479,7 @@ class _$LoadingNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? deletingUser,
     TResult? Function(DeleteUserResponseModel response)? deletedUser,
     TResult? Function(String error)? deleteUserError,
@@ -2503,7 +2503,7 @@ class _$LoadingNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? deletingUser,
     TResult Function(DeleteUserResponseModel response)? deletedUser,
     TResult Function(String error)? deleteUserError,
@@ -2531,7 +2531,7 @@ class _$LoadingNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_DeletingUser value) deletingUser,
     required TResult Function(_DeletedUser value) deletedUser,
     required TResult Function(_DeleteUserError value) deleteUserError,
@@ -2560,7 +2560,7 @@ class _$LoadingNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_DeletingUser value)? deletingUser,
     TResult? Function(_DeletedUser value)? deletedUser,
     TResult? Function(_DeleteUserError value)? deleteUserError,
@@ -2589,7 +2589,7 @@ class _$LoadingNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_DeletingUser value)? deletingUser,
     TResult Function(_DeletedUser value)? deletedUser,
     TResult Function(_DeleteUserError value)? deleteUserError,
@@ -2696,7 +2696,7 @@ class _$LoadedNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() deletingUser,
     required TResult Function(DeleteUserResponseModel response) deletedUser,
     required TResult Function(String error) deleteUserError,
@@ -2720,7 +2720,7 @@ class _$LoadedNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? deletingUser,
     TResult? Function(DeleteUserResponseModel response)? deletedUser,
     TResult? Function(String error)? deleteUserError,
@@ -2744,7 +2744,7 @@ class _$LoadedNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? deletingUser,
     TResult Function(DeleteUserResponseModel response)? deletedUser,
     TResult Function(String error)? deleteUserError,
@@ -2772,7 +2772,7 @@ class _$LoadedNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_DeletingUser value) deletingUser,
     required TResult Function(_DeletedUser value) deletedUser,
     required TResult Function(_DeleteUserError value) deleteUserError,
@@ -2801,7 +2801,7 @@ class _$LoadedNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_DeletingUser value)? deletingUser,
     TResult? Function(_DeletedUser value)? deletedUser,
     TResult? Function(_DeleteUserError value)? deleteUserError,
@@ -2830,7 +2830,7 @@ class _$LoadedNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_DeletingUser value)? deletingUser,
     TResult Function(_DeletedUser value)? deletedUser,
     TResult Function(_DeleteUserError value)? deleteUserError,
@@ -2943,7 +2943,7 @@ class _$LoadNotificationPreferencesErrorImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() deletingUser,
     required TResult Function(DeleteUserResponseModel response) deletedUser,
     required TResult Function(String error) deleteUserError,
@@ -2967,7 +2967,7 @@ class _$LoadNotificationPreferencesErrorImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? deletingUser,
     TResult? Function(DeleteUserResponseModel response)? deletedUser,
     TResult? Function(String error)? deleteUserError,
@@ -2991,7 +2991,7 @@ class _$LoadNotificationPreferencesErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? deletingUser,
     TResult Function(DeleteUserResponseModel response)? deletedUser,
     TResult Function(String error)? deleteUserError,
@@ -3019,7 +3019,7 @@ class _$LoadNotificationPreferencesErrorImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_DeletingUser value) deletingUser,
     required TResult Function(_DeletedUser value) deletedUser,
     required TResult Function(_DeleteUserError value) deleteUserError,
@@ -3048,7 +3048,7 @@ class _$LoadNotificationPreferencesErrorImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_DeletingUser value)? deletingUser,
     TResult? Function(_DeletedUser value)? deletedUser,
     TResult? Function(_DeleteUserError value)? deleteUserError,
@@ -3077,7 +3077,7 @@ class _$LoadNotificationPreferencesErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_DeletingUser value)? deletingUser,
     TResult Function(_DeletedUser value)? deletedUser,
     TResult Function(_DeleteUserError value)? deleteUserError,
@@ -3162,7 +3162,7 @@ class _$UpdatingNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() deletingUser,
     required TResult Function(DeleteUserResponseModel response) deletedUser,
     required TResult Function(String error) deleteUserError,
@@ -3186,7 +3186,7 @@ class _$UpdatingNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? deletingUser,
     TResult? Function(DeleteUserResponseModel response)? deletedUser,
     TResult? Function(String error)? deleteUserError,
@@ -3210,7 +3210,7 @@ class _$UpdatingNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? deletingUser,
     TResult Function(DeleteUserResponseModel response)? deletedUser,
     TResult Function(String error)? deleteUserError,
@@ -3238,7 +3238,7 @@ class _$UpdatingNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_DeletingUser value) deletingUser,
     required TResult Function(_DeletedUser value) deletedUser,
     required TResult Function(_DeleteUserError value) deleteUserError,
@@ -3267,7 +3267,7 @@ class _$UpdatingNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_DeletingUser value)? deletingUser,
     TResult? Function(_DeletedUser value)? deletedUser,
     TResult? Function(_DeleteUserError value)? deleteUserError,
@@ -3296,7 +3296,7 @@ class _$UpdatingNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_DeletingUser value)? deletingUser,
     TResult Function(_DeletedUser value)? deletedUser,
     TResult Function(_DeleteUserError value)? deleteUserError,
@@ -3409,7 +3409,7 @@ class _$UpdatedNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() deletingUser,
     required TResult Function(DeleteUserResponseModel response) deletedUser,
     required TResult Function(String error) deleteUserError,
@@ -3433,7 +3433,7 @@ class _$UpdatedNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? deletingUser,
     TResult? Function(DeleteUserResponseModel response)? deletedUser,
     TResult? Function(String error)? deleteUserError,
@@ -3457,7 +3457,7 @@ class _$UpdatedNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? deletingUser,
     TResult Function(DeleteUserResponseModel response)? deletedUser,
     TResult Function(String error)? deleteUserError,
@@ -3485,7 +3485,7 @@ class _$UpdatedNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_DeletingUser value) deletingUser,
     required TResult Function(_DeletedUser value) deletedUser,
     required TResult Function(_DeleteUserError value) deleteUserError,
@@ -3514,7 +3514,7 @@ class _$UpdatedNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_DeletingUser value)? deletingUser,
     TResult? Function(_DeletedUser value)? deletedUser,
     TResult? Function(_DeleteUserError value)? deleteUserError,
@@ -3543,7 +3543,7 @@ class _$UpdatedNotificationPreferencesImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_DeletingUser value)? deletingUser,
     TResult Function(_DeletedUser value)? deletedUser,
     TResult Function(_DeleteUserError value)? deleteUserError,
@@ -3655,7 +3655,7 @@ class _$UpdateNotificationPreferencesErrorImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() deletingUser,
     required TResult Function(DeleteUserResponseModel response) deletedUser,
     required TResult Function(String error) deleteUserError,
@@ -3679,7 +3679,7 @@ class _$UpdateNotificationPreferencesErrorImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? deletingUser,
     TResult? Function(DeleteUserResponseModel response)? deletedUser,
     TResult? Function(String error)? deleteUserError,
@@ -3703,7 +3703,7 @@ class _$UpdateNotificationPreferencesErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? deletingUser,
     TResult Function(DeleteUserResponseModel response)? deletedUser,
     TResult Function(String error)? deleteUserError,
@@ -3731,7 +3731,7 @@ class _$UpdateNotificationPreferencesErrorImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_DeletingUser value) deletingUser,
     required TResult Function(_DeletedUser value) deletedUser,
     required TResult Function(_DeleteUserError value) deleteUserError,
@@ -3760,7 +3760,7 @@ class _$UpdateNotificationPreferencesErrorImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_DeletingUser value)? deletingUser,
     TResult? Function(_DeletedUser value)? deletedUser,
     TResult? Function(_DeleteUserError value)? deleteUserError,
@@ -3789,7 +3789,7 @@ class _$UpdateNotificationPreferencesErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_DeletingUser value)? deletingUser,
     TResult Function(_DeletedUser value)? deletedUser,
     TResult Function(_DeleteUserError value)? deleteUserError,

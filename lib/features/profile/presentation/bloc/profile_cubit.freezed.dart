@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -75,7 +75,7 @@ mixin _$ProfileState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -127,7 +127,7 @@ mixin _$ProfileState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -180,7 +180,7 @@ mixin _$ProfileState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -231,7 +231,7 @@ mixin _$ProfileState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -281,7 +281,7 @@ mixin _$ProfileState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -388,7 +388,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -442,13 +442,13 @@ class _$InitialImpl implements _Initial {
         loadedTargets,
     required TResult Function(String error) loadTargetsError,
   }) {
-    return initial();
+    return comitial();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -497,13 +497,13 @@ class _$InitialImpl implements _Initial {
     TResult? Function(ProfileTargetsResponseModel targets)? loadedTargets,
     TResult? Function(String error)? loadTargetsError,
   }) {
-    return initial?.call();
+    return comitial?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -553,8 +553,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(String error)? loadTargetsError,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (comitial != null) {
+      return comitial();
     }
     return orElse();
   }
@@ -562,7 +562,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -610,13 +610,13 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_LoadedTargets value) loadedTargets,
     required TResult Function(_LoadTargetsError value) loadTargetsError,
   }) {
-    return initial(this);
+    return comitial(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -663,13 +663,13 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_LoadedTargets value)? loadedTargets,
     TResult? Function(_LoadTargetsError value)? loadTargetsError,
   }) {
-    return initial?.call(this);
+    return comitial?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -717,8 +717,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(_LoadTargetsError value)? loadTargetsError,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (comitial != null) {
+      return comitial(this);
     }
     return orElse();
   }
@@ -766,7 +766,7 @@ class _$LoadingGearTypesImpl implements _LoadingGearTypes {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -826,7 +826,7 @@ class _$LoadingGearTypesImpl implements _LoadingGearTypes {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -881,7 +881,7 @@ class _$LoadingGearTypesImpl implements _LoadingGearTypes {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -940,7 +940,7 @@ class _$LoadingGearTypesImpl implements _LoadingGearTypes {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -994,7 +994,7 @@ class _$LoadingGearTypesImpl implements _LoadingGearTypes {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -1047,7 +1047,7 @@ class _$LoadingGearTypesImpl implements _LoadingGearTypes {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -1171,7 +1171,7 @@ class _$LoadedGearTypesImpl implements _LoadedGearTypes {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -1231,7 +1231,7 @@ class _$LoadedGearTypesImpl implements _LoadedGearTypes {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -1286,7 +1286,7 @@ class _$LoadedGearTypesImpl implements _LoadedGearTypes {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -1345,7 +1345,7 @@ class _$LoadedGearTypesImpl implements _LoadedGearTypes {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -1399,7 +1399,7 @@ class _$LoadedGearTypesImpl implements _LoadedGearTypes {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -1452,7 +1452,7 @@ class _$LoadedGearTypesImpl implements _LoadedGearTypes {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -1582,7 +1582,7 @@ class _$LoadGearTypesErrorImpl implements _LoadGearTypesError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -1642,7 +1642,7 @@ class _$LoadGearTypesErrorImpl implements _LoadGearTypesError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -1697,7 +1697,7 @@ class _$LoadGearTypesErrorImpl implements _LoadGearTypesError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -1756,7 +1756,7 @@ class _$LoadGearTypesErrorImpl implements _LoadGearTypesError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -1810,7 +1810,7 @@ class _$LoadGearTypesErrorImpl implements _LoadGearTypesError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -1863,7 +1863,7 @@ class _$LoadGearTypesErrorImpl implements _LoadGearTypesError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -1966,7 +1966,7 @@ class _$LoadingSportsImpl implements _LoadingSports {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -2026,7 +2026,7 @@ class _$LoadingSportsImpl implements _LoadingSports {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -2081,7 +2081,7 @@ class _$LoadingSportsImpl implements _LoadingSports {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -2140,7 +2140,7 @@ class _$LoadingSportsImpl implements _LoadingSports {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -2194,7 +2194,7 @@ class _$LoadingSportsImpl implements _LoadingSports {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -2247,7 +2247,7 @@ class _$LoadingSportsImpl implements _LoadingSports {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -2370,7 +2370,7 @@ class _$LoadedSportsImpl implements _LoadedSports {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -2430,7 +2430,7 @@ class _$LoadedSportsImpl implements _LoadedSports {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -2485,7 +2485,7 @@ class _$LoadedSportsImpl implements _LoadedSports {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -2544,7 +2544,7 @@ class _$LoadedSportsImpl implements _LoadedSports {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -2598,7 +2598,7 @@ class _$LoadedSportsImpl implements _LoadedSports {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -2651,7 +2651,7 @@ class _$LoadedSportsImpl implements _LoadedSports {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -2781,7 +2781,7 @@ class _$LoadSportsErrorImpl implements _LoadSportsError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -2841,7 +2841,7 @@ class _$LoadSportsErrorImpl implements _LoadSportsError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -2896,7 +2896,7 @@ class _$LoadSportsErrorImpl implements _LoadSportsError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -2955,7 +2955,7 @@ class _$LoadSportsErrorImpl implements _LoadSportsError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -3009,7 +3009,7 @@ class _$LoadSportsErrorImpl implements _LoadSportsError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -3062,7 +3062,7 @@ class _$LoadSportsErrorImpl implements _LoadSportsError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -3164,7 +3164,7 @@ class _$CreatingGearImpl implements _CreatingGear {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -3224,7 +3224,7 @@ class _$CreatingGearImpl implements _CreatingGear {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -3279,7 +3279,7 @@ class _$CreatingGearImpl implements _CreatingGear {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -3338,7 +3338,7 @@ class _$CreatingGearImpl implements _CreatingGear {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -3392,7 +3392,7 @@ class _$CreatingGearImpl implements _CreatingGear {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -3445,7 +3445,7 @@ class _$CreatingGearImpl implements _CreatingGear {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -3569,7 +3569,7 @@ class _$CreatedGearImpl implements _CreatedGear {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -3629,7 +3629,7 @@ class _$CreatedGearImpl implements _CreatedGear {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -3684,7 +3684,7 @@ class _$CreatedGearImpl implements _CreatedGear {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -3743,7 +3743,7 @@ class _$CreatedGearImpl implements _CreatedGear {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -3797,7 +3797,7 @@ class _$CreatedGearImpl implements _CreatedGear {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -3850,7 +3850,7 @@ class _$CreatedGearImpl implements _CreatedGear {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -3980,7 +3980,7 @@ class _$CreateGearErrorImpl implements _CreateGearError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -4040,7 +4040,7 @@ class _$CreateGearErrorImpl implements _CreateGearError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -4095,7 +4095,7 @@ class _$CreateGearErrorImpl implements _CreateGearError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -4154,7 +4154,7 @@ class _$CreateGearErrorImpl implements _CreateGearError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -4208,7 +4208,7 @@ class _$CreateGearErrorImpl implements _CreateGearError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -4261,7 +4261,7 @@ class _$CreateGearErrorImpl implements _CreateGearError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -4363,7 +4363,7 @@ class _$UpdatingGearImpl implements _UpdatingGear {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -4423,7 +4423,7 @@ class _$UpdatingGearImpl implements _UpdatingGear {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -4478,7 +4478,7 @@ class _$UpdatingGearImpl implements _UpdatingGear {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -4537,7 +4537,7 @@ class _$UpdatingGearImpl implements _UpdatingGear {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -4591,7 +4591,7 @@ class _$UpdatingGearImpl implements _UpdatingGear {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -4644,7 +4644,7 @@ class _$UpdatingGearImpl implements _UpdatingGear {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -4768,7 +4768,7 @@ class _$UpdatedGearImpl implements _UpdatedGear {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -4828,7 +4828,7 @@ class _$UpdatedGearImpl implements _UpdatedGear {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -4883,7 +4883,7 @@ class _$UpdatedGearImpl implements _UpdatedGear {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -4942,7 +4942,7 @@ class _$UpdatedGearImpl implements _UpdatedGear {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -4996,7 +4996,7 @@ class _$UpdatedGearImpl implements _UpdatedGear {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -5049,7 +5049,7 @@ class _$UpdatedGearImpl implements _UpdatedGear {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -5179,7 +5179,7 @@ class _$UpdateGearErrorImpl implements _UpdateGearError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -5239,7 +5239,7 @@ class _$UpdateGearErrorImpl implements _UpdateGearError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -5294,7 +5294,7 @@ class _$UpdateGearErrorImpl implements _UpdateGearError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -5353,7 +5353,7 @@ class _$UpdateGearErrorImpl implements _UpdateGearError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -5407,7 +5407,7 @@ class _$UpdateGearErrorImpl implements _UpdateGearError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -5460,7 +5460,7 @@ class _$UpdateGearErrorImpl implements _UpdateGearError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -5562,7 +5562,7 @@ class _$CreatingScheduleImpl implements _CreatingSchedule {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -5622,7 +5622,7 @@ class _$CreatingScheduleImpl implements _CreatingSchedule {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -5677,7 +5677,7 @@ class _$CreatingScheduleImpl implements _CreatingSchedule {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -5736,7 +5736,7 @@ class _$CreatingScheduleImpl implements _CreatingSchedule {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -5790,7 +5790,7 @@ class _$CreatingScheduleImpl implements _CreatingSchedule {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -5843,7 +5843,7 @@ class _$CreatingScheduleImpl implements _CreatingSchedule {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -5968,7 +5968,7 @@ class _$CreatedScheduleImpl implements _CreatedSchedule {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -6028,7 +6028,7 @@ class _$CreatedScheduleImpl implements _CreatedSchedule {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -6083,7 +6083,7 @@ class _$CreatedScheduleImpl implements _CreatedSchedule {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -6142,7 +6142,7 @@ class _$CreatedScheduleImpl implements _CreatedSchedule {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -6196,7 +6196,7 @@ class _$CreatedScheduleImpl implements _CreatedSchedule {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -6249,7 +6249,7 @@ class _$CreatedScheduleImpl implements _CreatedSchedule {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -6379,7 +6379,7 @@ class _$CreateScheduleErrorImpl implements _CreateScheduleError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -6439,7 +6439,7 @@ class _$CreateScheduleErrorImpl implements _CreateScheduleError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -6494,7 +6494,7 @@ class _$CreateScheduleErrorImpl implements _CreateScheduleError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -6553,7 +6553,7 @@ class _$CreateScheduleErrorImpl implements _CreateScheduleError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -6607,7 +6607,7 @@ class _$CreateScheduleErrorImpl implements _CreateScheduleError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -6660,7 +6660,7 @@ class _$CreateScheduleErrorImpl implements _CreateScheduleError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -6791,7 +6791,7 @@ class _$loadingScheduleImpl implements _loadingSchedule {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -6851,7 +6851,7 @@ class _$loadingScheduleImpl implements _loadingSchedule {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -6906,7 +6906,7 @@ class _$loadingScheduleImpl implements _loadingSchedule {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -6965,7 +6965,7 @@ class _$loadingScheduleImpl implements _loadingSchedule {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -7019,7 +7019,7 @@ class _$loadingScheduleImpl implements _loadingSchedule {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -7072,7 +7072,7 @@ class _$loadingScheduleImpl implements _loadingSchedule {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -7220,7 +7220,7 @@ class _$loadedScheduleImpl implements _loadedSchedule {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -7280,7 +7280,7 @@ class _$loadedScheduleImpl implements _loadedSchedule {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -7335,7 +7335,7 @@ class _$loadedScheduleImpl implements _loadedSchedule {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -7394,7 +7394,7 @@ class _$loadedScheduleImpl implements _loadedSchedule {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -7448,7 +7448,7 @@ class _$loadedScheduleImpl implements _loadedSchedule {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -7501,7 +7501,7 @@ class _$loadedScheduleImpl implements _loadedSchedule {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -7641,7 +7641,7 @@ class _$loadScheduleErrorImpl implements _loadScheduleError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -7701,7 +7701,7 @@ class _$loadScheduleErrorImpl implements _loadScheduleError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -7756,7 +7756,7 @@ class _$loadScheduleErrorImpl implements _loadScheduleError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -7815,7 +7815,7 @@ class _$loadScheduleErrorImpl implements _loadScheduleError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -7869,7 +7869,7 @@ class _$loadScheduleErrorImpl implements _loadScheduleError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -7922,7 +7922,7 @@ class _$loadScheduleErrorImpl implements _loadScheduleError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -8026,7 +8026,7 @@ class _$DeletingScheduleImpl implements _DeletingSchedule {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -8086,7 +8086,7 @@ class _$DeletingScheduleImpl implements _DeletingSchedule {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -8141,7 +8141,7 @@ class _$DeletingScheduleImpl implements _DeletingSchedule {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -8200,7 +8200,7 @@ class _$DeletingScheduleImpl implements _DeletingSchedule {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -8254,7 +8254,7 @@ class _$DeletingScheduleImpl implements _DeletingSchedule {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -8307,7 +8307,7 @@ class _$DeletingScheduleImpl implements _DeletingSchedule {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -8404,7 +8404,7 @@ class _$DeleteScheduleImpl implements _DeleteSchedule {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -8464,7 +8464,7 @@ class _$DeleteScheduleImpl implements _DeleteSchedule {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -8519,7 +8519,7 @@ class _$DeleteScheduleImpl implements _DeleteSchedule {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -8578,7 +8578,7 @@ class _$DeleteScheduleImpl implements _DeleteSchedule {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -8632,7 +8632,7 @@ class _$DeleteScheduleImpl implements _DeleteSchedule {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -8685,7 +8685,7 @@ class _$DeleteScheduleImpl implements _DeleteSchedule {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -8809,7 +8809,7 @@ class _$DeleteScheduleErrorImpl implements _DeleteScheduleError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -8869,7 +8869,7 @@ class _$DeleteScheduleErrorImpl implements _DeleteScheduleError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -8924,7 +8924,7 @@ class _$DeleteScheduleErrorImpl implements _DeleteScheduleError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -8983,7 +8983,7 @@ class _$DeleteScheduleErrorImpl implements _DeleteScheduleError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -9037,7 +9037,7 @@ class _$DeleteScheduleErrorImpl implements _DeleteScheduleError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -9090,7 +9090,7 @@ class _$DeleteScheduleErrorImpl implements _DeleteScheduleError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -9193,7 +9193,7 @@ class _$UpdatingScheduleImpl implements _UpdatingSchedule {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -9253,7 +9253,7 @@ class _$UpdatingScheduleImpl implements _UpdatingSchedule {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -9308,7 +9308,7 @@ class _$UpdatingScheduleImpl implements _UpdatingSchedule {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -9367,7 +9367,7 @@ class _$UpdatingScheduleImpl implements _UpdatingSchedule {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -9421,7 +9421,7 @@ class _$UpdatingScheduleImpl implements _UpdatingSchedule {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -9474,7 +9474,7 @@ class _$UpdatingScheduleImpl implements _UpdatingSchedule {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -9599,7 +9599,7 @@ class _$UpdatedScheduleImpl implements _UpdatedSchedule {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -9659,7 +9659,7 @@ class _$UpdatedScheduleImpl implements _UpdatedSchedule {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -9714,7 +9714,7 @@ class _$UpdatedScheduleImpl implements _UpdatedSchedule {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -9773,7 +9773,7 @@ class _$UpdatedScheduleImpl implements _UpdatedSchedule {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -9827,7 +9827,7 @@ class _$UpdatedScheduleImpl implements _UpdatedSchedule {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -9880,7 +9880,7 @@ class _$UpdatedScheduleImpl implements _UpdatedSchedule {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -10010,7 +10010,7 @@ class _$UpdateScheduleErrorImpl implements _UpdateScheduleError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -10070,7 +10070,7 @@ class _$UpdateScheduleErrorImpl implements _UpdateScheduleError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -10125,7 +10125,7 @@ class _$UpdateScheduleErrorImpl implements _UpdateScheduleError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -10184,7 +10184,7 @@ class _$UpdateScheduleErrorImpl implements _UpdateScheduleError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -10238,7 +10238,7 @@ class _$UpdateScheduleErrorImpl implements _UpdateScheduleError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -10291,7 +10291,7 @@ class _$UpdateScheduleErrorImpl implements _UpdateScheduleError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -10394,7 +10394,7 @@ class _$LoadingGearImpl implements _LoadingGear {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -10454,7 +10454,7 @@ class _$LoadingGearImpl implements _LoadingGear {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -10509,7 +10509,7 @@ class _$LoadingGearImpl implements _LoadingGear {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -10568,7 +10568,7 @@ class _$LoadingGearImpl implements _LoadingGear {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -10622,7 +10622,7 @@ class _$LoadingGearImpl implements _LoadingGear {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -10675,7 +10675,7 @@ class _$LoadingGearImpl implements _LoadingGear {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -10799,7 +10799,7 @@ class _$LoadedGearImpl implements _LoadedGear {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -10859,7 +10859,7 @@ class _$LoadedGearImpl implements _LoadedGear {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -10914,7 +10914,7 @@ class _$LoadedGearImpl implements _LoadedGear {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -10973,7 +10973,7 @@ class _$LoadedGearImpl implements _LoadedGear {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -11027,7 +11027,7 @@ class _$LoadedGearImpl implements _LoadedGear {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -11080,7 +11080,7 @@ class _$LoadedGearImpl implements _LoadedGear {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -11209,7 +11209,7 @@ class _$LoadGearErrorImpl implements _LoadGearError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -11269,7 +11269,7 @@ class _$LoadGearErrorImpl implements _LoadGearError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -11324,7 +11324,7 @@ class _$LoadGearErrorImpl implements _LoadGearError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -11383,7 +11383,7 @@ class _$LoadGearErrorImpl implements _LoadGearError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -11437,7 +11437,7 @@ class _$LoadGearErrorImpl implements _LoadGearError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -11490,7 +11490,7 @@ class _$LoadGearErrorImpl implements _LoadGearError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -11592,7 +11592,7 @@ class _$PickingImageImpl implements _PickingImage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -11652,7 +11652,7 @@ class _$PickingImageImpl implements _PickingImage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -11707,7 +11707,7 @@ class _$PickingImageImpl implements _PickingImage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -11766,7 +11766,7 @@ class _$PickingImageImpl implements _PickingImage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -11820,7 +11820,7 @@ class _$PickingImageImpl implements _PickingImage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -11873,7 +11873,7 @@ class _$PickingImageImpl implements _PickingImage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -11996,7 +11996,7 @@ class _$PickedImageImpl implements _PickedImage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -12056,7 +12056,7 @@ class _$PickedImageImpl implements _PickedImage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -12111,7 +12111,7 @@ class _$PickedImageImpl implements _PickedImage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -12170,7 +12170,7 @@ class _$PickedImageImpl implements _PickedImage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -12224,7 +12224,7 @@ class _$PickedImageImpl implements _PickedImage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -12277,7 +12277,7 @@ class _$PickedImageImpl implements _PickedImage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -12406,7 +12406,7 @@ class _$PickedImageErrorImpl implements _PickedImageError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -12466,7 +12466,7 @@ class _$PickedImageErrorImpl implements _PickedImageError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -12521,7 +12521,7 @@ class _$PickedImageErrorImpl implements _PickedImageError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -12580,7 +12580,7 @@ class _$PickedImageErrorImpl implements _PickedImageError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -12634,7 +12634,7 @@ class _$PickedImageErrorImpl implements _PickedImageError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -12687,7 +12687,7 @@ class _$PickedImageErrorImpl implements _PickedImageError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -12789,7 +12789,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -12849,7 +12849,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -12904,7 +12904,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -12963,7 +12963,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -13017,7 +13017,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -13070,7 +13070,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -13194,7 +13194,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -13254,7 +13254,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -13309,7 +13309,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -13368,7 +13368,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -13422,7 +13422,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -13475,7 +13475,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -13605,7 +13605,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -13665,7 +13665,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -13720,7 +13720,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -13779,7 +13779,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -13833,7 +13833,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -13886,7 +13886,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -13988,7 +13988,7 @@ class _$DeletingGearImpl implements _DeletingGear {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -14048,7 +14048,7 @@ class _$DeletingGearImpl implements _DeletingGear {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -14103,7 +14103,7 @@ class _$DeletingGearImpl implements _DeletingGear {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -14162,7 +14162,7 @@ class _$DeletingGearImpl implements _DeletingGear {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -14216,7 +14216,7 @@ class _$DeletingGearImpl implements _DeletingGear {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -14269,7 +14269,7 @@ class _$DeletingGearImpl implements _DeletingGear {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -14366,7 +14366,7 @@ class _$DeleteGearImpl implements _DeleteGear {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -14426,7 +14426,7 @@ class _$DeleteGearImpl implements _DeleteGear {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -14481,7 +14481,7 @@ class _$DeleteGearImpl implements _DeleteGear {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -14540,7 +14540,7 @@ class _$DeleteGearImpl implements _DeleteGear {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -14594,7 +14594,7 @@ class _$DeleteGearImpl implements _DeleteGear {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -14647,7 +14647,7 @@ class _$DeleteGearImpl implements _DeleteGear {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -14771,7 +14771,7 @@ class _$DeleteGearErrorImpl implements _DeleteGearError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -14831,7 +14831,7 @@ class _$DeleteGearErrorImpl implements _DeleteGearError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -14886,7 +14886,7 @@ class _$DeleteGearErrorImpl implements _DeleteGearError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -14945,7 +14945,7 @@ class _$DeleteGearErrorImpl implements _DeleteGearError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -14999,7 +14999,7 @@ class _$DeleteGearErrorImpl implements _DeleteGearError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -15052,7 +15052,7 @@ class _$DeleteGearErrorImpl implements _DeleteGearError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -15154,7 +15154,7 @@ class _$GettingUserProfileImpl implements _GettingUserProfile {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -15214,7 +15214,7 @@ class _$GettingUserProfileImpl implements _GettingUserProfile {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -15269,7 +15269,7 @@ class _$GettingUserProfileImpl implements _GettingUserProfile {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -15328,7 +15328,7 @@ class _$GettingUserProfileImpl implements _GettingUserProfile {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -15382,7 +15382,7 @@ class _$GettingUserProfileImpl implements _GettingUserProfile {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -15435,7 +15435,7 @@ class _$GettingUserProfileImpl implements _GettingUserProfile {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -15560,7 +15560,7 @@ class _$GotUserProfileImpl implements _GotUserProfile {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -15620,7 +15620,7 @@ class _$GotUserProfileImpl implements _GotUserProfile {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -15675,7 +15675,7 @@ class _$GotUserProfileImpl implements _GotUserProfile {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -15734,7 +15734,7 @@ class _$GotUserProfileImpl implements _GotUserProfile {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -15788,7 +15788,7 @@ class _$GotUserProfileImpl implements _GotUserProfile {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -15841,7 +15841,7 @@ class _$GotUserProfileImpl implements _GotUserProfile {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -15971,7 +15971,7 @@ class _$GetUserProfileErrorImpl implements _GetUserProfileError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -16031,7 +16031,7 @@ class _$GetUserProfileErrorImpl implements _GetUserProfileError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -16086,7 +16086,7 @@ class _$GetUserProfileErrorImpl implements _GetUserProfileError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -16145,7 +16145,7 @@ class _$GetUserProfileErrorImpl implements _GetUserProfileError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -16199,7 +16199,7 @@ class _$GetUserProfileErrorImpl implements _GetUserProfileError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -16252,7 +16252,7 @@ class _$GetUserProfileErrorImpl implements _GetUserProfileError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -16356,7 +16356,7 @@ class _$UpdatingUserProfileImpl implements _UpdatingUserProfile {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -16416,7 +16416,7 @@ class _$UpdatingUserProfileImpl implements _UpdatingUserProfile {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -16471,7 +16471,7 @@ class _$UpdatingUserProfileImpl implements _UpdatingUserProfile {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -16530,7 +16530,7 @@ class _$UpdatingUserProfileImpl implements _UpdatingUserProfile {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -16584,7 +16584,7 @@ class _$UpdatingUserProfileImpl implements _UpdatingUserProfile {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -16637,7 +16637,7 @@ class _$UpdatingUserProfileImpl implements _UpdatingUserProfile {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -16762,7 +16762,7 @@ class _$UpdatedUserProfileImpl implements _UpdatedUserProfile {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -16822,7 +16822,7 @@ class _$UpdatedUserProfileImpl implements _UpdatedUserProfile {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -16877,7 +16877,7 @@ class _$UpdatedUserProfileImpl implements _UpdatedUserProfile {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -16936,7 +16936,7 @@ class _$UpdatedUserProfileImpl implements _UpdatedUserProfile {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -16990,7 +16990,7 @@ class _$UpdatedUserProfileImpl implements _UpdatedUserProfile {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -17043,7 +17043,7 @@ class _$UpdatedUserProfileImpl implements _UpdatedUserProfile {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -17175,7 +17175,7 @@ class _$UpdateUserProfileErrorImpl implements _UpdateUserProfileError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -17235,7 +17235,7 @@ class _$UpdateUserProfileErrorImpl implements _UpdateUserProfileError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -17290,7 +17290,7 @@ class _$UpdateUserProfileErrorImpl implements _UpdateUserProfileError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -17349,7 +17349,7 @@ class _$UpdateUserProfileErrorImpl implements _UpdateUserProfileError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -17403,7 +17403,7 @@ class _$UpdateUserProfileErrorImpl implements _UpdateUserProfileError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -17456,7 +17456,7 @@ class _$UpdateUserProfileErrorImpl implements _UpdateUserProfileError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -17559,7 +17559,7 @@ class _$LoadingTargetsImpl implements _LoadingTargets {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -17619,7 +17619,7 @@ class _$LoadingTargetsImpl implements _LoadingTargets {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -17674,7 +17674,7 @@ class _$LoadingTargetsImpl implements _LoadingTargets {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -17733,7 +17733,7 @@ class _$LoadingTargetsImpl implements _LoadingTargets {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -17787,7 +17787,7 @@ class _$LoadingTargetsImpl implements _LoadingTargets {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -17840,7 +17840,7 @@ class _$LoadingTargetsImpl implements _LoadingTargets {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -17963,7 +17963,7 @@ class _$LoadedTargetsImpl implements _LoadedTargets {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -18023,7 +18023,7 @@ class _$LoadedTargetsImpl implements _LoadedTargets {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -18078,7 +18078,7 @@ class _$LoadedTargetsImpl implements _LoadedTargets {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -18137,7 +18137,7 @@ class _$LoadedTargetsImpl implements _LoadedTargets {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -18191,7 +18191,7 @@ class _$LoadedTargetsImpl implements _LoadedTargets {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -18244,7 +18244,7 @@ class _$LoadedTargetsImpl implements _LoadedTargets {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -18374,7 +18374,7 @@ class _$LoadTargetsErrorImpl implements _LoadTargetsError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() loadingGearTypes,
     required TResult Function(GetGearTypesResponseModel data) loadedGearTypes,
     required TResult Function(String error) loadGearTypesError,
@@ -18434,7 +18434,7 @@ class _$LoadTargetsErrorImpl implements _LoadTargetsError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? loadingGearTypes,
     TResult? Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult? Function(String error)? loadGearTypesError,
@@ -18489,7 +18489,7 @@ class _$LoadTargetsErrorImpl implements _LoadTargetsError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? loadingGearTypes,
     TResult Function(GetGearTypesResponseModel data)? loadedGearTypes,
     TResult Function(String error)? loadGearTypesError,
@@ -18548,7 +18548,7 @@ class _$LoadTargetsErrorImpl implements _LoadTargetsError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_LoadingGearTypes value) loadingGearTypes,
     required TResult Function(_LoadedGearTypes value) loadedGearTypes,
     required TResult Function(_LoadGearTypesError value) loadGearTypesError,
@@ -18602,7 +18602,7 @@ class _$LoadTargetsErrorImpl implements _LoadTargetsError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult? Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult? Function(_LoadGearTypesError value)? loadGearTypesError,
@@ -18655,7 +18655,7 @@ class _$LoadTargetsErrorImpl implements _LoadTargetsError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_LoadingGearTypes value)? loadingGearTypes,
     TResult Function(_LoadedGearTypes value)? loadedGearTypes,
     TResult Function(_LoadGearTypesError value)? loadGearTypesError,

@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AccountRegistrationState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -67,7 +67,7 @@ mixin _$AccountRegistrationState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -114,7 +114,7 @@ mixin _$AccountRegistrationState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -162,7 +162,7 @@ mixin _$AccountRegistrationState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -212,7 +212,7 @@ mixin _$AccountRegistrationState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -260,7 +260,7 @@ mixin _$AccountRegistrationState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -364,7 +364,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -410,13 +410,13 @@ class _$InitialImpl implements _Initial {
     required TResult Function(TargetsResponseModel targets) loadedTargets,
     required TResult Function(String error) loadTargetsError,
   }) {
-    return initial();
+    return comitial();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -460,13 +460,13 @@ class _$InitialImpl implements _Initial {
     TResult? Function(TargetsResponseModel targets)? loadedTargets,
     TResult? Function(String error)? loadTargetsError,
   }) {
-    return initial?.call();
+    return comitial?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -511,8 +511,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(String error)? loadTargetsError,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (comitial != null) {
+      return comitial();
     }
     return orElse();
   }
@@ -520,7 +520,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -567,13 +567,13 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_LoadedTargets value) loadedTargets,
     required TResult Function(_LoadTargetsError value) loadTargetsError,
   }) {
-    return initial(this);
+    return comitial(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -618,13 +618,13 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_LoadedTargets value)? loadedTargets,
     TResult? Function(_LoadTargetsError value)? loadTargetsError,
   }) {
-    return initial?.call(this);
+    return comitial?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -668,8 +668,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(_LoadTargetsError value)? loadTargetsError,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (comitial != null) {
+      return comitial(this);
     }
     return orElse();
   }
@@ -717,7 +717,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -769,7 +769,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -819,7 +819,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -873,7 +873,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -926,7 +926,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -977,7 +977,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -1097,7 +1097,7 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -1149,7 +1149,7 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -1199,7 +1199,7 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -1253,7 +1253,7 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -1306,7 +1306,7 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -1357,7 +1357,7 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -1457,7 +1457,7 @@ class _$ValidatingTextFieldImpl implements _ValidatingTextField {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -1509,7 +1509,7 @@ class _$ValidatingTextFieldImpl implements _ValidatingTextField {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -1559,7 +1559,7 @@ class _$ValidatingTextFieldImpl implements _ValidatingTextField {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -1613,7 +1613,7 @@ class _$ValidatingTextFieldImpl implements _ValidatingTextField {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -1666,7 +1666,7 @@ class _$ValidatingTextFieldImpl implements _ValidatingTextField {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -1717,7 +1717,7 @@ class _$ValidatingTextFieldImpl implements _ValidatingTextField {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -1839,7 +1839,7 @@ class _$ValidatedTextFieldImpl implements _ValidatedTextField {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -1891,7 +1891,7 @@ class _$ValidatedTextFieldImpl implements _ValidatedTextField {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -1941,7 +1941,7 @@ class _$ValidatedTextFieldImpl implements _ValidatedTextField {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -1995,7 +1995,7 @@ class _$ValidatedTextFieldImpl implements _ValidatedTextField {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -2048,7 +2048,7 @@ class _$ValidatedTextFieldImpl implements _ValidatedTextField {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -2099,7 +2099,7 @@ class _$ValidatedTextFieldImpl implements _ValidatedTextField {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -2198,7 +2198,7 @@ class _$SettingAuthDataImpl implements _SettingAuthData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -2250,7 +2250,7 @@ class _$SettingAuthDataImpl implements _SettingAuthData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -2300,7 +2300,7 @@ class _$SettingAuthDataImpl implements _SettingAuthData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -2354,7 +2354,7 @@ class _$SettingAuthDataImpl implements _SettingAuthData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -2407,7 +2407,7 @@ class _$SettingAuthDataImpl implements _SettingAuthData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -2458,7 +2458,7 @@ class _$SettingAuthDataImpl implements _SettingAuthData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -2578,7 +2578,7 @@ class _$SetAuthDataImpl implements _SetAuthData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -2630,7 +2630,7 @@ class _$SetAuthDataImpl implements _SetAuthData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -2680,7 +2680,7 @@ class _$SetAuthDataImpl implements _SetAuthData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -2734,7 +2734,7 @@ class _$SetAuthDataImpl implements _SetAuthData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -2787,7 +2787,7 @@ class _$SetAuthDataImpl implements _SetAuthData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -2838,7 +2838,7 @@ class _$SetAuthDataImpl implements _SetAuthData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -2964,7 +2964,7 @@ class _$SetAuthDataErrorImpl implements _SetAuthDataError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -3016,7 +3016,7 @@ class _$SetAuthDataErrorImpl implements _SetAuthDataError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -3066,7 +3066,7 @@ class _$SetAuthDataErrorImpl implements _SetAuthDataError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -3120,7 +3120,7 @@ class _$SetAuthDataErrorImpl implements _SetAuthDataError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -3173,7 +3173,7 @@ class _$SetAuthDataErrorImpl implements _SetAuthDataError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -3224,7 +3224,7 @@ class _$SetAuthDataErrorImpl implements _SetAuthDataError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -3322,7 +3322,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -3374,7 +3374,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -3424,7 +3424,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -3478,7 +3478,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -3531,7 +3531,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -3582,7 +3582,7 @@ class _$GettingAuthDataImpl implements _GettingAuthData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -3702,7 +3702,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -3754,7 +3754,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -3804,7 +3804,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -3858,7 +3858,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -3911,7 +3911,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -3962,7 +3962,7 @@ class _$GotAuthDataImpl implements _GotAuthData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -4088,7 +4088,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -4140,7 +4140,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -4190,7 +4190,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -4244,7 +4244,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -4297,7 +4297,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -4348,7 +4348,7 @@ class _$GetAuthDataErrorImpl implements _GetAuthDataError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -4450,7 +4450,7 @@ class _$SettingOnboardingStatusImpl implements _SettingOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -4502,7 +4502,7 @@ class _$SettingOnboardingStatusImpl implements _SettingOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -4552,7 +4552,7 @@ class _$SettingOnboardingStatusImpl implements _SettingOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -4606,7 +4606,7 @@ class _$SettingOnboardingStatusImpl implements _SettingOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -4659,7 +4659,7 @@ class _$SettingOnboardingStatusImpl implements _SettingOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -4710,7 +4710,7 @@ class _$SettingOnboardingStatusImpl implements _SettingOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -4805,7 +4805,7 @@ class _$SetOnboardingStatusImpl implements _SetOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -4857,7 +4857,7 @@ class _$SetOnboardingStatusImpl implements _SetOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -4907,7 +4907,7 @@ class _$SetOnboardingStatusImpl implements _SetOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -4961,7 +4961,7 @@ class _$SetOnboardingStatusImpl implements _SetOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -5014,7 +5014,7 @@ class _$SetOnboardingStatusImpl implements _SetOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -5065,7 +5065,7 @@ class _$SetOnboardingStatusImpl implements _SetOnboardingStatus {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -5188,7 +5188,7 @@ class _$SetOnboardingStatusErrorImpl implements _SetOnboardingStatusError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -5240,7 +5240,7 @@ class _$SetOnboardingStatusErrorImpl implements _SetOnboardingStatusError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -5290,7 +5290,7 @@ class _$SetOnboardingStatusErrorImpl implements _SetOnboardingStatusError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -5344,7 +5344,7 @@ class _$SetOnboardingStatusErrorImpl implements _SetOnboardingStatusError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -5397,7 +5397,7 @@ class _$SetOnboardingStatusErrorImpl implements _SetOnboardingStatusError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -5448,7 +5448,7 @@ class _$SetOnboardingStatusErrorImpl implements _SetOnboardingStatusError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -5551,7 +5551,7 @@ class _$SettingUserProgressDataImpl implements _SettingUserProgressData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -5603,7 +5603,7 @@ class _$SettingUserProgressDataImpl implements _SettingUserProgressData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -5653,7 +5653,7 @@ class _$SettingUserProgressDataImpl implements _SettingUserProgressData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -5707,7 +5707,7 @@ class _$SettingUserProgressDataImpl implements _SettingUserProgressData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -5760,7 +5760,7 @@ class _$SettingUserProgressDataImpl implements _SettingUserProgressData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -5811,7 +5811,7 @@ class _$SettingUserProgressDataImpl implements _SettingUserProgressData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -5933,7 +5933,7 @@ class _$SetUserProgressDataImpl implements _SetUserProgressData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -5985,7 +5985,7 @@ class _$SetUserProgressDataImpl implements _SetUserProgressData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -6035,7 +6035,7 @@ class _$SetUserProgressDataImpl implements _SetUserProgressData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -6089,7 +6089,7 @@ class _$SetUserProgressDataImpl implements _SetUserProgressData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -6142,7 +6142,7 @@ class _$SetUserProgressDataImpl implements _SetUserProgressData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -6193,7 +6193,7 @@ class _$SetUserProgressDataImpl implements _SetUserProgressData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -6322,7 +6322,7 @@ class _$SetUserProgressDataErrorImpl implements _SetUserProgressDataError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -6374,7 +6374,7 @@ class _$SetUserProgressDataErrorImpl implements _SetUserProgressDataError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -6424,7 +6424,7 @@ class _$SetUserProgressDataErrorImpl implements _SetUserProgressDataError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -6478,7 +6478,7 @@ class _$SetUserProgressDataErrorImpl implements _SetUserProgressDataError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -6531,7 +6531,7 @@ class _$SetUserProgressDataErrorImpl implements _SetUserProgressDataError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -6582,7 +6582,7 @@ class _$SetUserProgressDataErrorImpl implements _SetUserProgressDataError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -6681,7 +6681,7 @@ class _$SendingOtpImpl implements _SendingOtp {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -6733,7 +6733,7 @@ class _$SendingOtpImpl implements _SendingOtp {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -6783,7 +6783,7 @@ class _$SendingOtpImpl implements _SendingOtp {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -6837,7 +6837,7 @@ class _$SendingOtpImpl implements _SendingOtp {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -6890,7 +6890,7 @@ class _$SendingOtpImpl implements _SendingOtp {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -6941,7 +6941,7 @@ class _$SendingOtpImpl implements _SendingOtp {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -7061,7 +7061,7 @@ class _$SentOtpImpl implements _SentOtp {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -7113,7 +7113,7 @@ class _$SentOtpImpl implements _SentOtp {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -7163,7 +7163,7 @@ class _$SentOtpImpl implements _SentOtp {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -7217,7 +7217,7 @@ class _$SentOtpImpl implements _SentOtp {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -7270,7 +7270,7 @@ class _$SentOtpImpl implements _SentOtp {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -7321,7 +7321,7 @@ class _$SentOtpImpl implements _SentOtp {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -7445,7 +7445,7 @@ class _$SendOtpErrorImpl implements _SendOtpError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -7497,7 +7497,7 @@ class _$SendOtpErrorImpl implements _SendOtpError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -7547,7 +7547,7 @@ class _$SendOtpErrorImpl implements _SendOtpError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -7601,7 +7601,7 @@ class _$SendOtpErrorImpl implements _SendOtpError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -7654,7 +7654,7 @@ class _$SendOtpErrorImpl implements _SendOtpError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -7705,7 +7705,7 @@ class _$SendOtpErrorImpl implements _SendOtpError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -7803,7 +7803,7 @@ class _$VerifyingOtpImpl implements _VerifyingOtp {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -7855,7 +7855,7 @@ class _$VerifyingOtpImpl implements _VerifyingOtp {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -7905,7 +7905,7 @@ class _$VerifyingOtpImpl implements _VerifyingOtp {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -7959,7 +7959,7 @@ class _$VerifyingOtpImpl implements _VerifyingOtp {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -8012,7 +8012,7 @@ class _$VerifyingOtpImpl implements _VerifyingOtp {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -8063,7 +8063,7 @@ class _$VerifyingOtpImpl implements _VerifyingOtp {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -8183,7 +8183,7 @@ class _$VerifiedOtpImpl implements _VerifiedOtp {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -8235,7 +8235,7 @@ class _$VerifiedOtpImpl implements _VerifiedOtp {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -8285,7 +8285,7 @@ class _$VerifiedOtpImpl implements _VerifiedOtp {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -8339,7 +8339,7 @@ class _$VerifiedOtpImpl implements _VerifiedOtp {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -8392,7 +8392,7 @@ class _$VerifiedOtpImpl implements _VerifiedOtp {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -8443,7 +8443,7 @@ class _$VerifiedOtpImpl implements _VerifiedOtp {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -8569,7 +8569,7 @@ class _$VerifyOtpErrorImpl implements _VerifyOtpError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -8621,7 +8621,7 @@ class _$VerifyOtpErrorImpl implements _VerifyOtpError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -8671,7 +8671,7 @@ class _$VerifyOtpErrorImpl implements _VerifyOtpError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -8725,7 +8725,7 @@ class _$VerifyOtpErrorImpl implements _VerifyOtpError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -8778,7 +8778,7 @@ class _$VerifyOtpErrorImpl implements _VerifyOtpError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -8829,7 +8829,7 @@ class _$VerifyOtpErrorImpl implements _VerifyOtpError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -8927,7 +8927,7 @@ class _$UploadingSelfieImpl implements _UploadingSelfie {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -8979,7 +8979,7 @@ class _$UploadingSelfieImpl implements _UploadingSelfie {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -9029,7 +9029,7 @@ class _$UploadingSelfieImpl implements _UploadingSelfie {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -9083,7 +9083,7 @@ class _$UploadingSelfieImpl implements _UploadingSelfie {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -9136,7 +9136,7 @@ class _$UploadingSelfieImpl implements _UploadingSelfie {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -9187,7 +9187,7 @@ class _$UploadingSelfieImpl implements _UploadingSelfie {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -9308,7 +9308,7 @@ class _$UploadedSelfieImpl implements _UploadedSelfie {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -9360,7 +9360,7 @@ class _$UploadedSelfieImpl implements _UploadedSelfie {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -9410,7 +9410,7 @@ class _$UploadedSelfieImpl implements _UploadedSelfie {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -9464,7 +9464,7 @@ class _$UploadedSelfieImpl implements _UploadedSelfie {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -9517,7 +9517,7 @@ class _$UploadedSelfieImpl implements _UploadedSelfie {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -9568,7 +9568,7 @@ class _$UploadedSelfieImpl implements _UploadedSelfie {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -9695,7 +9695,7 @@ class _$UploadSelfieErrorImpl implements _UploadSelfieError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -9747,7 +9747,7 @@ class _$UploadSelfieErrorImpl implements _UploadSelfieError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -9797,7 +9797,7 @@ class _$UploadSelfieErrorImpl implements _UploadSelfieError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -9851,7 +9851,7 @@ class _$UploadSelfieErrorImpl implements _UploadSelfieError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -9904,7 +9904,7 @@ class _$UploadSelfieErrorImpl implements _UploadSelfieError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -9955,7 +9955,7 @@ class _$UploadSelfieErrorImpl implements _UploadSelfieError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -10054,7 +10054,7 @@ class _$PatchingUserDataImpl implements _PatchingUserData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -10106,7 +10106,7 @@ class _$PatchingUserDataImpl implements _PatchingUserData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -10156,7 +10156,7 @@ class _$PatchingUserDataImpl implements _PatchingUserData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -10210,7 +10210,7 @@ class _$PatchingUserDataImpl implements _PatchingUserData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -10263,7 +10263,7 @@ class _$PatchingUserDataImpl implements _PatchingUserData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -10314,7 +10314,7 @@ class _$PatchingUserDataImpl implements _PatchingUserData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -10435,7 +10435,7 @@ class _$PatchedUserDataImpl implements _PatchedUserData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -10487,7 +10487,7 @@ class _$PatchedUserDataImpl implements _PatchedUserData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -10537,7 +10537,7 @@ class _$PatchedUserDataImpl implements _PatchedUserData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -10591,7 +10591,7 @@ class _$PatchedUserDataImpl implements _PatchedUserData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -10644,7 +10644,7 @@ class _$PatchedUserDataImpl implements _PatchedUserData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -10695,7 +10695,7 @@ class _$PatchedUserDataImpl implements _PatchedUserData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -10822,7 +10822,7 @@ class _$PatchUserDataErrorImpl implements _PatchUserDataError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -10874,7 +10874,7 @@ class _$PatchUserDataErrorImpl implements _PatchUserDataError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -10924,7 +10924,7 @@ class _$PatchUserDataErrorImpl implements _PatchUserDataError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -10978,7 +10978,7 @@ class _$PatchUserDataErrorImpl implements _PatchUserDataError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -11031,7 +11031,7 @@ class _$PatchUserDataErrorImpl implements _PatchUserDataError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -11082,7 +11082,7 @@ class _$PatchUserDataErrorImpl implements _PatchUserDataError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -11181,7 +11181,7 @@ class _$LoadingUserDataImpl implements _LoadingUserData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -11233,7 +11233,7 @@ class _$LoadingUserDataImpl implements _LoadingUserData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -11283,7 +11283,7 @@ class _$LoadingUserDataImpl implements _LoadingUserData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -11337,7 +11337,7 @@ class _$LoadingUserDataImpl implements _LoadingUserData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -11390,7 +11390,7 @@ class _$LoadingUserDataImpl implements _LoadingUserData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -11441,7 +11441,7 @@ class _$LoadingUserDataImpl implements _LoadingUserData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -11571,7 +11571,7 @@ class _$LoadedUserDataImpl implements _LoadedUserData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -11623,7 +11623,7 @@ class _$LoadedUserDataImpl implements _LoadedUserData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -11673,7 +11673,7 @@ class _$LoadedUserDataImpl implements _LoadedUserData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -11727,7 +11727,7 @@ class _$LoadedUserDataImpl implements _LoadedUserData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -11780,7 +11780,7 @@ class _$LoadedUserDataImpl implements _LoadedUserData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -11831,7 +11831,7 @@ class _$LoadedUserDataImpl implements _LoadedUserData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -11960,7 +11960,7 @@ class _$LoadUserDataErrorImpl implements _LoadUserDataError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -12012,7 +12012,7 @@ class _$LoadUserDataErrorImpl implements _LoadUserDataError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -12062,7 +12062,7 @@ class _$LoadUserDataErrorImpl implements _LoadUserDataError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -12116,7 +12116,7 @@ class _$LoadUserDataErrorImpl implements _LoadUserDataError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -12169,7 +12169,7 @@ class _$LoadUserDataErrorImpl implements _LoadUserDataError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -12220,7 +12220,7 @@ class _$LoadUserDataErrorImpl implements _LoadUserDataError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -12319,7 +12319,7 @@ class _$DetectingFaceImpl implements _DetectingFace {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -12371,7 +12371,7 @@ class _$DetectingFaceImpl implements _DetectingFace {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -12421,7 +12421,7 @@ class _$DetectingFaceImpl implements _DetectingFace {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -12475,7 +12475,7 @@ class _$DetectingFaceImpl implements _DetectingFace {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -12528,7 +12528,7 @@ class _$DetectingFaceImpl implements _DetectingFace {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -12579,7 +12579,7 @@ class _$DetectingFaceImpl implements _DetectingFace {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -12706,7 +12706,7 @@ class _$DetectedFaceImpl implements _DetectedFace {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -12758,7 +12758,7 @@ class _$DetectedFaceImpl implements _DetectedFace {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -12808,7 +12808,7 @@ class _$DetectedFaceImpl implements _DetectedFace {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -12862,7 +12862,7 @@ class _$DetectedFaceImpl implements _DetectedFace {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -12915,7 +12915,7 @@ class _$DetectedFaceImpl implements _DetectedFace {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -12966,7 +12966,7 @@ class _$DetectedFaceImpl implements _DetectedFace {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -13093,7 +13093,7 @@ class _$DetectFaceErrorImpl implements _DetectFaceError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -13145,7 +13145,7 @@ class _$DetectFaceErrorImpl implements _DetectFaceError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -13195,7 +13195,7 @@ class _$DetectFaceErrorImpl implements _DetectFaceError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -13249,7 +13249,7 @@ class _$DetectFaceErrorImpl implements _DetectFaceError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -13302,7 +13302,7 @@ class _$DetectFaceErrorImpl implements _DetectFaceError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -13353,7 +13353,7 @@ class _$DetectFaceErrorImpl implements _DetectFaceError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -13451,7 +13451,7 @@ class _$UpdatingStateImpl implements _UpdatingState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -13503,7 +13503,7 @@ class _$UpdatingStateImpl implements _UpdatingState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -13553,7 +13553,7 @@ class _$UpdatingStateImpl implements _UpdatingState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -13607,7 +13607,7 @@ class _$UpdatingStateImpl implements _UpdatingState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -13660,7 +13660,7 @@ class _$UpdatingStateImpl implements _UpdatingState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -13711,7 +13711,7 @@ class _$UpdatingStateImpl implements _UpdatingState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -13804,7 +13804,7 @@ class _$UpdatedStateImpl implements _UpdatedState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -13856,7 +13856,7 @@ class _$UpdatedStateImpl implements _UpdatedState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -13906,7 +13906,7 @@ class _$UpdatedStateImpl implements _UpdatedState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -13960,7 +13960,7 @@ class _$UpdatedStateImpl implements _UpdatedState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -14013,7 +14013,7 @@ class _$UpdatedStateImpl implements _UpdatedState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -14064,7 +14064,7 @@ class _$UpdatedStateImpl implements _UpdatedState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -14157,7 +14157,7 @@ class _$SelectingCountryImpl implements _SelectingCountry {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -14209,7 +14209,7 @@ class _$SelectingCountryImpl implements _SelectingCountry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -14259,7 +14259,7 @@ class _$SelectingCountryImpl implements _SelectingCountry {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -14313,7 +14313,7 @@ class _$SelectingCountryImpl implements _SelectingCountry {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -14366,7 +14366,7 @@ class _$SelectingCountryImpl implements _SelectingCountry {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -14417,7 +14417,7 @@ class _$SelectingCountryImpl implements _SelectingCountry {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -14547,7 +14547,7 @@ class _$SelectedCountryImpl implements _SelectedCountry {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -14599,7 +14599,7 @@ class _$SelectedCountryImpl implements _SelectedCountry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -14649,7 +14649,7 @@ class _$SelectedCountryImpl implements _SelectedCountry {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -14703,7 +14703,7 @@ class _$SelectedCountryImpl implements _SelectedCountry {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -14756,7 +14756,7 @@ class _$SelectedCountryImpl implements _SelectedCountry {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -14807,7 +14807,7 @@ class _$SelectedCountryImpl implements _SelectedCountry {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -14908,7 +14908,7 @@ class _$LoadingTargetsImpl implements _LoadingTargets {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -14960,7 +14960,7 @@ class _$LoadingTargetsImpl implements _LoadingTargets {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -15010,7 +15010,7 @@ class _$LoadingTargetsImpl implements _LoadingTargets {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -15064,7 +15064,7 @@ class _$LoadingTargetsImpl implements _LoadingTargets {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -15117,7 +15117,7 @@ class _$LoadingTargetsImpl implements _LoadingTargets {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -15168,7 +15168,7 @@ class _$LoadingTargetsImpl implements _LoadingTargets {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -15287,7 +15287,7 @@ class _$LoadedTargetsImpl implements _LoadedTargets {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -15339,7 +15339,7 @@ class _$LoadedTargetsImpl implements _LoadedTargets {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -15389,7 +15389,7 @@ class _$LoadedTargetsImpl implements _LoadedTargets {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -15443,7 +15443,7 @@ class _$LoadedTargetsImpl implements _LoadedTargets {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -15496,7 +15496,7 @@ class _$LoadedTargetsImpl implements _LoadedTargets {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -15547,7 +15547,7 @@ class _$LoadedTargetsImpl implements _LoadedTargets {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
@@ -15673,7 +15673,7 @@ class _$LoadTargetsErrorImpl implements _LoadTargetsError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() comitial,
     required TResult Function() checkboxLoading,
     required TResult Function(bool isChecked) checkboxLoaded,
     required TResult Function() validatingTextField,
@@ -15725,7 +15725,7 @@ class _$LoadTargetsErrorImpl implements _LoadTargetsError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? comitial,
     TResult? Function()? checkboxLoading,
     TResult? Function(bool isChecked)? checkboxLoaded,
     TResult? Function()? validatingTextField,
@@ -15775,7 +15775,7 @@ class _$LoadTargetsErrorImpl implements _LoadTargetsError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? comitial,
     TResult Function()? checkboxLoading,
     TResult Function(bool isChecked)? checkboxLoaded,
     TResult Function()? validatingTextField,
@@ -15829,7 +15829,7 @@ class _$LoadTargetsErrorImpl implements _LoadTargetsError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initial value) comitial,
     required TResult Function(_Loading value) checkboxLoading,
     required TResult Function(_Loaded value) checkboxLoaded,
     required TResult Function(_ValidatingTextField value) validatingTextField,
@@ -15882,7 +15882,7 @@ class _$LoadTargetsErrorImpl implements _LoadTargetsError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initial value)? comitial,
     TResult? Function(_Loading value)? checkboxLoading,
     TResult? Function(_Loaded value)? checkboxLoaded,
     TResult? Function(_ValidatingTextField value)? validatingTextField,
@@ -15933,7 +15933,7 @@ class _$LoadTargetsErrorImpl implements _LoadTargetsError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Initial value)? comitial,
     TResult Function(_Loading value)? checkboxLoading,
     TResult Function(_Loaded value)? checkboxLoaded,
     TResult Function(_ValidatingTextField value)? validatingTextField,
