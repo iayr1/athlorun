@@ -69,14 +69,13 @@ class _SignInScreenState extends State<SignInScreen> {
               );
             },
             sentOtp: (response) {
-              final info = response.data?.message;
-              if (info != null && info.isNotEmpty) {
-                Utils.showCustomDialog(context, AppStrings.verificationCode, info);
-              }
               Navigator.pushNamed(
                 context,
                 AppRoutes.enterOtp,
-                arguments: {'mobileNumber': countryCode + _mobileNumber},
+                arguments: {
+                  'mobileNumber': countryCode + _mobileNumber,
+                  'otpHint': response.data?.message,
+                },
               );
             },
             sendOtpError: (error) {

@@ -47,6 +47,7 @@ class _EnterOTPScreenState extends State<EnterOTPScreen> {
   bool _canResend = false;
   late final AccountRegistrationCubit _cubit;
   late String mobileNumber;
+  bool _debugOtpHintShown = false;
 
   @override
   void initState() {
@@ -132,11 +133,30 @@ class _EnterOTPScreenState extends State<EnterOTPScreen> {
     _cubit.sendOtp(mobileNumber);
   }
 
+  String? _extractOtpFromHint(String? hint) {
+    if (hint == null || hint.isEmpty) return null;
+    final match = RegExp(r'\b\d{4}\b').firstMatch(hint);
+    return match?.group(0);
+  }
+
   @override
   Widget build(BuildContext context) {
     final args =
-        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-    mobileNumber = args['mobileNumber'];
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>? ?? {};
+    mobileNumber = args['mobileNumber']?.toString() ?? '';
+    final otpHint = args['otpHint']?.toString();
+
+    if (!_debugOtpHintShown && otpHint != null && otpHint.isNotEmpty) {
+      _debugOtpHintShown = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+        Utils.showCustomDialog(
+          context,
+          AppStrings.verificationCode,
+          otpHint,
+        );
+      });
+    }
 
     return Scaffold(
       appBar: customAppBar(
@@ -175,13 +195,31 @@ class _EnterOTPScreenState extends State<EnterOTPScreen> {
               Utils.showCustomDialog(context, AppStrings.error, error);
             },
             sentOtp: (response) {
+              final otpHint = response.data?.message;
+              final resentOtp = _extractOtpFromHint(otpHint);
+
+              if (_timer.isActive) {
+                _timer.cancel();
+              }
+
               setState(() {
                 _canResend = false;
                 _timeRemaining = 120;
+                if (resentOtp != null) {
+                  otpValue = resentOtp;
+                  otpController.set(resentOtp.split(''));
+                  isOtpComplete = true;
+                }
               });
               startTimer();
-              Utils.showCustomDialog(context, AppStrings.codeResend,
-                  AppStrings.verificationCodeReset);
+
+              Utils.showCustomDialog(
+                context,
+                AppStrings.codeResend,
+                otpHint?.isNotEmpty == true
+                    ? otpHint
+                    : AppStrings.verificationCodeReset,
+              );
             },
             setAuthData: (authData) {
               _cubit.getUserData(authData);
