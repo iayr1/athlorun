@@ -1,7 +1,6 @@
 import 'dart:io';
 
-import 'package:dio/dio.dart';
-import 'package:athlorun/core/constants/api_strings.dart';
+import 'package:athlorun/core/firebase/data/datasources/remote/firestore_backend.dart';
 import 'package:athlorun/core/global_store/data/models/user_data_response_model.dart';
 import 'package:athlorun/features/profile/data/models/create_gear_request_model.dart';
 import 'package:athlorun/features/profile/data/models/delete_gear_response_model.dart';
@@ -13,90 +12,95 @@ import 'package:athlorun/features/profile/data/models/request/update_user_profil
 import 'package:athlorun/features/profile/data/models/response/delete_schedule_response_model.dart';
 import 'package:athlorun/features/profile/data/models/response/get_schedule_response_model.dart';
 import 'package:athlorun/features/profile/data/models/response/profile_targets_response_model.dart';
-import 'package:retrofit/retrofit.dart';
 
-part 'profile_client.g.dart';
+class ProfileClient {
+  ProfileClient(this._backend);
 
-@RestApi()
-abstract class ProfileClient {
-  factory ProfileClient(Dio dio) = _ProfileClient;
+  final FirestoreBackend _backend;
 
-  @GET(ApiStrings.targets)
-  Future<ProfileTargetsResponseModel> getTargets();
+  Future<ProfileTargetsResponseModel> getTargets() async {
+    final targets = await _backend.getCollection(collection: 'targets');
+    return ProfileTargetsResponseModel.fromJson({'statusCode': 200, 'message': 'Fetched', 'data': targets});
+  }
 
-  //Gear client
-  @GET(ApiStrings.getSports)
-  Future<GetSportsResponseModel> getSports();
+  Future<GetSportsResponseModel> getSports() async {
+    final sports = await _backend.getCollection(collection: 'sports');
+    return GetSportsResponseModel.fromJson({'statusCode': 200, 'message': 'Fetched', 'data': sports});
+  }
 
-  @GET(ApiStrings.getGearTypes)
-  Future<GetGearTypesResponseModel> getGearTypes();
+  Future<GetGearTypesResponseModel> getGearTypes() async {
+    final gearTypes = await _backend.getCollection(collection: 'gear_types');
+    return GetGearTypesResponseModel.fromJson({'statusCode': 200, 'message': 'Fetched', 'data': gearTypes});
+  }
 
-  @POST(ApiStrings.gear)
-  @MultiPart()
-  Future<CreateGearRequestModel> createGear(
-    @Path("id") String id,
-    @Part(name: "typeId") String typeId,
-    @Part(name: "sportId") String sportId,
-    @Part(name: "brand") String brand,
-    @Part(name: "model") String model,
-    @Part(name: "weight") String weight,
-    @Part(name: "photoFile") File photoFile,
-  );
+  Future<CreateGearRequestModel> createGear(String id, String typeId, String sportId, String brand, String model, String weight, File photoFile) async {
+    final data = {
+      'typeId': typeId,
+      'sportId': sportId,
+      'brand': brand,
+      'model': model,
+      'weight': weight,
+      'photoPath': photoFile.path,
+      'userId': id,
+    };
+    await _backend.upsertDocument(collection: 'gear', docId: '${id}_${DateTime.now().millisecondsSinceEpoch}', data: data);
+    return CreateGearRequestModel.fromJson(data);
+  }
 
-  @GET(ApiStrings.gear)
-  Future<GetGearResponseModel> getGear(
-    @Path("id") String id,
-  );
+  Future<GetGearResponseModel> getGear(String id) async {
+    final gear = await _backend.getCollection(collection: 'gear', field: 'userId', isEqualTo: id);
+    return GetGearResponseModel.fromJson({'statusCode': 200, 'message': 'Fetched', 'data': gear});
+  }
 
-  @DELETE(ApiStrings.deleteGear)
-  Future<DeleteGearResponseModel> deleteGear(
-    @Path("id") String id,
-    @Path("gearId") String gearid,
-  );
+  Future<DeleteGearResponseModel> deleteGear(String id, String gearid) async {
+    await _backend.deleteDocument(collection: 'gear', docId: gearid);
+    return DeleteGearResponseModel.fromJson({'statusCode': 200, 'message': 'Deleted'});
+  }
 
-  @PATCH(ApiStrings.updateGear)
-  @MultiPart()
-  Future<CreateGearRequestModel> updateGear(
-    @Path("id") String id,
-    @Path("gearId") String gearid,
-    @Part(name: "typeId") String typeId,
-    @Part(name: "sportId") String sportId,
-    @Part(name: "brand") String brand,
-    @Part(name: "model") String model,
-    @Part(name: "weight") String weight,
-    @Part(name: "photoFile") File photoFile,
-  );
+  Future<CreateGearRequestModel> updateGear(String id, String gearid, String typeId, String sportId, String brand, String model, String weight, File photoFile) async {
+    final data = {
+      'typeId': typeId,
+      'sportId': sportId,
+      'brand': brand,
+      'model': model,
+      'weight': weight,
+      'photoPath': photoFile.path,
+      'userId': id,
+    };
+    await _backend.upsertDocument(collection: 'gear', docId: gearid, data: data);
+    return CreateGearRequestModel.fromJson(data);
+  }
 
-  //schedule client
-  @POST(ApiStrings.schedule)
-  Future<CreateScheduleRequestModel> createSchedule(
-    @Path('id') String id,
-    @Body() CreateScheduleRequestModel body,
-  );
+  Future<CreateScheduleRequestModel> createSchedule(String id, CreateScheduleRequestModel body) async {
+    final data = body.toJson()..['userId'] = id;
+    await _backend.upsertDocument(collection: 'schedules', docId: '${id}_${DateTime.now().millisecondsSinceEpoch}', data: data);
+    return CreateScheduleRequestModel.fromJson(data);
+  }
 
-  @GET(ApiStrings.schedule)
-  Future<GetScheduleResponseModel> getSchedule(
-    @Path("id") String id,
-  );
+  Future<GetScheduleResponseModel> getSchedule(String id) async {
+    final schedules = await _backend.getCollection(collection: 'schedules', field: 'userId', isEqualTo: id);
+    return GetScheduleResponseModel.fromJson({'statusCode': 200, 'message': 'Fetched', 'data': schedules});
+  }
 
-  @DELETE(ApiStrings.deleteschedule)
-  Future<DeleteScheduleResponseModel> deleteSchedule(
-    @Path("id") String id,
-    @Path("scheduleId") String scheduleid,
-  );
+  Future<DeleteScheduleResponseModel> deleteSchedule(String id, String scheduleid) async {
+    await _backend.deleteDocument(collection: 'schedules', docId: scheduleid);
+    return DeleteScheduleResponseModel.fromJson({'statusCode': 200, 'message': 'Deleted'});
+  }
 
-  @PATCH(ApiStrings.updateschedule)
-  Future<CreateScheduleRequestModel> updateSchedule(
-      @Path("id") String id,
-      @Path("scheduleId") String scheduleid,
-      @Body() CreateScheduleRequestModel body);
+  Future<CreateScheduleRequestModel> updateSchedule(String id, String scheduleid, CreateScheduleRequestModel body) async {
+    final data = body.toJson()..['userId'] = id;
+    await _backend.upsertDocument(collection: 'schedules', docId: scheduleid, data: data);
+    return CreateScheduleRequestModel.fromJson(data);
+  }
 
-  @GET(ApiStrings.users)
-  Future<UserDataResponseModel> getUserData(
-    @Path("id") String id,
-  );
+  Future<UserDataResponseModel> getUserData(String id) async {
+    final user = await _backend.getDocument(collection: 'users', docId: id, fallback: {'statusCode': 200, 'data': {}});
+    return UserDataResponseModel.fromJson(user);
+  }
 
-  @PATCH(ApiStrings.users)
-  Future<UserDataResponseModel> updateUserProfile(
-      @Path("id") String id, @Body() UpdateUserProfileRequestModel body);
+  Future<UserDataResponseModel> updateUserProfile(String id, UpdateUserProfileRequestModel body) async {
+    final data = body.toJson();
+    await _backend.upsertDocument(collection: 'users', docId: id, data: data);
+    return UserDataResponseModel.fromJson({'statusCode': 200, 'message': 'Updated', 'data': data});
+  }
 }

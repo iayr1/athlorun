@@ -1,36 +1,56 @@
 import 'dart:io';
 
-import 'package:dio/dio.dart';
+import 'package:athlorun/core/firebase/data/datasources/remote/firestore_backend.dart';
+import 'package:athlorun/features/track/data/models/activities_request_model.dart';
 import 'package:athlorun/features/track/data/models/choose_sport_response_model.dart';
-import 'package:retrofit/retrofit.dart';
-import '../../../../core/constants/api_strings.dart';
-import '../models/activities_request_model.dart';
 
-part 'track_client.g.dart';
+class TrackClient {
+  TrackClient(this._backend);
 
-@RestApi()
-abstract class TrackClient {
-  factory TrackClient(Dio dio) = _TrackClient;
+  final FirestoreBackend _backend;
 
-  @GET(ApiStrings.chooseSports)
-  Future<SportsResponseModel> chooseSports();
+  Future<SportsResponseModel> chooseSports() async {
+    final sports = await _backend.getCollection(collection: 'sports');
+    return SportsResponseModel.fromJson({
+      'statusCode': 200,
+      'message': 'Fetched',
+      'data': sports,
+    });
+  }
 
-  @POST(ApiStrings.submitActivity)
-  @MultiPart()
   Future<ActivitiesRequestModel> submitActivity(
-    @Path("id") String id,
-    @Part(name: "polyline") String polyline,
-    @Part(name: "sportId") String sportId,
-    @Part(name: "completedAt") String completedAt, // in ISO format
-    @Part(name: "distanceInKM") String distanceInKM,
-    @Part(name: "durationInSeconds") String durationInSeconds,
-    @Part(name: "stepsCount") String stepsCount,
-    @Part(name: "name") String name,
-    @Part(name: "description") String description,
-    @Part(name: "mapType") String mapType,
-    @Part(name: "gearId") String gearId,
-    @Part(name: "hideStatistics") String hideStatistics,
-    @Part(name: "exertion") String exertion,
-    @Part(name: "mediaFiles") File mediaFile,
-  );
+    String id,
+    String polyline,
+    String sportId,
+    String completedAt,
+    String distanceInKM,
+    String durationInSeconds,
+    String stepsCount,
+    String name,
+    String description,
+    String mapType,
+    String gearId,
+    String hideStatistics,
+    String exertion,
+    File mediaFile,
+  ) async {
+    final data = {
+      'polyline': polyline,
+      'sportId': sportId,
+      'completedAt': completedAt,
+      'distanceInKM': distanceInKM,
+      'durationInSeconds': durationInSeconds,
+      'stepsCount': stepsCount,
+      'name': name,
+      'description': description,
+      'mapType': mapType,
+      'gearId': gearId,
+      'hideStatistics': hideStatistics,
+      'exertion': exertion,
+      'mediaFilePath': mediaFile.path,
+      'userId': id,
+    };
+    await _backend.upsertDocument(collection: 'activities', docId: '${id}_$completedAt', data: data);
+    return ActivitiesRequestModel.fromJson(data);
+  }
 }

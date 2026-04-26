@@ -1,50 +1,39 @@
-import 'package:dio/dio.dart';
-import 'package:athlorun/core/constants/api_strings.dart';
+import 'package:athlorun/core/firebase/data/datasources/remote/firestore_backend.dart';
 import 'package:athlorun/features/challenges/data/models/response/get_challenge_response_model.dart';
 import 'package:athlorun/features/challenges/data/models/response/get_participated_challenges_response_model.dart';
 import 'package:athlorun/features/challenges/data/models/response/get_user_participated_challenges_response_model.dart';
 import 'package:athlorun/features/challenges/data/models/response/leave_participated_challenges_response_model.dart';
 import 'package:athlorun/features/challenges/data/models/response/post_user_participated_challenges_response_model.dart';
-import 'package:retrofit/retrofit.dart';
 
-part 'challenges_client.g.dart';
+class ChallengesClient {
+  ChallengesClient(this._backend);
 
-@RestApi()
-abstract class ChallengesClient {
-  factory ChallengesClient(Dio dio) = _ChallengesClient;
+  final FirestoreBackend _backend;
 
-  //get api for allChallenges
-  @GET(ApiStrings.getUserChallenges)
-  Future<GetChallengeResponseModel> getChallenges(
-    @Query("userId") String userId,
-  );
+  Future<GetChallengeResponseModel> getChallenges(String userId) async {
+    final docs = await _backend.getCollection(collection: 'challenges');
+    return GetChallengeResponseModel.fromJson({'statusCode': 200, 'message': 'Fetched', 'data': docs});
+  }
 
-  //get api for Challenges based on status
-  @GET(ApiStrings.getUserParticipatedChallenges)
-  Future<GetUserParticipatedChallengesResponseModel>
-      getUserParticipatedChallenges(
-    @Path("id") String userId,
-    @Query("status") String? status,
-  );
+  Future<GetUserParticipatedChallengesResponseModel> getUserParticipatedChallenges(String userId, String? status) async {
+    final docs = await _backend.getCollection(collection: 'participated_challenges', field: 'userId', isEqualTo: userId);
+    final filtered = status == null ? docs : docs.where((e) => e['status'] == status).toList();
+    return GetUserParticipatedChallengesResponseModel.fromJson({'statusCode': 200, 'message': 'Fetched', 'data': filtered});
+  }
 
-  //post api for participating in challenge
-  @POST(ApiStrings.participateUserInTheChallenge)
-  Future<PostUserParticipatedChallengesResponseModel> participatedChallenges(
-    @Path("id") String userId,
-    @Path("challengeId") String challengeId,
-  );
+  Future<PostUserParticipatedChallengesResponseModel> participatedChallenges(String userId, String challengeId) async {
+    final data = {'userId': userId, 'challengeId': challengeId, 'status': 'active'};
+    await _backend.upsertDocument(collection: 'participated_challenges', docId: '${userId}_$challengeId', data: data);
+    return PostUserParticipatedChallengesResponseModel.fromJson({'statusCode': 200, 'message': 'Joined', 'data': data});
+  }
 
-  //get api for single participated challenge
-  @GET(ApiStrings.getParticipateUserInTheChallenge)
-  Future<GetParticipatedChallengesResponseModel> getParticipatedChallenges(
-    @Path("id") String userId,
-    @Path("challengeId") String challengeId,
-  );
+  Future<GetParticipatedChallengesResponseModel> getParticipatedChallenges(String userId, String challengeId) async {
+    final data = await _backend.getDocument(collection: 'participated_challenges', docId: '${userId}_$challengeId', fallback: {'userId': userId, 'challengeId': challengeId});
+    return GetParticipatedChallengesResponseModel.fromJson({'statusCode': 200, 'message': 'Fetched', 'data': data});
+  }
 
-  //leave participated challenge api
-  @DELETE(ApiStrings.leaveParticipatedChallenge)
-  Future<LeaveParticipatedChallengesResponseModel> leaveParticipatedChallenges(
-    @Path("id") String userId,
-    @Path("challengeId") String challengeId,
-  );
+  Future<LeaveParticipatedChallengesResponseModel> leaveParticipatedChallenges(String userId, String challengeId) async {
+    await _backend.deleteDocument(collection: 'participated_challenges', docId: '${userId}_$challengeId');
+    return LeaveParticipatedChallengesResponseModel.fromJson({'statusCode': 200, 'message': 'Left challenge'});
+  }
 }

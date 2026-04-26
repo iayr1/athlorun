@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ import 'package:athlorun/core/exceptions/custom_exceptions.dart';
 import 'package:athlorun/core/firebase/data/datasources/local/firebase_local_data_source.dart';
 import 'package:athlorun/core/firebase/data/datasources/local/firebase_local_data_source_impl.dart';
 import 'package:athlorun/core/firebase/data/datasources/remote/firebase_client.dart';
+import 'package:athlorun/core/firebase/data/datasources/remote/firestore_backend.dart';
 import 'package:athlorun/core/firebase/data/repository/firebase_repository_impl.dart';
 import 'package:athlorun/core/firebase/domain/repository/firebase_repository.dart';
 import 'package:athlorun/core/firebase/domain/usecases/enable_notification_usecase.dart';
@@ -123,36 +125,7 @@ Future<void> setAuthData(UserAuthDataModel authData) async {
 }
 
 Future<UserAuthDataModel> getNewAuthData(UserAuthDataModel authData) async {
-  final Dio dio = Dio();
-  dio.interceptors.addAll(
-    [
-      PrettyDioLogger(
-        requestHeader: true,
-        requestBody: true,
-        responseHeader: true,
-        error: true,
-      )
-    ],
-  );
-  dio.options.headers["authorization"] = "Bearer ${authData.refreshToken}";
-  final response = await dio.post(
-    // "https://athlorun.connectonmap.com/v1/auth/refresh-tokens",
-    "https://dev.athlorun.connectonmap.com/v1/auth/refresh-tokens",
-  );
-  if (response.data["statusCode"] == 200) {
-    String? newAccessToken = response.data["data"]["accessToken"];
-    String? newRefreshToken = response.data["data"]["refreshToken"];
-    if (newAccessToken == null || newRefreshToken == null) {
-      throw CacheException();
-    }
-    return UserAuthDataModel(
-      id: authData.id,
-      accessToken: newAccessToken,
-      refreshToken: newRefreshToken,
-    );
-  } else {
-    throw CacheException();
-  }
+  throw CacheException();
 }
 
 Future<void> goToLoginScreen() async {
@@ -241,6 +214,8 @@ Future<void> setupServiceLocator() async {
   );
 
   sl.registerSingleton<Dio>(dio);
+  sl.registerLazySingleton(() => FirebaseFirestore.instance);
+  sl.registerLazySingleton(() => FirestoreBackend(sl()));
   sl.registerLazySingleton(() => HealthHandler());
   sl.registerLazySingleton(() => FirebaseServices());
 
