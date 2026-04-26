@@ -13,6 +13,19 @@ subprojects {
     project.evaluationDependsOn(":app")
 }
 
+// AGP 8+ requires each Android module to define a namespace.
+// Some third-party Flutter plugins (e.g., `call_log`) may not yet set it.
+subprojects { subproject ->
+    afterEvaluate {
+        if (subproject.hasProperty("android")) {
+            def androidExt = subproject.extensions.findByName("android")
+            if (androidExt != null && androidExt.hasProperty("namespace") && (androidExt.namespace == null || androidExt.namespace.toString().trim().isEmpty())) {
+                androidExt.namespace = subproject.group?.toString() ?: "com.example.${subproject.name}"
+            }
+        }
+    }
+}
+
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
