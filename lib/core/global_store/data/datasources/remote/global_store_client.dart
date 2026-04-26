@@ -1,16 +1,17 @@
-import 'package:dio/dio.dart';
-import 'package:athlorun/core/constants/api_strings.dart';
+import 'package:athlorun/core/firebase/data/datasources/remote/firestore_backend.dart';
 import 'package:athlorun/core/global_store/data/models/user_data_response_model.dart';
-import 'package:retrofit/retrofit.dart';
 
-part 'global_store_client.g.dart';
+class GlobalStoreClient {
+  GlobalStoreClient(this._backend);
 
-@RestApi()
-abstract class GlobalStoreClient {
-  factory GlobalStoreClient(Dio dio) = _GlobalStoreClient;
+  final FirestoreBackend _backend;
 
-  @GET(ApiStrings.users)
-  Future<UserDataResponseModel> getUserData(
-    @Path("id") String id,
-  );
+  Future<UserDataResponseModel> getUserData(String id) async {
+    final json = await _backend.getDocument(
+      collection: 'users',
+      docId: id,
+      fallback: {'statusCode': 200, 'data': {}},
+    );
+    return UserDataResponseModel.fromJson(json);
+  }
 }

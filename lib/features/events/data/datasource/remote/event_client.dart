@@ -1,26 +1,41 @@
-import 'package:dio/dio.dart';
-import 'package:athlorun/core/constants/api_strings.dart';
+import 'package:athlorun/core/firebase/data/datasources/remote/firestore_backend.dart';
 import 'package:athlorun/features/events/data/models/request/ticket_booking_request_model.dart';
 import 'package:athlorun/features/events/data/models/response/get_events_response_model.dart';
 import 'package:athlorun/features/events/data/models/response/ticket_booking_response_model.dart';
-import 'package:retrofit/retrofit.dart';
 
-part 'event_client.g.dart';
+class EventClient {
+  EventClient(this._backend);
 
-@RestApi()
-abstract class EventClient {
-  factory EventClient(Dio dio) = _EventClient;
+  final FirestoreBackend _backend;
 
-  //GET EVENTS
-  @GET(ApiStrings.getEvents)
-  Future<GetEventsResponseModel> getEvents();
+  Future<GetEventsResponseModel> getEvents() async {
+    final events = await _backend.getCollection(collection: 'events');
+    return GetEventsResponseModel.fromJson({
+      'status': 200,
+      'statusText': 'OK',
+      'message': 'Fetched',
+      'data': events,
+    });
+  }
 
-  //BOOKED EVENTS TICKET
-  @POST(ApiStrings.bookedEventTicket)
   Future<TicketBookingResponseModel> bookedEventTicket(
-    @Body() TicketBookingRequestModel body,
-    @Path("user_id") String userId,
-    @Path("eventId") String eventId,
-    @Path("slotId") String slotId,
-  );
+    TicketBookingRequestModel body,
+    String userId,
+    String eventId,
+    String slotId,
+  ) async {
+    final data = body.toJson()
+      ..addAll({'userId': userId, 'eventId': eventId, 'slotId': slotId});
+    await _backend.upsertDocument(
+      collection: 'event_bookings',
+      docId: '$userId-$eventId-$slotId',
+      data: data,
+    );
+    return TicketBookingResponseModel.fromJson({
+      'status': 200,
+      'statusText': 'OK',
+      'message': 'Booked',
+      'data': data,
+    });
+  }
 }
