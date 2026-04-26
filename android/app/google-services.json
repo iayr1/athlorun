@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "424406435236",
-    "project_id": "athlorun-a0a54",
-    "storage_bucket": "athlorun-a0a54.firebasestorage.app"
+    "project_number": "1001853874812",
+    "project_id": "athlorun",
+    "storage_bucket": "athlorun.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:424406435236:android:fb5268f7b258386e90ad31",
+        "mobilesdk_app_id": "1:1001853874812:android:a1cfcb42ffb7807c47cff9",
         "android_client_info": {
           "package_name": "com.example.athlorun"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAs-jT8iOaL9GVJ6BH2PBtSPXmsO9KSI4s"
+          "current_key": "AIzaSyDe-tAN9UgIIh2O_Y3z614PXHmHAjFOQ1s"
         }
       ],
       "services": {
