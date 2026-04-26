@@ -1,4 +1,7 @@
 import 'dart:io';
+import 'dart:math';
+
+import 'package:athlorun/core/exceptions/custom_exceptions.dart';
 
 import 'package:athlorun/core/firebase/data/datasources/remote/firestore_backend.dart';
 import 'package:athlorun/core/global_store/data/models/user_data_progress_model.dart';
@@ -16,13 +19,77 @@ class AccountRegistrationClient {
   final FirestoreBackend _backend;
 
   Future<SendOtpResponseModel> sendOtp(SendOtpRequestModel body) async {
-    final payload = body.toJson();
-    await _backend.upsertDocument(collection: 'otp_requests', docId: payload['mobile'] ?? DateTime.now().millisecondsSinceEpoch.toString(), data: payload);
-    return SendOtpResponseModel.fromJson({'statusCode': 200, 'message': 'OTP sent', 'data': payload});
+    final phoneNumber = body.phoneNumber.trim();
+    if (phoneNumber.isEmpty) {
+      throw ServerException();
+    }
+
+    final otp = (1000 + Random().nextInt(9000)).toString();
+    final now = DateTime.now().toUtc();
+
+    await _backend.upsertDocument(
+      collection: 'otp_requests',
+      docId: phoneNumber,
+      data: {
+        'phoneNumber': phoneNumber,
+        'otp': otp,
+        'createdAt': now.toIso8601String(),
+        'expiresAt': now.add(const Duration(minutes: 2)).toIso8601String(),
+      },
+    );
+
+    return SendOtpResponseModel.fromJson({
+      'statusCode': 200,
+      'message': 'OTP sent successfully',
+      'data': {
+        'flash': true,
+        'message': 'For testing use OTP: $otp',
+      },
+    });
   }
 
   Future<VerifyOtpResponseModel> verifyOtp(VerifyOtpRequestModel body) async {
-    return VerifyOtpResponseModel.fromJson({'statusCode': 200, 'message': 'OTP verified', 'data': body.toJson()});
+    final phoneNumber = body.phoneNumber?.trim() ?? '';
+    final enteredOtp = body.otp?.trim() ?? '';
+
+    if (phoneNumber.isEmpty || enteredOtp.isEmpty) {
+      throw ServerException();
+    }
+
+    final otpDoc = await _backend.getDocument(
+      collection: 'otp_requests',
+      docId: phoneNumber,
+      fallback: const {},
+    );
+
+    final expectedOtp = otpDoc['otp']?.toString() ?? '';
+    final expiresAtRaw = otpDoc['expiresAt']?.toString();
+    final expiresAt = expiresAtRaw == null ? null : DateTime.tryParse(expiresAtRaw)?.toUtc();
+
+    if (expectedOtp.isEmpty || expectedOtp != enteredOtp) {
+      throw ServerException();
+    }
+
+    if (expiresAt != null && DateTime.now().toUtc().isAfter(expiresAt)) {
+      throw ServerException();
+    }
+
+    final now = DateTime.now().toUtc();
+    final userId = phoneNumber.replaceAll(RegExp(r'[^0-9+]'), '');
+
+    return VerifyOtpResponseModel.fromJson({
+      'status': 200,
+      'statusText': 'SUCCESS',
+      'message': 'OTP verified',
+      'data': {
+        'id': userId,
+        'phoneNumber': phoneNumber,
+        'createdAt': now.toIso8601String(),
+        'updatedAt': now.toIso8601String(),
+        'accessToken': 'access_$userId',
+        'refreshToken': 'refresh_$userId',
+      },
+    });
   }
 
   Future<SelfieResponseModel> uploadSelfie(String id, File file) async {

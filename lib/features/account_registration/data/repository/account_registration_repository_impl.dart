@@ -33,9 +33,9 @@ class AccountRegistrationRepositoryImpl
       return left(TimeoutFailure());
     } on ServerException catch (_) {
       return left(ServerFailure());
-    } catch (e) {
+    } on Exception catch (e) {
       Utils.debugLog(e.toString());
-      return left(GeneralFailure());
+      return left(GeneralFailure(message: e.toString()));
     }
   }
 
@@ -51,9 +51,9 @@ class AccountRegistrationRepositoryImpl
       return left(TimeoutFailure());
     } on ServerException catch (_) {
       return left(ServerFailure());
-    } catch (e) {
+    } on Exception catch (e) {
       Utils.debugLog(e.toString());
-      return left(GeneralFailure());
+      return left(GeneralFailure(message: e.toString()));
     }
   }
 
@@ -69,9 +69,9 @@ class AccountRegistrationRepositoryImpl
       return left(TimeoutFailure());
     } on ServerException catch (_) {
       return left(ServerFailure());
-    } catch (e) {
+    } on Exception catch (e) {
       Utils.debugLog(e.toString());
-      return left(GeneralFailure());
+      return left(GeneralFailure(message: e.toString()));
     }
   }
 
@@ -87,9 +87,9 @@ class AccountRegistrationRepositoryImpl
       return left(TimeoutFailure());
     } on ServerException catch (_) {
       return left(ServerFailure());
-    } catch (e) {
+    } on Exception catch (e) {
       Utils.debugLog(e.toString());
-      return left(GeneralFailure());
+      return left(GeneralFailure(message: e.toString()));
     }
   }
 
@@ -104,9 +104,9 @@ class AccountRegistrationRepositoryImpl
       return left(TimeoutFailure());
     } on ServerException catch (_) {
       return left(ServerFailure());
-    } catch (e) {
+    } on Exception catch (e) {
       Utils.debugLog(e.toString());
-      return left(GeneralFailure());
+      return left(GeneralFailure(message: e.toString()));
     }
   }
 }
