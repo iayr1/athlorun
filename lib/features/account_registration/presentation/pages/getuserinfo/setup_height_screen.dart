@@ -1,0 +1,194 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:athlorun/config/di/dependency_injection.dart';
+import 'package:athlorun/config/routes/routes.dart';
+import 'package:athlorun/core/global_store/data/models/user_data_progress_model.dart';
+import 'package:athlorun/core/utils/app_strings.dart';
+import 'package:athlorun/core/utils/utils.dart';
+import 'package:athlorun/features/account_registration/presentation/bloc/account_registration_cubit.dart';
+import '../../../../../core/utils/windows.dart';
+import '../../../../../core/widgets/linear_progress_indicator.dart';
+import 'package:athlorun/core/widgets/back_button_widget.dart';
+import 'package:athlorun/core/widgets/next_button_widget.dart';
+import '../../../../../config/styles/app_colors.dart';
+import '../../../../../config/styles/app_textstyles.dart';
+
+class SetupHeightScreenWrapper extends StatelessWidget {
+  const SetupHeightScreenWrapper({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => sl<AccountRegistrationCubit>(),
+      child: const SetupHeightScreen(),
+    );
+  }
+}
+
+class SetupHeightScreen extends StatefulWidget {
+  const SetupHeightScreen({super.key});
+
+  @override
+  State<SetupHeightScreen> createState() => _SetupHeightScreenState();
+}
+
+class _SetupHeightScreenState extends State<SetupHeightScreen> {
+  int selectedHeight = 170; // default
+  late FixedExtentScrollController _scrollController;
+  late final AccountRegistrationCubit _cubit;
+  late UserDataProgressModel _userDataProgressModel;
+
+  @override
+  void initState() {
+    _cubit = context.read<AccountRegistrationCubit>();
+    _scrollController = FixedExtentScrollController(
+      initialItem: selectedHeight - 100,
+    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        selectedHeight = _userDataProgressModel.height ?? 170;
+        _scrollController.jumpToItem(selectedHeight - 100);
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    _userDataProgressModel =
+        ModalRoute.of(context)!.settings.arguments as UserDataProgressModel;
+
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        backgroundColor: AppColors.neutral10,
+        body: Padding(
+          padding: Window.getSymmetricPadding(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: Window.getVerticalSize(50)),
+              const ProgressBarWidget(
+                  currentScreen: 2, totalScreens: 8, stepText: "2 - 8"),
+              SizedBox(height: Window.getVerticalSize(30)),
+              Center(
+                child: Text(
+                  "What’s your height?",
+                  style: AppTextStyles.heading4SemiBold.copyWith(
+                    color: AppColors.neutral100,
+                    fontSize: Window.getFontSize(22),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(height: Window.getVerticalSize(10)),
+              Center(
+                child: Text(
+                  "We’ll use this to tailor your workouts and track progress accurately.",
+                  style: AppTextStyles.subtitleRegular.copyWith(
+                    color: AppColors.neutral70,
+                    fontSize: Window.getFontSize(16),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(height: Window.getVerticalSize(30)),
+              Expanded(
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    RotatedBox(
+                      quarterTurns: 1,
+                      child: ListWheelScrollView.useDelegate(
+                        controller: _scrollController,
+                        itemExtent: Window.getVerticalSize(120),
+                        physics: const FixedExtentScrollPhysics(),
+                        onSelectedItemChanged: (index) {
+                          setState(() {
+                            selectedHeight = index + 100;
+                          });
+                        },
+                        childDelegate: ListWheelChildBuilderDelegate(
+                          builder: (context, index) {
+                            int height = index + 100;
+                            return Transform.rotate(
+                              angle: -1.5708,
+                              child: Text(
+                                "$height",
+                                style: AppTextStyles.heading1Bold.copyWith(
+                                  fontSize: Window.getFontSize(60),
+                                  color: selectedHeight == height
+                                      ? AppColors.primaryBlue100
+                                      : AppColors.neutral30,
+                                ),
+                              ),
+                            );
+                          },
+                          childCount: 151, // 100 to 250
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: Window.getVerticalSize(190),
+                      child: Text(
+                        "Centimeters",
+                        style: AppTextStyles.bodyRegular.copyWith(
+                          fontSize: Window.getFontSize(16),
+                          color: AppColors.neutral70,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: Window.getVerticalSize(30)),
+              BlocListener<AccountRegistrationCubit, AccountRegistrationState>(
+                listener: (context, state) {
+                  state.maybeWhen(
+                    setUserProgressData: (progressData) {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        AppRoutes.setupWeightScreen, // next step
+                        (routes) => false,
+                        arguments: progressData,
+                      );
+                    },
+                    setUserProgressDataError: (error) {
+                      Utils.showCustomDialog(context, AppStrings.error, error);
+                    },
+                    orElse: () {},
+                  );
+                },
+                child: Padding(
+                  padding: Window.getSymmetricPadding(vertical: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      BackButtonWidget(
+                        onPressed: () {
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            AppRoutes.setupTargetScreen,
+                            (routes) => false,
+                            arguments: _userDataProgressModel,
+                          );
+                        },
+                      ),
+                      NextButtonWidget(
+                        onPressed: () {
+                          _userDataProgressModel.height = selectedHeight;
+                          _cubit.setUserDataProgreessModel(
+                              _userDataProgressModel);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
