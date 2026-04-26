@@ -61,8 +61,8 @@
                 android:name="com.google.firebase.messaging.default_notification_icon"
                 android:resource="@drawable/ic_launcher" />
             <intent-filter>
-                <action android:name="android.comtent.action.MAIN" />
-                <category android:name="android.comtent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
               <!-- Intention to show Permissions screen for Health Connect API -->
   <intent-filter>
@@ -75,8 +75,8 @@
      android:targetActivity=".MainActivity"
      android:permission="android.permission.START_VIEW_PERMISSION_USAGE">
         <intent-filter>
-            <action android:name="android.comtent.action.VIEW_PERMISSION_USAGE" />
-            <category android:name="android.comtent.category.HEALTH_PERMISSIONS" />
+            <action android:name="android.intent.action.VIEW_PERMISSION_USAGE" />
+            <category android:name="android.intent.category.HEALTH_PERMISSIONS" />
         </intent-filter>
         </activity-alias>
 
@@ -111,19 +111,15 @@
     <uses-feature android:name="android.hardware.sensor.stepcounter" android:required="false" />
     <uses-feature android:name="android.hardware.sensor.stepdetector" android:required="false" />
 
-    <!-- Required to query activities that can process text -->
+    <!-- Required to query activities and Health Connect availability -->
     <queries>
         <intent>
-            <action android:name="android.comtent.action.PROCESS_TEXT" />
+            <action android:name="android.intent.action.PROCESS_TEXT" />
             <data android:mimeType="text/plain" />
         </intent>
+        <package android:name="com.google.android.apps.healthdata" />
+        <intent>
+            <action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE" />
+        </intent>
     </queries>
-
-    <!-- Check whether Health Connect is installed or not -->
-<queries>
-  <package android:name="com.google.android.apps.healthdata" />
-  <intent>
-    <action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE" />
-  </intent>
-</queries>
 </manifest>
