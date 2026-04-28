@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -214,8 +213,7 @@ Future<void> setupServiceLocator() async {
   );
 
   sl.registerSingleton<Dio>(dio);
-  sl.registerLazySingleton(() => FirebaseFirestore.instance);
-  sl.registerLazySingleton(() => FirestoreBackend(sl()));
+  sl.registerLazySingleton(() => FirestoreBackend());
   sl.registerLazySingleton(() => HealthHandler());
   sl.registerLazySingleton(() => FirebaseServices());
 

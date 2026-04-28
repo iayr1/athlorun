@@ -1,19 +1,14 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:health/health.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:athlorun/config/di/dependency_injection.dart';
 import 'package:athlorun/config/routes/navigation_service.dart';
-import 'package:athlorun/firebase_options.dart';
 import 'config/routes/routes.dart';
 import 'core/utils/windows.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
   await Hive.initFlutter();
   await Health().configure();
   await Hive.openBox('userBox');
@@ -40,7 +35,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: navigationService.navigatorKey,
       debugShowCheckedModeBanner: false,
       title: 'athlorun',
-      initialRoute: AppRoutes.splashScreen,
+      initialRoute: AppRoutes.navigateScreen,
       onGenerateRoute: AppRoutes.generateRoute,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,

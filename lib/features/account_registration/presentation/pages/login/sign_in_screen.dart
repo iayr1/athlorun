@@ -33,7 +33,7 @@ class _SignInScreenState extends State<SignInScreen> {
   String selectedCountryName = "India";
   String countryCode = "+91";
   final TextEditingController phoneController = TextEditingController();
-  bool _isFormValid = false;
+  bool _isFormValid = true;
   late final AccountRegistrationCubit _cubit;
   late String _mobileNumber;
   @override
@@ -185,9 +185,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       controller: phoneController,
                       keyboardType: TextInputType.phone,
                       maxLength: 10,
-                      onChanged: (value) {
-                        _cubit.validateTextField(value, length: 10);
-                      },
+                      onChanged: (value) {},
                       decoration: InputDecoration(
                         counterText: "",
                         filled: true,
@@ -255,27 +253,15 @@ class _SignInScreenState extends State<SignInScreen> {
                   onTap: (startLoading, stopLoading, _) {
                     _mobileNumber = phoneController.text.trim();
                     startLoading();
-                    if (_isFormValid) {
-                      _cubit.sendOtp(countryCode + _mobileNumber).then(
-                        (_) {
-                          stopLoading();
-                        },
-                      );
-                    } else if (_mobileNumber.isEmpty) {
-                      Utils.showCustomDialog(
-                        context,
-                        AppStrings.error,
-                        AppStrings.pleaseEnterAPhoneNumber,
-                      );
-                      stopLoading();
-                    } else {
-                      Utils.showCustomDialog(
-                        context,
-                        AppStrings.error,
-                        AppStrings.pleaseEnterAValidPhoneNumber,
-                      );
-                      stopLoading();
-                    }
+                    Navigator.pushNamed(
+                      context,
+                      AppRoutes.enterOtp,
+                      arguments: {
+                        'mobileNumber': countryCode + _mobileNumber,
+                        'otpHint': 'UI-only mode: any 4 digits will continue.',
+                      },
+                    );
+                    stopLoading();
                   },
                   name: AppStrings.signIn,
                   isFormFilled: _isFormValid,

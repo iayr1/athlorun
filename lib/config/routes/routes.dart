@@ -23,6 +23,7 @@ import 'package:athlorun/features/challenges/presentation/pages/participated_cha
 import 'package:athlorun/features/challenges/presentation/pages/score_list_screen.dart';
 import 'package:athlorun/features/dashboard/presentation/pages/dashboard_screen.dart';
 import 'package:athlorun/features/dashboard/presentation/pages/dashboard_screen_podcast.dart';
+import 'package:athlorun/features/dashboard/presentation/pages/screen_navigation_hub.dart';
 import 'package:athlorun/features/events/data/models/request/ticket_booking_request_model.dart';
 import 'package:athlorun/features/events/data/models/response/get_events_response_model.dart';
 import 'package:athlorun/features/events/presentation/pages/event_page.dart';
@@ -233,6 +234,7 @@ class AppRoutes {
     podcastHomeScreen: PodcastHomeScreen(),
     dashboardScreenEvent: DashboardScreenEvent(),
     dashboardScreenPodcast: DashboardScreenPodcast(),
+    navigateScreen: const ScreenNavigationHub(),
     coinsCreditScreen: CoinsCreditScreen(),
     coinsRedeemScreen: CoinRedeemScreen(),
     setupHeightScreen: SetupHeightScreenWrapper(),

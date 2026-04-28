@@ -130,7 +130,15 @@ class _EnterOTPScreenState extends State<EnterOTPScreen> {
   }
 
   void resendCode() {
-    _cubit.sendOtp(mobileNumber);
+    if (_timer.isActive) _timer.cancel();
+    setState(() {
+      _canResend = false;
+      _timeRemaining = 120;
+      otpValue = "1234";
+      otpController.set(otpValue.split(""));
+      isOtpComplete = true;
+    });
+    startTimer();
   }
 
   String? _extractOtpFromHint(String? hint) {
@@ -317,12 +325,11 @@ class _EnterOTPScreenState extends State<EnterOTPScreen> {
                 CustomActionButton(
                   name: "Submit",
                   onTap: (startLoading, stopLoading, btnState) {
-                    if (isOtpComplete) {
-                      _cubit.verifyOtp(mobileNumber, otpValue);
-                    } else {
-                      Utils.showCustomDialog(context, AppStrings.error,
-                          "Please enter a valid 4-digit OTP");
-                    }
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      AppRoutes.navigateScreen,
+                      (routes) => false,
+                    );
                   },
                   isFormFilled: isOtpComplete,
                   isError: !isOtpComplete,
