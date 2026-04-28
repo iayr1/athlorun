@@ -1,23 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:athlorun/config/di/dependency_injection.dart';
-import 'package:athlorun/config/images/app_images.dart';
 import 'dart:async';
 import 'package:athlorun/config/routes/routes.dart';
 import 'package:athlorun/config/styles/app_gradients.dart';
-import 'package:athlorun/features/splash/presentation/bloc/splash_cubit.dart';
-
-class SplashScreenWrapper extends StatelessWidget {
-  const SplashScreenWrapper({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<SplashCubit>(),
-      child: const SplashScreen(),
-    );
-  }
-}
+import 'package:athlorun/config/images/app_images.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -27,12 +12,17 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2), () {
+
+    Timer(const Duration(seconds: 2), () {
       if (!mounted) return;
-      Navigator.pushReplacementNamed(context, AppRoutes.navigateScreen);
+      Navigator.pushReplacementNamed(
+        context,
+        AppRoutes.navigateScreen,
+      );
     });
   }
 
@@ -46,7 +36,11 @@ class _SplashScreenState extends State<SplashScreen> {
             gradient: AppGradients.splashGradient,
           ),
           child: Center(
-            child: Image.asset(AppImages.raveAboveIcon),
+            child: Image.asset(
+              AppImages.raveAboveIcon,
+              width: 140,
+              height: 140,
+            ),
           ),
         ),
       ),

@@ -134,7 +134,7 @@ class _ChallengeDetailsScreenState extends State<ChallengeDetailsScreen> {
                   ),
                   SizedBox(height: Window.getVerticalSize(8)),
                   Text(
-                    widget.challengeDetails.title!.toCapitalized,
+                    widget.challengeDetails.title!.toUpperCase(),
                     style: AppTextStyles.heading4Bold
                         .copyWith(color: AppColors.neutral100),
                   ),

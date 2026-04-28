@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:athlorun/core/global_store/data/models/user_data_response_model.dart';
 import 'package:athlorun/core/utils/utils.dart';
 import 'package:athlorun/features/account_registration/presentation/pages/getuserinfo/setup_activity_screen.dart';
 import 'package:athlorun/features/account_registration/presentation/pages/getuserinfo/setup_age_screen.dart';
@@ -10,7 +9,6 @@ import 'package:athlorun/features/account_registration/presentation/pages/login/
 import 'package:athlorun/features/account_registration/presentation/pages/getuserinfo/setup_level_screen.dart';
 import 'package:athlorun/features/account_registration/presentation/pages/getuserinfo/setup_profile_photo_screen.dart';
 import 'package:athlorun/features/account_registration/presentation/pages/getuserinfo/setup_name_email_screen.dart';
-import 'package:athlorun/features/account_registration/presentation/pages/getuserinfo/setup_reminder_screen.dart';
 import 'package:athlorun/features/account_registration/presentation/pages/getuserinfo/setup_target_screen.dart';
 import 'package:athlorun/features/account_registration/presentation/pages/login/sign_in_screen.dart';
 import 'package:athlorun/features/challenges/data/models/response/get_challenge_response_model.dart';
@@ -42,17 +40,12 @@ import 'package:athlorun/features/home/presentation/pages/reward_claimed_screen.
 import 'package:athlorun/features/home/presentation/pages/search_screen.dart';
 import 'package:athlorun/features/home/presentation/pages/daily_mission_screen.dart';
 import 'package:athlorun/features/podcast/podcast_screen.dart';
-import 'package:athlorun/features/profile/data/models/get_gear_response_model.dart';
 import 'package:athlorun/features/profile/presentation/pages/activity_details_page.dart';
-import 'package:athlorun/features/profile/presentation/pages/add_new_gear.dart';
 import 'package:athlorun/features/profile/presentation/pages/all_gear_page.dart';
 import 'package:athlorun/features/profile/presentation/pages/choose_activity_page.dart';
 import 'package:athlorun/features/profile/presentation/pages/friends_list_screen.dart';
-import 'package:athlorun/features/profile/presentation/pages/profile_update_page.dart';
 import 'package:athlorun/features/profile/presentation/pages/schedule_screen.dart';
 import 'package:athlorun/features/profile/presentation/pages/statistics_screen.dart';
-import 'package:athlorun/features/settings/presentation/pages/notification_setting_screen.dart';
-import 'package:athlorun/features/settings/presentation/pages/setting_page.dart';
 import 'package:athlorun/features/splash/presentation/pages/login_error_screen.dart';
 import 'package:athlorun/features/track/presentation/pages/activity_screen.dart';
 import '../../features/account_registration/presentation/pages/onboarding/onboarding_screen.dart';
@@ -159,11 +152,6 @@ class AppRoutes {
                 challengeList: arguments as GetChallengeResponseDataModel);
           case AppRoutes.congratulationScreen:
             return CongratulationScreen(challengeName: arguments as String);
-          case AppRoutes.addNewGear:
-            return AddNewGearWrapper(
-                geardata: arguments as GetGearResponseModelData?);
-          case AppRoutes.profileUpdateScreen:
-            return ProfileUpdatePageWrapper(userData: arguments as UserData);
           case AppRoutes.reviewBookingPage:
             final args = settings.arguments as Map<String, dynamic>;
             return ReviewBookingPageWrapper(
@@ -186,7 +174,7 @@ class AppRoutes {
   }
 
   static Map<String, Widget> routes = {
-    splashScreen: const SplashScreenWrapper(),
+    splashScreen: const SplashScreen(),
     onboarding: const OnboardingScreenWrapper(),
     setupNameEmailScreen: const SetupNameEmailScreenWrapper(),
     signIn: const SignInScreenWrapper(),
@@ -198,22 +186,21 @@ class AppRoutes {
     setupProfilePhotoScreen: const SetupProfilePhotoScreenWrapper(),
     // setupReminderScreen: const SetupReminderScreenWrapper(),
     dashboardScreen: const DashboardScreen(),
-    home: HomePageWrapper(),
+    home: HomePage(),
     leaderboard: const LeaderboardPage(),
     track: TrackPage(),
     challenges: const ChallengesPageWrapper(),
-    profile: ProfilePageWrapper(),
+    profile: ProfilePage(),
     setupGenderScreen: const SetupGenderScreenWrapper(),
     search: const SearchScreen(),
     notification: const NotificationScreen(),
     event: const EventPageWrapper(),
-    dailymission: const DailyMissionScreenWrapper(),
+    dailymission: const DailyMissionScreen(),
     rewardclaim: const RewardClaimedScreen(),
-    allGear: const AllGearPageWrapper(),
+    allGear: const AllGearPage(),
     galleryPage: const GalleryScreen(),
     badgeScreen: const BadgesScreen(),
-    scheduleScreen: const ScheduleScreenWrapper(),
-    settingsPage: const SettingScreenWrapper(),
+    scheduleScreen: const ScheduleScreen(),
     statisticsScreen: const StatisticScreen(),
     friendsScreen: const FriendsScreen(),
     scoreListScreen: ScoreListScreen(),
@@ -222,7 +209,6 @@ class AppRoutes {
     ),
     chooseActivity: ChooseActivityPage(),
     activityDetailsPage: ActivityDetailsPage(),
-    pushNotification: NotificationSettingScreenWrapper(),
     analysisTab: AnalysisTab(),
     searchScreen: SearchScreen(),
     friendsProfileScreen: FriendsProfileScreen(),
@@ -235,7 +221,7 @@ class AppRoutes {
     coinsRedeemScreen: CoinRedeemScreen(),
     setupHeightScreen: SetupHeightScreenWrapper(),
     setupWeightScreen: SetupWeightScreenWrapper(),
-    mapActivityScreen: ActivityScreenWrapper(),
+    mapActivityScreen: ActivityScreen(),
     ticketSuccessScreen: TicketSuccessScreen(),
     ticketFailureScreen: TicketFailureScreen()
   };

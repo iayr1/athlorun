@@ -30,7 +30,6 @@ class DashboardScreenState extends State<DashboardScreen>
     const ChallengesPageWrapper(),
     // const PodcastHomeScreen(),
     const EventPageWrapper(),
-    const ProfilePageWrapper(),
   ];
 
   void updateIndex(int index) {

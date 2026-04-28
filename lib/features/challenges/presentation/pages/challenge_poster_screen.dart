@@ -139,7 +139,7 @@ class _ChallengePosterScreenState extends State<ChallengePosterScreen>
                       ),
                       // Title
                       Text(
-                        widget.challengeList.title!.toCapitalized,
+                        widget.challengeList.title!.to,
                         style: AppTextStyles.bodyBold.copyWith(
                           fontSize: 22,
                           color: Colors.white,

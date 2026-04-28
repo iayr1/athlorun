@@ -1,56 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:athlorun/config/di/dependency_injection.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:athlorun/config/images/app_images.dart';
 import 'package:athlorun/config/routes/routes.dart';
 import 'package:athlorun/core/utils/app_strings.dart';
 import 'package:athlorun/core/widgets/custom_action_button.dart';
 import 'package:athlorun/core/widgets/custom_appbar.dart';
-import 'package:athlorun/features/home/presentation/bloc/home_page_cubit.dart';
-import 'package:athlorun/features/home/presentation/pages/coins_credit_screen.dart';
-import 'package:athlorun/features/home/presentation/pages/coins_redeem_screen.dart';
 import '../../../../config/styles/app_colors.dart';
 import '../../../../config/styles/app_textstyles.dart';
 import '../../../../core/utils/windows.dart';
 
-class DailyMissionScreenWrapper extends StatelessWidget {
-  const DailyMissionScreenWrapper({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<HomePageCubit>(),
-      child: const DailyMissionScreen(),
-    );
-  }
-}
-
-class DailyMissionScreen extends StatefulWidget {
+class DailyMissionScreen extends StatelessWidget {
   const DailyMissionScreen({super.key});
 
   @override
-  State<DailyMissionScreen> createState() => _DailyMissionScreenState();
-}
-
-class _DailyMissionScreenState extends State<DailyMissionScreen> {
-  late HomePageCubit _cubit;
-
-  @override
-  void initState() {
-    super.initState();
-    _cubit = context.read<HomePageCubit>();
-    _cubit.getUserWalletData();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> transactions = [
+    /// Dummy UI data
+    final transactions = [
       {
         "icon": AppImages.walkingSvg,
         "title": "100K Run Reward Earned",
         "date": "10 Jan 2023",
-        "time": "10:30 AM",
         "points": "+8",
         "isCredit": true
       },
@@ -58,24 +27,7 @@ class _DailyMissionScreenState extends State<DailyMissionScreen> {
         "icon": AppImages.walkingSvg,
         "title": "Reward Claimed",
         "date": "6 Jan 2023",
-        "time": "2:00 PM",
         "points": "-5",
-        "isCredit": false
-      },
-      {
-        "icon": AppImages.walkingSvg,
-        "title": "100K Run Reward Earned",
-        "date": "29 Dec 2023",
-        "time": "3:15 PM",
-        "points": "+3",
-        "isCredit": true
-      },
-      {
-        "icon": AppImages.walkingSvg,
-        "title": "Purchase Reward Claimed",
-        "date": "19 Dec 2023",
-        "time": "5:45 PM",
-        "points": "-8",
         "isCredit": false
       },
     ];
@@ -95,8 +47,9 @@ class _DailyMissionScreenState extends State<DailyMissionScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Total Points Section
+                  /// Total Points
                   const TotalPointsContainer(),
+
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: Window.getHorizontalSize(16),
@@ -109,9 +62,10 @@ class _DailyMissionScreenState extends State<DailyMissionScreen> {
                       ),
                     ),
                   ),
+
                   SizedBox(height: Window.getVerticalSize(16)),
 
-                  // List of Points Transactions
+                  /// Transactions
                   ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
@@ -119,42 +73,23 @@ class _DailyMissionScreenState extends State<DailyMissionScreen> {
                         horizontal: Window.getHorizontalSize(16)),
                     itemCount: transactions.length,
                     itemBuilder: (context, index) {
-                      final transaction = transactions[index];
+                      final item = transactions[index];
 
                       return GestureDetector(
                         onTap: () {
-                          final route = transaction["points"].startsWith('+')
-                              ? MaterialPageRoute(
-                                  builder: (context) =>
-                                      const CoinsCreditScreen(),
-                                  settings: RouteSettings(arguments: {
-                                    "icon": transaction["icon"],
-                                    "title": transaction["title"],
-                                    "date": transaction["date"],
-                                    "time": transaction["time"],
-                                    "points": transaction["points"],
-                                  }),
-                                )
-                              : MaterialPageRoute(
-                                  builder: (context) =>
-                                      const CoinRedeemScreen(),
-                                  settings: RouteSettings(arguments: {
-                                    "icon": transaction["icon"],
-                                    "title": transaction["title"],
-                                    "date": transaction["date"],
-                                    "time": transaction["time"],
-                                    "points": transaction["points"],
-                                  }),
-                                );
-
-                          Navigator.push(context, route);
+                          Navigator.pushNamed(
+                            context,
+                            item["isCredit"] == true
+                                ? AppRoutes.coinsCreditScreen
+                                : AppRoutes.coinsRedeemScreen,
+                          );
                         },
                         child: PointTransactionCard(
-                          title: transaction["title"],
-                          date: transaction["date"],
-                          points: transaction["points"],
-                          isCredit: transaction["isCredit"],
-                          icon: transaction["icon"],
+                          title: "Morning Run Reward",
+                          date: "12 March 2024",
+                          points: "+10",
+                          isCredit: true,
+                          icon: AppImages.walkingSvg,
                         ),
                       );
                     },
@@ -168,7 +103,7 @@ class _DailyMissionScreenState extends State<DailyMissionScreen> {
       bottomNavigationBar: Padding(
         padding: Window.getPadding(left: 16, right: 16, bottom: 16),
         child: CustomActionButton(
-          onTap: (startLoading, stopLoading, state) {
+          onTap: (s, st, state) {
             Navigator.pushNamed(context, AppRoutes.rewardclaim);
           },
           name: AppStrings.claimReward,

@@ -64,7 +64,7 @@ class ChallengeItem extends StatelessWidget {
                 children: [
                   // Title
                   Text(
-                    title.toCapitalized,
+                    title.toUpperCase(),
                     style: AppTextStyles.bodyBold.copyWith(
                       fontSize: Window.getFontSize(14),
                       color: AppColors.neutral100,
