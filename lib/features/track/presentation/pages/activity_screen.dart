@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // ─────────────────────────────────────────────────────────────────
-//  Entry point – wrap in your own BlocProviders / DI as needed
+//  Entry point – UI-only screen, no state-management dependency required
 // ─────────────────────────────────────────────────────────────────
 class ActivityScreen extends StatefulWidget {
   const ActivityScreen({super.key});
