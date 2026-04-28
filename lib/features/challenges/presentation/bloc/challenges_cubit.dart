@@ -35,6 +35,22 @@ class ChallengesError extends ChallengesState {
 class ChallengesCubit extends Cubit<ChallengesState> {
   ChallengesCubit() : super(const ChallengesInitial());
 
+  Future<void> getParticipatedChallenges([
+    GetChallengeResponseDataModel? challenge,
+  ]) async {
+    final activeChallenge = challenge ??
+        (state is ChallengesLoaded
+            ? (state as ChallengesLoaded).challenge
+            : null);
+
+    if (activeChallenge == null) {
+      emit(const ChallengesError('No challenge selected'));
+      return;
+    }
+
+    await loadChallenge(activeChallenge);
+  }
+
   Future<void> loadChallenge(GetChallengeResponseDataModel challenge) async {
     emit(const ChallengesLoading());
     emit(ChallengesLoaded(challenge));
