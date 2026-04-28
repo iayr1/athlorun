@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:athlorun/config/images/app_images.dart';
 import 'package:athlorun/core/utils/app_strings.dart';
+import 'package:athlorun/features/challenges/presentation/pages/daily_challenges_screen.dart';
 import 'package:athlorun/features/leaderboard/presentation/pages/leaderboard_page.dart';
 import 'package:athlorun/features/profile/presentation/pages/profile_page.dart';
 import 'package:athlorun/features/track/presentation/pages/track_page.dart';
@@ -25,7 +26,7 @@ class DashboardScreenState extends State<DashboardScreen>
     HomePage(),
     LeaderboardPage(),
     TrackPage(),
-    _PlaceholderTab(title: 'Challenges'),
+    DailyChallengesScreen(),
     _PlaceholderTab(title: 'Events'),
     ProfilePage(),
   ];
