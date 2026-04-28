@@ -37,7 +37,10 @@ class _TrackPageState extends State<TrackPage> {
 
   Future<void> _initializeLocation() async {
     final serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) return;
+    if (!serviceEnabled) {
+      _showMessage('Location services are disabled.');
+      return;
+    }
 
     var permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
@@ -45,6 +48,7 @@ class _TrackPageState extends State<TrackPage> {
     }
     if (permission == LocationPermission.deniedForever ||
         permission == LocationPermission.denied) {
+      _showMessage('Location permission is required for tracking.');
       return;
     }
 
@@ -53,6 +57,11 @@ class _TrackPageState extends State<TrackPage> {
       _center = LatLng(position.latitude, position.longitude);
     });
     _mapController.move(_center, 16);
+  }
+
+  void _showMessage(String message) {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
   }
 
   void _toggleTracking() {
@@ -113,10 +122,14 @@ class _TrackPageState extends State<TrackPage> {
     final seconds = (_duration.inSeconds % 60).toString().padLeft(2, '0');
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Track')),
-      floatingActionButton: FloatingActionButton(
+      appBar: AppBar(
+        title: const Text('Track Run'),
+        foregroundColor: const Color(0xFF111827),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: _initializeLocation,
-        child: const Icon(Icons.my_location),
+        icon: const Icon(Icons.my_location),
+        label: const Text('Center'),
       ),
       body: Stack(
         children: [
@@ -133,19 +146,24 @@ class _TrackPageState extends State<TrackPage> {
                   Polyline(
                     points: _routePoints,
                     strokeWidth: 5,
-                    color: Colors.blue,
+                    color: const Color(0xFF2D74F0),
                   ),
                 ],
               ),
-              MarkerLayer(markers: [
-                Marker(
-                  point: _center,
-                  width: 40,
-                  height: 40,
-                  child: const Icon(Icons.location_pin,
-                      size: 36, color: Colors.red),
-                ),
-              ]),
+              MarkerLayer(
+                markers: [
+                  Marker(
+                    point: _center,
+                    width: 42,
+                    height: 42,
+                    child: const Icon(
+                      Icons.location_pin,
+                      size: 38,
+                      color: Color(0xFFE11D48),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
           Positioned(
@@ -153,23 +171,48 @@ class _TrackPageState extends State<TrackPage> {
             right: 16,
             bottom: 24,
             child: Card(
+              elevation: 2,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
               child: Padding(
                 padding: const EdgeInsets.all(14),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text('Distance: ${_distanceKm.toStringAsFixed(2)} km'),
-                        Text('Duration: $minutes:$seconds'),
+                        Expanded(
+                          child: _TrackMetric(
+                            label: 'Distance',
+                            value: '${_distanceKm.toStringAsFixed(2)} km',
+                          ),
+                        ),
+                        Expanded(
+                          child: _TrackMetric(
+                            label: 'Duration',
+                            value: '$minutes:$seconds',
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 10),
-                    ElevatedButton.icon(
-                      onPressed: _toggleTracking,
-                      icon: Icon(_isTracking ? Icons.stop : Icons.play_arrow),
-                      label: Text(_isTracking ? 'Stop' : 'Start'),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton.icon(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: _isTracking
+                              ? const Color(0xFFEF4444)
+                              : const Color(0xFF2D74F0),
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                        ),
+                        onPressed: _toggleTracking,
+                        icon: Icon(
+                          _isTracking ? Icons.stop_circle_outlined : Icons.play_arrow,
+                        ),
+                        label: Text(_isTracking ? 'Stop Tracking' : 'Start Tracking'),
+                      ),
                     ),
                   ],
                 ),
@@ -178,6 +221,31 @@ class _TrackPageState extends State<TrackPage> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _TrackMetric extends StatelessWidget {
+  final String label;
+  final String value;
+
+  const _TrackMetric({required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: const TextStyle(color: Color(0xFF6B7280), fontSize: 12),
+        ),
+        const SizedBox(height: 2),
+        Text(
+          value,
+          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+        ),
+      ],
     );
   }
 }
