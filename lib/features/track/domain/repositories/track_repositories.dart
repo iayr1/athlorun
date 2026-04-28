@@ -4,7 +4,6 @@ import 'package:dartz/dartz.dart';
 import 'package:athlorun/features/track/data/models/choose_sport_response_model.dart';
 import '../../../../core/status/failures.dart';
 import '../../data/models/activities_request_model.dart';
-import '../../data/models/activities_response_model.dart';
 
 abstract class TrackRepository {
   Future<Either<Failure, SportsResponseModel>> chooseSports();

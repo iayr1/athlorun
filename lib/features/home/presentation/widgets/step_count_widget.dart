@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../../../config/images/app_images.dart';
 import '../../../../config/styles/app_colors.dart';
 import '../../../../config/styles/app_textstyles.dart';
-import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/windows.dart';
 
 class StepCountWidget extends StatelessWidget {

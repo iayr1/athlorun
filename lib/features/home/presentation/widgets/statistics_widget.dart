@@ -15,7 +15,6 @@ class StatisticsWidget extends StatefulWidget {
 
 class _StatisticsWidgetState extends State<StatisticsWidget> {
   final health = Health();
-  List<HealthDataPoint> _healthData = [];
 
   // Using ValueNotifier for smoother updates
   final ValueNotifier<Map<HealthDataType, int>> _baseValuesNotifier =

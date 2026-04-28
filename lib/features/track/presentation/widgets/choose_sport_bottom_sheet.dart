@@ -44,8 +44,8 @@ class ChooseSportBottomSheet extends StatelessWidget {
             runSpacing: 16,
             children: sports.map((sport) {
               return _SportOption(
-                iconUrl: sport.icon ?? "",
-                label: sport.name ?? "",
+                iconUrl: sport.icon,
+                label: sport.name,
                 color: Colors.blueAccent,
                 isSelected: false, // UI only
                 onTap: () {

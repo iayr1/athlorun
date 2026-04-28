@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../config/styles/app_colors.dart';
 import '../../../../config/styles/app_textstyles.dart';
-import '../../../../core/utils/app_strings.dart';
-import '../../../../core/utils/windows.dart';
 import '../../../../core/widgets/custom_action_button.dart';
 
 class AddScheduleBottomSheet extends StatefulWidget {

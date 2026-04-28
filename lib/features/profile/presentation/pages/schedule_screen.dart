@@ -1,9 +1,7 @@
 import 'package:athlorun/features/profile/presentation/pages/add_schedule_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../config/routes/routes.dart';
 import '../../../../config/styles/app_colors.dart';
-import '../../../../config/styles/app_textstyles.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/windows.dart';
 import '../../../../core/widgets/custom_action_button.dart';

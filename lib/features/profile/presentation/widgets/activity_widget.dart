@@ -120,7 +120,7 @@ class _Statistic extends StatelessWidget {
   final String label;
   final String value;
 
-  const _Statistic({super.key, required this.label, required this.value});
+  const _Statistic({required this.label, required this.value});
 
   @override
   Widget build(BuildContext context) {

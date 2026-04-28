@@ -3,7 +3,6 @@ import '../../../../config/styles/app_colors.dart';
 import '../../../../config/styles/app_textstyles.dart';
 import '../../../../core/utils/windows.dart';
 import '../pages/badge_screen.dart';
-import '../pages/health_page.dart';
 
 class BadgeWidget extends StatelessWidget {
   const BadgeWidget({Key? key}) : super(key: key);
