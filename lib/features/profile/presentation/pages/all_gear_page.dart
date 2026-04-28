@@ -41,7 +41,7 @@ class AllGearPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.neutral10,
       appBar: AppBar(
-        title: Text(AppStrings.allGear),
+        title: const Text(AppStrings.allGear),
         centerTitle: true,
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,

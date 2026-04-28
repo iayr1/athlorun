@@ -49,7 +49,7 @@ class ChooseActivityPage extends StatelessWidget {
 }
 
 class _BuildContainerWidget extends StatelessWidget {
-  const _BuildContainerWidget({super.key});
+  const _BuildContainerWidget();
 
   @override
   Widget build(BuildContext context) {
