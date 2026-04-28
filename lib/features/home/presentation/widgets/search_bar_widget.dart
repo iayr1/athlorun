@@ -15,8 +15,7 @@ class SearchBarWidget extends StatelessWidget {
           // Navigate to the search screen when tapped
           Navigator.pushNamed(
               context,
-              AppRoutes
-                  .searchScreen); // Replace with your AppRoutes.search if needed
+              AppRoutes.search); // Replace with your AppRoutes.search if needed
         },
         child: AbsorbPointer(
           // Prevent interaction with the TextField in the current screen
