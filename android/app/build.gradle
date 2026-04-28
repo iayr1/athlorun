@@ -28,7 +28,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace = "com.example.athlorun"
-    compileSdk = 34 // Updated to API level 34 (latest version)
+    compileSdk = 36
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -43,7 +43,7 @@ android {
     defaultConfig {
         applicationId = "com.example.athlorun"
         minSdk = 26 // Updated to API level 26
-        targetSdk = 34 // Updated to API level 34
+        targetSdk = 36
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
 
