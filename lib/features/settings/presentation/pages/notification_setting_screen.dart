@@ -1,5 +1,3 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:athlorun/config/di/dependency_injection.dart';
@@ -56,11 +54,6 @@ class _NotificationSettingScreenState extends State<NotificationSettingScreen> {
           listener: (context, state) {
         state.maybeWhen(
             updatedNotificationPreferences: (items) async {
-              if (kDebugMode) {
-                print(
-                    "fcm token : ${await (FirebaseMessaging.instance.getToken())}");
-              }
-
               for (Datum item in items) {
                 for (Datum element in _notificationPreferences) {
                   if (item.id == element.id) {

@@ -1,17 +1,16 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class FirestoreBackend {
-  FirestoreBackend(this._firestore);
+  FirestoreBackend();
 
-  final FirebaseFirestore _firestore;
+  static final Map<String, Map<String, Map<String, dynamic>>> _db = {};
 
   Future<Map<String, dynamic>> getDocument({
     required String collection,
     required String docId,
     Map<String, dynamic> fallback = const {},
   }) async {
-    final snapshot = await _firestore.collection(collection).doc(docId).get();
-    return snapshot.data() ?? fallback;
+    return Map<String, dynamic>.from(
+      _db[collection]?[docId] ?? fallback,
+    );
   }
 
   Future<List<Map<String, dynamic>>> getCollection({
@@ -19,12 +18,15 @@ class FirestoreBackend {
     String? field,
     dynamic isEqualTo,
   }) async {
-    Query<Map<String, dynamic>> query = _firestore.collection(collection);
-    if (field != null) {
-      query = query.where(field, isEqualTo: isEqualTo);
+    final docs = _db[collection]?.values.toList() ?? [];
+    if (field == null) {
+      return docs.map((e) => Map<String, dynamic>.from(e)).toList();
     }
-    final snapshot = await query.get();
-    return snapshot.docs.map((doc) => doc.data()).toList();
+
+    return docs
+        .where((doc) => doc[field] == isEqualTo)
+        .map((e) => Map<String, dynamic>.from(e))
+        .toList();
   }
 
   Future<Map<String, dynamic>> upsertDocument({
@@ -32,14 +34,18 @@ class FirestoreBackend {
     required String docId,
     required Map<String, dynamic> data,
   }) async {
-    await _firestore.collection(collection).doc(docId).set(data, SetOptions(merge: true));
-    return data;
+    final map = _db.putIfAbsent(collection, () => {});
+    map[docId] = {
+      ...?map[docId],
+      ...data,
+    };
+    return Map<String, dynamic>.from(map[docId]!);
   }
 
   Future<void> deleteDocument({
     required String collection,
     required String docId,
   }) async {
-    await _firestore.collection(collection).doc(docId).delete();
+    _db[collection]?.remove(docId);
   }
 }
