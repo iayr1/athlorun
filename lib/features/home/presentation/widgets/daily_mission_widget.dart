@@ -110,7 +110,7 @@ class DailyMissionWidget extends StatelessWidget {
                   height: Window.getSize(38), // Responsive size
                   width: Window.getSize(38), // Responsive size
                   decoration: BoxDecoration(
-                    color: progressColor.withOpacity(0.2),
+                    color: progressColor.withValues(alpha: 0.2),
                     // Subtle background color
                     shape: BoxShape.circle,
                   ),

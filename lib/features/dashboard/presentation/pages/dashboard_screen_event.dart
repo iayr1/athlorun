@@ -19,7 +19,7 @@ class _DashboardScreenEventState extends State<DashboardScreenEvent> {
     const EventPage(),
     const OrderHistoryPage(),
     const EventMapPage(),
-    const SettingEventPage(),
+    SettingEventPage(),
   ];
 
   void updateIndex(int index) {

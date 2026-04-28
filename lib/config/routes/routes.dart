@@ -16,9 +16,15 @@ class AppRoutes {
   static const String coinsCreditScreen = '/coins-credit';
   static const String coinsRedeemScreen = '/coins-redeem';
   static const String rewardclaim = '/reward-claim';
+  static const String dailyMission = '/daily-mission';
+  static const String dailymission = dailyMission;
 
   // Challenges
   static const String challengePosterScreen = '/challenge-poster';
+
+  // Social
+  static const String friendsScreen = '/friends';
+  static const String friendsProfileScreen = '/friends-profile';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     return MaterialPageRoute(
@@ -46,8 +52,12 @@ class AppRoutes {
     coinsCreditScreen: (_) => const _UiRoutePlaceholder(title: 'Coins Credit'),
     coinsRedeemScreen: (_) => const _UiRoutePlaceholder(title: 'Coins Redeem'),
     rewardclaim: (_) => const _UiRoutePlaceholder(title: 'Reward Claim'),
+    dailyMission: (_) => const _UiRoutePlaceholder(title: 'Daily Mission'),
     challengePosterScreen: (_) =>
         const _UiRoutePlaceholder(title: 'Challenge Poster'),
+    friendsScreen: (_) => const _UiRoutePlaceholder(title: 'Friends'),
+    friendsProfileScreen: (_) =>
+        const _UiRoutePlaceholder(title: 'Friend Profile'),
   };
 }
 

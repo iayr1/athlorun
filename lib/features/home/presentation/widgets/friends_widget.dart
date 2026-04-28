@@ -6,7 +6,7 @@ import '../../../../config/styles/app_textstyles.dart';
 import '../../../../core/utils/windows.dart';
 
 class FriendsWidget extends StatefulWidget {
-  const FriendsWidget({Key? key}) : super(key: key);
+  const FriendsWidget({super.key});
 
   @override
   State<FriendsWidget> createState() => _FriendsWidgetState();
