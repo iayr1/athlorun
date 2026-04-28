@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:athlorun/config/images/app_images.dart';
 import 'package:athlorun/core/utils/app_strings.dart';
-import 'package:athlorun/features/challenges/presentation/pages/challenges_page.dart';
-import 'package:athlorun/features/events/presentation/pages/event_page.dart';
 import 'package:athlorun/features/leaderboard/presentation/pages/leaderboard_page.dart';
 import 'package:athlorun/features/profile/presentation/pages/profile_page.dart';
 import 'package:athlorun/features/track/presentation/pages/track_page.dart';
@@ -23,13 +21,13 @@ class DashboardScreenState extends State<DashboardScreen>
     with SingleTickerProviderStateMixin {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = [
-    const HomePageWrapper(),
-    const LeaderboardPage(),
-    const TrackPage(),
-    const ChallengesPageWrapper(),
-    // const PodcastHomeScreen(),
-    const EventPageWrapper(),
+  final List<Widget> _pages = const [
+    HomePage(),
+    LeaderboardPage(),
+    TrackPage(),
+    _PlaceholderTab(title: 'Challenges'),
+    _PlaceholderTab(title: 'Events'),
+    ProfilePage(),
   ];
 
   void updateIndex(int index) {
@@ -124,6 +122,22 @@ class DashboardScreenState extends State<DashboardScreen>
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _PlaceholderTab extends StatelessWidget {
+  final String title;
+
+  const _PlaceholderTab({required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        '$title screen coming soon',
+        style: const TextStyle(fontSize: 16),
       ),
     );
   }
