@@ -7,6 +7,19 @@ class AppRoutes {
   static const String scoreListScreen = '/score-list';
   static const String congratulationScreen = '/congratulation';
 
+  // Dashboard
+  static const String dashboardScreen = '/dashboard';
+  static const String dashboardScreenEvent = '/dashboard-event';
+  static const String dashboardScreenPodcast = '/dashboard-podcast';
+
+  // Coins / rewards
+  static const String coinsCreditScreen = '/coins-credit';
+  static const String coinsRedeemScreen = '/coins-redeem';
+  static const String rewardclaim = '/reward-claim';
+
+  // Challenges
+  static const String challengePosterScreen = '/challenge-poster';
+
   static Route<dynamic> generateRoute(RouteSettings settings) {
     return MaterialPageRoute(
       builder: (_) => const Scaffold(
@@ -23,7 +36,18 @@ class AppRoutes {
     track: (_) => const _UiRoutePlaceholder(title: 'Track'),
     pedometer: (_) => const _UiRoutePlaceholder(title: 'Pedometer'),
     scoreListScreen: (_) => const _UiRoutePlaceholder(title: 'Score List'),
-    congratulationScreen: (_) => const _UiRoutePlaceholder(title: 'Congratulations'),
+    congratulationScreen: (_) =>
+        const _UiRoutePlaceholder(title: 'Congratulations'),
+    dashboardScreen: (_) => const _UiRoutePlaceholder(title: 'Dashboard'),
+    dashboardScreenEvent: (_) =>
+        const _UiRoutePlaceholder(title: 'Dashboard Event'),
+    dashboardScreenPodcast: (_) =>
+        const _UiRoutePlaceholder(title: 'Dashboard Podcast'),
+    coinsCreditScreen: (_) => const _UiRoutePlaceholder(title: 'Coins Credit'),
+    coinsRedeemScreen: (_) => const _UiRoutePlaceholder(title: 'Coins Redeem'),
+    rewardclaim: (_) => const _UiRoutePlaceholder(title: 'Reward Claim'),
+    challengePosterScreen: (_) =>
+        const _UiRoutePlaceholder(title: 'Challenge Poster'),
   };
 }
 
