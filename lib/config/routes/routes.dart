@@ -4,6 +4,8 @@ class AppRoutes {
   static const String home = '/home';
   static const String track = '/track';
   static const String pedometer = '/pedometer';
+  static const String scoreListScreen = '/score-list';
+  static const String congratulationScreen = '/congratulation';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     return MaterialPageRoute(
@@ -20,6 +22,8 @@ class AppRoutes {
     home: (_) => const _UiRoutePlaceholder(title: 'Home'),
     track: (_) => const _UiRoutePlaceholder(title: 'Track'),
     pedometer: (_) => const _UiRoutePlaceholder(title: 'Pedometer'),
+    scoreListScreen: (_) => const _UiRoutePlaceholder(title: 'Score List'),
+    congratulationScreen: (_) => const _UiRoutePlaceholder(title: 'Congratulations'),
   };
 }
 
