@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../../../config/styles/app_colors.dart';
 import '../../../../config/styles/app_textstyles.dart';
 import '../../../../core/utils/windows.dart';
-import '../../../events/presentation/pages/event_page.dart';
 import '../../../orders/order_history.dart';
 import '../../../settings/presentation/pages/setting_event_page.dart';
 
@@ -17,10 +16,10 @@ class _DashboardScreenEventState extends State<DashboardScreenEvent> {
   int _currentIndex = 0; // Controls the active tab
 
   final List<Widget> _pages = [
-    EventPage(),
-    OrderHistoryPage(),
-    // EventMapPage(),
-    SettingEventPage(),
+    const EventPage(),
+    const OrderHistoryPage(),
+    const EventMapPage(),
+    const SettingEventPage(),
   ];
 
   void updateIndex(int index) {
@@ -49,7 +48,7 @@ class _DashboardScreenEventState extends State<DashboardScreenEvent> {
                   borderRadius: BorderRadius.circular(Window.getRadiusSize(30)),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       blurRadius: 10,
                       spreadRadius: 2,
                     ),
@@ -102,5 +101,24 @@ class _DashboardScreenEventState extends State<DashboardScreenEvent> {
         ],
       ),
     );
+  }
+}
+
+
+class EventPage extends StatelessWidget {
+  const EventPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(child: Text('Event page (UI only)'));
+  }
+}
+
+class EventMapPage extends StatelessWidget {
+  const EventMapPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(child: Text('Map page (UI only)'));
   }
 }

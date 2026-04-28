@@ -84,7 +84,7 @@ class DailyMissionScreen extends StatelessWidget {
                                 : AppRoutes.coinsRedeemScreen,
                           );
                         },
-                        child: PointTransactionCard(
+                        child: const PointTransactionCard(
                           title: "Morning Run Reward",
                           date: "12 March 2024",
                           points: "+10",
@@ -147,8 +147,15 @@ class PointTransactionCard extends StatelessWidget {
         contentPadding: EdgeInsets.zero,
         leading: CircleAvatar(
           radius: Window.getHorizontalSize(24),
-          backgroundColor: AppColors.primaryBlue40.withOpacity(0.9),
-          child: SvgPicture.asset(icon, color: AppColors.neutral90, width: 24),
+          backgroundColor: AppColors.primaryBlue40.withValues(alpha: 0.9),
+          child: SvgPicture.asset(
+            icon,
+            colorFilter: const ColorFilter.mode(
+              AppColors.neutral90,
+              BlendMode.srcIn,
+            ),
+            width: 24,
+          ),
         ),
         title: Text(
           title,
@@ -206,7 +213,7 @@ class StepCoinContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(Window.getHorizontalSize(16)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 15,
             offset: const Offset(0, 4),
           ),
@@ -272,7 +279,7 @@ class TotalPointsContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(Window.getHorizontalSize(16)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 15,
             offset: const Offset(0, 4),
           ),
@@ -394,7 +401,7 @@ class MissionCard extends StatelessWidget {
             width: Window.getHorizontalSize(40),
             height: Window.getHorizontalSize(40),
             decoration: BoxDecoration(
-              color: iconColor.withOpacity(0.2),
+              color: iconColor.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(Window.getHorizontalSize(20)),
             ),
             child: Icon(icon, color: iconColor, size: Window.getFontSize(24)),
