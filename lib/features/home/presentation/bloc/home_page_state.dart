@@ -54,12 +54,6 @@ class HomePageState with _$HomePageState {
   const factory HomePageState.enableNotificationError(String error) =
       _EnableNotificationError;
 
-  const factory HomePageState.requestingNotificationPermissiion() =
-      _RequestingNotificationPermissiion;
-  const factory HomePageState.requestedNotificationPermissiion(
-      NotificationSettings settings) = _RequestedNotificationPermissiion;
-  const factory HomePageState.requestNotificationPermissiionError(
-      String error) = _RequestNotificationPermissiionError;
 
   const factory HomePageState.fetchingFcmToken() = _FetchingFcmToken;
   const factory HomePageState.fetchedFcmToken(String? fcmToken) =

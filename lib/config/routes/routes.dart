@@ -33,7 +33,6 @@ import 'package:athlorun/features/events/presentation/pages/sports_event_page.da
 import 'package:athlorun/features/events/presentation/pages/ticket_failure_screen.dart';
 import 'package:athlorun/features/events/presentation/pages/ticket_succes_screen.dart';
 import 'package:athlorun/features/home/presentation/pages/badge_screen.dart';
-import 'package:athlorun/features/home/presentation/pages/call_logs_page.dart';
 import 'package:athlorun/features/home/presentation/pages/coins_credit_screen.dart';
 import 'package:athlorun/features/home/presentation/pages/coins_redeem_screen.dart';
 import 'package:athlorun/features/home/presentation/pages/friends_profile_screen.dart';
@@ -42,7 +41,6 @@ import 'package:athlorun/features/home/presentation/pages/notification_screen.da
 import 'package:athlorun/features/home/presentation/pages/reward_claimed_screen.dart';
 import 'package:athlorun/features/home/presentation/pages/search_screen.dart';
 import 'package:athlorun/features/home/presentation/pages/daily_mission_screen.dart';
-import 'package:athlorun/features/home/presentation/pages/sms_page.dart';
 import 'package:athlorun/features/podcast/podcast_screen.dart';
 import 'package:athlorun/features/profile/data/models/get_gear_response_model.dart';
 import 'package:athlorun/features/profile/presentation/pages/activity_details_page.dart';
@@ -212,8 +210,6 @@ class AppRoutes {
     dailymission: const DailyMissionScreenWrapper(),
     rewardclaim: const RewardClaimedScreen(),
     allGear: const AllGearPageWrapper(),
-    smsPage: const SmsListScreen(),
-    callLogs: const CallLogsPage(),
     galleryPage: const GalleryScreen(),
     badgeScreen: const BadgesScreen(),
     scheduleScreen: const ScheduleScreenWrapper(),

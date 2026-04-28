@@ -49,7 +49,6 @@ class _HomePageState extends State<HomePage>
   void initState() {
     super.initState();
     _cubit = context.read<HomePageCubit>();
-    _cubit.requesNotificationPermissiion();
     _refreshHomePage();
   }
 

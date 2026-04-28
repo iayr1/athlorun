@@ -160,18 +160,6 @@ class HomePageCubit extends Cubit<HomePageState> {
     );
   }
 
-  Future<void> requesNotificationPermissiion() async {
-    emit(const HomePageState.requestingNotificationPermissiion());
-    final result = await _requestNotificationPermissionUsecase();
-    result.fold(
-      (l) {
-        emit(HomePageState.requestNotificationPermissiionError(l.message));
-      },
-      (r) {
-        emit(HomePageState.requestedNotificationPermissiion(r));
-      },
-    );
-  }
 
   Future<void> getFcmToken() async {
     emit(const HomePageState.fetchingFcmToken());
