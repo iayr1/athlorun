@@ -1,305 +1,332 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:athlorun/features/home/presentation/pages/health_page.dart';
+import 'package:athlorun/config/themes/app_theme.dart';
+import 'package:athlorun/core/services/metrics_store.dart';
+import 'package:athlorun/core/utils/formatters.dart';
+import 'package:athlorun/core/widgets/ui_kit.dart';
+import 'package:athlorun/features/challenges/presentation/widgets/sleep_logger.dart';
 
-class DailyChallengesScreen extends StatefulWidget {
+class DailyChallengesScreen extends StatelessWidget {
   const DailyChallengesScreen({super.key});
 
   @override
-  State<DailyChallengesScreen> createState() => _DailyChallengesScreenState();
-}
-
-class _DailyChallengesScreenState extends State<DailyChallengesScreen> {
-  static const int _dailyStepsTarget = 10000;
-  static const double _dailyRunKmTarget = 5;
-  static const double _dailyCaloriesTarget = 600;
-  static const double _dailySleepHoursTarget = 8;
-
-  int _steps = 0;
-  double _runningDistanceKm = 0;
-  double _walkingDistanceKm = 0;
-  double _calories = 0;
-  double _sleepHours = 0;
-
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadDailyMetrics();
-  }
-
-  String get _todayKey {
-    final now = DateTime.now();
-    return '${now.year}-${now.month}-${now.day}';
-  }
-
-  Future<void> _loadDailyMetrics() async {
-    final prefs = await SharedPreferences.getInstance();
-    await _rollOverDailyDataIfNeeded(prefs);
-
-    if (!mounted) return;
-
-    setState(() {
-      _steps = prefs.getInt('steps') ?? 0;
-      _runningDistanceKm = prefs.getDouble('runningDistance') ?? 0;
-      _walkingDistanceKm = prefs.getDouble('walkingDistance') ?? 0;
-      _calories = prefs.getDouble('calories') ?? 0;
-      _sleepHours = prefs.getDouble('sleep_hours_$_todayKey') ?? 0;
-      _isLoading = false;
-    });
-  }
-
-  Future<void> _rollOverDailyDataIfNeeded(SharedPreferences prefs) async {
-    final previousDate = prefs.getString('daily_metrics_date');
-    if (previousDate == _todayKey) return;
-
-    await prefs.setString('daily_metrics_date', _todayKey);
-    await prefs.setInt('steps', 0);
-    await prefs.setDouble('runningDistance', 0);
-    await prefs.setDouble('walkingDistance', 0);
-    await prefs.setDouble('calories', 0);
-  }
-
-  Future<void> _openSleepLogger() async {
-    final now = DateTime.now();
-    final TimeOfDay? sleepStart = await showTimePicker(
-      context: context,
-      initialTime: const TimeOfDay(hour: 23, minute: 0),
-      helpText: 'When did you go to sleep?',
-    );
-    if (sleepStart == null || !mounted) return;
-
-    final TimeOfDay? sleepEnd = await showTimePicker(
-      context: context,
-      initialTime: TimeOfDay(hour: now.hour, minute: now.minute),
-      helpText: 'When did you wake up?',
-    );
-    if (sleepEnd == null) return;
-
-    final sleptHours = _calculateSleepHours(sleepStart, sleepEnd);
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setDouble('sleep_hours_$_todayKey', sleptHours);
-
-    if (!mounted) return;
-
-    setState(() {
-      _sleepHours = sleptHours;
-    });
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Sleep logged: ${sleptHours.toStringAsFixed(1)} h')),
-    );
-  }
-
-  double _calculateSleepHours(TimeOfDay start, TimeOfDay end) {
-    final startMinutes = start.hour * 60 + start.minute;
-    final endMinutes = end.hour * 60 + end.minute;
-
-    final minutes = endMinutes >= startMinutes
-        ? endMinutes - startMinutes
-        : (24 * 60 - startMinutes) + endMinutes;
-
-    return minutes / 60;
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Daily Challenges'),
-        actions: [
-          IconButton(
-            tooltip: 'Refresh progress',
-            onPressed: _loadDailyMetrics,
-            icon: const Icon(Icons.refresh),
+    final store = MetricsStore.instance;
+    return ListenableBuilder(
+      listenable: store,
+      builder: (context, _) {
+        final today = store.today;
+        final goals = store.goals;
+        final challenges = [
+          _Challenge(
+            icon: Icons.directions_walk_rounded,
+            gradient: AppPalette.hero,
+            title: '${Fmt.steps(goals.steps)} steps',
+            subtitle: 'Walk your way to the daily step goal',
+            current: today.steps.toDouble(),
+            target: goals.steps.toDouble(),
+            unit: 'steps',
+            format: (v) => Fmt.steps(v.round()),
           ),
-        ],
-      ),
-      body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : RefreshIndicator(
-              onRefresh: _loadDailyMetrics,
-              child: ListView(
-                padding: const EdgeInsets.all(16),
-                children: [
-                  _buildOverviewCard(),
-                  const SizedBox(height: 14),
-                  _ChallengeProgressCard(
-                    icon: Icons.directions_walk,
-                    title: '10,000 Steps',
-                    subtitle: 'Walk at least 10,000 steps today',
-                    valueLabel: '$_steps / $_dailyStepsTarget steps',
-                    progress: (_steps / _dailyStepsTarget).clamp(0, 1),
-                  ),
-                  _ChallengeProgressCard(
-                    icon: Icons.directions_run,
-                    title: 'Run $_dailyRunKmTarget km',
-                    subtitle: 'Complete your daily running distance',
-                    valueLabel:
-                        '${_runningDistanceKm.toStringAsFixed(2)} / ${_dailyRunKmTarget.toStringAsFixed(1)} km',
-                    progress: (_runningDistanceKm / _dailyRunKmTarget)
-                        .clamp(0, 1),
-                  ),
-                  _ChallengeProgressCard(
-                    icon: Icons.local_fire_department,
-                    title: 'Burn $_dailyCaloriesTarget kcal',
-                    subtitle: 'Calories burned while walking and running',
-                    valueLabel:
-                        '${_calories.toStringAsFixed(0)} / ${_dailyCaloriesTarget.toStringAsFixed(0)} kcal',
-                    progress: (_calories / _dailyCaloriesTarget).clamp(0, 1),
-                  ),
-                  _ChallengeProgressCard(
-                    icon: Icons.bedtime,
-                    title: 'Sleep $_dailySleepHoursTarget hours',
-                    subtitle: 'Log and complete your sleep target daily',
-                    valueLabel:
-                        '${_sleepHours.toStringAsFixed(1)} / ${_dailySleepHoursTarget.toStringAsFixed(1)} h',
-                    progress: (_sleepHours / _dailySleepHoursTarget).clamp(0, 1),
-                    trailing: TextButton.icon(
-                      onPressed: _openSleepLogger,
-                      icon: const Icon(Icons.nightlight_round),
-                      label: const Text('Log sleep'),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Card(
-                    child: ListTile(
-                      leading: const Icon(Icons.sensors),
-                      title: const Text('Sync movement data'),
-                      subtitle: const Text(
-                        'Open health monitoring to update steps, distance and calories.',
-                      ),
-                      trailing: const Icon(Icons.chevron_right),
-                      onTap: () async {
-                        await Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) => const SensorDataScreen(),
-                          ),
-                        );
-                        _loadDailyMetrics();
-                      },
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Running: ${_runningDistanceKm.toStringAsFixed(2)} km  •  Walking: ${_walkingDistanceKm.toStringAsFixed(2)} km',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                ],
+          _Challenge(
+            icon: Icons.directions_run_rounded,
+            gradient: AppPalette.fresh,
+            title: 'Run ${goals.runKm.toStringAsFixed(1)} km',
+            subtitle: 'Tracked runs and running steps count',
+            current: today.runKm,
+            target: goals.runKm,
+            unit: 'km',
+            format: (v) => v.toStringAsFixed(2),
+          ),
+          _Challenge(
+            icon: Icons.local_fire_department_rounded,
+            gradient: AppPalette.fire,
+            title: 'Burn ${goals.calories.toStringAsFixed(0)} kcal',
+            subtitle: 'Calories from walking, running and rides',
+            current: today.calories,
+            target: goals.calories,
+            unit: 'kcal',
+            format: (v) => v.toStringAsFixed(0),
+          ),
+          _Challenge(
+            icon: Icons.bedtime_rounded,
+            gradient: AppPalette.dream,
+            title: 'Sleep ${goals.sleepHours.toStringAsFixed(1)} hours',
+            subtitle: 'Recovery is part of the training',
+            current: today.sleepHours,
+            target: goals.sleepHours,
+            unit: 'h',
+            format: (v) => v.toStringAsFixed(1),
+            actionLabel: today.sleepHours > 0 ? 'Edit' : 'Log sleep',
+            onAction: () => showSleepLogger(context),
+          ),
+        ];
+        final completed = challenges.where((c) => c.isDone).length;
+
+        return Scaffold(
+          body: CustomScrollView(
+            slivers: [
+              const SliverAppBar(
+                pinned: true,
+                backgroundColor: AppPalette.background,
+                title: Text('Daily Challenges'),
               ),
-            ),
-    );
-  }
-
-  Widget _buildOverviewCard() {
-    final completed = [
-      _steps >= _dailyStepsTarget,
-      _runningDistanceKm >= _dailyRunKmTarget,
-      _calories >= _dailyCaloriesTarget,
-      _sleepHours >= _dailySleepHoursTarget,
-    ].where((v) => v).length;
-
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        gradient: const LinearGradient(
-          colors: [Color(0xFF4F46E5), Color(0xFF3B82F6)],
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Today\'s challenge status',
-            style: TextStyle(color: Colors.white70),
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(20, 4, 20, 32),
+                sliver: SliverList.list(
+                  children: [
+                    _OverviewCard(
+                      completed: completed,
+                      total: challenges.length,
+                      streak: store.streak,
+                    ),
+                    const SizedBox(height: 22),
+                    const SectionHeader(title: 'Today\'s goals'),
+                    for (final c in challenges) ...[
+                      _ChallengeCard(challenge: c),
+                      const SizedBox(height: 14),
+                    ],
+                    const SizedBox(height: 4),
+                    Text(
+                      'Goals reset every midnight. Adjust targets from your profile.',
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodySmall
+                          ?.copyWith(color: AppPalette.muted),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 6),
-          Text(
-            '$completed / 4 completed',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.w800,
-            ),
-          ),
-          const SizedBox(height: 10),
-          LinearProgressIndicator(
-            value: completed / 4,
-            minHeight: 8,
-            borderRadius: BorderRadius.circular(999),
-            backgroundColor: Colors.white30,
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
 
-class _ChallengeProgressCard extends StatelessWidget {
+class _Challenge {
   final IconData icon;
+  final LinearGradient gradient;
   final String title;
   final String subtitle;
-  final String valueLabel;
-  final double progress;
-  final Widget? trailing;
+  final double current;
+  final double target;
+  final String unit;
+  final String Function(double) format;
+  final String? actionLabel;
+  final VoidCallback? onAction;
 
-  const _ChallengeProgressCard({
+  const _Challenge({
     required this.icon,
+    required this.gradient,
     required this.title,
     required this.subtitle,
-    required this.valueLabel,
-    required this.progress,
-    this.trailing,
+    required this.current,
+    required this.target,
+    required this.unit,
+    required this.format,
+    this.actionLabel,
+    this.onAction,
+  });
+
+  double get progress => target <= 0 ? 0 : (current / target).clamp(0, 1);
+  bool get isDone => target > 0 && current >= target;
+}
+
+class _OverviewCard extends StatelessWidget {
+  final int completed;
+  final int total;
+  final int streak;
+
+  const _OverviewCard({
+    required this.completed,
+    required this.total,
+    required this.streak,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.only(bottom: 12),
-      child: Padding(
-        padding: const EdgeInsets.all(14),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
+    final allDone = completed == total;
+    return GradientCard(
+      gradient: AppPalette.night,
+      child: Row(
+        children: [
+          ProgressRing(
+            progress: completed / total,
+            size: 96,
+            stroke: 10,
+            colors: const [
+              Color(0xFF22D3EE),
+              Color(0xFFA78BFA),
+              Color(0xFF22D3EE)
+            ],
+            trackColor: Colors.white.withValues(alpha: 0.12),
+            child: Text(
+              '$completed/$total',
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 22,
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+          ),
+          const SizedBox(width: 20),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CircleAvatar(
-                  backgroundColor: const Color(0xFFE8EEFF),
-                  child: Icon(icon, color: const Color(0xFF3B82F6)),
+                Text(
+                  allDone ? 'All challenges done!' : 'Keep pushing',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style: const TextStyle(fontWeight: FontWeight.w700),
+                const SizedBox(height: 6),
+                Text(
+                  allDone
+                      ? 'You completed every goal today. Legendary.'
+                      : '${total - completed} challenge${total - completed == 1 ? '' : 's'} left for today',
+                  style: TextStyle(color: Colors.white.withValues(alpha: 0.75)),
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    const Icon(Icons.local_fire_department_rounded,
+                        color: Color(0xFFFDBA74), size: 18),
+                    const SizedBox(width: 4),
+                    Flexible(
+                      child: Text(
+                        '$streak day step streak',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
-                      Text(
-                        subtitle,
-                        style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ChallengeCard extends StatelessWidget {
+  final _Challenge challenge;
+
+  const _ChallengeCard({required this.challenge});
+
+  @override
+  Widget build(BuildContext context) {
+    final c = challenge;
+    final color = c.gradient.colors.first;
+    return SurfaceCard(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                width: 48,
+                height: 48,
+                decoration: BoxDecoration(
+                  gradient: c.gradient,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Icon(c.icon, color: Colors.white),
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      c.title,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w800,
+                        fontSize: 16,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      c.subtitle,
+                      style: const TextStyle(
+                        color: AppPalette.inkSoft,
+                        fontSize: 12.5,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              if (c.isDone)
+                Container(
+                  padding: const EdgeInsets.all(6),
+                  decoration: const BoxDecoration(
+                    color: AppPalette.green,
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(Icons.check_rounded,
+                      color: Colors.white, size: 18),
+                ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          GradientProgressBar(value: c.progress, gradient: c.gradient),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              Flexible(
+                child: Text.rich(
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: c.format(c.current),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          color: color,
+                        ),
+                      ),
+                      TextSpan(
+                        text: ' / ${c.format(c.target)} ${c.unit}',
+                        style: const TextStyle(color: AppPalette.inkSoft),
                       ),
                     ],
                   ),
                 ),
-                if (trailing != null) trailing!,
-              ],
-            ),
-            const SizedBox(height: 10),
-            Text(valueLabel),
-            const SizedBox(height: 6),
-            LinearProgressIndicator(
-              value: progress,
-              minHeight: 8,
-              borderRadius: BorderRadius.circular(999),
-            ),
-          ],
-        ),
+              ),
+              const SizedBox(width: 8),
+              if (c.onAction != null)
+                TextButton.icon(
+                  onPressed: c.onAction,
+                  style: TextButton.styleFrom(
+                    foregroundColor: color,
+                    visualDensity: VisualDensity.compact,
+                  ),
+                  icon: const Icon(Icons.edit_calendar_rounded, size: 18),
+                  label: Text(c.actionLabel ?? ''),
+                )
+              else
+                Text(
+                  '${(c.progress * 100).toStringAsFixed(0)}%',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
+                    color: AppPalette.inkSoft,
+                  ),
+                ),
+            ],
+          ),
+        ],
       ),
     );
   }
