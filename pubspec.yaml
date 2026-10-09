@@ -92,6 +92,10 @@ dependencies:
   url_launcher: ^6.3.1
   collection: ^1.18.0
   flutter_bloc: ^9.1.1
+  firebase_core: ^4.15.0
+  firebase_auth: ^6.7.0
+  cloud_firestore: ^6.10.0
+  google_sign_in: ^7.2.0
 
 
 dev_dependencies:
@@ -128,6 +132,22 @@ flutter:
     - assets/map/
     - assets/gif/
     - assets/gear/
+    - assets/onboarding/
+    - assets/brand/
+
+  fonts:
+    - family: PlusJakartaSans
+      fonts:
+        - asset: assets/fonts/PlusJakartaSans-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/PlusJakartaSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/PlusJakartaSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/PlusJakartaSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/PlusJakartaSans-ExtraBold.ttf
+          weight: 800
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

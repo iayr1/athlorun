@@ -1,310 +1,233 @@
+import 'package:athlorun/config/themes/app_theme.dart';
+import 'package:athlorun/core/services/metrics_store.dart';
+import 'package:athlorun/core/services/step_tracker.dart';
+import 'package:athlorun/core/widgets/kit.dart';
+import 'package:athlorun/features/auth/presentation/auth_gate.dart';
+import 'package:athlorun/features/challenges/presentation/pages/daily_challenges_screen.dart';
 import 'package:athlorun/features/home/presentation/pages/health_page.dart';
+import 'package:athlorun/features/home/presentation/pages/home_dashboard_page.dart';
+import 'package:athlorun/features/profile/presentation/pages/athlete_profile_page.dart';
 import 'package:athlorun/features/track/presentation/pages/track_page.dart';
+import 'package:athlorun/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light,
-      statusBarBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.white,
+      systemNavigationBarIconBrightness: Brightness.dark,
     ),
   );
-  runApp(const AthloRunUiOnlyApp());
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await MetricsStore.instance.load();
+  runApp(const AthloRunApp());
 }
 
-class AthloRunUiOnlyApp extends StatelessWidget {
-  const AthloRunUiOnlyApp({super.key});
+class AthloRunApp extends StatelessWidget {
+  const AthloRunApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    const seedColor = Color(0xFF357EFB);
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'AthloRun',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: seedColor),
-        scaffoldBackgroundColor: const Color(0xFFF6F8FE),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          centerTitle: false,
-          foregroundColor: Colors.white,
-        ),
-        cardTheme: CardThemeData(
-          elevation: 0,
-          color: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-        ),
-      ),
-      home: const AppShell(),
+      theme: AppTheme.light,
+      home: AuthGate(appBuilder: (_) => const AppShell()),
     );
   }
 }
 
 class AppShell extends StatefulWidget {
-  const AppShell({super.key});
+  /// Starts step counting on launch. Disabled in widget tests.
+  final bool startSensors;
+
+  const AppShell({super.key, this.startSensors = true});
 
   @override
   State<AppShell> createState() => _AppShellState();
 }
 
 class _AppShellState extends State<AppShell> {
+  static const _tabCount = 5;
+
   int _index = 0;
 
-  final List<Widget> _pages = const [
-    UiSectionPage(
-      title: 'Home',
-      subtitle: 'Track progress, stay active, and hit your daily goals',
-      items: [
-        UiMenuItem('Dashboard', Icons.dashboard_customize_outlined),
-        UiMenuItem('Leaderboard', Icons.leaderboard_outlined),
-        UiMenuItem('Events', Icons.event_outlined),
-        UiMenuItem('Podcast', Icons.podcasts_outlined),
-      ],
-    ),
-    UiSectionPage(
-      title: 'Challenges',
-      subtitle: 'Join community runs and unlock achievement badges',
-      items: [
-        UiMenuItem('Challenge List', Icons.flag_outlined),
-        UiMenuItem('Challenge Details', Icons.insights_outlined),
-        UiMenuItem('Completed Challenges', Icons.verified_outlined),
-      ],
-    ),
-    TrackPage(),
-    SensorDataScreen(),
-    UiSectionPage(
-      title: 'Profile',
-      subtitle: 'Manage your profile, settings, and running history',
-      items: [
-        UiMenuItem('Profile', Icons.person_outline),
-        UiMenuItem('Settings', Icons.settings_outlined),
-        UiMenuItem('Friends', Icons.group_outlined),
-        UiMenuItem('Statistics', Icons.query_stats_outlined),
-      ],
-    ),
+  /// Tabs are built lazily on first visit and then kept alive, so an active
+  /// GPS workout keeps recording while the user browses other tabs.
+  final Set<int> _visited = {0};
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.startSensors) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        StepTracker.instance.start();
+      });
+    }
+  }
+
+  void _select(int index) {
+    if (index == _index) return;
+    HapticFeedback.selectionClick();
+    setState(() {
+      _index = index;
+      _visited.add(index);
+    });
+  }
+
+  Widget _buildTab(int index) {
+    if (!_visited.contains(index)) return const SizedBox.shrink();
+    return switch (index) {
+      0 => HomeDashboardPage(onNavigate: _select),
+      1 => const DailyChallengesScreen(),
+      2 => const TrackPage(),
+      3 => const SensorDataScreen(),
+      _ => const AthleteProfilePage(),
+    };
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: _index == 0 || _index == 4
+          ? SystemUiOverlayStyle.light
+          : SystemUiOverlayStyle.dark,
+      child: Scaffold(
+        body: IndexedStack(
+          index: _index,
+          children: [for (var i = 0; i < _tabCount; i++) _buildTab(i)],
+        ),
+        bottomNavigationBar: _KitNavBar(index: _index, onSelect: _select),
+      ),
+    );
+  }
+}
+
+/// Bottom bar from the kit: icon tabs with a raised blue centre action.
+class _KitNavBar extends StatelessWidget {
+  final int index;
+  final ValueChanged<int> onSelect;
+
+  const _KitNavBar({required this.index, required this.onSelect});
+
+  static const _tabs = [
+    (Icons.home_outlined, Icons.home_rounded, 'Home'),
+    (Icons.emoji_events_outlined, Icons.emoji_events_rounded, 'Challenges'),
+    (Icons.add, Icons.add, 'Track'),
+    (Icons.monitor_heart_outlined, Icons.monitor_heart_rounded, 'Sensors'),
+    (Icons.person_outline_rounded, Icons.person_rounded, 'Profile'),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _pages[_index],
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _index,
-        onDestinationSelected: (value) => setState(() => _index = value),
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.home_outlined), label: 'Home'),
-          NavigationDestination(
-            icon: Icon(Icons.emoji_events_outlined),
-            label: 'Challenges',
-          ),
-          NavigationDestination(icon: Icon(Icons.map_outlined), label: 'Track'),
-          NavigationDestination(
-            icon: Icon(Icons.directions_walk_outlined),
-            label: 'Pedometer',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.person_outline),
-            label: 'Profile',
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF090E1D).withValues(alpha: 0.06),
+            blurRadius: 24,
+            offset: const Offset(0, -6),
           ),
         ],
+      ),
+      child: SafeArea(
+        top: false,
+        child: SizedBox(
+          height: 68,
+          child: Row(
+            children: [
+              for (var i = 0; i < _tabs.length; i++)
+                Expanded(
+                  child: i == 2
+                      ? Center(
+                          child: Semantics(
+                            button: true,
+                            selected: index == 2,
+                            label: 'Track',
+                            child: GestureDetector(
+                              onTap: () => onSelect(2),
+                              child: AnimatedContainer(
+                                duration: const Duration(milliseconds: 200),
+                                width: 52,
+                                height: 52,
+                                decoration: BoxDecoration(
+                                  color: AppPalette.blue60,
+                                  borderRadius: BorderRadius.circular(14),
+                                  boxShadow: index == 2
+                                      ? AppPalette.focusRing(AppPalette.blue60)
+                                      : [
+                                          BoxShadow(
+                                            color: AppPalette.blue60
+                                                .withValues(alpha: 0.35),
+                                            blurRadius: 14,
+                                            offset: const Offset(0, 6),
+                                          ),
+                                        ],
+                                ),
+                                child: const Center(child: KitPlusIcon()),
+                              ),
+                            ),
+                          ),
+                        )
+                      : _NavItem(
+                          icon: index == i ? _tabs[i].$2 : _tabs[i].$1,
+                          label: _tabs[i].$3,
+                          selected: index == i,
+                          onTap: () => onSelect(i),
+                        ),
+                ),
+            ],
+          ),
+        ),
       ),
     );
   }
 }
 
-class UiMenuItem {
-  final String title;
+class _NavItem extends StatelessWidget {
   final IconData icon;
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
 
-  const UiMenuItem(this.title, this.icon);
-}
-
-class UiSectionPage extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final List<UiMenuItem> items;
-
-  const UiSectionPage({
-    super.key,
-    required this.title,
-    required this.subtitle,
-    required this.items,
+  const _NavItem({
+    required this.icon,
+    required this.label,
+    required this.selected,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [Color(0xFF387DFB), Color(0xFF4E95FF), Color(0xFFF6F8FE)],
-          stops: [0.0, 0.3, 0.55],
-        ),
-      ),
-      child: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.all(16),
-          children: [
-            Text(
-              title,
-              style: textTheme.headlineMedium?.copyWith(
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              subtitle,
-              style: textTheme.bodyMedium?.copyWith(
-                color: Colors.white.withOpacity(0.88),
-              ),
-            ),
-            const SizedBox(height: 18),
-            const _TodaySummaryCard(),
-            const SizedBox(height: 20),
-            Text(
-              'Quick Access',
-              style: textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w700,
-                color: const Color(0xFF1F2937),
-              ),
-            ),
-            const SizedBox(height: 12),
-            ...items.map(
-              (item) => Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: Card(
-                  child: ListTile(
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 14,
-                      vertical: 4,
-                    ),
-                    leading: CircleAvatar(
-                      backgroundColor: const Color(0xFFEBF3FF),
-                      foregroundColor: const Color(0xFF2E74F0),
-                      child: Icon(item.icon),
-                    ),
-                    title: Text(item.title),
-                    subtitle: const Text('Ready to explore'),
-                    trailing: const Icon(Icons.chevron_right),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => UiPlaceholderScreen(title: item.title),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _TodaySummaryCard extends StatelessWidget {
-  const _TodaySummaryCard();
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
+    final color = selected ? AppPalette.blue60 : AppPalette.gray40;
+    return Semantics(
+      button: true,
+      selected: selected,
+      child: InkResponse(
+        onTap: onTap,
+        radius: 32,
         child: Column(
-          children: const [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _MetricTile(label: 'Steps', value: '8,420'),
-                _MetricTile(label: 'Distance', value: '6.4 km'),
-                _MetricTile(label: 'Calories', value: '438'),
-              ],
-            ),
-            SizedBox(height: 12),
-            LinearProgressIndicator(value: 0.72, minHeight: 8),
-            SizedBox(height: 8),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text('72% of your daily target completed'),
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, color: color, size: 26),
+            const SizedBox(height: 4),
+            Text(
+              label,
+              style: TextStyle(
+                fontFamily: AppText.family,
+                fontSize: 11,
+                fontWeight: selected ? FontWeight.w800 : FontWeight.w600,
+                color: color,
+              ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class _MetricTile extends StatelessWidget {
-  final String label;
-  final String value;
-
-  const _MetricTile({required this.label, required this.value});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          value,
-          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
-        ),
-        Text(label),
-      ],
-    );
-  }
-}
-
-class UiPlaceholderScreen extends StatelessWidget {
-  final String title;
-
-  const UiPlaceholderScreen({super.key, required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-        foregroundColor: const Color(0xFF111827),
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const CircleAvatar(
-                radius: 36,
-                backgroundColor: Color(0xFFE7F0FF),
-                child: Icon(Icons.rocket_launch_outlined, size: 34),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                '$title is ready',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              const SizedBox(height: 8),
-              const Text(
-                'UI is connected and polished. You can now wire backend logic here.',
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
         ),
       ),
     );

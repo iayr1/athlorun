@@ -1,9 +1,17 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
+
+import 'package:athlorun/config/themes/app_theme.dart';
+import 'package:athlorun/core/services/metrics_store.dart';
+import 'package:athlorun/core/utils/formatters.dart';
+import 'package:athlorun/features/activity/presentation/pages/activity_history_page.dart';
+
+enum _SessionState { idle, recording, paused }
 
 class TrackPage extends StatefulWidget {
   const TrackPage({super.key});
@@ -13,361 +21,377 @@ class TrackPage extends StatefulWidget {
 }
 
 class _TrackPageState extends State<TrackPage> {
-  final MapController _mapController = MapController();
-  final ValueNotifier<_TrackViewData> _trackData = ValueNotifier(
-    _TrackViewData.initial(),
-  );
+  static const _fallbackCenter = LatLng(20.5937, 78.9629);
 
-  StreamSubscription<Position>? _positionSubscription;
-  Timer? _durationTimer;
+  final MapController _mapController = MapController();
+  final ValueNotifier<Duration> _elapsed = ValueNotifier(Duration.zero);
+
+  StreamSubscription<Position>? _positionSub;
+  Timer? _ticker;
+
+  bool _mapReady = false;
+  bool _locating = false;
+  bool _followUser = true;
+  LatLng? _current;
+  _SessionState _state = _SessionState.idle;
+  ActivityKind _kind = ActivityKind.run;
+  DateTime? _startedAt;
+  DateTime? _resumedAt;
+  Duration _accumulated = Duration.zero;
+  double _distanceKm = 0;
+  final List<LatLng> _route = [];
 
   @override
   void initState() {
     super.initState();
-    unawaited(_initializeLocation());
+    unawaited(_locate());
   }
 
   @override
   void dispose() {
-    _positionSubscription?.cancel();
-    _durationTimer?.cancel();
-    _trackData.dispose();
+    _positionSub?.cancel();
+    _ticker?.cancel();
+    _elapsed.dispose();
+    MetricsStore.instance.gpsSessionActive = false;
     super.dispose();
   }
 
-  Future<void> _initializeLocation() async {
-    final serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      _showMessage('Location services are disabled.');
-      return;
+  Future<bool> _ensurePermission() async {
+    try {
+      if (!await Geolocator.isLocationServiceEnabled()) {
+        _showMessage('Turn on location services to track workouts.',
+            action: const SnackBarAction(
+              label: 'Settings',
+              onPressed: Geolocator.openLocationSettings,
+            ));
+        return false;
+      }
+      var permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+      }
+      if (permission == LocationPermission.deniedForever) {
+        _showMessage('Location permission is blocked.',
+            action: const SnackBarAction(
+              label: 'Settings',
+              onPressed: Geolocator.openAppSettings,
+            ));
+        return false;
+      }
+      if (permission == LocationPermission.denied) {
+        _showMessage('Location permission is required for tracking.');
+        return false;
+      }
+      return true;
+    } catch (e) {
+      debugPrint('TrackPage: location unavailable ($e)');
+      _showMessage('Unable to access location services.');
+      return false;
     }
-
-    var permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-    }
-
-    if (permission == LocationPermission.deniedForever ||
-        permission == LocationPermission.denied) {
-      _showMessage('Location permission is required for tracking.');
-      return;
-    }
-
-    final position = await Geolocator.getCurrentPosition();
-    final center = LatLng(position.latitude, position.longitude);
-
-    _trackData.value = _trackData.value.copyWith(currentLocation: center);
-    _mapController.move(center, 16);
   }
 
-  void _startTracking() {
-    final startAt = DateTime.now();
-
-    _durationTimer?.cancel();
-    _positionSubscription?.cancel();
-
-    _trackData.value = _trackData.value.copyWith(
-      isTracking: true,
-      distanceKm: 0,
-      elapsed: Duration.zero,
-      startedAt: startAt,
-      routePoints: <LatLng>[],
-    );
-
-    _durationTimer = Timer.periodic(const Duration(seconds: 1), (_) {
-      final data = _trackData.value;
-      if (!data.isTracking || data.startedAt == null) {
-        return;
-      }
-      _trackData.value = data.copyWith(
-        elapsed: DateTime.now().difference(data.startedAt!),
+  Future<void> _locate() async {
+    if (_locating) return;
+    setState(() => _locating = true);
+    try {
+      if (!await _ensurePermission()) return;
+      final position = await Geolocator.getCurrentPosition(
+        locationSettings: const LocationSettings(
+          accuracy: LocationAccuracy.high,
+          timeLimit: Duration(seconds: 15),
+        ),
       );
+      if (!mounted) return;
+      final here = LatLng(position.latitude, position.longitude);
+      setState(() {
+        _current = here;
+        _followUser = true;
+      });
+      _moveCamera(here, 16.5);
+    } catch (e) {
+      final last = await Geolocator.getLastKnownPosition();
+      if (last != null && mounted) {
+        final here = LatLng(last.latitude, last.longitude);
+        setState(() => _current = here);
+        _moveCamera(here, 16);
+      } else {
+        _showMessage('Could not get your location. Try again outdoors.');
+      }
+    } finally {
+      if (mounted) setState(() => _locating = false);
+    }
+  }
+
+  void _moveCamera(LatLng target, [double? zoom]) {
+    if (!_mapReady) return;
+    _mapController.move(target, zoom ?? _mapController.camera.zoom);
+  }
+
+  Future<void> _start() async {
+    if (!await _ensurePermission()) return;
+    final now = DateTime.now();
+    setState(() {
+      _state = _SessionState.recording;
+      _startedAt = now;
+      _resumedAt = now;
+      _accumulated = Duration.zero;
+      _distanceKm = 0;
+      _route.clear();
+      _followUser = true;
+      if (_current != null) _route.add(_current!);
+    });
+    _elapsed.value = Duration.zero;
+    MetricsStore.instance.gpsSessionActive = true;
+
+    _ticker?.cancel();
+    _ticker = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (_state == _SessionState.recording && _resumedAt != null) {
+        _elapsed.value = _accumulated + DateTime.now().difference(_resumedAt!);
+      }
     });
 
-    _positionSubscription = Geolocator.getPositionStream(
+    await _positionSub?.cancel();
+    _positionSub = Geolocator.getPositionStream(
       locationSettings: const LocationSettings(
         accuracy: LocationAccuracy.bestForNavigation,
-        distanceFilter: 3,
+        distanceFilter: 4,
       ),
     ).listen(
-      _onPositionUpdate,
-      onError: (Object error) {
-        _showMessage('Unable to track location updates.');
-      },
+      _onPosition,
+      onError: (Object _) => _showMessage('Lost GPS signal. Retrying…'),
     );
   }
 
-  void _onPositionUpdate(Position position) {
-    final next = LatLng(position.latitude, position.longitude);
-    final data = _trackData.value;
-    final updatedRoute = List<LatLng>.from(data.routePoints)..add(next);
-
-    var distanceKm = data.distanceKm;
-    if (data.routePoints.isNotEmpty) {
-      final previous = data.routePoints.last;
-      final distanceMeters = Geolocator.distanceBetween(
-        previous.latitude,
-        previous.longitude,
-        next.latitude,
-        next.longitude,
-      );
-      distanceKm += distanceMeters / 1000;
-    }
-
-    _trackData.value = data.copyWith(
-      currentLocation: next,
-      distanceKm: distanceKm,
-      routePoints: updatedRoute,
-    );
-
-    _mapController.move(next, _mapController.camera.zoom);
-  }
-
-  void _stopTracking() {
-    _positionSubscription?.cancel();
-    _durationTimer?.cancel();
-    _trackData.value = _trackData.value.copyWith(isTracking: false);
-  }
-
-  Future<void> _toggleTracking() async {
-    if (_trackData.value.isTracking) {
-      _stopTracking();
-      return;
-    }
-
-    await _initializeLocation();
-    _startTracking();
-  }
-
-  void _showMessage(String message) {
+  void _onPosition(Position position) {
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    final next = LatLng(position.latitude, position.longitude);
+    setState(() {
+      _current = next;
+      if (_state != _SessionState.recording) return;
+      // Skip very inaccurate fixes so the route does not zig-zag.
+      if (position.accuracy > 35) return;
+      if (_route.isNotEmpty) {
+        final prev = _route.last;
+        final meters = Geolocator.distanceBetween(
+          prev.latitude,
+          prev.longitude,
+          next.latitude,
+          next.longitude,
+        );
+        _distanceKm += meters / 1000;
+      }
+      _route.add(next);
+    });
+    if (_followUser) _moveCamera(next);
+  }
+
+  void _pause() {
+    if (_resumedAt != null) {
+      _accumulated += DateTime.now().difference(_resumedAt!);
+    }
+    _elapsed.value = _accumulated;
+    setState(() {
+      _state = _SessionState.paused;
+      _resumedAt = null;
+    });
+  }
+
+  void _resume() {
+    setState(() {
+      _state = _SessionState.recording;
+      _resumedAt = DateTime.now();
+      // Start a fresh segment so the paused gap is not counted as distance.
+      if (_current != null) _route.add(_current!);
+    });
+  }
+
+  Future<void> _finish() async {
+    if (_state == _SessionState.recording) _pause();
+    final duration = _accumulated;
+    final store = MetricsStore.instance;
+    final activity = TrackedActivity(
+      id: DateTime.now().microsecondsSinceEpoch.toString(),
+      kind: _kind,
+      startedAt: _startedAt ?? DateTime.now(),
+      duration: duration,
+      distanceKm: _distanceKm,
+      calories: store.caloriesFor(_kind, _distanceKm),
+      route: [
+        for (final p in _route) [p.latitude, p.longitude]
+      ],
+    );
+
+    final save = await showModalBottomSheet<bool>(
+      context: context,
+      isScrollControlled: true,
+      builder: (_) => _SummarySheet(activity: activity),
+    );
+    if (save == null) return; // Sheet dismissed: keep the session paused.
+
+    _ticker?.cancel();
+    await _positionSub?.cancel();
+    _positionSub = null;
+    store.gpsSessionActive = false;
+    if (save) {
+      await store.addActivity(activity);
+      _showMessage('${activity.kind.label} saved to your history 🎉');
+    }
+    if (!mounted) return;
+    setState(() {
+      _state = _SessionState.idle;
+      _accumulated = Duration.zero;
+      _distanceKm = 0;
+      _route.clear();
+    });
+    _elapsed.value = Duration.zero;
+  }
+
+  void _showMessage(String message, {SnackBarAction? action}) {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(SnackBar(content: Text(message), action: action));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        title: const Text('Live Track'),
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        foregroundColor: const Color(0xFF0F172A),
-      ),
-      floatingActionButton: ValueListenableBuilder<_TrackViewData>(
-        valueListenable: _trackData,
-        builder: (_, data, __) {
-          return FloatingActionButton.extended(
-            onPressed: _initializeLocation,
-            icon: const Icon(Icons.my_location_rounded),
-            label: Text(data.isTracking ? 'Recenter' : 'Locate me'),
-          );
-        },
-      ),
-      body: ValueListenableBuilder<_TrackViewData>(
-        valueListenable: _trackData,
-        builder: (_, data, __) {
-          final paceMinPerKm = _calculatePace(data.distanceKm, data.elapsed);
+    final current = _current;
+    final color = activityColor(_kind);
 
-          return Stack(
+    return Scaffold(
+      body: Stack(
+        children: [
+          FlutterMap(
+            mapController: _mapController,
+            options: MapOptions(
+              initialCenter: current ?? _fallbackCenter,
+              initialZoom: current == null ? 4.5 : 16,
+              onMapReady: () {
+                _mapReady = true;
+                if (_current != null) _moveCamera(_current!, 16.5);
+              },
+              onPositionChanged: (_, hasGesture) {
+                if (hasGesture && _followUser) {
+                  setState(() => _followUser = false);
+                }
+              },
+            ),
             children: [
-              FlutterMap(
-                mapController: _mapController,
-                options: MapOptions(
-                  initialCenter: data.currentLocation,
-                  initialZoom: 15,
+              TileLayer(
+                urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                userAgentPackageName: 'com.athlorun.app',
+              ),
+              if (_route.length > 1)
+                PolylineLayer(
+                  polylines: [
+                    Polyline(
+                      points: List.of(_route),
+                      strokeWidth: 7,
+                      color: color,
+                      borderColor: Colors.white,
+                      borderStrokeWidth: 2,
+                    ),
+                  ],
                 ),
+              if (current != null)
+                MarkerLayer(
+                  markers: [
+                    Marker(
+                      point: current,
+                      width: 64,
+                      height: 64,
+                      child: _UserMarker(color: color),
+                    ),
+                  ],
+                ),
+            ],
+          ),
+          // Soft fade so the header stays readable over the map.
+          IgnorePointer(
+            child: Container(
+              height: 150,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    AppPalette.background.withValues(alpha: 0.95),
+                    AppPalette.background.withValues(alpha: 0),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 8, 12, 0),
+              child: Row(
                 children: [
-                  TileLayer(
-                    urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                    userAgentPackageName: 'com.athlorun.ui_only',
-                  ),
-                  if (data.routePoints.length > 1)
-                    PolylineLayer(
-                      polylines: [
-                        Polyline(
-                          points: data.routePoints,
-                          strokeWidth: 6,
-                          color: const Color(0xFF2563EB),
-                          gradientColors: const [
-                            Color(0xFF22D3EE),
-                            Color(0xFF2563EB),
-                            Color(0xFF4F46E5),
-                          ],
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          switch (_state) {
+                            _SessionState.idle => 'Ready to move?',
+                            _SessionState.recording => 'Recording',
+                            _SessionState.paused => 'Paused',
+                          },
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        Text(
+                          _state == _SessionState.idle
+                              ? 'Pick an activity and hit start'
+                              : '${_kind.label} in progress',
+                          style: const TextStyle(color: AppPalette.inkSoft),
                         ),
                       ],
                     ),
-                  MarkerLayer(
-                    markers: [
-                      Marker(
-                        point: data.currentLocation,
-                        width: 56,
-                        height: 56,
-                        child: DecoratedBox(
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0x332563EB),
-                          ),
-                          child: const Icon(
-                            Icons.directions_run_rounded,
-                            size: 34,
-                            color: Color(0xFF1D4ED8),
-                          ),
-                        ),
+                  ),
+                  _RoundButton(
+                    icon: Icons.history_rounded,
+                    tooltip: 'History',
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const ActivityHistoryPage(),
                       ),
-                    ],
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  _RoundButton(
+                    icon: _followUser
+                        ? Icons.my_location_rounded
+                        : Icons.location_searching_rounded,
+                    tooltip: 'Recenter',
+                    loading: _locating,
+                    onTap: () {
+                      if (_current != null) {
+                        setState(() => _followUser = true);
+                        _moveCamera(_current!, 16.5);
+                      } else {
+                        _locate();
+                      }
+                    },
                   ),
                 ],
               ),
-              Positioned(
-                top: kToolbarHeight + 18,
-                left: 16,
-                right: 16,
-                child: _GradientSummaryCard(
-                  distanceKm: data.distanceKm,
-                  elapsed: data.elapsed,
-                  paceMinPerKm: paceMinPerKm,
-                  pointsCount: data.routePoints.length,
-                ),
-              ),
-              Positioned(
-                left: 16,
-                right: 16,
-                bottom: 24,
-                child: _ActionCard(
-                  isTracking: data.isTracking,
-                  onToggleTracking: _toggleTracking,
-                ),
-              ),
-            ],
-          );
-        },
-      ),
-    );
-  }
-
-  String _calculatePace(double distanceKm, Duration elapsed) {
-    if (distanceKm <= 0) return '--:-- /km';
-
-    final minutesPerKm = elapsed.inSeconds / 60 / distanceKm;
-    final paceMinutes = minutesPerKm.floor();
-    final paceSeconds = ((minutesPerKm - paceMinutes) * 60)
-        .round()
-        .clamp(0, 59)
-        .toInt();
-
-    return '$paceMinutes:${paceSeconds.toString().padLeft(2, '0')} /km';
-  }
-}
-
-class _TrackViewData {
-  final LatLng currentLocation;
-  final bool isTracking;
-  final double distanceKm;
-  final Duration elapsed;
-  final DateTime? startedAt;
-  final List<LatLng> routePoints;
-
-  const _TrackViewData({
-    required this.currentLocation,
-    required this.isTracking,
-    required this.distanceKm,
-    required this.elapsed,
-    required this.startedAt,
-    required this.routePoints,
-  });
-
-  factory _TrackViewData.initial() {
-    return const _TrackViewData(
-      currentLocation: LatLng(20.5937, 78.9629),
-      isTracking: false,
-      distanceKm: 0,
-      elapsed: Duration.zero,
-      startedAt: null,
-      routePoints: <LatLng>[],
-    );
-  }
-
-  _TrackViewData copyWith({
-    LatLng? currentLocation,
-    bool? isTracking,
-    double? distanceKm,
-    Duration? elapsed,
-    Object? startedAt = _none,
-    List<LatLng>? routePoints,
-  }) {
-    return _TrackViewData(
-      currentLocation: currentLocation ?? this.currentLocation,
-      isTracking: isTracking ?? this.isTracking,
-      distanceKm: distanceKm ?? this.distanceKm,
-      elapsed: elapsed ?? this.elapsed,
-      startedAt: startedAt == _none ? this.startedAt : startedAt as DateTime?,
-      routePoints: routePoints ?? this.routePoints,
-    );
-  }
-}
-
-const Object _none = Object();
-
-class _GradientSummaryCard extends StatelessWidget {
-  final double distanceKm;
-  final Duration elapsed;
-  final String paceMinPerKm;
-  final int pointsCount;
-
-  const _GradientSummaryCard({
-    required this.distanceKm,
-    required this.elapsed,
-    required this.paceMinPerKm,
-    required this.pointsCount,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final totalMinutes = elapsed.inMinutes;
-    final seconds = (elapsed.inSeconds % 60).toString().padLeft(2, '0');
-
-    return Container(
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        gradient: const LinearGradient(
-          colors: [Color(0xFF0F172A), Color(0xFF1E3A8A)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        boxShadow: const [
-          BoxShadow(
-            color: Color(0x33000000),
-            blurRadius: 18,
-            offset: Offset(0, 8),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: _MetricChip(
-              title: 'Distance',
-              value: '${distanceKm.toStringAsFixed(2)} km',
             ),
           ),
-          Expanded(
-            child: _MetricChip(
-              title: 'Time',
-              value: '$totalMinutes:$seconds',
-            ),
-          ),
-          Expanded(
-            child: _MetricChip(
-              title: 'Pace',
-              value: paceMinPerKm,
-            ),
-          ),
-          Expanded(
-            child: _MetricChip(
-              title: 'Points',
-              value: pointsCount.toString(),
+          Positioned(
+            left: 16,
+            right: 16,
+            bottom: 16,
+            child: _ControlPanel(
+              state: _state,
+              kind: _kind,
+              elapsed: _elapsed,
+              distanceKm: _distanceKm,
+              onKindChanged: (k) => setState(() => _kind = k),
+              onStart: _start,
+              onPause: _pause,
+              onResume: _resume,
+              onFinish: _finish,
             ),
           ),
         ],
@@ -376,34 +400,32 @@ class _GradientSummaryCard extends StatelessWidget {
   }
 }
 
-class _MetricChip extends StatelessWidget {
-  final String title;
-  final String value;
+class _UserMarker extends StatelessWidget {
+  final Color color;
 
-  const _MetricChip({required this.title, required this.value});
+  const _UserMarker({required this.color});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Stack(
+      alignment: Alignment.center,
       children: [
-        Text(
-          title,
-          style: const TextStyle(
-            color: Color(0xFFBFDBFE),
-            fontWeight: FontWeight.w500,
-            fontSize: 12,
+        Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: color.withValues(alpha: 0.18),
           ),
         ),
-        const SizedBox(height: 3),
-        Text(
-          value,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w700,
-            fontSize: 14,
+        Container(
+          width: 24,
+          height: 24,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: color,
+            border: Border.all(color: Colors.white, width: 4),
+            boxShadow: [
+              BoxShadow(color: color.withValues(alpha: 0.5), blurRadius: 10),
+            ],
           ),
         ),
       ],
@@ -411,47 +433,456 @@ class _MetricChip extends StatelessWidget {
   }
 }
 
-class _ActionCard extends StatelessWidget {
-  final bool isTracking;
-  final VoidCallback onToggleTracking;
+class _RoundButton extends StatelessWidget {
+  final IconData icon;
+  final String tooltip;
+  final VoidCallback onTap;
+  final bool loading;
 
-  const _ActionCard({required this.isTracking, required this.onToggleTracking});
+  const _RoundButton({
+    required this.icon,
+    required this.tooltip,
+    required this.onTap,
+    this.loading = false,
+  });
 
   @override
   Widget build(BuildContext context) {
+    return Tooltip(
+      message: tooltip,
+      child: Material(
+        color: Colors.white,
+        shape: const CircleBorder(),
+        elevation: 4,
+        shadowColor: Colors.black26,
+        child: InkWell(
+          customBorder: const CircleBorder(),
+          onTap: loading ? null : onTap,
+          child: SizedBox(
+            width: 48,
+            height: 48,
+            child: Center(
+              child: loading
+                  ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(strokeWidth: 2.4),
+                    )
+                  : Icon(icon, color: AppPalette.primary),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ControlPanel extends StatelessWidget {
+  final _SessionState state;
+  final ActivityKind kind;
+  final ValueListenable<Duration> elapsed;
+  final double distanceKm;
+  final ValueChanged<ActivityKind> onKindChanged;
+  final VoidCallback onStart;
+  final VoidCallback onPause;
+  final VoidCallback onResume;
+  final VoidCallback onFinish;
+
+  const _ControlPanel({
+    required this.state,
+    required this.kind,
+    required this.elapsed,
+    required this.distanceKm,
+    required this.onKindChanged,
+    required this.onStart,
+    required this.onPause,
+    required this.onResume,
+    required this.onFinish,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final color = activityColor(kind);
     return Container(
-      padding: const EdgeInsets.all(14),
+      padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        boxShadow: const [
+        borderRadius: BorderRadius.circular(30),
+        boxShadow: [
           BoxShadow(
-            color: Color(0x1A000000),
-            blurRadius: 12,
-            offset: Offset(0, 8),
+            color: Colors.black.withValues(alpha: 0.12),
+            blurRadius: 30,
+            offset: const Offset(0, 12),
           ),
         ],
       ),
-      child: SizedBox(
-        width: double.infinity,
-        child: ElevatedButton.icon(
-          style: ElevatedButton.styleFrom(
-            backgroundColor:
-                isTracking ? const Color(0xFFDC2626) : const Color(0xFF2563EB),
-            foregroundColor: Colors.white,
-            padding: const EdgeInsets.symmetric(vertical: 14),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(14),
+      child: AnimatedSize(
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeOutCubic,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (state == _SessionState.idle)
+              Row(
+                children: [
+                  for (final k in ActivityKind.values)
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        child: _KindChip(
+                          kind: k,
+                          selected: k == kind,
+                          onTap: () => onKindChanged(k),
+                        ),
+                      ),
+                    ),
+                ],
+              )
+            else
+              ValueListenableBuilder<Duration>(
+                valueListenable: elapsed,
+                builder: (context, value, _) {
+                  final pace = distanceKm > 0.01
+                      ? value.inSeconds / 60 / distanceKm
+                      : null;
+                  return Column(
+                    children: [
+                      Text(
+                        Fmt.duration(value),
+                        style: const TextStyle(
+                          fontSize: 44,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: -1.5,
+                          fontFeatures: [FontFeature.tabularFigures()],
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        children: [
+                          _Metric(
+                            label: 'Distance',
+                            value: Fmt.km(distanceKm),
+                            unit: 'km',
+                          ),
+                          _divider(),
+                          _Metric(
+                            label: 'Avg pace',
+                            value: Fmt.pace(pace),
+                            unit: '/km',
+                          ),
+                          _divider(),
+                          _Metric(
+                            label: 'Calories',
+                            value: MetricsStore.instance
+                                .caloriesFor(kind, distanceKm)
+                                .toStringAsFixed(0),
+                            unit: 'kcal',
+                          ),
+                        ],
+                      ),
+                    ],
+                  );
+                },
+              ),
+            const SizedBox(height: 18),
+            switch (state) {
+              _SessionState.idle => SizedBox(
+                  width: double.infinity,
+                  child: _GradientButton(
+                    gradient: LinearGradient(
+                      colors: [color, Color.lerp(color, Colors.black, 0.2)!],
+                    ),
+                    icon: Icons.play_arrow_rounded,
+                    label: 'Start ${kind.label.toLowerCase()}',
+                    onTap: onStart,
+                  ),
+                ),
+              _SessionState.recording => Row(
+                  children: [
+                    Expanded(
+                      child: _GradientButton(
+                        gradient: const LinearGradient(
+                          colors: [AppPalette.amber, AppPalette.orange],
+                        ),
+                        icon: Icons.pause_rounded,
+                        label: 'Pause',
+                        onTap: onPause,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: _GradientButton(
+                        gradient: const LinearGradient(
+                          colors: [AppPalette.red, Color(0xFFBE123C)],
+                        ),
+                        icon: Icons.stop_rounded,
+                        label: 'Finish',
+                        onTap: onFinish,
+                      ),
+                    ),
+                  ],
+                ),
+              _SessionState.paused => Row(
+                  children: [
+                    Expanded(
+                      child: _GradientButton(
+                        gradient: AppPalette.fresh,
+                        icon: Icons.play_arrow_rounded,
+                        label: 'Resume',
+                        onTap: onResume,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: _GradientButton(
+                        gradient: const LinearGradient(
+                          colors: [AppPalette.red, Color(0xFFBE123C)],
+                        ),
+                        icon: Icons.flag_rounded,
+                        label: 'Finish',
+                        onTap: onFinish,
+                      ),
+                    ),
+                  ],
+                ),
+            },
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _divider() => Container(
+        width: 1,
+        height: 34,
+        color: AppPalette.line,
+      );
+}
+
+class _Metric extends StatelessWidget {
+  final String label;
+  final String value;
+  final String unit;
+
+  const _Metric({required this.label, required this.value, required this.unit});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Column(
+        children: [
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: value,
+                  style: const TextStyle(
+                    fontSize: 19,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                TextSpan(
+                  text: ' $unit',
+                  style: const TextStyle(
+                    fontSize: 12,
+                    color: AppPalette.inkSoft,
+                  ),
+                ),
+              ],
             ),
           ),
-          onPressed: onToggleTracking,
-          icon: Icon(
-            isTracking ? Icons.stop_circle_outlined : Icons.play_arrow_rounded,
+          const SizedBox(height: 2),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 12, color: AppPalette.muted),
           ),
-          label: Text(
-            isTracking ? 'Stop Tracking' : 'Start Activity',
-            style: const TextStyle(fontWeight: FontWeight.w700),
+        ],
+      ),
+    );
+  }
+}
+
+class _KindChip extends StatelessWidget {
+  final ActivityKind kind;
+  final bool selected;
+  final VoidCallback onTap;
+
+  const _KindChip({
+    required this.kind,
+    required this.selected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final color = activityColor(kind);
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        decoration: BoxDecoration(
+          color:
+              selected ? color.withValues(alpha: 0.12) : AppPalette.background,
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(
+            color: selected ? color : Colors.transparent,
+            width: 1.6,
           ),
+        ),
+        child: Column(
+          children: [
+            Icon(activityIcon(kind),
+                color: selected ? color : AppPalette.muted, size: 26),
+            const SizedBox(height: 4),
+            Text(
+              kind.label,
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                color: selected ? color : AppPalette.inkSoft,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _GradientButton extends StatelessWidget {
+  final Gradient gradient;
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+
+  const _GradientButton({
+    required this.gradient,
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: gradient,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(20),
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(icon, color: Colors.white),
+                const SizedBox(width: 6),
+                Text(
+                  label,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 16,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SummarySheet extends StatelessWidget {
+  final TrackedActivity activity;
+
+  const _SummarySheet({required this.activity});
+
+  @override
+  Widget build(BuildContext context) {
+    final color = activityColor(activity.kind);
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 72,
+              height: 72,
+              decoration: BoxDecoration(
+                color: color.withValues(alpha: 0.12),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(Icons.emoji_events_rounded, color: color, size: 38),
+            ),
+            const SizedBox(height: 14),
+            Text(
+              'Great ${activity.kind.label.toLowerCase()}!',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            const SizedBox(height: 4),
+            const Text(
+              'Here\'s how you did',
+              style: TextStyle(color: AppPalette.inkSoft),
+            ),
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                _Metric(
+                  label: 'Distance',
+                  value: Fmt.km(activity.distanceKm),
+                  unit: 'km',
+                ),
+                _Metric(
+                  label: 'Time',
+                  value: Fmt.duration(activity.duration),
+                  unit: '',
+                ),
+                _Metric(
+                  label: 'Pace',
+                  value: Fmt.pace(activity.paceMinPerKm),
+                  unit: '/km',
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
+            SizedBox(
+              width: double.infinity,
+              child: FilledButton.icon(
+                style: FilledButton.styleFrom(backgroundColor: color),
+                onPressed: () => Navigator.pop(context, true),
+                icon: const Icon(Icons.check_rounded),
+                label: const Text('Save workout'),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text('Keep going'),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: AppPalette.red,
+                    ),
+                    onPressed: () => Navigator.pop(context, false),
+                    child: const Text('Discard'),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
