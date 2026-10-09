@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../config/themes/app_theme.dart';
 import '../../../../core/services/metrics_store.dart';
@@ -9,12 +10,23 @@ import '../../../../core/widgets/ui_kit.dart';
 import '../../../activity/presentation/pages/activity_history_page.dart';
 import '../../../challenges/presentation/widgets/sleep_logger.dart';
 
-/// Main landing tab: today's progress, weekly trend and recent workouts.
+/// Home tab, styled after the kit's "Home & Smart Health Metrics" screen.
 class HomeDashboardPage extends StatelessWidget {
   /// Switches the bottom navigation to another tab.
   final ValueChanged<int> onNavigate;
 
   const HomeDashboardPage({super.key, required this.onNavigate});
+
+  /// Average completion of the four daily goals, 0–100.
+  static int score(DayMetrics today, Goals goals) {
+    double part(double v, double goal) =>
+        goal <= 0 ? 0 : (v / goal).clamp(0, 1);
+    final total = part(today.steps.toDouble(), goals.steps.toDouble()) +
+        part(today.runKm, goals.runKm) +
+        part(today.calories, goals.calories) +
+        part(today.sleepHours, goals.sleepHours);
+    return (total / 4 * 100).round();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,67 +36,47 @@ class HomeDashboardPage extends StatelessWidget {
       builder: (context, _) {
         final today = store.today;
         final goals = store.goals;
+        final s = score(today, goals);
         return CustomScrollView(
           slivers: [
-            SliverToBoxAdapter(child: _Header(store: store)),
+            SliverToBoxAdapter(child: _Header(store: store, score: s)),
             SliverPadding(
-              padding: const EdgeInsets.fromLTRB(20, 20, 20, 32),
+              padding: const EdgeInsets.fromLTRB(16, 24, 16, 32),
               sliver: SliverList.list(
                 children: [
                   if (StepTracker.instance.permissionDenied) ...[
                     const _PermissionBanner(),
                     const SizedBox(height: 16),
                   ],
-                  _QuickActions(onNavigate: onNavigate),
+                  const _SectionTitle('Health Score'),
+                  _ScoreCard(score: s),
                   const SizedBox(height: 24),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: StatTile(
-                          icon: Icons.route_rounded,
-                          color: AppPalette.blue,
-                          value: '${Fmt.km(today.totalKm)} km',
-                          label: 'Distance',
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: StatTile(
-                          icon: Icons.local_fire_department_rounded,
-                          color: AppPalette.orange,
-                          value: today.calories.toStringAsFixed(0),
-                          label: 'kcal burned',
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: StatTile(
-                          icon: Icons.bedtime_rounded,
-                          color: AppPalette.purple,
-                          value: '${today.sleepHours.toStringAsFixed(1)} h',
-                          label: 'Sleep',
-                        ),
-                      ),
-                    ],
+                  _SectionTitle(
+                    'Smart Health Metrics',
+                    action: 'See All',
+                    onAction: () => onNavigate(3),
                   ),
+                  _MetricTiles(store: store),
                   const SizedBox(height: 24),
-                  const SectionHeader(title: 'This week'),
-                  _WeeklyChart(store: store),
-                  const SizedBox(height: 24),
-                  SectionHeader(
-                    title: 'Daily challenges',
-                    actionLabel: 'View all',
+                  _SectionTitle(
+                    'Fitness & Activity Tracker',
+                    action: 'Goals',
                     onAction: () => onNavigate(1),
                   ),
-                  _ChallengeSummary(
+                  _TrackerList(
                     today: today,
                     goals: goals,
-                    onTap: () => onNavigate(1),
+                    onSleep: () => showSleepLogger(context),
+                    onSteps: () => onNavigate(3),
+                    onChallenges: () => onNavigate(1),
                   ),
                   const SizedBox(height: 24),
-                  SectionHeader(
-                    title: 'Recent workouts',
-                    actionLabel: store.activities.isEmpty ? null : 'See all',
+                  const _SectionTitle('This Week'),
+                  _WeeklyChart(store: store),
+                  const SizedBox(height: 24),
+                  _SectionTitle(
+                    'Recent Workouts',
+                    action: store.activities.isEmpty ? null : 'See All',
                     onAction: () => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => const ActivityHistoryPage(),
@@ -120,121 +112,144 @@ class HomeDashboardPage extends StatelessWidget {
   }
 }
 
-class _Header extends StatelessWidget {
-  final MetricsStore store;
+class _SectionTitle extends StatelessWidget {
+  final String title;
+  final String? action;
+  final VoidCallback? onAction;
 
-  const _Header({required this.store});
+  const _SectionTitle(this.title, {this.action, this.onAction});
 
   @override
   Widget build(BuildContext context) {
-    final today = store.today;
-    final goal = store.goals.steps;
-    final progress = goal == 0 ? 0.0 : today.steps / goal;
-    final streak = store.streak;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Row(
+        children: [
+          Expanded(child: Text(title, style: AppText.textSmExtraBold)),
+          if (action != null)
+            GestureDetector(
+              onTap: onAction,
+              child: Text(
+                action!,
+                style: AppText.textSmSemiBold.copyWith(
+                  color: AppPalette.blue60,
+                  fontSize: 12,
+                ),
+              ),
+            )
+          else
+            const Icon(Icons.more_horiz_rounded, color: AppPalette.gray40),
+        ],
+      ),
+    );
+  }
+}
 
+class _Header extends StatelessWidget {
+  final MetricsStore store;
+  final int score;
+
+  const _Header({required this.store, required this.score});
+
+  @override
+  Widget build(BuildContext context) {
+    final streak = store.streak;
     return Container(
       decoration: const BoxDecoration(
-        gradient: AppPalette.hero,
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(36)),
+        color: AppPalette.gray80,
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(32)),
       ),
       child: SafeArea(
         bottom: false,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 12, 20, 28),
+          padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
-                  CircleAvatar(
-                    radius: 22,
-                    backgroundColor: Colors.white.withValues(alpha: 0.22),
+                  const Icon(Icons.calendar_today_rounded,
+                      color: AppPalette.gray30, size: 16),
+                  const SizedBox(width: 8),
+                  Text(
+                    DateFormat('EEE, d MMM yyyy').format(DateTime.now()),
+                    style: AppText.textSmSemiBold.copyWith(
+                      color: AppPalette.gray30,
+                      fontSize: 12,
+                    ),
+                  ),
+                  const Spacer(),
+                  Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Icon(Icons.notifications_none_rounded,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  Container(
+                    width: 56,
+                    height: 56,
+                    decoration: BoxDecoration(
+                      color: AppPalette.blue60,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    alignment: Alignment.center,
                     child: Text(
                       store.name.isEmpty ? 'A' : store.name[0].toUpperCase(),
-                      style: const TextStyle(
+                      style: AppText.textXlExtraBold.copyWith(
                         color: Colors.white,
-                        fontWeight: FontWeight.w800,
-                        fontSize: 18,
+                        fontSize: 24,
                       ),
                     ),
                   ),
-                  const SizedBox(width: 12),
+                  const SizedBox(width: 16),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '${Fmt.greeting(DateTime.now())},',
-                          style: TextStyle(
-                            color: Colors.white.withValues(alpha: 0.8),
-                            fontSize: 13,
-                          ),
-                        ),
-                        Text(
-                          store.name,
+                          'Hi, ${store.name.split(' ').first}! 👋',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
+                          style: AppText.headingXs.copyWith(
                             color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w800,
                           ),
+                        ),
+                        const SizedBox(height: 6),
+                        Wrap(
+                          spacing: 12,
+                          children: [
+                            _HeaderChip(
+                              icon: Icons.favorite_rounded,
+                              color: AppPalette.blue20,
+                              label: '$score%',
+                            ),
+                            _HeaderChip(
+                              icon: Icons.local_fire_department_rounded,
+                              color: AppPalette.amber,
+                              label: streak == 0
+                                  ? 'Start a streak'
+                                  : '$streak day streak',
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
-                  _Pill(
-                    icon: Icons.local_fire_department_rounded,
-                    label:
-                        streak == 0 ? 'Start a streak' : '$streak day streak',
-                  ),
                 ],
               ),
-              const SizedBox(height: 26),
-              ProgressRing(
-                progress: progress,
-                size: 196,
-                stroke: 16,
-                colors: const [
-                  Color(0xFFA5F3FC),
-                  Colors.white,
-                  Color(0xFFA5F3FC)
-                ],
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(Icons.directions_walk_rounded,
-                        color: Colors.white, size: 26),
-                    const SizedBox(height: 4),
-                    Text(
-                      Fmt.steps(today.steps),
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 34,
-                        fontWeight: FontWeight.w900,
-                        letterSpacing: -1,
-                      ),
-                    ),
-                    Text(
-                      'of ${Fmt.steps(goal)} steps',
-                      style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.8),
-                        fontSize: 13,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 18),
+              const SizedBox(height: 20),
               Text(
-                progress >= 1
-                    ? 'Goal crushed! Keep the momentum going 🎉'
-                    : '${(progress * 100).clamp(0, 100).toStringAsFixed(0)}% of your daily goal · '
-                        '${Fmt.steps((goal - today.steps).clamp(0, goal))} to go',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.92),
-                  fontWeight: FontWeight.w600,
-                ),
+                '${Fmt.greeting(DateTime.now())}! Here’s your day so far.',
+                style: AppText.paragraphSm.copyWith(color: AppPalette.gray30),
               ),
             ],
           ),
@@ -244,35 +259,411 @@ class _Header extends StatelessWidget {
   }
 }
 
-class _Pill extends StatelessWidget {
+class _HeaderChip extends StatelessWidget {
   final IconData icon;
+  final Color color;
   final String label;
 
-  const _Pill({required this.icon, required this.label});
+  const _HeaderChip({
+    required this.icon,
+    required this.color,
+    required this.label,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.18),
-        borderRadius: BorderRadius.circular(999),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.25)),
-      ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, color: color, size: 14),
+        const SizedBox(width: 4),
+        Text(
+          label,
+          style: AppText.textSmSemiBold.copyWith(
+            color: AppPalette.gray20,
+            fontSize: 12,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _ScoreCard extends StatelessWidget {
+  final int score;
+
+  const _ScoreCard({required this.score});
+
+  @override
+  Widget build(BuildContext context) {
+    final message = score >= 100
+        ? 'Every goal hit today. Outstanding!'
+        : score >= 60
+            ? 'Great progress — you’re well on track today.'
+            : 'Based on your goals, there’s room to move more today.';
+    return SurfaceCard(
+      padding: const EdgeInsets.all(12),
       child: Row(
-        mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, color: const Color(0xFFFDBA74), size: 18),
-          const SizedBox(width: 4),
-          Text(
-            label,
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-              fontSize: 12,
+          Container(
+            width: 64,
+            height: 64,
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [AppPalette.purple60, Color(0xFFB37BFF)],
+              ),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            alignment: Alignment.center,
+            child: Text(
+              '$score',
+              style: AppText.headingXs.copyWith(color: Colors.white),
+            ),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('AthloRun Score', style: AppText.textMdExtraBold),
+                const SizedBox(height: 4),
+                Text(
+                  message,
+                  style: AppText.paragraphSm.copyWith(fontSize: 12),
+                ),
+              ],
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _MetricTiles extends StatelessWidget {
+  final MetricsStore store;
+
+  const _MetricTiles({required this.store});
+
+  @override
+  Widget build(BuildContext context) {
+    final week = store.lastDays(7);
+    final today = store.today;
+    final tiles = [
+      (
+        'Steps',
+        Icons.directions_walk_rounded,
+        AppPalette.blue60,
+        Fmt.steps(today.steps),
+        'today',
+        [for (final d in week) d.value.steps.toDouble()],
+      ),
+      (
+        'Calories',
+        Icons.local_fire_department_rounded,
+        AppPalette.red50,
+        today.calories.toStringAsFixed(0),
+        'kcal',
+        [for (final d in week) d.value.calories],
+      ),
+      (
+        'Sleep',
+        Icons.bedtime_rounded,
+        AppPalette.cyan,
+        today.sleepHours.toStringAsFixed(1),
+        'hr',
+        [for (final d in week) d.value.sleepHours],
+      ),
+      (
+        'Distance',
+        Icons.route_rounded,
+        AppPalette.purple60,
+        today.totalKm.toStringAsFixed(1),
+        'km',
+        [for (final d in week) d.value.totalKm],
+      ),
+    ];
+    return SizedBox(
+      height: 168,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        clipBehavior: Clip.none,
+        itemCount: tiles.length,
+        separatorBuilder: (_, __) => const SizedBox(width: 12),
+        itemBuilder: (context, i) {
+          final (label, icon, color, value, unit, series) = tiles[i];
+          return Container(
+            width: 136,
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        label,
+                        style: AppText.textSmExtraBold.copyWith(
+                          color: Colors.white,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ),
+                    Icon(icon, color: Colors.white, size: 18),
+                  ],
+                ),
+                const Spacer(),
+                SizedBox(height: 48, child: _MiniBars(values: series)),
+                const SizedBox(height: 10),
+                Text.rich(
+                  TextSpan(
+                    text: value,
+                    style: AppText.textXlExtraBold.copyWith(
+                      color: Colors.white,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: ' $unit',
+                        style: AppText.textSmSemiBold.copyWith(
+                          color: Colors.white.withValues(alpha: 0.75),
+                          fontSize: 11,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class _MiniBars extends StatelessWidget {
+  final List<double> values;
+
+  const _MiniBars({required this.values});
+
+  @override
+  Widget build(BuildContext context) {
+    final max = values.fold<double>(0, (m, v) => v > m ? v : m);
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        for (var i = 0; i < values.length; i++)
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 2),
+              child: FractionallySizedBox(
+                heightFactor:
+                    max <= 0 ? 0.08 : (values[i] / max).clamp(0.08, 1),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(
+                      alpha: i == values.length - 1 ? 1 : 0.45,
+                    ),
+                    borderRadius: BorderRadius.circular(3),
+                  ),
+                ),
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+class _TrackerList extends StatelessWidget {
+  final DayMetrics today;
+  final Goals goals;
+  final VoidCallback onSleep;
+  final VoidCallback onSteps;
+  final VoidCallback onChallenges;
+
+  const _TrackerList({
+    required this.today,
+    required this.goals,
+    required this.onSleep,
+    required this.onSteps,
+    required this.onChallenges,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final stepsDone = today.steps >= goals.steps;
+    final sleepPct = goals.sleepHours <= 0
+        ? 0.0
+        : (today.sleepHours / goals.sleepHours).clamp(0.0, 1.0);
+    final caption = AppText.textSmSemiBold.copyWith(
+      color: AppPalette.gray50,
+      fontSize: 11,
+    );
+    return Column(
+      children: [
+        _TrackerRow(
+          icon: Icons.local_fire_department_rounded,
+          title: 'Calories Burned',
+          onTap: onChallenges,
+          below: Column(
+            children: [
+              const SizedBox(height: 8),
+              GradientProgressBar(
+                value:
+                    goals.calories <= 0 ? 0 : today.calories / goals.calories,
+                height: 6,
+                gradient: AppPalette.fire,
+              ),
+              const SizedBox(height: 6),
+              Row(
+                children: [
+                  Text('${today.calories.toStringAsFixed(0)}kcal',
+                      style: caption),
+                  const Spacer(),
+                  Text('${goals.calories.toStringAsFixed(0)}kcal',
+                      style: caption),
+                ],
+              ),
+            ],
+          ),
+        ),
+        _TrackerRow(
+          icon: Icons.directions_walk_rounded,
+          title: 'Steps Taken',
+          subtitle: 'You’ve taken ${Fmt.steps(today.steps)} of '
+              '${Fmt.steps(goals.steps)} steps.',
+          onTap: onSteps,
+          trailing: Container(
+            width: 32,
+            height: 32,
+            decoration: BoxDecoration(
+              color: stepsDone ? AppPalette.blue60 : AppPalette.blue10,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Icon(
+              Icons.check_rounded,
+              size: 18,
+              color: stepsDone ? Colors.white : AppPalette.blue60,
+            ),
+          ),
+        ),
+        _TrackerRow(
+          icon: Icons.directions_run_rounded,
+          title: 'Running',
+          subtitle: '${today.runKm.toStringAsFixed(2)} of '
+              '${goals.runKm.toStringAsFixed(1)} km today.',
+          onTap: onChallenges,
+          trailing: _RingBadge(
+            value: goals.runKm <= 0 ? 0 : today.runKm / goals.runKm,
+            color: AppPalette.green,
+          ),
+        ),
+        _TrackerRow(
+          icon: Icons.bedtime_rounded,
+          title: 'Sleep',
+          subtitle: today.sleepHours > 0
+              ? '${today.sleepHours.toStringAsFixed(1)}h of '
+                  '${goals.sleepHours.toStringAsFixed(0)}h goal · tap to edit'
+              : 'Tap to log last night’s sleep.',
+          onTap: onSleep,
+          trailing: _RingBadge(value: sleepPct, color: AppPalette.purple60),
+        ),
+        _TrackerRow(
+          icon: Icons.terrain_rounded,
+          title: 'Climb',
+          subtitle: '${today.climbM.toStringAsFixed(0)} m climbed today.',
+          onTap: onSteps,
+        ),
+      ],
+    );
+  }
+}
+
+class _TrackerRow extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String? subtitle;
+  final Widget? trailing;
+  final Widget? below;
+  final VoidCallback onTap;
+
+  const _TrackerRow({
+    required this.icon,
+    required this.title,
+    required this.onTap,
+    this.subtitle,
+    this.trailing,
+    this.below,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: SurfaceCard(
+        padding: const EdgeInsets.all(12),
+        onTap: onTap,
+        child: Row(
+          children: [
+            Container(
+              width: 44,
+              height: 44,
+              decoration: BoxDecoration(
+                color: AppPalette.gray10,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(icon, color: AppPalette.gray80, size: 22),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: AppText.textSmExtraBold),
+                  if (subtitle != null) ...[
+                    const SizedBox(height: 2),
+                    Text(
+                      subtitle!,
+                      style: AppText.paragraphSm.copyWith(fontSize: 11.5),
+                    ),
+                  ],
+                  if (below != null) below!,
+                ],
+              ),
+            ),
+            if (trailing != null) ...[const SizedBox(width: 12), trailing!],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _RingBadge extends StatelessWidget {
+  final double value;
+  final Color color;
+
+  const _RingBadge({required this.value, required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    final v = value.isFinite ? value.clamp(0.0, 1.0) : 0.0;
+    return ProgressRing(
+      progress: v,
+      size: 40,
+      stroke: 4,
+      colors: [color, color],
+      trackColor: color.withValues(alpha: 0.15),
+      child: Text(
+        '${(v * 100).round()}%',
+        style: AppText.textSmExtraBold.copyWith(fontSize: 9, color: color),
       ),
     );
   }
@@ -288,97 +679,22 @@ class _PermissionBanner extends StatelessWidget {
       child: Row(
         children: [
           const IconBadge(
-              icon: Icons.sensors_off_rounded, color: AppPalette.amber),
+            icon: Icons.sensors_off_rounded,
+            color: AppPalette.amber,
+          ),
           const SizedBox(width: 12),
-          const Expanded(
+          Expanded(
             child: Text(
               'Allow physical activity access for accurate step counting.',
-              style: TextStyle(fontSize: 13),
+              style: AppText.textSmSemiBold.copyWith(fontSize: 13),
             ),
           ),
           TextButton(
-            onPressed: () async {
-              await StepTracker.instance.openSettings();
-            },
+            onPressed: StepTracker.instance.openSettings,
             child: const Text('Allow'),
           ),
         ],
       ),
-    );
-  }
-}
-
-class _QuickActions extends StatelessWidget {
-  final ValueChanged<int> onNavigate;
-
-  const _QuickActions({required this.onNavigate});
-
-  @override
-  Widget build(BuildContext context) {
-    final actions = [
-      (
-        Icons.play_arrow_rounded,
-        'Workout',
-        AppPalette.hero,
-        () => onNavigate(2)
-      ),
-      (
-        Icons.bedtime_rounded,
-        'Log sleep',
-        AppPalette.dream,
-        () => showSleepLogger(context)
-      ),
-      (
-        Icons.emoji_events_rounded,
-        'Goals',
-        AppPalette.fire,
-        () => onNavigate(1)
-      ),
-      (
-        Icons.monitor_heart_rounded,
-        'Sensors',
-        AppPalette.fresh,
-        () => onNavigate(3)
-      ),
-    ];
-    return Row(
-      children: [
-        for (final (icon, label, gradient, onTap) in actions)
-          Expanded(
-            child: GestureDetector(
-              onTap: onTap,
-              behavior: HitTestBehavior.opaque,
-              child: Column(
-                children: [
-                  Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      gradient: gradient,
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          color: gradient.colors.first.withValues(alpha: 0.35),
-                          blurRadius: 14,
-                          offset: const Offset(0, 6),
-                        ),
-                      ],
-                    ),
-                    child: Icon(icon, color: Colors.white, size: 28),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    label,
-                    style: const TextStyle(
-                      fontSize: 12.5,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-      ],
     );
   }
 }
@@ -398,42 +714,32 @@ class _WeeklyChart extends StatelessWidget {
     final total = days.fold<int>(0, (s, e) => s + e.value.steps);
 
     return SurfaceCard(
-      padding: const EdgeInsets.fromLTRB(18, 18, 18, 10),
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    Fmt.steps(total),
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: -0.6,
-                    ),
-                  ),
-                  const Text(
-                    'steps in the last 7 days',
-                    style: TextStyle(color: AppPalette.inkSoft, fontSize: 12.5),
-                  ),
-                ],
+              Text(Fmt.steps(total), style: AppText.headingXs),
+              const SizedBox(width: 6),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: Text('steps', style: AppText.paragraphSm),
               ),
               const Spacer(),
               Text(
                 'avg ${Fmt.steps((total / 7).round())}/day',
-                style: const TextStyle(
-                  color: AppPalette.primary,
-                  fontWeight: FontWeight.w700,
+                style: AppText.textSmExtraBold.copyWith(
+                  color: AppPalette.blue60,
+                  fontSize: 12,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 18),
+          const SizedBox(height: 16),
           SizedBox(
-            height: 150,
+            height: 140,
             child: BarChart(
               BarChartData(
                 maxY: maxY <= 0 ? 1 : maxY,
@@ -443,8 +749,8 @@ class _WeeklyChart extends StatelessWidget {
                   horizontalLines: [
                     HorizontalLine(
                       y: goal,
-                      color: AppPalette.orange.withValues(alpha: 0.6),
-                      strokeWidth: 1.5,
+                      color: AppPalette.red50.withValues(alpha: 0.5),
+                      strokeWidth: 1.2,
                       dashArray: [6, 4],
                     ),
                   ],
@@ -456,7 +762,7 @@ class _WeeklyChart extends StatelessWidget {
                   bottomTitles: AxisTitles(
                     sideTitles: SideTitles(
                       showTitles: true,
-                      reservedSize: 28,
+                      reservedSize: 26,
                       getTitlesWidget: (value, meta) {
                         final i = value.toInt();
                         if (i < 0 || i >= days.length) {
@@ -466,14 +772,12 @@ class _WeeklyChart extends StatelessWidget {
                         return Padding(
                           padding: const EdgeInsets.only(top: 8),
                           child: Text(
-                            Fmt.weekday(days[i].key),
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight:
-                                  isToday ? FontWeight.w800 : FontWeight.w500,
+                            DateFormat('E').format(days[i].key),
+                            style: AppText.textSmSemiBold.copyWith(
+                              fontSize: 11,
                               color: isToday
-                                  ? AppPalette.primary
-                                  : AppPalette.muted,
+                                  ? AppPalette.blue60
+                                  : AppPalette.gray40,
                             ),
                           ),
                         );
@@ -483,10 +787,11 @@ class _WeeklyChart extends StatelessWidget {
                 ),
                 barTouchData: BarTouchData(
                   touchTooltipData: BarTouchTooltipData(
-                    getTooltipColor: (_) => AppPalette.ink,
+                    getTooltipColor: (_) => AppPalette.gray80,
                     getTooltipItem: (group, _, rod, __) => BarTooltipItem(
                       '${Fmt.steps(rod.toY.round())} steps',
                       const TextStyle(
+                        fontFamily: AppText.family,
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
                         fontSize: 12,
@@ -501,22 +806,15 @@ class _WeeklyChart extends StatelessWidget {
                       barRods: [
                         BarChartRodData(
                           toY: days[i].value.steps.toDouble(),
-                          width: 18,
-                          borderRadius: BorderRadius.circular(8),
-                          gradient: days[i].value.steps >= goal
-                              ? AppPalette.fresh
-                              : const LinearGradient(
-                                  begin: Alignment.bottomCenter,
-                                  end: Alignment.topCenter,
-                                  colors: [
-                                    Color(0xFF6366F1),
-                                    Color(0xFF22D3EE),
-                                  ],
-                                ),
+                          width: 16,
+                          borderRadius: BorderRadius.circular(4),
+                          color: days[i].value.steps >= goal
+                              ? AppPalette.blue60
+                              : AppPalette.blue20,
                           backDrawRodData: BackgroundBarChartRodData(
                             show: true,
                             toY: maxY <= 0 ? 1 : maxY,
-                            color: const Color(0xFFF1F4FA),
+                            color: AppPalette.gray10,
                           ),
                         ),
                       ],
@@ -525,87 +823,6 @@ class _WeeklyChart extends StatelessWidget {
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class _ChallengeSummary extends StatelessWidget {
-  final DayMetrics today;
-  final Goals goals;
-  final VoidCallback onTap;
-
-  const _ChallengeSummary({
-    required this.today,
-    required this.goals,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final items = [
-      (
-        Icons.directions_walk_rounded,
-        AppPalette.blue,
-        today.steps / goals.steps
-      ),
-      (
-        Icons.directions_run_rounded,
-        AppPalette.green,
-        today.runKm / goals.runKm
-      ),
-      (
-        Icons.local_fire_department_rounded,
-        AppPalette.orange,
-        today.calories / goals.calories
-      ),
-      (
-        Icons.bedtime_rounded,
-        AppPalette.purple,
-        today.sleepHours / goals.sleepHours
-      ),
-    ];
-    final done = items.where((e) => e.$3 >= 1).length;
-
-    return SurfaceCard(
-      onTap: onTap,
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '$done of ${items.length} complete',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w800,
-                    fontSize: 16,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  done == items.length
-                      ? 'Perfect day — every goal hit!'
-                      : 'Keep going, you\'re on your way.',
-                  style: const TextStyle(
-                      color: AppPalette.inkSoft, fontSize: 12.5),
-                ),
-              ],
-            ),
-          ),
-          for (final (icon, color, value) in items)
-            Padding(
-              padding: const EdgeInsets.only(left: 6),
-              child: ProgressRing(
-                progress: value.isFinite ? value : 0,
-                size: 40,
-                stroke: 4.5,
-                colors: [color, color],
-                trackColor: color.withValues(alpha: 0.14),
-                child: Icon(icon, size: 17, color: color),
-              ),
-            ),
         ],
       ),
     );

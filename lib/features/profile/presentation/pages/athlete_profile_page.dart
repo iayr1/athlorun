@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:athlorun/config/themes/app_theme.dart';
+import 'package:athlorun/core/services/auth_service.dart';
+import 'package:athlorun/core/services/cloud_sync.dart';
 import 'package:athlorun/core/services/metrics_store.dart';
 import 'package:athlorun/core/utils/formatters.dart';
 import 'package:athlorun/core/widgets/ui_kit.dart';
 import 'package:athlorun/features/activity/presentation/pages/activity_history_page.dart';
+import 'package:athlorun/features/assessment/presentation/pages/assessment_page.dart';
 
 /// Profile tab: lifetime stats, personal bests, goals and app data.
 class AthleteProfilePage extends StatelessWidget {
@@ -14,7 +17,7 @@ class AthleteProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final store = MetricsStore.instance;
     return ListenableBuilder(
-      listenable: store,
+      listenable: Listenable.merge([store, CloudSync.instance]),
       builder: (context, _) {
         final activities = store.activities;
         final longest = activities.isEmpty
@@ -174,11 +177,61 @@ class AthleteProfilePage extends StatelessWidget {
                           ),
                         ),
                         _SettingTile(
+                          icon: Icons.assignment_outlined,
+                          color: AppPalette.purple,
+                          title: 'Health assessment',
+                          value: CloudSync.instance.profile?.assessment?.goal ==
+                                  null
+                              ? null
+                              : 'Retake',
+                          onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => AssessmentPage(
+                                initial: CloudSync.instance.profile?.assessment,
+                                onFinished: () => Navigator.of(context).pop(),
+                              ),
+                            ),
+                          ),
+                        ),
+                        _SettingTile(
                           icon: Icons.delete_sweep_outlined,
                           color: AppPalette.red,
                           title: 'Clear all data',
                           onTap: () => _confirmClear(context),
                         ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  const SectionHeader(title: 'Signed in'),
+                  SurfaceCard(
+                    padding: const EdgeInsets.symmetric(vertical: 6),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          leading: const IconBadge(
+                            icon: Icons.mail_outline_rounded,
+                            color: AppPalette.blue,
+                            size: 40,
+                          ),
+                          title: Text(
+                            CloudSync.instance.profile?.email ??
+                                'Local account',
+                            style: const TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          subtitle: Text(
+                            CloudSync.instance.profile == null
+                                ? 'Data stays on this device'
+                                : 'Synced with Firebase',
+                          ),
+                        ),
+                        if (CloudSync.instance.profile != null)
+                          _SettingTile(
+                            icon: Icons.logout_rounded,
+                            color: AppPalette.red,
+                            title: 'Sign out',
+                            onTap: () => _confirmSignOut(context),
+                          ),
                       ],
                     ),
                   ),
@@ -198,6 +251,29 @@ class AthleteProfilePage extends StatelessWidget {
     );
   }
 
+  Future<void> _confirmSignOut(BuildContext context) async {
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Sign out?'),
+        content: const Text(
+          'Your data is saved to your account. You can sign back in anytime.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Sign out'),
+          ),
+        ],
+      ),
+    );
+    if (ok == true) await AuthService.instance.signOut();
+  }
+
   Future<void> _confirmClear(BuildContext context) async {
     final ok = await showDialog<bool>(
       context: context,
@@ -205,7 +281,7 @@ class AthleteProfilePage extends StatelessWidget {
         title: const Text('Clear all data?'),
         content: const Text(
           'This permanently removes your step history, workouts, sleep logs '
-          'and goals from this device.',
+          'and goals from this device and your account.',
         ),
         actions: [
           TextButton(

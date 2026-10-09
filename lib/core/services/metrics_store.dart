@@ -188,6 +188,16 @@ class Goals {
   }
 }
 
+/// Receives every local change so it can be mirrored to a backend.
+abstract class MetricsSyncDelegate {
+  void dayChanged(String key, DayMetrics day);
+  void activityAdded(TrackedActivity activity);
+  void activityDeleted(String id);
+  void goalsChanged(Goals goals);
+  void profileChanged(String name, double weightKg);
+  void cleared();
+}
+
 /// Single source of truth for all locally persisted fitness data.
 ///
 /// Days are keyed by date, so a new day automatically starts from zero
@@ -216,6 +226,9 @@ class MetricsStore extends ChangeNotifier {
   /// True while a GPS workout is being recorded, so step-based distance and
   /// calories are not double counted.
   bool gpsSessionActive = false;
+
+  /// Mirrors changes to the cloud (set by CloudSync once signed in).
+  MetricsSyncDelegate? syncDelegate;
 
   bool get isLoaded => _loaded;
   Goals get goals => _goals;
@@ -296,9 +309,11 @@ class MetricsStore extends ChangeNotifier {
 
   void _updateToday(DayMetrics Function(DayMetrics current) update) {
     final key = dayKey(DateTime.now());
-    _days[key] = update(_days[key] ?? const DayMetrics());
+    final day = update(_days[key] ?? const DayMetrics());
+    _days[key] = day;
     notifyListeners();
     _saveDays();
+    syncDelegate?.dayChanged(key, day);
   }
 
   /// Adds steps detected by the pedometer. Distance and calories are derived
@@ -333,6 +348,7 @@ class MetricsStore extends ChangeNotifier {
     _days[key] = DayMetrics(sleepHours: sleep);
     notifyListeners();
     _saveDays();
+    syncDelegate?.dayChanged(key, _days[key]!);
   }
 
   double caloriesFor(ActivityKind kind, double distanceKm) =>
@@ -350,6 +366,7 @@ class MetricsStore extends ChangeNotifier {
       route: route,
     );
     _activities = [saved, ..._activities];
+    syncDelegate?.activityAdded(saved);
     _updateToday((d) => d.copyWith(
           runKm: activity.kind == ActivityKind.run
               ? d.runKm + activity.distanceKm
@@ -371,6 +388,7 @@ class MetricsStore extends ChangeNotifier {
   Future<void> deleteActivity(String id) async {
     _activities = _activities.where((a) => a.id != id).toList();
     notifyListeners();
+    syncDelegate?.activityDeleted(id);
     await _prefs?.setString(
       _activitiesKey,
       jsonEncode([for (final a in _activities) a.toJson()]),
@@ -380,6 +398,7 @@ class MetricsStore extends ChangeNotifier {
   Future<void> updateGoals(Goals goals) async {
     _goals = goals;
     notifyListeners();
+    syncDelegate?.goalsChanged(goals);
     await _prefs?.setString(_goalsKey, jsonEncode(goals.toJson()));
   }
 
@@ -387,6 +406,7 @@ class MetricsStore extends ChangeNotifier {
     if (name != null && name.trim().isNotEmpty) _name = name.trim();
     if (weightKg != null && weightKg > 0) _weightKg = weightKg;
     notifyListeners();
+    syncDelegate?.profileChanged(_name, _weightKg);
     await _prefs?.setString(_nameKey, _name);
     await _prefs?.setDouble(_weightKey, _weightKg);
   }
@@ -396,12 +416,68 @@ class MetricsStore extends ChangeNotifier {
     _activities = [];
     _goals = const Goals();
     notifyListeners();
+    syncDelegate?.cleared();
     final prefs = _prefs;
     if (prefs == null) return;
     await prefs.remove(_daysKey);
     await prefs.remove(_activitiesKey);
     await prefs.remove(_goalsKey);
   }
+
+  /// Merges data downloaded from the cloud. For each day the record with more
+  /// steps wins, so a fresh install picks up history without losing anything
+  /// counted locally before sign-in. Returns the days where local data is
+  /// newer, so the caller can upload them.
+  Future<List<String>> mergeRemote({
+    Map<String, DayMetrics> days = const {},
+    List<TrackedActivity> activities = const [],
+    Goals? goals,
+    String? name,
+    double? weightKg,
+  }) async {
+    final localNewer = <String>[];
+    for (final entry in days.entries) {
+      final local = _days[entry.key];
+      if (local == null || entry.value.steps >= local.steps) {
+        _days[entry.key] = entry.value.copyWith(
+          sleepHours: entry.value.sleepHours > 0
+              ? entry.value.sleepHours
+              : local?.sleepHours,
+        );
+      } else {
+        localNewer.add(entry.key);
+      }
+    }
+    for (final key in _days.keys) {
+      if (!days.containsKey(key)) localNewer.add(key);
+    }
+    final known = {for (final a in _activities) a.id};
+    final merged = [
+      ..._activities,
+      for (final a in activities)
+        if (!known.contains(a.id)) a,
+    ]..sort((a, b) => b.startedAt.compareTo(a.startedAt));
+    _activities = merged;
+    if (goals != null) _goals = goals;
+    if (name != null && name.trim().isNotEmpty) _name = name.trim();
+    if (weightKg != null && weightKg > 0) _weightKg = weightKg;
+    notifyListeners();
+
+    final prefs = _prefs;
+    if (prefs != null) {
+      await _saveDays();
+      await prefs.setString(
+        _activitiesKey,
+        jsonEncode([for (final a in _activities) a.toJson()]),
+      );
+      await prefs.setString(_goalsKey, jsonEncode(_goals.toJson()));
+      await prefs.setString(_nameKey, _name);
+      await prefs.setDouble(_weightKey, _weightKg);
+    }
+    return localNewer;
+  }
+
+  Map<String, DayMetrics> get allDays => Map.unmodifiable(_days);
 
   Future<void> _saveDays() async {
     if (_days.length > _maxDaysKept) {
