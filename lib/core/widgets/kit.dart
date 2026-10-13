@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -37,6 +39,31 @@ class KitPlusIcon extends StatelessWidget {
   }
 }
 
+/// One stroke of the kit's plus glyph (the "Vector Stroke" layer): a
+/// horizontal arm that curves into a vertical one. Drawn into an
+/// [extent]×[extent] box, stroke centred on the path; the stroke width is
+/// `extent / 4`, matching the logo's 18px arm / 4.5px stroke.
+Path kitPlusStrokePath(double extent) {
+  final s = extent / 18;
+  return Path()
+    ..moveTo(0, 0)
+    ..lineTo(11.25 * s, 0)
+    ..cubicTo(14.98 * s, 0, 18 * s, 3.02 * s, 18 * s, 6.75 * s)
+    ..lineTo(18 * s, 18 * s);
+}
+
+/// Both strokes of the plus glyph inside a [size]×[size] box.
+Path kitPlusPath(double size) {
+  final arm = size / 2;
+  final a = kitPlusStrokePath(arm).shift(Offset(0, arm));
+  final b = kitPlusStrokePath(arm)
+      .transform((Matrix4.identity()..rotateZ(math.pi)).storage)
+      .shift(Offset(size, arm));
+  return Path()
+    ..addPath(a, Offset.zero)
+    ..addPath(b, Offset.zero);
+}
+
 class _PlusPainter extends CustomPainter {
   final Color color;
 
@@ -45,24 +72,11 @@ class _PlusPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     // Geometry from the logo SVG (72px box, glyph spans 18..54).
-    final s = size.width / 36;
-    canvas.translate(-18 * s, -18 * s);
     final paint = Paint()
       ..color = color
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 4.5 * s;
-    final a = Path()
-      ..moveTo(18 * s, 36 * s)
-      ..lineTo(29.25 * s, 36 * s)
-      ..cubicTo(32.98 * s, 36 * s, 36 * s, 39.02 * s, 36 * s, 42.75 * s)
-      ..lineTo(36 * s, 54 * s);
-    final b = Path()
-      ..moveTo(54 * s, 36 * s)
-      ..lineTo(42.75 * s, 36 * s)
-      ..cubicTo(39.02 * s, 36 * s, 36 * s, 32.98 * s, 36 * s, 29.25 * s)
-      ..lineTo(36 * s, 18 * s);
-    canvas.drawPath(a, paint);
-    canvas.drawPath(b, paint);
+      ..strokeWidth = size.width / 8;
+    canvas.drawPath(kitPlusPath(size.width), paint);
   }
 
   @override
