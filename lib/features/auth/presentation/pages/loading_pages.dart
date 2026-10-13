@@ -31,7 +31,7 @@ class LoadingPage extends StatelessWidget {
 /// Progress for a load of unknown length: eases towards 99.9% and holds
 /// there until the caller replaces the screen.
 mixin _IndeterminateProgress<T extends StatefulWidget>
-    on State<T>, SingleTickerProviderStateMixin<T> {
+    on State<T>, TickerProviderStateMixin<T> {
   late final AnimationController progress = AnimationController(
     vsync: this,
     duration: const Duration(seconds: 4),
@@ -49,12 +49,66 @@ mixin _IndeterminateProgress<T extends StatefulWidget>
   }
 }
 
+/// One plus-glyph stroke placed by its (virtual, sharp) corner, in
+/// 375×812 frame coordinates.
+///
+/// At [angle] 0 the arms point left and down ("┐", the logo's first
+/// stroke); positive angles turn it clockwise.
+class _Stroke {
+  final Offset corner;
+  final double angle;
+  final double arm;
+  final double width;
+
+  const _Stroke(this.corner, this.angle,
+      {required this.arm, required this.width});
+
+  /// The four quarter-turn orientations used by the quote pattern.
+  static const double down = 0; // ┐
+  static const double up = math.pi; // └
+  static const double upLeft = math.pi / 2; // ┘
+  static const double downRight = -math.pi / 2; // ┌
+
+  void paint(Canvas canvas, Paint paint, {double scale = 1, double turn = 0}) {
+    canvas.save();
+    canvas.translate(corner.dx * scale, corner.dy * scale);
+    canvas.rotate(angle + turn);
+    paint.strokeWidth = width * scale;
+    final a = arm * scale;
+    canvas.drawPath(kitPlusStrokePath(a).shift(Offset(-a, 0)), paint);
+    canvas.restore();
+  }
+}
+
+class _StrokesPainter extends CustomPainter {
+  final List<_Stroke> strokes;
+  final Color color;
+  final double Function(int index) turn;
+
+  _StrokesPainter(this.strokes, this.color, {double Function(int)? turn})
+      : turn = turn ?? ((_) => 0);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final scale = size.width / 375;
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke;
+    for (var i = 0; i < strokes.length; i++) {
+      strokes[i].paint(canvas, paint, scale: scale, turn: turn(i));
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _StrokesPainter old) => true;
+}
+
 // ---------------------------------------------------------------------------
 // Loading Interactive
 // ---------------------------------------------------------------------------
 
-/// "Loading Interactive": title, progress bar and four large plus-glyph
-/// strokes that spin a quarter turn when the phone is shaken (or tapped).
+/// "Loading Interactive": title, progress bar and four large glyph strokes
+/// that wobble when the phone is shaken (or the screen tapped).
 class LoadingInteractivePage extends StatefulWidget {
   const LoadingInteractivePage({super.key});
 
@@ -63,13 +117,26 @@ class LoadingInteractivePage extends StatefulWidget {
 }
 
 class _LoadingInteractivePageState extends State<LoadingInteractivePage>
-    with SingleTickerProviderStateMixin, _IndeterminateProgress {
+    with TickerProviderStateMixin, _IndeterminateProgress {
   static const _shakeThreshold = 15.0; // m/s², gravity removed
   static const _shakeCooldown = Duration(milliseconds: 600);
 
+  static double _deg(double d) => d * math.pi / 180;
+
+  static final _strokes = [
+    _Stroke(const Offset(81, 157), _deg(-135), arm: 205, width: 60),
+    _Stroke(const Offset(272, 347), _deg(105), arm: 205, width: 60),
+    _Stroke(const Offset(215, 450), _deg(-10), arm: 205, width: 60),
+    _Stroke(const Offset(166, 622), _deg(-79), arm: 205, width: 60),
+  ];
+
+  late final AnimationController _wobble = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 900),
+  );
+
   StreamSubscription<UserAccelerometerEvent>? _accel;
   DateTime _lastShake = DateTime.fromMillisecondsSinceEpoch(0);
-  int _turns = 0;
 
   @override
   void initState() {
@@ -94,122 +161,84 @@ class _LoadingInteractivePageState extends State<LoadingInteractivePage>
 
   void _interact() {
     HapticFeedback.lightImpact();
-    setState(() => _turns++);
+    _wobble.forward(from: 0);
+  }
+
+  /// Damped swing, alternating direction per stroke.
+  double _turn(int i) {
+    final t = _wobble.value;
+    final swing = math.sin(t * math.pi * 4) * (1 - t) * 0.35;
+    return i.isEven ? swing : -swing;
   }
 
   @override
   void dispose() {
     _accel?.cancel();
+    _wobble.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppPalette.blue60,
       body: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: _interact,
-        child: LayoutBuilder(
-          builder: (context, c) {
-            final sx = c.maxWidth / 375;
-            final sy = c.maxHeight / 812;
-            // Frame positions from the kit; each stroke bleeds off an edge.
-            Widget stroke(double x, double y, double size, int quarter,
-                {bool clockwise = true}) {
-              final s = size * sx;
-              return Positioned(
-                left: x * sx,
-                top: y * sy,
-                width: s,
-                height: s,
-                child: AnimatedRotation(
-                  turns: (quarter + (clockwise ? _turns : -_turns)) / 4,
-                  duration: const Duration(milliseconds: 700),
-                  curve: Curves.elasticOut,
-                  child: const _GlyphStroke(color: AppPalette.blue10),
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: AnimatedBuilder(
+                animation: _wobble,
+                builder: (_, __) => CustomPaint(
+                  painter: _StrokesPainter(
+                    _strokes,
+                    Colors.white.withValues(alpha: 0.12),
+                    turn: _turn,
+                  ),
                 ),
-              );
-            }
-
-            return Stack(
-              children: [
-                stroke(-140, 0, 323, 1),
-                stroke(75, -73, 300, 2, clockwise: false),
-                stroke(0, 520, 290, 2, clockwise: false),
-                stroke(94, 636, 281, 3),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 32),
-                    child: Column(
+              ),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 32),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Loading...',
+                      style: AppText.headingXs.copyWith(
+                        height: 30 / 24,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    AnimatedBuilder(
+                      animation: eased,
+                      builder: (_, __) => _LoadingBar(value: eased.value),
+                    ),
+                    const SizedBox(height: 48),
+                    Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        const Icon(
+                          Icons.smartphone_outlined,
+                          size: 24,
+                          color: Colors.white,
+                        ),
+                        const SizedBox(width: 8),
                         Text(
-                          'Loading',
-                          style: AppText.headingXs.copyWith(height: 30 / 24),
-                        ),
-                        const SizedBox(height: 24),
-                        AnimatedBuilder(
-                          animation: eased,
-                          builder: (_, __) =>
-                              _LoadingBar(value: eased.value),
-                        ),
-                        const SizedBox(height: 48),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Icon(
-                              Icons.smartphone_rounded,
-                              size: 24,
-                              color: AppPalette.gray40,
-                            ),
-                            const SizedBox(width: 8),
-                            Text(
-                              'Shake screen to interact',
-                              style: AppText.textSmSemiBold.copyWith(
-                                fontSize: 12,
-                                height: 15 / 12,
-                                color: AppPalette.gray40,
-                              ),
-                            ),
-                          ],
+                          'SHAKE SCREEN TO INTERACT!',
+                          style: AppText.labelXs.copyWith(
+                            fontSize: 12,
+                            height: 15 / 12,
+                            letterSpacing: 1.2,
+                            color: Colors.white,
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                ),
-              ],
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
-
-/// "Progress Bar Atom": 10px rounded track with a blue fill.
-class _LoadingBar extends StatelessWidget {
-  final double value;
-
-  const _LoadingBar({required this.value});
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(5),
-      child: SizedBox(
-        height: 10,
-        child: Stack(
-          children: [
-            const Positioned.fill(
-              child: ColoredBox(color: AppPalette.gray10),
-            ),
-            FractionallySizedBox(
-              widthFactor: value.clamp(0, 1).toDouble(),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: AppPalette.blue60,
-                  borderRadius: BorderRadius.circular(5),
+                  ],
                 ),
               ),
             ),
@@ -220,39 +249,45 @@ class _LoadingBar extends StatelessWidget {
   }
 }
 
-/// A single plus-glyph stroke filling its box (the "Vector Stroke" layers).
-class _GlyphStroke extends StatelessWidget {
-  final Color color;
+/// "Progress Bar Atom" on blue: translucent track, white fill with a halo.
+class _LoadingBar extends StatelessWidget {
+  final double value;
 
-  const _GlyphStroke({required this.color});
-
-  @override
-  Widget build(BuildContext context) =>
-      CustomPaint(painter: _GlyphStrokePainter(color));
-}
-
-class _GlyphStrokePainter extends CustomPainter {
-  final Color color;
-
-  _GlyphStrokePainter(this.color);
+  const _LoadingBar({required this.value});
 
   @override
-  void paint(Canvas canvas, Size size) {
-    // Arm is 18 units, stroke 4.5: the stroked shape spans 22.5 units.
-    final arm = size.shortestSide * 18 / 22.5;
-    final stroke = arm / 4;
-    final paint = Paint()
-      ..color = color
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = stroke;
-    canvas.drawPath(
-      kitPlusStrokePath(arm).shift(Offset(stroke / 2, stroke / 2)),
-      paint,
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 10,
+      child: Stack(
+        alignment: Alignment.centerLeft,
+        children: [
+          Container(
+            height: 8,
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.3),
+              borderRadius: BorderRadius.circular(4),
+            ),
+          ),
+          FractionallySizedBox(
+            widthFactor: value.clamp(0, 1).toDouble(),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(5),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.white.withValues(alpha: 0.35),
+                    spreadRadius: 3,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
-
-  @override
-  bool shouldRepaint(covariant _GlyphStrokePainter old) => old.color != color;
 }
 
 // ---------------------------------------------------------------------------
@@ -266,7 +301,8 @@ class _Quote {
   const _Quote(this.text, this.author);
 }
 
-/// "Loading Quote": a quote over a tilted pattern of plus glyphs.
+/// "Loading Quote": a quote on light blue, framed by small glyph strokes
+/// clustered in the top-right and bottom-left corners.
 class LoadingQuotePage extends StatefulWidget {
   const LoadingQuotePage({super.key});
 
@@ -274,47 +310,64 @@ class LoadingQuotePage extends StatefulWidget {
   State<LoadingQuotePage> createState() => _LoadingQuotePageState();
 }
 
-class _LoadingQuotePageState extends State<LoadingQuotePage>
-    with SingleTickerProviderStateMixin {
+class _LoadingQuotePageState extends State<LoadingQuotePage> {
   static const _quotes = [
-    _Quote(
-      'Health is the complete harmony of the body and soul',
-      'Naval Ravikant',
-    ),
-    _Quote('Run when you can, walk if you have to, crawl if you must',
+    _Quote('Health is the complete harmony of the body and soul.', 'Aristotle'),
+    _Quote('Run when you can, walk if you have to, crawl if you must.',
         'Dean Karnazes'),
-    _Quote('Take care of your body. It’s the only place you have to live',
+    _Quote('Take care of your body. It’s the only place you have to live.',
         'Jim Rohn'),
+  ];
+
+  static _Stroke _s(double x, double y, double angle) =>
+      _Stroke(Offset(x, y), angle, arm: 56, width: 12);
+
+  static Path _line(double x1, double y1, double x2, double y2) => Path()
+    ..moveTo(x1, y1)
+    ..lineTo(x2, y2);
+
+  // Pieces of the kit's plus pattern, in 375×812 frame coordinates.
+  static final _strokes = [
+    // Top-right cluster.
+    _s(168, 79, _Stroke.upLeft),
+    _s(281, 80, _Stroke.upLeft),
+    _s(279, 76, _Stroke.downRight),
+    _s(338, 190, _Stroke.down),
+    _s(338, 195, _Stroke.up),
+    // Bottom-left cluster.
+    _s(36, 617, _Stroke.down),
+    _s(36, 622, _Stroke.up),
+    _s(93, 734, _Stroke.upLeft),
+    _s(93, 730, _Stroke.downRight),
+    _s(205, 730, _Stroke.downRight),
+  ];
+
+  // Arms of glyphs that sit mostly off-screen.
+  static final _edges = [
+    _line(107, 0, 107, 13),
+    _line(217, 0, 217, 13),
+    _line(338, 76, 375, 76),
+    _line(338, 313, 375, 313),
+    _line(0, 499, 36, 499),
+    _line(36, 800, 36, 812),
+    _line(150, 800, 150, 812),
+    _line(264, 800, 264, 812),
   ];
 
   late final _Quote _quote = _quotes[math.Random().nextInt(_quotes.length)];
 
-  // Slow drift of the background pattern.
-  late final AnimationController _drift = AnimationController(
-    vsync: this,
-    duration: const Duration(seconds: 20),
-  )..repeat();
-
-  @override
-  void dispose() {
-    _drift.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppPalette.blue60,
+      backgroundColor: AppPalette.blue20,
       body: Stack(
         children: [
           Positioned.fill(
-            child: AnimatedBuilder(
-              animation: _drift,
-              builder: (_, __) => CustomPaint(
-                painter: _PlusPatternPainter(
-                  color: Colors.white.withValues(alpha: 0.08),
-                  phase: _drift.value,
-                ),
+            child: CustomPaint(
+              painter: _QuotePatternPainter(
+                _strokes,
+                _edges,
+                AppPalette.blue60.withValues(alpha: 0.2),
               ),
             ),
           ),
@@ -327,21 +380,23 @@ class _LoadingQuotePageState extends State<LoadingQuotePage>
                   const Icon(
                     Icons.format_quote_rounded,
                     size: 48,
-                    color: Colors.white,
+                    color: AppPalette.blue60,
                   ),
                   const SizedBox(height: 32),
                   Text(
-                    _quote.text,
+                    '"${_quote.text}"',
                     textAlign: TextAlign.center,
-                    style: AppText.headingSm.copyWith(color: Colors.white),
+                    style: AppText.headingSm,
                   ),
                   const SizedBox(height: 32),
                   Text(
-                    _quote.author,
+                    '— ${_quote.author.toUpperCase()}',
                     textAlign: TextAlign.center,
-                    style: AppText.textSmSemiBold.copyWith(
+                    style: AppText.labelXs.copyWith(
+                      fontSize: 14,
                       height: 18 / 14,
-                      color: Colors.white.withValues(alpha: 0.8),
+                      letterSpacing: 1.4,
+                      color: AppPalette.blue60,
                     ),
                   ),
                 ],
@@ -354,52 +409,39 @@ class _LoadingQuotePageState extends State<LoadingQuotePage>
   }
 }
 
-/// Grid of plus glyphs rotated across the screen, drifting by [phase].
-class _PlusPatternPainter extends CustomPainter {
-  static const _spacing = 96.0;
-  static const _glyph = 32.0;
-  static const _angle = -math.pi / 9;
-
+class _QuotePatternPainter extends CustomPainter {
+  final List<_Stroke> strokes;
+  final List<Path> edges;
   final Color color;
-  final double phase;
 
-  _PlusPatternPainter({required this.color, required this.phase});
+  _QuotePatternPainter(this.strokes, this.edges, this.color);
 
   @override
   void paint(Canvas canvas, Size size) {
+    _StrokesPainter(strokes, color).paint(canvas, size);
+    final scale = size.width / 375;
     final paint = Paint()
       ..color = color
       ..style = PaintingStyle.stroke
-      ..strokeWidth = _glyph / 8;
-    final glyph = kitPlusPath(_glyph);
-    final reach = size.longestSide;
-    final shift = phase * _spacing;
-
-    canvas.save();
-    canvas.translate(size.width / 2, size.height / 2);
-    canvas.rotate(_angle);
-    for (var y = -reach; y < reach; y += _spacing) {
-      // Offset alternate rows by half a cell, like the kit's pattern.
-      final row = ((y + reach) / _spacing).round();
-      final dx = row.isEven ? 0.0 : _spacing / 2;
-      for (var x = -reach; x < reach; x += _spacing) {
-        canvas.drawPath(glyph.shift(Offset(x + dx + shift, y)), paint);
-      }
+      ..strokeWidth = 12 * scale;
+    for (final e in edges) {
+      canvas.drawPath(
+        e.transform(Matrix4.diagonal3Values(scale, scale, 1).storage),
+        paint,
+      );
     }
-    canvas.restore();
   }
 
   @override
-  bool shouldRepaint(covariant _PlusPatternPainter old) =>
-      old.phase != phase || old.color != color;
+  bool shouldRepaint(covariant _QuotePatternPainter old) => old.color != color;
 }
 
 // ---------------------------------------------------------------------------
 // Loading Number
 // ---------------------------------------------------------------------------
 
-/// "Loading Number": the logo mark blown up to fill the screen with the
-/// percentage counting up in the middle of the glyph.
+/// "Loading Number": the plus glyph blown up to fill a dark screen with the
+/// percentage counting up where its strokes cross.
 class LoadingNumberPage extends StatefulWidget {
   const LoadingNumberPage({super.key});
 
@@ -408,51 +450,71 @@ class LoadingNumberPage extends StatefulWidget {
 }
 
 class _LoadingNumberPageState extends State<LoadingNumberPage>
-    with SingleTickerProviderStateMixin, _IndeterminateProgress {
+    with TickerProviderStateMixin, _IndeterminateProgress {
   @override
   Widget build(BuildContext context) {
+    final style = AppText.headingSm.copyWith(
+      fontSize: 36,
+      height: 44 / 36,
+      color: Colors.white,
+      fontFeatures: const [FontFeature.tabularFigures()],
+    );
     return Scaffold(
-      backgroundColor: AppPalette.blue60,
-      body: LayoutBuilder(
-        builder: (context, c) {
-          // 1080px mark on the 375px frame, centred on the screen.
-          final mark = 1080 * c.maxWidth / 375;
-          return Stack(
-            alignment: Alignment.center,
-            children: [
-              OverflowBox(
-                maxWidth: mark,
-                maxHeight: mark,
-                child: KitLogoMark(size: mark),
-              ),
-              // Blue cut-out so the strokes crossing the centre don't
-              // run through the number.
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  color: AppPalette.blue60,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                  child: AnimatedBuilder(
-                    animation: eased,
-                    builder: (_, __) => Text(
-                      '${(eased.value * 100).toStringAsFixed(1)}%',
-                      style: AppText.headingSm.copyWith(
-                        fontSize: 36,
-                        height: 44 / 36,
-                        color: Colors.white,
-                        fontFeatures: const [FontFeature.tabularFigures()],
-                      ),
+      backgroundColor: AppPalette.gray80,
+      body: Stack(
+        fit: StackFit.expand,
+        alignment: Alignment.center,
+        children: [
+          Positioned.fill(
+            child: CustomPaint(
+              painter: _BigGlyphPainter(Colors.white.withValues(alpha: 0.08)),
+            ),
+          ),
+          Center(
+            child: AnimatedBuilder(
+              animation: eased,
+              builder: (_, __) => Text.rich(
+                TextSpan(
+                  text: (eased.value * 100).toStringAsFixed(1),
+                  children: const [
+                    TextSpan(
+                      text: '%',
+                      style: TextStyle(color: AppPalette.blue60),
                     ),
-                  ),
+                  ],
                 ),
+                style: style,
               ),
-            ],
-          );
-        },
+            ),
+          ),
+        ],
       ),
     );
   }
+}
+
+/// The plus glyph centred on screen, 810px wide on the 375px frame so its
+/// arms run the full height.
+class _BigGlyphPainter extends CustomPainter {
+  final Color color;
+
+  _BigGlyphPainter(this.color);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final glyph = 810 * size.width / 375;
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = glyph / 8;
+    canvas.drawPath(
+      kitPlusPath(glyph).shift(
+        Offset((size.width - glyph) / 2, (size.height - glyph) / 2),
+      ),
+      paint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant _BigGlyphPainter old) => old.color != color;
 }
