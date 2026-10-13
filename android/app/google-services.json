@@ -12,7 +12,20 @@
           "package_name": "online.athlorun.app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1001853874812-10rbco983d20piic24j10svisb6l6pmv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "online.athlorun.app",
+            "certificate_hash": "6744bb815035b12bd64f2f35f798a33076352e0f"
+          }
+        },
+        {
+          "client_id": "1001853874812-g81cfhttkd11hm6elm8jp5ggc7pspv5r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDe-tAN9UgIIh2O_Y3z614PXHmHAjFOQ1s"
@@ -20,7 +33,63 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001853874812-g81cfhttkd11hm6elm8jp5ggc7pspv5r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1001853874812-maliaa3r8liu0qj70jvhdrkatlitve53.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "online.athlorun.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001853874812:android:a1cfcb42ffb7807c47cff9",
+        "android_client_info": {
+          "package_name": "com.example.athlorun"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1001853874812-10rbco983d20piic24j10svisb6l6pmv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.athlorun",
+            "certificate_hash": "6744bb815035b12bd64f2f35f798a33076352e0f"
+          }
+        },
+        {
+          "client_id": "1001853874812-g81cfhttkd11hm6elm8jp5ggc7pspv5r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe-tAN9UgIIh2O_Y3z614PXHmHAjFOQ1s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001853874812-g81cfhttkd11hm6elm8jp5ggc7pspv5r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1001853874812-maliaa3r8liu0qj70jvhdrkatlitve53.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.athlorun"
+              }
+            }
+          ]
         }
       }
     }
