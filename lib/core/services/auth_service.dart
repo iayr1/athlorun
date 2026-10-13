@@ -2,14 +2,16 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 /// OAuth "Web client" ID of the Firebase project, needed by Google sign-in on
-/// Android. Find it in Firebase console → Authentication → Sign-in method →
-/// Google → Web SDK configuration, then pass it at build time:
-/// `flutter run --dart-define=GOOGLE_SERVER_CLIENT_ID=xxxx.apps.googleusercontent.com`
-const String kGoogleServerClientId =
-    String.fromEnvironment('GOOGLE_SERVER_CLIENT_ID');
+/// Android.
+const String kGoogleServerClientId = String.fromEnvironment(
+  'GOOGLE_SERVER_CLIENT_ID',
+  defaultValue:
+      '1001853874812-g81cfhttkd11hm6elm8jp5ggc7pspv5r.apps.googleusercontent.com',
+);
 
 /// Error shown to the user, with a friendly message.
 class AuthFailure implements Exception {
@@ -110,11 +112,20 @@ class AuthService {
       if (e.code == GoogleSignInExceptionCode.canceled) {
         throw const AuthFailure('Google sign-in was cancelled.');
       }
-      debugPrint('Google sign-in failed: $e');
-      throw const AuthFailure(
-        'Google sign-in is not available. Check the Firebase Google provider '
-        'setup and try again.',
+      debugPrint('Google sign-in failed (GoogleSignInException): $e');
+      throw AuthFailure(
+        'Google sign-in error (${e.code.name}): ${e.description ?? 'Check Google provider in Firebase console.'}',
       );
+    } on PlatformException catch (e) {
+      debugPrint('Google sign-in failed (PlatformException): ${e.code} - ${e.message}');
+      if (e.code == 'sign_in_canceled') {
+        throw const AuthFailure('Google sign-in was cancelled.');
+      }
+      throw AuthFailure('Google sign-in error (${e.code}): ${e.message ?? 'Unknown error'}');
+    } catch (e) {
+      debugPrint('Unexpected error in auth: $e');
+      if (e is AuthFailure) rethrow;
+      throw AuthFailure('Authentication failed: $e');
     }
   }
 

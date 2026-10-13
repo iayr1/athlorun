@@ -20,6 +20,7 @@ class _SignUpPageState extends State<SignUpPage> {
   String? _error;
   bool _mismatch = false;
   bool _loading = false;
+  bool _googleLoading = false;
 
   @override
   void dispose() {
@@ -55,6 +56,24 @@ class _SignUpPageState extends State<SignUpPage> {
       if (mounted) setState(() => _error = e.message);
     } finally {
       if (mounted) setState(() => _loading = false);
+    }
+  }
+
+  Future<void> _google() async {
+    FocusScope.of(context).unfocus();
+    setState(() {
+      _googleLoading = true;
+      _error = null;
+    });
+    try {
+      await AuthService.instance.signInWithGoogle();
+      if (mounted) Navigator.of(context).popUntil((r) => r.isFirst);
+    } on AuthFailure catch (e) {
+      if (mounted) setState(() => _error = e.message);
+    } catch (e) {
+      if (mounted) setState(() => _error = 'Google sign-up failed: $e');
+    } finally {
+      if (mounted) setState(() => _googleLoading = false);
     }
   }
 
@@ -122,6 +141,10 @@ class _SignUpPageState extends State<SignUpPage> {
                       trailing: const KitPlusIcon(),
                     ),
                     const SizedBox(height: 32),
+                    const _OrDivider(),
+                    const SizedBox(height: 32),
+                    _GoogleButton(loading: _googleLoading, onTap: _google),
+                    const SizedBox(height: 32),
                     KitFooterLink(
                       prompt: 'Already have an account?',
                       action: 'Sign In.',
@@ -132,6 +155,68 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _OrDivider extends StatelessWidget {
+  const _OrDivider();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Row(
+      children: [
+        Expanded(child: Divider(color: AppPalette.gray30, height: 1)),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8),
+          child: Text('OR', style: AppText.labelXs),
+        ),
+        Expanded(child: Divider(color: AppPalette.gray30, height: 1)),
+      ],
+    );
+  }
+}
+
+class _GoogleButton extends StatelessWidget {
+  final bool loading;
+  final VoidCallback onTap;
+
+  const _GoogleButton({required this.loading, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: 'Continue with Google',
+      child: Material(
+        color: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+          side: const BorderSide(color: AppPalette.gray40),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: loading ? null : onTap,
+          child: SizedBox(
+            width: 56,
+            height: 56,
+            child: Center(
+              child: loading
+                  ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(strokeWidth: 2.4),
+                    )
+                  : Text(
+                      'G',
+                      style: AppText.textXlExtraBold.copyWith(
+                        color: AppPalette.gray60,
+                        fontSize: 22,
+                      ),
+                    ),
+            ),
+          ),
         ),
       ),
     );
