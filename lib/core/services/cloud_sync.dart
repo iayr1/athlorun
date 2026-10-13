@@ -17,6 +17,11 @@ class HealthAssessment {
   final int? sleepLevel;
   final String? mood;
   final String? eatingHabit;
+  final List<String> medications;
+  final List<String> symptoms;
+  final String? healthNotes;
+  final bool bodyScanCompleted;
+  final bool voiceSampleCompleted;
 
   const HealthAssessment({
     this.goal,
@@ -28,6 +33,11 @@ class HealthAssessment {
     this.sleepLevel,
     this.mood,
     this.eatingHabit,
+    this.medications = const [],
+    this.symptoms = const [],
+    this.healthNotes,
+    this.bodyScanCompleted = false,
+    this.voiceSampleCompleted = false,
   });
 
   HealthAssessment copyWith({
@@ -40,6 +50,11 @@ class HealthAssessment {
     int? sleepLevel,
     String? mood,
     String? eatingHabit,
+    List<String>? medications,
+    List<String>? symptoms,
+    String? healthNotes,
+    bool? bodyScanCompleted,
+    bool? voiceSampleCompleted,
   }) {
     return HealthAssessment(
       goal: goal ?? this.goal,
@@ -51,6 +66,11 @@ class HealthAssessment {
       sleepLevel: sleepLevel ?? this.sleepLevel,
       mood: mood ?? this.mood,
       eatingHabit: eatingHabit ?? this.eatingHabit,
+      medications: medications ?? this.medications,
+      symptoms: symptoms ?? this.symptoms,
+      healthNotes: healthNotes ?? this.healthNotes,
+      bodyScanCompleted: bodyScanCompleted ?? this.bodyScanCompleted,
+      voiceSampleCompleted: voiceSampleCompleted ?? this.voiceSampleCompleted,
     );
   }
 
@@ -64,9 +84,16 @@ class HealthAssessment {
         'sleepLevel': sleepLevel,
         'mood': mood,
         'eatingHabit': eatingHabit,
+        'medications': medications,
+        'symptoms': symptoms,
+        'healthNotes': healthNotes,
+        'bodyScanCompleted': bodyScanCompleted,
+        'voiceSampleCompleted': voiceSampleCompleted,
       };
 
   factory HealthAssessment.fromJson(Map<String, dynamic> json) {
+    List<String> strings(Object? v) =>
+        v is List ? v.whereType<String>().toList() : const [];
     return HealthAssessment(
       goal: json['goal'] as String?,
       gender: json['gender'] as String?,
@@ -77,6 +104,89 @@ class HealthAssessment {
       sleepLevel: (json['sleepLevel'] as num?)?.toInt(),
       mood: json['mood'] as String?,
       eatingHabit: json['eatingHabit'] as String?,
+      medications: strings(json['medications']),
+      symptoms: strings(json['symptoms']),
+      healthNotes: json['healthNotes'] as String?,
+      bodyScanCompleted: json['bodyScanCompleted'] == true,
+      voiceSampleCompleted: json['voiceSampleCompleted'] == true,
+    );
+  }
+}
+
+/// Details from the "Profile Setup & Account Completion" flow.
+class AccountDetails {
+  final int? avatarId;
+
+  /// Small JPEG (base64) when the user uploaded their own picture.
+  final String? avatarImage;
+  final String? phone;
+  final bool phoneVerified;
+  final String? location;
+  final String? jobPosition;
+  final String? accountType;
+  final Map<String, bool> notifications;
+
+  const AccountDetails({
+    this.avatarId,
+    this.avatarImage,
+    this.phone,
+    this.phoneVerified = false,
+    this.location,
+    this.jobPosition,
+    this.accountType,
+    this.notifications = const {},
+  });
+
+  AccountDetails copyWith({
+    int? avatarId,
+    String? avatarImage,
+    bool clearAvatarImage = false,
+    String? phone,
+    bool? phoneVerified,
+    String? location,
+    String? jobPosition,
+    String? accountType,
+    Map<String, bool>? notifications,
+  }) {
+    return AccountDetails(
+      avatarId: avatarId ?? this.avatarId,
+      avatarImage: clearAvatarImage ? null : (avatarImage ?? this.avatarImage),
+      phone: phone ?? this.phone,
+      phoneVerified: phoneVerified ?? this.phoneVerified,
+      location: location ?? this.location,
+      jobPosition: jobPosition ?? this.jobPosition,
+      accountType: accountType ?? this.accountType,
+      notifications: notifications ?? this.notifications,
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        'avatarId': avatarId,
+        'avatarImage': avatarImage,
+        'phone': phone,
+        'phoneVerified': phoneVerified,
+        'location': location,
+        'jobPosition': jobPosition,
+        'accountType': accountType,
+        'notifications': notifications,
+      };
+
+  factory AccountDetails.fromJson(Map<String, dynamic> json) {
+    final n = json['notifications'];
+    return AccountDetails(
+      avatarId: (json['avatarId'] as num?)?.toInt(),
+      avatarImage: json['avatarImage'] as String?,
+      phone: json['phone'] as String?,
+      phoneVerified: json['phoneVerified'] == true,
+      location: json['location'] as String?,
+      jobPosition: json['jobPosition'] as String?,
+      accountType: json['accountType'] as String?,
+      notifications: n is Map
+          ? {
+              for (final e in n.entries)
+                if (e.value is bool) '${e.key}': e.value as bool,
+            }
+          : const {},
     );
   }
 }
@@ -88,6 +198,7 @@ class UserProfile {
   final String name;
   final String? photoUrl;
   final HealthAssessment? assessment;
+  final AccountDetails? account;
 
   const UserProfile({
     required this.uid,
@@ -95,9 +206,26 @@ class UserProfile {
     this.email,
     this.photoUrl,
     this.assessment,
+    this.account,
   });
 
   bool get assessmentCompleted => assessment != null;
+  bool get accountCompleted => account != null;
+
+  UserProfile copyWith({
+    String? name,
+    HealthAssessment? assessment,
+    AccountDetails? account,
+  }) {
+    return UserProfile(
+      uid: uid,
+      email: email,
+      photoUrl: photoUrl,
+      name: name ?? this.name,
+      assessment: assessment ?? this.assessment,
+      account: account ?? this.account,
+    );
+  }
 }
 
 /// Mirrors [MetricsStore] to Cloud Firestore for the signed-in user.
@@ -207,6 +335,11 @@ class CloudSync extends ChangeNotifier implements MetricsSyncDelegate {
                 Map<String, dynamic>.from(data['assessment'] as Map),
               )
             : null,
+        account: data['account'] is Map
+            ? AccountDetails.fromJson(
+                Map<String, dynamic>.from(data['account'] as Map),
+              )
+            : null,
       );
       _store.syncDelegate = this;
       return _profile!;
@@ -242,13 +375,26 @@ class CloudSync extends ChangeNotifier implements MetricsSyncDelegate {
     }
     final p = _profile;
     if (p != null) {
-      _profile = UserProfile(
-        uid: p.uid,
-        name: p.name,
-        email: p.email,
-        photoUrl: p.photoUrl,
-        assessment: assessment,
-      );
+      _profile = p.copyWith(assessment: assessment);
+      notifyListeners();
+    }
+  }
+
+  /// Saves the profile-setup answers and marks the account as completed.
+  Future<void> saveAccount(AccountDetails account, {String? name}) async {
+    final uid = _uid;
+    if (uid == null) return;
+    await _userDoc.set({
+      'account': account.toJson(),
+      'accountCompletedAt': FieldValue.serverTimestamp(),
+      'updatedAt': FieldValue.serverTimestamp(),
+    }, SetOptions(merge: true));
+    if (name != null && name.trim().isNotEmpty) {
+      await _store.updateProfile(name: name);
+    }
+    final p = _profile;
+    if (p != null) {
+      _profile = p.copyWith(account: account, name: name?.trim());
       notifyListeners();
     }
   }
@@ -296,13 +442,7 @@ class CloudSync extends ChangeNotifier implements MetricsSyncDelegate {
     if (_uid == null) return;
     final p = _profile;
     if (p != null) {
-      _profile = UserProfile(
-        uid: p.uid,
-        name: name,
-        email: p.email,
-        photoUrl: p.photoUrl,
-        assessment: p.assessment,
-      );
+      _profile = p.copyWith(name: name);
       notifyListeners();
     }
     _safe(() => _userDoc.set({

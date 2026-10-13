@@ -1,4 +1,5 @@
 import 'package:athlorun/core/services/cloud_sync.dart';
+import 'package:athlorun/core/services/health_score.dart';
 import 'package:athlorun/core/services/metrics_store.dart';
 import 'package:athlorun/features/assessment/presentation/pages/assessment_page.dart';
 import 'package:athlorun/features/auth/presentation/pages/sign_up_page.dart';
@@ -151,25 +152,78 @@ void main() {
     await tester.tap(find.text('I wanna lose weight'));
     await tester.pump();
     await next(); // goal
-    await tester.tap(find.text('I Am Female'));
-    await tester.pump();
+    // Swipe the gender carousel from "Male" (centre) to "Female".
+    await tester.drag(find.text('I Am Male'), const Offset(300, 0));
+    await tester.pumpAndSettle();
     await next(); // gender
     await next(); // weight
     await next(); // age
     await next(); // blood type
     await next(); // fitness level
+    // AI body analysis intro; the scan screen animates continuously.
+    await tester.tap(find.text('Continue'));
+    await tester.pump(const Duration(milliseconds: 500));
+    await tester.tap(find.text('Skip')); // body scan (needs the camera)
+    await tester.pumpAndSettle();
     await next(); // sleep
     await next(); // mood
     await tester.tap(find.text('Low Carb'));
     await tester.pump();
-    await tester.tap(find.text('Finish'));
-    await tester.pumpAndSettle();
+    await next(); // eating habits
+    await tester.tap(find.text('Acetaminophen'));
+    await tester.pump();
+    await next(); // medications
+    await tester.enterText(find.byType(TextField), 'Pollen');
+    await tester.testTextInput.receiveAction(TextInputAction.done);
+    await tester.pump();
+    await next(); // symptoms
+    await tester.enterText(find.byType(TextField), 'My knee hurts.');
+    await tester.pump();
+    await next(); // textual analysis
+    await tester.tap(find.text('Finish')); // voice analysis
+    await tester.pump();
+    expect(find.text('Compiling Assessment data...\nPlease wait!'), findsOne);
+    await tester.pump(const Duration(seconds: 2));
 
     expect(finished, isTrue);
     expect(saved?.goal, 'I wanna lose weight');
     expect(saved?.gender, 'I Am Female');
     expect(saved?.eatingHabit, 'Low Carb');
+    expect(saved?.medications, ['Acetaminophen']);
+    expect(saved?.symptoms, ['Pollen']);
+    expect(saved?.healthNotes, 'My knee hurts.');
+    expect(saved?.bodyScanCompleted, isFalse);
     // Fitness level 3 -> 10,000 steps.
     expect(MetricsStore.instance.goals.steps, 10000);
+  });
+
+  group('HealthScore', () {
+    test('rewards activity and sleep, flags problems', () {
+      const good = HealthAssessment(
+        fitnessLevel: 5,
+        sleepLevel: 4,
+        mood: 'Happy',
+        eatingHabit: 'Balanced Diet',
+        weightKg: 70,
+      );
+      const poor = HealthAssessment(
+        fitnessLevel: 1,
+        sleepLevel: 1,
+        mood: 'Sad',
+        symptoms: ['Headache', 'Back Pain'],
+      );
+      final g = HealthScore.from(good);
+      final p = HealthScore.from(poor);
+
+      expect(g.isGood, isTrue);
+      expect(g.anomalies, isEmpty);
+      expect(p.isGood, isFalse);
+      expect(p.score, inInclusiveRange(1, 99));
+      expect(
+        p.anomalies,
+        containsAll(['Low activity level', 'Not enough sleep', 'Low mood']),
+      );
+      expect(p.anomalies, contains('Reported: Headache'));
+    });
   });
 }
