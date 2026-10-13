@@ -1,6 +1,7 @@
 import 'package:athlorun/config/themes/app_theme.dart';
 import 'package:athlorun/core/services/metrics_store.dart';
 import 'package:athlorun/core/services/step_tracker.dart';
+import 'package:athlorun/core/services/ad_service.dart';
 import 'package:athlorun/core/widgets/kit.dart';
 import 'package:athlorun/features/auth/presentation/auth_gate.dart';
 import 'package:athlorun/features/challenges/presentation/pages/daily_challenges_screen.dart';
@@ -26,6 +27,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await MetricsStore.instance.load();
+  await AdService.instance.initialize();
   runApp(const AthloRunApp());
 }
 

@@ -1,13 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:athlorun/core/widgets/custom_appbar.dart';
+import 'package:athlorun/core/services/ad_service.dart';
 import '../../../../config/styles/app_colors.dart';
 import '../../../../config/styles/app_textstyles.dart';
 import '../../../../core/utils/windows.dart';
 import '../../../../core/widgets/custom_action_button.dart';
 
-class ActivityDetailsPage extends StatelessWidget {
+class ActivityDetailsPage extends StatefulWidget {
   const ActivityDetailsPage({super.key});
+
+  @override
+  State<ActivityDetailsPage> createState() => _ActivityDetailsPageState();
+}
+
+class _ActivityDetailsPageState extends State<ActivityDetailsPage> {
+  @override
+  void initState() {
+    super.initState();
+    // Load and present the interstitial ad once ready
+    AdService.instance.loadInterstitialAd(
+      onLoaded: () {
+        if (mounted) {
+          Future.delayed(const Duration(milliseconds: 600), () {
+            if (mounted) {
+              AdService.instance.showInterstitialAd();
+            }
+          });
+        }
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    AdService.instance.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -80,5 +80,7 @@
 	<array>
     	<string>processing</string>
 	</array>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-1429137343095963~1980513614</string>
 </dict>
 </plist>
