@@ -1,4 +1,5 @@
 import 'package:athlorun/core/services/cloud_sync.dart';
+import 'package:athlorun/core/services/health_score.dart';
 import 'package:athlorun/core/services/metrics_store.dart';
 import 'package:athlorun/features/assessment/presentation/pages/assessment_page.dart';
 import 'package:athlorun/features/auth/presentation/pages/sign_up_page.dart';
@@ -180,7 +181,9 @@ void main() {
     await tester.pump();
     await next(); // textual analysis
     await tester.tap(find.text('Finish')); // voice analysis
-    await tester.pumpAndSettle();
+    await tester.pump();
+    expect(find.text('Compiling Assessment data...\nPlease wait!'), findsOne);
+    await tester.pump(const Duration(seconds: 2));
 
     expect(finished, isTrue);
     expect(saved?.goal, 'I wanna lose weight');
@@ -192,5 +195,35 @@ void main() {
     expect(saved?.bodyScanCompleted, isFalse);
     // Fitness level 3 -> 10,000 steps.
     expect(MetricsStore.instance.goals.steps, 10000);
+  });
+
+  group('HealthScore', () {
+    test('rewards activity and sleep, flags problems', () {
+      const good = HealthAssessment(
+        fitnessLevel: 5,
+        sleepLevel: 4,
+        mood: 'Happy',
+        eatingHabit: 'Balanced Diet',
+        weightKg: 70,
+      );
+      const poor = HealthAssessment(
+        fitnessLevel: 1,
+        sleepLevel: 1,
+        mood: 'Sad',
+        symptoms: ['Headache', 'Back Pain'],
+      );
+      final g = HealthScore.from(good);
+      final p = HealthScore.from(poor);
+
+      expect(g.isGood, isTrue);
+      expect(g.anomalies, isEmpty);
+      expect(p.isGood, isFalse);
+      expect(p.score, inInclusiveRange(1, 99));
+      expect(
+        p.anomalies,
+        containsAll(['Low activity level', 'Not enough sleep', 'Low mood']),
+      );
+      expect(p.anomalies, contains('Reported: Headache'));
+    });
   });
 }

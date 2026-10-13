@@ -7,6 +7,7 @@ import '../../../../config/themes/app_theme.dart';
 import '../../../../core/services/cloud_sync.dart';
 import '../../../../core/services/metrics_store.dart';
 import '../../../../core/widgets/kit.dart';
+import '../../../account/presentation/pages/assessment_result_pages.dart';
 import '../widgets/ai_analysis_steps.dart';
 import '../widgets/medication_picker.dart';
 
@@ -94,17 +95,20 @@ class _AssessmentPageState extends State<AssessmentPage> {
     setState(() => _saving = true);
     try {
       final save = widget.onSave ?? CloudSync.instance.saveAssessment;
-      await save(_a);
-      await _applyGoals();
+      // Keep the "Compiling" screen up long enough to read.
+      await Future.wait([
+        save(_a).then((_) => _applyGoals()),
+        Future<void>.delayed(const Duration(milliseconds: 1800)),
+      ]);
+      // Stays on the compiling screen while the caller moves on.
       widget.onFinished();
     } catch (e) {
       if (mounted) {
+        setState(() => _saving = false);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Could not save your answers: $e')),
         );
       }
-    } finally {
-      if (mounted) setState(() => _saving = false);
     }
   }
 
@@ -125,6 +129,7 @@ class _AssessmentPageState extends State<AssessmentPage> {
 
   @override
   Widget build(BuildContext context) {
+    if (_saving) return const CompilingAssessmentView();
     if (_current == _Step.bodyScan) {
       return Scaffold(
         backgroundColor: AppPalette.gray10,

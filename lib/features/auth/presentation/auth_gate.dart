@@ -6,7 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/services/auth_service.dart';
+import '../../../core/services/biometric_service.dart';
 import '../../../core/services/cloud_sync.dart';
+import '../../../core/services/health_score.dart';
+import '../../account/presentation/pages/account_setup_flow.dart';
+import '../../account/presentation/pages/assessment_result_pages.dart';
 import '../../assessment/presentation/pages/assessment_page.dart';
 import 'pages/loading_pages.dart';
 import 'pages/onboarding_page.dart';
@@ -21,12 +25,16 @@ enum _Stage {
   signIn,
   loading,
   error,
+  account,
   assessment,
+  score,
+  locked,
   app
 }
 
-/// Decides what to show: onboarding, sign-in, the health assessment or the
-/// main app, based on Firebase Auth state and the user's Firestore profile.
+/// Decides what to show: onboarding, sign-in, profile setup, the health
+/// assessment and score, the fingerprint lock or the main app, based on
+/// Firebase Auth state and the user's Firestore profile.
 class AuthGate extends StatefulWidget {
   final WidgetBuilder appBuilder;
 
@@ -45,6 +53,10 @@ class _AuthGateState extends State<AuthGate> {
   bool _onboarded = false;
   String? _error;
   LoadingVariant _loadingVariant = LoadingVariant.interactive;
+  HealthScore? _score;
+
+  /// Set once the fingerprint has been checked (or just set up) this session.
+  bool _unlocked = false;
 
   @override
   void initState() {
@@ -65,6 +77,7 @@ class _AuthGateState extends State<AuthGate> {
   }
 
   Future<void> _onUser(User? user) async {
+    if (user?.uid != _user?.uid) _unlocked = false;
     _user = user;
     if (user == null) {
       await CloudSync.instance.stop();
@@ -78,17 +91,36 @@ class _AuthGateState extends State<AuthGate> {
     final user = _user;
     if (user == null) return;
     // A different kit loading screen each time.
-    _loadingVariant = LoadingVariant
-        .values[Random().nextInt(LoadingVariant.values.length)];
+    _loadingVariant =
+        LoadingVariant.values[Random().nextInt(LoadingVariant.values.length)];
     _go(_Stage.loading);
     try {
       final profile = await CloudSync.instance.start(user);
       if (_user?.uid != user.uid) return;
-      _go(profile.assessmentCompleted ? _Stage.app : _Stage.assessment);
+      if (profile.assessmentCompleted) {
+        await _openApp();
+      } else {
+        // New users (and anyone who stopped before the assessment) set up
+        // their profile first.
+        _unlocked = true;
+        _go(profile.accountCompleted ? _Stage.assessment : _Stage.account);
+      }
     } catch (e) {
       _error = 'We couldn’t load your profile. Check your connection.\n($e)';
       _go(_Stage.error);
     }
+  }
+
+  Future<void> _openApp() async {
+    final locked = !_unlocked && await BiometricService.instance.isEnabled();
+    _go(locked ? _Stage.locked : _Stage.app);
+  }
+
+  void _showScore() {
+    final assessment = CloudSync.instance.profile?.assessment;
+    if (assessment == null) return _go(_Stage.app);
+    _score = HealthScore.from(assessment);
+    _go(_Stage.score);
   }
 
   Future<void> _finishOnboarding() async {
@@ -117,9 +149,25 @@ class _AuthGateState extends State<AuthGate> {
         ),
       _Stage.onboarding => OnboardingPage(onDone: _finishOnboarding),
       _Stage.signIn => const SignInPage(),
+      _Stage.account => AccountSetupFlow(
+          user: _user!,
+          initial: CloudSync.instance.profile?.account,
+          onFinished: () => _go(_Stage.assessment),
+        ),
       _Stage.assessment => AssessmentPage(
           initial: CloudSync.instance.profile?.assessment,
-          onFinished: () => _go(_Stage.app),
+          onFinished: _showScore,
+        ),
+      _Stage.score => HealthScorePage(
+          score: _score!,
+          onContinue: () => _go(_Stage.app),
+        ),
+      _Stage.locked => BiometricLockPage(
+          onUnlocked: () {
+            _unlocked = true;
+            _go(_Stage.app);
+          },
+          onSignOut: AuthService.instance.signOut,
         ),
       _Stage.app => widget.appBuilder(context),
     };

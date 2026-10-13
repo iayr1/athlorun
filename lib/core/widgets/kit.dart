@@ -617,3 +617,59 @@ class KitFooterLink extends StatelessWidget {
     );
   }
 }
+
+/// One plus-glyph stroke for [KitStrokeScatter], placed by its sharp corner
+/// in 375-wide frame units. At [degrees] 0 the arms point left and down.
+class KitStroke {
+  final Offset corner;
+  final double degrees;
+  final double arm;
+
+  const KitStroke(this.corner, this.degrees, this.arm);
+}
+
+/// Decorative background of large glyph strokes (stroke width = arm / 4).
+class KitStrokeScatter extends StatelessWidget {
+  final Color color;
+  final List<KitStroke> strokes;
+
+  const KitStrokeScatter({
+    super.key,
+    required this.color,
+    required this.strokes,
+  });
+
+  @override
+  Widget build(BuildContext context) => CustomPaint(
+        painter: _StrokeScatterPainter(color, strokes),
+        size: Size.infinite,
+      );
+}
+
+class _StrokeScatterPainter extends CustomPainter {
+  final Color color;
+  final List<KitStroke> strokes;
+
+  _StrokeScatterPainter(this.color, this.strokes);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final scale = size.width / 375;
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke;
+    for (final s in strokes) {
+      final arm = s.arm * scale;
+      paint.strokeWidth = arm / 4;
+      canvas.save();
+      canvas.translate(s.corner.dx * scale, s.corner.dy * scale);
+      canvas.rotate(s.degrees * math.pi / 180);
+      canvas.drawPath(kitPlusStrokePath(arm).shift(Offset(-arm, 0)), paint);
+      canvas.restore();
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _StrokeScatterPainter old) =>
+      old.color != color || old.strokes != strokes;
+}

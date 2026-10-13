@@ -47,6 +47,8 @@
 	<true/>
 	
     <!-- Camera -->
+    <key>NSFaceIDUsageDescription</key>
+    <string>Unlock athlorun with Face ID.</string>
     <key>NSCameraUsageDescription</key>
     <string>We need access to your camera to take photos and videos.</string>
     

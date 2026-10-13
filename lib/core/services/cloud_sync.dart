@@ -113,6 +113,84 @@ class HealthAssessment {
   }
 }
 
+/// Details from the "Profile Setup & Account Completion" flow.
+class AccountDetails {
+  final int? avatarId;
+
+  /// Small JPEG (base64) when the user uploaded their own picture.
+  final String? avatarImage;
+  final String? phone;
+  final bool phoneVerified;
+  final String? location;
+  final String? jobPosition;
+  final String? accountType;
+  final Map<String, bool> notifications;
+
+  const AccountDetails({
+    this.avatarId,
+    this.avatarImage,
+    this.phone,
+    this.phoneVerified = false,
+    this.location,
+    this.jobPosition,
+    this.accountType,
+    this.notifications = const {},
+  });
+
+  AccountDetails copyWith({
+    int? avatarId,
+    String? avatarImage,
+    bool clearAvatarImage = false,
+    String? phone,
+    bool? phoneVerified,
+    String? location,
+    String? jobPosition,
+    String? accountType,
+    Map<String, bool>? notifications,
+  }) {
+    return AccountDetails(
+      avatarId: avatarId ?? this.avatarId,
+      avatarImage: clearAvatarImage ? null : (avatarImage ?? this.avatarImage),
+      phone: phone ?? this.phone,
+      phoneVerified: phoneVerified ?? this.phoneVerified,
+      location: location ?? this.location,
+      jobPosition: jobPosition ?? this.jobPosition,
+      accountType: accountType ?? this.accountType,
+      notifications: notifications ?? this.notifications,
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        'avatarId': avatarId,
+        'avatarImage': avatarImage,
+        'phone': phone,
+        'phoneVerified': phoneVerified,
+        'location': location,
+        'jobPosition': jobPosition,
+        'accountType': accountType,
+        'notifications': notifications,
+      };
+
+  factory AccountDetails.fromJson(Map<String, dynamic> json) {
+    final n = json['notifications'];
+    return AccountDetails(
+      avatarId: (json['avatarId'] as num?)?.toInt(),
+      avatarImage: json['avatarImage'] as String?,
+      phone: json['phone'] as String?,
+      phoneVerified: json['phoneVerified'] == true,
+      location: json['location'] as String?,
+      jobPosition: json['jobPosition'] as String?,
+      accountType: json['accountType'] as String?,
+      notifications: n is Map
+          ? {
+              for (final e in n.entries)
+                if (e.value is bool) '${e.key}': e.value as bool,
+            }
+          : const {},
+    );
+  }
+}
+
 /// Signed-in user's profile document (`users/{uid}`).
 class UserProfile {
   final String uid;
@@ -120,6 +198,7 @@ class UserProfile {
   final String name;
   final String? photoUrl;
   final HealthAssessment? assessment;
+  final AccountDetails? account;
 
   const UserProfile({
     required this.uid,
@@ -127,9 +206,26 @@ class UserProfile {
     this.email,
     this.photoUrl,
     this.assessment,
+    this.account,
   });
 
   bool get assessmentCompleted => assessment != null;
+  bool get accountCompleted => account != null;
+
+  UserProfile copyWith({
+    String? name,
+    HealthAssessment? assessment,
+    AccountDetails? account,
+  }) {
+    return UserProfile(
+      uid: uid,
+      email: email,
+      photoUrl: photoUrl,
+      name: name ?? this.name,
+      assessment: assessment ?? this.assessment,
+      account: account ?? this.account,
+    );
+  }
 }
 
 /// Mirrors [MetricsStore] to Cloud Firestore for the signed-in user.
@@ -239,6 +335,11 @@ class CloudSync extends ChangeNotifier implements MetricsSyncDelegate {
                 Map<String, dynamic>.from(data['assessment'] as Map),
               )
             : null,
+        account: data['account'] is Map
+            ? AccountDetails.fromJson(
+                Map<String, dynamic>.from(data['account'] as Map),
+              )
+            : null,
       );
       _store.syncDelegate = this;
       return _profile!;
@@ -274,13 +375,26 @@ class CloudSync extends ChangeNotifier implements MetricsSyncDelegate {
     }
     final p = _profile;
     if (p != null) {
-      _profile = UserProfile(
-        uid: p.uid,
-        name: p.name,
-        email: p.email,
-        photoUrl: p.photoUrl,
-        assessment: assessment,
-      );
+      _profile = p.copyWith(assessment: assessment);
+      notifyListeners();
+    }
+  }
+
+  /// Saves the profile-setup answers and marks the account as completed.
+  Future<void> saveAccount(AccountDetails account, {String? name}) async {
+    final uid = _uid;
+    if (uid == null) return;
+    await _userDoc.set({
+      'account': account.toJson(),
+      'accountCompletedAt': FieldValue.serverTimestamp(),
+      'updatedAt': FieldValue.serverTimestamp(),
+    }, SetOptions(merge: true));
+    if (name != null && name.trim().isNotEmpty) {
+      await _store.updateProfile(name: name);
+    }
+    final p = _profile;
+    if (p != null) {
+      _profile = p.copyWith(account: account, name: name?.trim());
       notifyListeners();
     }
   }
@@ -328,13 +442,7 @@ class CloudSync extends ChangeNotifier implements MetricsSyncDelegate {
     if (_uid == null) return;
     final p = _profile;
     if (p != null) {
-      _profile = UserProfile(
-        uid: p.uid,
-        name: name,
-        email: p.email,
-        photoUrl: p.photoUrl,
-        assessment: p.assessment,
-      );
+      _profile = p.copyWith(name: name);
       notifyListeners();
     }
     _safe(() => _userDoc.set({
