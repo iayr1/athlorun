@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/services/auth_service.dart';
 import '../../../core/services/cloud_sync.dart';
 import '../../assessment/presentation/pages/assessment_page.dart';
+import 'pages/loading_pages.dart';
 import 'pages/onboarding_page.dart';
 import 'pages/sign_in_page.dart';
 import 'pages/splash_page.dart';
@@ -42,6 +44,7 @@ class _AuthGateState extends State<AuthGate> {
   User? _user;
   bool _onboarded = false;
   String? _error;
+  LoadingVariant _loadingVariant = LoadingVariant.interactive;
 
   @override
   void initState() {
@@ -74,6 +77,9 @@ class _AuthGateState extends State<AuthGate> {
   Future<void> _loadProfile() async {
     final user = _user;
     if (user == null) return;
+    // A different kit loading screen each time.
+    _loadingVariant = LoadingVariant
+        .values[Random().nextInt(LoadingVariant.values.length)];
     _go(_Stage.loading);
     try {
       final profile = await CloudSync.instance.start(user);
@@ -102,7 +108,8 @@ class _AuthGateState extends State<AuthGate> {
   @override
   Widget build(BuildContext context) {
     final child = switch (_stage) {
-      _Stage.splash || _Stage.loading => const SplashPage(),
+      _Stage.splash => const SplashPage(),
+      _Stage.loading => LoadingPage(variant: _loadingVariant),
       _Stage.error => SplashPage(message: _error, onRetry: _loadProfile),
       _Stage.welcome => WelcomePage(
           onGetStarted: () => _go(_Stage.onboarding),

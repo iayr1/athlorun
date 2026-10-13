@@ -16,24 +16,32 @@ class SplashPage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              // Logo mark (72) + wordmark (36 tall), 24 apart.
               const KitLogoMark(size: 72),
               const SizedBox(height: 24),
-              Text(
-                'athlorun',
-                style: AppText.headingSm.copyWith(
-                  fontSize: 36,
-                  letterSpacing: -1,
+              SizedBox(
+                height: 36,
+                child: Text(
+                  'athlorun',
+                  style: AppText.headingSm.copyWith(
+                    fontSize: 36,
+                    height: 1,
+                    letterSpacing: -1,
+                  ),
                 ),
               ),
               const SizedBox(height: 32),
-              Text(
-                message ?? 'Your Intelligent Fitness &\nWellness Companion.',
-                textAlign: TextAlign.center,
-                style: AppText.paragraphMd,
+              SizedBox(
+                width: message == null ? 238 : null,
+                child: Text(
+                  message ?? 'Your Intelligent AI Fitness & Wellness Companion.',
+                  textAlign: TextAlign.center,
+                  style: AppText.paragraphMd,
+                ),
               ),
               if (onRetry != null) ...[
                 const SizedBox(height: 24),
@@ -44,12 +52,6 @@ class SplashPage extends StatelessWidget {
                     onPressed: onRetry,
                     trailing: const Icon(Icons.refresh_rounded),
                   ),
-                ),
-              ] else ...[
-                const SizedBox(height: 32),
-                const SizedBox(
-                  width: 120,
-                  child: KitProgressBar(value: 1),
                 ),
               ],
             ],
