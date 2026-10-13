@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -5,6 +7,8 @@ import '../../../../config/themes/app_theme.dart';
 import '../../../../core/services/cloud_sync.dart';
 import '../../../../core/services/metrics_store.dart';
 import '../../../../core/widgets/kit.dart';
+import '../widgets/ai_analysis_steps.dart';
+import '../widgets/medication_picker.dart';
 
 /// "Comprehensive Health Assessment" flow from the kit.
 ///
@@ -28,8 +32,27 @@ class AssessmentPage extends StatefulWidget {
   State<AssessmentPage> createState() => _AssessmentPageState();
 }
 
+/// Screens of the flow, in order.
+enum _Step {
+  goal,
+  gender,
+  weight,
+  age,
+  bloodType,
+  fitness,
+  bodyIntro,
+  bodyScan,
+  sleep,
+  mood,
+  eating,
+  medications,
+  symptoms,
+  notes,
+  voice,
+}
+
 class _AssessmentPageState extends State<AssessmentPage> {
-  static const _steps = 9;
+  static final _steps = _Step.values.length;
 
   late HealthAssessment _a = widget.initial ??
       HealthAssessment(
@@ -44,12 +67,16 @@ class _AssessmentPageState extends State<AssessmentPage> {
   bool _saving = false;
   bool _useLbs = false;
 
-  bool get _canContinue => switch (_step) {
-        0 => _a.goal != null,
-        1 => _a.gender != null,
-        8 => _a.eatingHabit != null,
+  _Step get _current => _Step.values[_step];
+
+  bool get _canContinue => switch (_current) {
+        _Step.goal => _a.goal != null,
+        _Step.gender => _a.gender != null,
+        _Step.eating => _a.eatingHabit != null,
         _ => true,
       };
+
+  void _goTo(_Step step) => setState(() => _step = step.index);
 
   void _back() {
     if (_step == 0) {
@@ -98,6 +125,19 @@ class _AssessmentPageState extends State<AssessmentPage> {
 
   @override
   Widget build(BuildContext context) {
+    if (_current == _Step.bodyScan) {
+      return Scaffold(
+        backgroundColor: AppPalette.gray10,
+        body: BodyScanStep(
+          onBack: _back,
+          onSkip: _next,
+          onComplete: () {
+            _a = _a.copyWith(bodyScanCompleted: true);
+            _next();
+          },
+        ),
+      );
+    }
     return Scaffold(
       backgroundColor: AppPalette.gray10,
       body: SafeArea(
@@ -160,8 +200,8 @@ class _AssessmentPageState extends State<AssessmentPage> {
   }
 
   Widget _buildStep() {
-    return switch (_step) {
-      0 => _QuestionScaffold(
+    return switch (_current) {
+      _Step.goal => _QuestionScaffold(
           title: 'What is your health goal for the app?',
           child: _OptionList(
             options: const [
@@ -175,47 +215,20 @@ class _AssessmentPageState extends State<AssessmentPage> {
             onSelect: (v) => setState(() => _a = _a.copyWith(goal: v)),
           ),
         ),
-      1 => _QuestionScaffold(
+      _Step.gender => _QuestionScaffold(
           title: 'What is your Gender?',
           subtitle: 'Please select your gender for better personalized '
               'health experience.',
-          child: Column(
-            children: [
-              SizedBox(
-                height: 260,
-                child: Row(
-                  children: [
-                    for (final (icon, label) in const [
-                      (Icons.male_rounded, 'I Am Male'),
-                      (Icons.female_rounded, 'I Am Female'),
-                    ]) ...[
-                      Expanded(
-                        child: _GenderCard(
-                          icon: icon,
-                          label: label,
-                          selected: _a.gender == label,
-                          onTap: () => setState(
-                            () => _a = _a.copyWith(gender: label),
-                          ),
-                        ),
-                      ),
-                      if (label == 'I Am Male') const SizedBox(width: 12),
-                    ],
-                  ],
-                ),
-              ),
-              const SizedBox(height: 16),
-              TextButton.icon(
-                onPressed: () => setState(
-                  () => _a = _a.copyWith(gender: 'Prefer not to say'),
-                ),
-                icon: const Icon(Icons.close_rounded, size: 18),
-                label: const Text('Prefer to skip this'),
-              ),
-            ],
+          child: _GenderPicker(
+            value: _a.gender,
+            onChanged: (v) => setState(() => _a = _a.copyWith(gender: v)),
+            onSkip: () {
+              setState(() => _a = _a.copyWith(gender: 'Prefer not to say'));
+              _next();
+            },
           ),
         ),
-      2 => _QuestionScaffold(
+      _Step.weight => _QuestionScaffold(
           title: 'What is your weight?',
           child: _WeightPicker(
             kg: _a.weightKg ?? 70,
@@ -224,21 +237,21 @@ class _AssessmentPageState extends State<AssessmentPage> {
             onChanged: (kg) => setState(() => _a = _a.copyWith(weightKg: kg)),
           ),
         ),
-      3 => _QuestionScaffold(
+      _Step.age => _QuestionScaffold(
           title: 'What is your age?',
           child: _AgeWheel(
             age: _a.age ?? 25,
             onChanged: (v) => setState(() => _a = _a.copyWith(age: v)),
           ),
         ),
-      4 => _QuestionScaffold(
+      _Step.bloodType => _QuestionScaffold(
           title: 'What’s your official blood type?',
           child: _BloodTypePicker(
             value: _a.bloodType ?? 'A+',
             onChanged: (v) => setState(() => _a = _a.copyWith(bloodType: v)),
           ),
         ),
-      5 => _QuestionScaffold(
+      _Step.fitness => _QuestionScaffold(
           title: 'What is your current fitness level?',
           child: _LevelPicker(
             value: _a.fitnessLevel ?? 3,
@@ -253,33 +266,68 @@ class _AssessmentPageState extends State<AssessmentPage> {
             onChanged: (v) => setState(() => _a = _a.copyWith(fitnessLevel: v)),
           ),
         ),
-      6 => _QuestionScaffold(
+      _Step.sleep => _QuestionScaffold(
           title: 'What is your current sleep level?',
-          child: _LevelPicker(
+          child: _SleepSlider(
             value: _a.sleepLevel ?? 3,
-            icon: Icons.bedtime_rounded,
-            labels: const [
-              'Insomniac (less than 3h daily)',
-              'Poor (3–4h daily)',
-              'Moderate (5–6h daily)',
-              'Good (7–8h daily)',
-              'Excellent (8h+ daily)',
-            ],
             onChanged: (v) => setState(() => _a = _a.copyWith(sleepLevel: v)),
           ),
         ),
-      7 => _QuestionScaffold(
+      _Step.mood => _QuestionScaffold(
           title: 'What is your current emotion right now?',
           child: _MoodPicker(
             value: _a.mood ?? 'Neutral',
             onChanged: (v) => setState(() => _a = _a.copyWith(mood: v)),
           ),
         ),
-      _ => _QuestionScaffold(
+      _Step.eating => _QuestionScaffold(
           title: 'What is your usual eating habits?',
           child: _EatingGrid(
             value: _a.eatingHabit,
             onChanged: (v) => setState(() => _a = _a.copyWith(eatingHabit: v)),
+          ),
+        ),
+      _Step.bodyIntro => const _QuestionScaffold(
+          title: 'AI Body Analysis',
+          subtitle: 'Now we’ll scan your body for better assessment. '
+              'Please ensure the following:',
+          child: BodyAnalysisIntro(),
+        ),
+      // Rendered full-screen in build().
+      _Step.bodyScan => const SizedBox.shrink(),
+      _Step.medications => _QuestionScaffold(
+          title: 'What medications do you take?',
+          child: MedicationPicker(
+            selected: _a.medications,
+            onChanged: (v) => setState(() => _a = _a.copyWith(medications: v)),
+          ),
+        ),
+      _Step.symptoms => _QuestionScaffold(
+          title: 'Do you have any symptoms/allergy?',
+          child: SymptomInput(
+            tags: _a.symptoms,
+            onChanged: (v) => setState(() => _a = _a.copyWith(symptoms: v)),
+          ),
+        ),
+      _Step.notes => _QuestionScaffold(
+          title: 'Textual AI Health Analysis',
+          subtitle: 'Write any ongoing health conditions you have right now. '
+              'We’ll highlight the symptoms we spot.',
+          child: HealthNotesInput(
+            initial: _a.healthNotes,
+            onChanged: (v) => _a = _a.copyWith(healthNotes: v),
+            onUseVoice: () => _goTo(_Step.voice),
+          ),
+        ),
+      _Step.voice => _QuestionScaffold(
+          title: 'Voice AI Analysis',
+          subtitle: 'Please say the following words below. Don’t worry, '
+              'we don’t record or store your voice.',
+          child: VoiceAnalysis(
+            completed: _a.voiceSampleCompleted,
+            onCompleted: () => setState(
+              () => _a = _a.copyWith(voiceSampleCompleted: true),
+            ),
           ),
         ),
     };
@@ -343,65 +391,201 @@ class _OptionList extends StatelessWidget {
   }
 }
 
+/// Gender carousel: coloured cards, the centred one is selected.
+class _GenderPicker extends StatefulWidget {
+  final String? value;
+  final ValueChanged<String> onChanged;
+  final VoidCallback onSkip;
+
+  const _GenderPicker({
+    required this.value,
+    required this.onChanged,
+    required this.onSkip,
+  });
+
+  @override
+  State<_GenderPicker> createState() => _GenderPickerState();
+}
+
+class _GenderPickerState extends State<_GenderPicker> {
+  static const _options = [
+    (Icons.female_rounded, 'I Am Female', AppPalette.red50),
+    (Icons.male_rounded, 'I Am Male', AppPalette.blue60),
+    (Icons.transgender_rounded, 'I Am Non-binary', AppPalette.purple60),
+  ];
+
+  // Centre the current answer, or "Male" (the middle card) when unanswered.
+  late final PageController _pages = PageController(
+    viewportFraction: 0.62,
+    initialPage: switch (_options.indexWhere((o) => o.$2 == widget.value)) {
+      -1 => 1,
+      final i => i,
+    },
+  );
+
+  @override
+  void dispose() {
+    _pages.dispose();
+    super.dispose();
+  }
+
+  void _select(int i) {
+    HapticFeedback.selectionClick();
+    widget.onChanged(_options[i].$2);
+    _pages.animateToPage(
+      i,
+      duration: const Duration(milliseconds: 280),
+      curve: Curves.easeOutCubic,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          height: 300,
+          child: OverflowBox(
+            // Bleed the carousel to the screen edges like the kit.
+            maxWidth: MediaQuery.sizeOf(context).width,
+            child: PageView.builder(
+              controller: _pages,
+              itemCount: _options.length,
+              onPageChanged: (i) {
+                HapticFeedback.selectionClick();
+                widget.onChanged(_options[i].$2);
+              },
+              itemBuilder: (context, i) {
+                final (icon, label, color) = _options[i];
+                final selected = widget.value == label;
+                return AnimatedBuilder(
+                  animation: _pages,
+                  builder: (context, child) {
+                    final page =
+                        _pages.hasClients && _pages.position.haveDimensions
+                            ? _pages.page!
+                            : _pages.initialPage.toDouble();
+                    final t = (1 - (page - i).abs()).clamp(0.0, 1.0);
+                    return Transform.scale(
+                        scale: 0.86 + 0.14 * t, child: child);
+                  },
+                  child: _GenderCard(
+                    icon: icon,
+                    label: label,
+                    color: color,
+                    selected: selected,
+                    onTap: () => _select(i),
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
+        const SizedBox(height: 24),
+        SizedBox(
+          width: double.infinity,
+          height: 48,
+          child: Material(
+            color: AppPalette.blue10,
+            borderRadius: BorderRadius.circular(12),
+            clipBehavior: Clip.antiAlias,
+            child: InkWell(
+              onTap: widget.onSkip,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Prefer to skip this',
+                    style: AppText.textSmExtraBold
+                        .copyWith(color: AppPalette.blue60),
+                  ),
+                  const SizedBox(width: 8),
+                  const Icon(
+                    Icons.arrow_forward_rounded,
+                    size: 18,
+                    color: AppPalette.blue60,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class _GenderCard extends StatelessWidget {
   final IconData icon;
   final String label;
+  final Color color;
   final bool selected;
   final VoidCallback onTap;
 
   const _GenderCard({
     required this.icon,
     required this.label,
+    required this.color,
     required this.selected,
     required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    final fg = selected ? Colors.white : AppPalette.gray80;
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
+        margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: selected ? AppPalette.blue60 : Colors.white,
+          color: color,
           borderRadius: BorderRadius.circular(24),
-          boxShadow: selected
-              ? AppPalette.focusRing(AppPalette.blue60)
-              : AppPalette.softShadow(),
+          boxShadow: selected ? AppPalette.focusRing(color) : null,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
-                Icon(icon, color: fg, size: 20),
+                Icon(icon, color: Colors.white, size: 20),
                 const SizedBox(width: 6),
                 Expanded(
                   child: Text(
                     label,
-                    style: AppText.textSmExtraBold.copyWith(color: fg),
+                    style:
+                        AppText.textSmExtraBold.copyWith(color: Colors.white),
                   ),
                 ),
                 Icon(
                   selected
                       ? Icons.check_box_rounded
                       : Icons.check_box_outline_blank_rounded,
-                  color: fg,
+                  color: Colors.white,
                   size: 22,
                 ),
               ],
             ),
             Expanded(
-              child: Center(
-                child: Icon(
-                  icon,
-                  size: 120,
-                  color: selected
-                      ? Colors.white.withValues(alpha: 0.9)
-                      : AppPalette.blue20,
-                ),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Icon(
+                    icon,
+                    size: 150,
+                    color: Colors.white.withValues(alpha: 0.85),
+                  ),
+                  const Align(
+                    alignment: Alignment(0.8, -0.7),
+                    child: Icon(Icons.auto_awesome_rounded,
+                        color: Colors.white, size: 28),
+                  ),
+                  const Align(
+                    alignment: Alignment(-0.8, 0.7),
+                    child: Icon(Icons.auto_awesome_rounded,
+                        color: Colors.white, size: 20),
+                  ),
+                ],
               ),
             ),
           ],
@@ -441,7 +625,7 @@ class _Segmented extends StatelessWidget {
                   height: 40,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: item == value ? AppPalette.blue60 : Colors.white,
+                    color: item == value ? AppPalette.gray80 : Colors.white,
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
@@ -482,7 +666,7 @@ class _WeightPicker extends StatelessWidget {
     return Column(
       children: [
         _Segmented(
-          items: const ['kg', 'lbs'],
+          items: const ['lbs', 'kg'],
           value: useLbs ? 'lbs' : 'kg',
           onChanged: (v) => onUnitChanged(v == 'lbs'),
         ),
@@ -678,7 +862,7 @@ class _AgeWheel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 360,
+      height: 400,
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -693,7 +877,7 @@ class _AgeWheel extends StatelessWidget {
           ),
           ListWheelScrollView.useDelegate(
             controller: FixedExtentScrollController(initialItem: age - 10),
-            itemExtent: 120,
+            itemExtent: 92,
             diameterRatio: 3,
             physics: const FixedExtentScrollPhysics(),
             onSelectedItemChanged: (i) {
@@ -703,14 +887,18 @@ class _AgeWheel extends StatelessWidget {
             childDelegate: ListWheelChildBuilderDelegate(
               childCount: 91,
               builder: (context, i) {
-                final selected = i + 10 == age;
+                final distance = (i + 10 - age).abs();
                 return Center(
                   child: Text(
                     '${i + 10}',
                     style: AppText.headingSm.copyWith(
-                      fontSize: selected ? 72 : 44,
+                      fontSize: switch (distance) { 0 => 72, 1 => 52, _ => 36 },
                       height: 1,
-                      color: selected ? Colors.white : AppPalette.gray30,
+                      color: switch (distance) {
+                        0 => Colors.white,
+                        1 => AppPalette.gray60,
+                        _ => AppPalette.gray30,
+                      },
                     ),
                   ),
                 );
@@ -876,71 +1064,314 @@ class _LevelPicker extends StatelessWidget {
   }
 }
 
-class _MoodPicker extends StatelessWidget {
+/// Sleep level on a diagonal slider with the level shown large.
+class _SleepSlider extends StatelessWidget {
+  final int value;
+  final ValueChanged<int> onChanged;
+
+  const _SleepSlider({required this.value, required this.onChanged});
+
+  static const _labels = [
+    ('Insomniac', '<3hr daily'),
+    ('Poor', '~3-4hr daily'),
+    ('Moderate', '~5-6hr daily'),
+    ('Good', '~7-8hr daily'),
+    ('Excellent', '8hr+ daily'),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    final (name, hours) = _labels[value - 1];
+    return SizedBox(
+      height: 340,
+      child: LayoutBuilder(
+        builder: (context, c) {
+          final size = Size(c.maxWidth, 340);
+          // Track runs from bottom-left to top-right.
+          final start = Offset(24, size.height - 40);
+          final end = Offset(size.width * 0.72, 40);
+
+          void update(Offset p) {
+            final d = end - start;
+            final t = ((p - start).dx * d.dx + (p - start).dy * d.dy) /
+                d.distanceSquared;
+            final v = (t.clamp(0.0, 1.0) * 4).round() + 1;
+            if (v != value) {
+              HapticFeedback.selectionClick();
+              onChanged(v);
+            }
+          }
+
+          return GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTapDown: (d) => update(d.localPosition),
+            onPanUpdate: (d) => update(d.localPosition),
+            child: Stack(
+              children: [
+                Positioned.fill(
+                  child: CustomPaint(
+                    painter: _DiagonalSliderPainter(
+                      start: start,
+                      end: end,
+                      value: (value - 1) / 4,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 0,
+                  top: 0,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.bedtime_outlined,
+                            size: 16,
+                            color: AppPalette.gray80,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(name, style: AppText.textSmExtraBold),
+                        ],
+                      ),
+                      const SizedBox(height: 4),
+                      Text(hours, style: AppText.paragraphSm),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  right: 0,
+                  bottom: 0,
+                  child: AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 180),
+                    child: Text(
+                      '$value',
+                      key: ValueKey(value),
+                      style: AppText.headingSm.copyWith(
+                        fontSize: 140,
+                        height: 1,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class _DiagonalSliderPainter extends CustomPainter {
+  final Offset start;
+  final Offset end;
+  final double value;
+
+  _DiagonalSliderPainter({
+    required this.start,
+    required this.end,
+    required this.value,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final thumb = Offset.lerp(start, end, value)!;
+    final rest = Paint()
+      ..color = AppPalette.gray20
+      ..strokeWidth = 8
+      ..strokeCap = StrokeCap.round;
+    final fill = Paint()
+      ..color = AppPalette.blue60
+      ..strokeWidth = 8
+      ..strokeCap = StrokeCap.round;
+    canvas.drawLine(thumb, end, rest);
+    canvas.drawLine(start, thumb, fill);
+
+    // Level markers: small rotated squares.
+    for (var i = 0; i <= 4; i++) {
+      final t = i / 4;
+      if ((t - value).abs() < 0.01) continue;
+      final p = Offset.lerp(start, end, t)!;
+      canvas.save();
+      canvas.translate(p.dx, p.dy);
+      canvas.rotate(math.pi / 4);
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromCenter(center: Offset.zero, width: 14, height: 14),
+          const Radius.circular(3),
+        ),
+        Paint()..color = t < value ? AppPalette.blue60 : AppPalette.gray20,
+      );
+      canvas.restore();
+    }
+
+    // Thumb.
+    canvas.save();
+    canvas.translate(thumb.dx, thumb.dy);
+    canvas.rotate(math.pi / 4);
+    final rect = RRect.fromRectAndRadius(
+      Rect.fromCenter(center: Offset.zero, width: 52, height: 52),
+      const Radius.circular(10),
+    );
+    canvas.drawRRect(
+      rect.inflate(6),
+      Paint()..color = AppPalette.blue60.withValues(alpha: 0.2),
+    );
+    canvas.drawRRect(rect, Paint()..color = AppPalette.blue60);
+    canvas.restore();
+    canvas.drawCircle(
+      thumb,
+      7,
+      Paint()
+        ..color = Colors.white
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 2.5,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant _DiagonalSliderPainter old) =>
+      old.value != value || old.start != start || old.end != end;
+}
+
+/// Mood carousel of square "robot" faces with pointers above and below.
+class _MoodPicker extends StatefulWidget {
   final String value;
   final ValueChanged<String> onChanged;
 
   const _MoodPicker({required this.value, required this.onChanged});
 
-  static const _moods = [
-    (Icons.sentiment_very_dissatisfied_rounded, 'Sad'),
-    (Icons.sentiment_dissatisfied_rounded, 'Down'),
-    (Icons.sentiment_neutral_rounded, 'Neutral'),
-    (Icons.sentiment_satisfied_rounded, 'Happy'),
-    (Icons.sentiment_very_satisfied_rounded, 'Overjoyed'),
-  ];
+  static const moods = ['Sad', 'Down', 'Neutral', 'Happy', 'Overjoyed'];
+
+  @override
+  State<_MoodPicker> createState() => _MoodPickerState();
+}
+
+class _MoodPickerState extends State<_MoodPicker> {
+  late final PageController _pages = PageController(
+    viewportFraction: 0.42,
+    initialPage: _index,
+  );
+
+  int get _index => _MoodPicker.moods.indexOf(widget.value).clamp(0, 4).toInt();
+
+  @override
+  void dispose() {
+    _pages.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final index = _moods.indexWhere((m) => m.$2 == value).clamp(0, 4);
+    final index = _index;
     return Column(
       children: [
+        const Icon(Icons.arrow_drop_down_rounded,
+            size: 36, color: AppPalette.gray80),
         SizedBox(
-          height: 200,
-          child: PageView.builder(
-            controller: PageController(
-              viewportFraction: 0.45,
-              initialPage: index,
+          height: 170,
+          child: OverflowBox(
+            maxWidth: MediaQuery.sizeOf(context).width,
+            child: PageView.builder(
+              controller: _pages,
+              itemCount: _MoodPicker.moods.length,
+              onPageChanged: (i) {
+                HapticFeedback.selectionClick();
+                widget.onChanged(_MoodPicker.moods[i]);
+              },
+              itemBuilder: (context, i) {
+                final selected = i == index;
+                return GestureDetector(
+                  onTap: () => _pages.animateToPage(
+                    i,
+                    duration: const Duration(milliseconds: 250),
+                    curve: Curves.easeOutCubic,
+                  ),
+                  child: AnimatedScale(
+                    scale: selected ? 1 : 0.72,
+                    duration: const Duration(milliseconds: 200),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
+                      margin: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: selected ? AppPalette.blue60 : AppPalette.gray30,
+                        borderRadius: BorderRadius.circular(32),
+                        boxShadow: selected
+                            ? [
+                                ...AppPalette.focusRing(AppPalette.blue60),
+                                BoxShadow(
+                                  color:
+                                      AppPalette.blue60.withValues(alpha: 0.4),
+                                  blurRadius: 32,
+                                ),
+                              ]
+                            : null,
+                      ),
+                      child: CustomPaint(painter: _RobotFacePainter(i)),
+                    ),
+                  ),
+                );
+              },
             ),
-            itemCount: _moods.length,
-            onPageChanged: (i) {
-              HapticFeedback.selectionClick();
-              onChanged(_moods[i].$2);
-            },
-            itemBuilder: (context, i) {
-              final selected = i == index;
-              return AnimatedScale(
-                scale: selected ? 1 : 0.7,
-                duration: const Duration(milliseconds: 200),
-                child: Container(
-                  margin: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: selected ? AppPalette.blue60 : AppPalette.gray20,
-                    borderRadius: BorderRadius.circular(32),
-                    boxShadow: selected
-                        ? AppPalette.focusRing(AppPalette.blue60)
-                        : null,
-                  ),
-                  child: Icon(
-                    _moods[i].$1,
-                    size: 96,
-                    color: selected ? Colors.white : AppPalette.gray40,
-                  ),
-                ),
-              );
-            },
           ),
         ),
-        const SizedBox(height: 16),
-        const Icon(Icons.arrow_drop_up_rounded, color: AppPalette.gray80),
-        const SizedBox(height: 8),
+        const Icon(Icons.arrow_drop_up_rounded,
+            size: 36, color: AppPalette.gray80),
+        const SizedBox(height: 24),
         Text(
-          'I’m feeling ${value.toLowerCase()}.',
+          'I’m feeling ${widget.value.toLowerCase()}.',
           style: AppText.textXlExtraBold.copyWith(fontWeight: FontWeight.w600),
         ),
       ],
     );
   }
+}
+
+/// Square eyes and a mouth that goes from frown (0) to big smile (4).
+class _RobotFacePainter extends CustomPainter {
+  final int mood;
+
+  _RobotFacePainter(this.mood);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final w = size.width;
+    final h = size.height;
+    final paint = Paint()..color = Colors.white;
+    final eye = w * 0.14;
+    for (final x in [0.3, 0.7]) {
+      final eyeH = mood == 4 ? eye * 0.45 : eye;
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromCenter(
+            center: Offset(w * x, h * 0.38),
+            width: eye,
+            height: eyeH,
+          ),
+          Radius.circular(eye * 0.2),
+        ),
+        paint,
+      );
+    }
+    final mouth = Paint()
+      ..color = Colors.white
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = w * 0.07
+      ..strokeCap = StrokeCap.round;
+    final y = h * 0.68;
+    final left = Offset(w * 0.3, y);
+    final right = Offset(w * 0.7, y);
+    // Curve depth: negative frowns, positive smiles.
+    final depth = (mood - 2) * h * 0.08;
+    final path = Path()
+      ..moveTo(left.dx, left.dy - depth / 2)
+      ..quadraticBezierTo(w / 2, y + depth, right.dx, right.dy - depth / 2);
+    canvas.drawPath(path, mouth);
+  }
+
+  @override
+  bool shouldRepaint(covariant _RobotFacePainter old) => old.mood != mood;
 }
 
 class _EatingGrid extends StatelessWidget {

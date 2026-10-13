@@ -17,6 +17,11 @@ class HealthAssessment {
   final int? sleepLevel;
   final String? mood;
   final String? eatingHabit;
+  final List<String> medications;
+  final List<String> symptoms;
+  final String? healthNotes;
+  final bool bodyScanCompleted;
+  final bool voiceSampleCompleted;
 
   const HealthAssessment({
     this.goal,
@@ -28,6 +33,11 @@ class HealthAssessment {
     this.sleepLevel,
     this.mood,
     this.eatingHabit,
+    this.medications = const [],
+    this.symptoms = const [],
+    this.healthNotes,
+    this.bodyScanCompleted = false,
+    this.voiceSampleCompleted = false,
   });
 
   HealthAssessment copyWith({
@@ -40,6 +50,11 @@ class HealthAssessment {
     int? sleepLevel,
     String? mood,
     String? eatingHabit,
+    List<String>? medications,
+    List<String>? symptoms,
+    String? healthNotes,
+    bool? bodyScanCompleted,
+    bool? voiceSampleCompleted,
   }) {
     return HealthAssessment(
       goal: goal ?? this.goal,
@@ -51,6 +66,11 @@ class HealthAssessment {
       sleepLevel: sleepLevel ?? this.sleepLevel,
       mood: mood ?? this.mood,
       eatingHabit: eatingHabit ?? this.eatingHabit,
+      medications: medications ?? this.medications,
+      symptoms: symptoms ?? this.symptoms,
+      healthNotes: healthNotes ?? this.healthNotes,
+      bodyScanCompleted: bodyScanCompleted ?? this.bodyScanCompleted,
+      voiceSampleCompleted: voiceSampleCompleted ?? this.voiceSampleCompleted,
     );
   }
 
@@ -64,9 +84,16 @@ class HealthAssessment {
         'sleepLevel': sleepLevel,
         'mood': mood,
         'eatingHabit': eatingHabit,
+        'medications': medications,
+        'symptoms': symptoms,
+        'healthNotes': healthNotes,
+        'bodyScanCompleted': bodyScanCompleted,
+        'voiceSampleCompleted': voiceSampleCompleted,
       };
 
   factory HealthAssessment.fromJson(Map<String, dynamic> json) {
+    List<String> strings(Object? v) =>
+        v is List ? v.whereType<String>().toList() : const [];
     return HealthAssessment(
       goal: json['goal'] as String?,
       gender: json['gender'] as String?,
@@ -77,6 +104,11 @@ class HealthAssessment {
       sleepLevel: (json['sleepLevel'] as num?)?.toInt(),
       mood: json['mood'] as String?,
       eatingHabit: json['eatingHabit'] as String?,
+      medications: strings(json['medications']),
+      symptoms: strings(json['symptoms']),
+      healthNotes: json['healthNotes'] as String?,
+      bodyScanCompleted: json['bodyScanCompleted'] == true,
+      voiceSampleCompleted: json['voiceSampleCompleted'] == true,
     );
   }
 }
