@@ -27,7 +27,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace = "com.example.athlorun"
+    namespace = "online.athlorun.app"
     compileSdk = 36
     ndkVersion = "28.2.13676358"
 
@@ -42,7 +42,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.athlorun"
+        applicationId = "online.athlorun.app"
         minSdk = 26 // Updated to API level 26
         targetSdk = 36
         versionCode = flutterVersionCode.toInteger()

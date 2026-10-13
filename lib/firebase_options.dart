@@ -64,7 +64,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1001853874812',
     projectId: 'athlorun',
     storageBucket: 'athlorun.firebasestorage.app',
-    iosBundleId: 'com.example.athlorun',
+    iosBundleId: 'online.athlorun.app',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -73,7 +73,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1001853874812',
     projectId: 'athlorun',
     storageBucket: 'athlorun.firebasestorage.app',
-    iosBundleId: 'com.example.athlorun',
+    iosBundleId: 'online.athlorun.app',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(

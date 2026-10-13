@@ -1,4 +1,4 @@
-package com.example.athlorun
+package online.athlorun.app
 
 import io.flutter.embedding.android.FlutterFragmentActivity
 
