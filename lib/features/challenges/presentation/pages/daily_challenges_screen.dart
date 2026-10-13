@@ -1,13 +1,45 @@
 import 'package:flutter/material.dart';
 
 import 'package:athlorun/config/themes/app_theme.dart';
+import 'package:athlorun/core/services/ad_service.dart';
 import 'package:athlorun/core/services/metrics_store.dart';
 import 'package:athlorun/core/utils/formatters.dart';
 import 'package:athlorun/core/widgets/ui_kit.dart';
 import 'package:athlorun/features/challenges/presentation/widgets/sleep_logger.dart';
 
-class DailyChallengesScreen extends StatelessWidget {
+class DailyChallengesScreen extends StatefulWidget {
   const DailyChallengesScreen({super.key});
+
+  @override
+  State<DailyChallengesScreen> createState() => _DailyChallengesScreenState();
+}
+
+class _DailyChallengesScreenState extends State<DailyChallengesScreen> {
+  bool _isBoosterClaimed = false;
+
+  @override
+  void initState() {
+    super.initState();
+    AdService.instance.loadRewardedAd();
+  }
+
+  void _claimReward() {
+    AdService.instance.showRewardedAd(
+      onUserEarnedReward: (reward) {
+        setState(() {
+          _isBoosterClaimed = true;
+        });
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('🎉 Awesome! You earned +50 Bonus XP booster!'),
+              backgroundColor: AppPalette.primary,
+            ),
+          );
+        }
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +111,11 @@ class DailyChallengesScreen extends StatelessWidget {
                       completed: completed,
                       total: challenges.length,
                       streak: store.streak,
+                    ),
+                    const SizedBox(height: 16),
+                    _DailyBoosterCard(
+                      isClaimed: _isBoosterClaimed,
+                      onWatchAd: _claimReward,
                     ),
                     const SizedBox(height: 22),
                     const SectionHeader(title: 'Today\'s goals'),
@@ -325,6 +362,82 @@ class _ChallengeCard extends StatelessWidget {
                   ),
                 ),
             ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _DailyBoosterCard extends StatelessWidget {
+  final VoidCallback onWatchAd;
+  final bool isClaimed;
+
+  const _DailyBoosterCard({
+    required this.onWatchAd,
+    this.isClaimed = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            AppPalette.orange.withValues(alpha: 0.15),
+            AppPalette.primary.withValues(alpha: 0.08),
+          ],
+        ),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: AppPalette.orange.withValues(alpha: 0.35),
+        ),
+      ),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: AppPalette.orange.withValues(alpha: 0.2),
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(
+              Icons.card_giftcard_rounded,
+              color: AppPalette.orange,
+              size: 24,
+            ),
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Daily Bonus Booster',
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  isClaimed
+                      ? 'Reward claimed for today!'
+                      : 'Watch a quick video to claim +50 XP booster',
+                  style: const TextStyle(fontSize: 12, color: AppPalette.muted),
+                ),
+              ],
+            ),
+          ),
+          ElevatedButton(
+            onPressed: isClaimed ? null : onWatchAd,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppPalette.orange,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+            child: Text(isClaimed ? 'Claimed' : 'Claim'),
           ),
         ],
       ),

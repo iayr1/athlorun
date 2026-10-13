@@ -7,6 +7,9 @@ import '../../../../core/services/metrics_store.dart';
 import '../../../../core/utils/formatters.dart';
 import '../../../../core/widgets/ui_kit.dart';
 
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import '../../../../core/services/ad_service.dart';
+
 IconData activityIcon(ActivityKind kind) => switch (kind) {
       ActivityKind.run => Icons.directions_run_rounded,
       ActivityKind.walk => Icons.directions_walk_rounded,
@@ -19,8 +22,43 @@ Color activityColor(ActivityKind kind) => switch (kind) {
       ActivityKind.ride => AppPalette.orange,
     };
 
-class ActivityHistoryPage extends StatelessWidget {
+class ActivityHistoryPage extends StatefulWidget {
   const ActivityHistoryPage({super.key});
+
+  @override
+  State<ActivityHistoryPage> createState() => _ActivityHistoryPageState();
+}
+
+class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
+  NativeAd? _nativeAd;
+  bool _isAdLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _nativeAd = AdService.instance.createNativeAd(
+      onLoaded: () {
+        if (mounted) {
+          setState(() {
+            _isAdLoaded = true;
+          });
+        }
+      },
+      onFailed: (error) {
+        if (mounted) {
+          setState(() {
+            _isAdLoaded = false;
+          });
+        }
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    _nativeAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,36 +69,62 @@ class ActivityHistoryPage extends StatelessWidget {
         listenable: store,
         builder: (context, _) {
           final activities = store.activities;
-          if (activities.isEmpty) {
-            return const Center(
-              child: EmptyState(
-                icon: Icons.route_rounded,
-                title: 'No workouts yet',
-                message:
-                    'Start a run, walk or ride from the Track tab and it will appear here.',
-              ),
-            );
-          }
-          return ListView.separated(
-            padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
-            itemCount: activities.length,
-            separatorBuilder: (_, __) => const SizedBox(height: 12),
-            itemBuilder: (context, i) => Dismissible(
-              key: ValueKey(activities[i].id),
-              direction: DismissDirection.endToStart,
-              background: Container(
-                alignment: Alignment.centerRight,
-                padding: const EdgeInsets.only(right: 24),
-                decoration: BoxDecoration(
-                  color: AppPalette.red.withValues(alpha: 0.12),
-                  borderRadius: BorderRadius.circular(24),
+          return Column(
+            children: [
+              if (_nativeAd != null && _isAdLoaded)
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      minWidth: 320,
+                      minHeight: 90,
+                      maxHeight: 100,
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: AppPalette.surface,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      clipBehavior: Clip.antiAlias,
+                      child: AdWidget(ad: _nativeAd!),
+                    ),
+                  ),
                 ),
-                child: const Icon(Icons.delete_outline, color: AppPalette.red),
+              Expanded(
+                child: activities.isEmpty
+                    ? const Center(
+                        child: EmptyState(
+                          icon: Icons.route_rounded,
+                          title: 'No workouts yet',
+                          message:
+                              'Start a run, walk or ride from the Track tab and it will appear here.',
+                        ),
+                      )
+                    : ListView.separated(
+                        padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
+                        itemCount: activities.length,
+                        separatorBuilder: (_, __) => const SizedBox(height: 12),
+                        itemBuilder: (context, i) => Dismissible(
+                          key: ValueKey(activities[i].id),
+                          direction: DismissDirection.endToStart,
+                          background: Container(
+                            alignment: Alignment.centerRight,
+                            padding: const EdgeInsets.only(right: 24),
+                            decoration: BoxDecoration(
+                              color: AppPalette.red.withValues(alpha: 0.12),
+                              borderRadius: BorderRadius.circular(24),
+                            ),
+                            child: const Icon(Icons.delete_outline,
+                                color: AppPalette.red),
+                          ),
+                          confirmDismiss: (_) => _confirmDelete(context),
+                          onDismissed: (_) =>
+                              store.deleteActivity(activities[i].id),
+                          child: ActivityTile(activity: activities[i]),
+                        ),
+                      ),
               ),
-              confirmDismiss: (_) => _confirmDelete(context),
-              onDismissed: (_) => store.deleteActivity(activities[i].id),
-              child: ActivityTile(activity: activities[i]),
-            ),
+            ],
           );
         },
       ),

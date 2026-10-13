@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import '../../core/services/ad_service.dart';
 import '../../config/styles/app_colors.dart';
 import '../../config/styles/app_textstyles.dart';
 import '../../core/utils/windows.dart';
-import '../dashboard/presentation/pages/dashboard_tabbar.dart';
 
 class PodcastHomeScreen extends StatefulWidget {
   const PodcastHomeScreen({super.key});
@@ -14,16 +15,37 @@ class PodcastHomeScreen extends StatefulWidget {
 class _PodcastHomeScreenState extends State<PodcastHomeScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  BannerAd? _bannerAd;
+  bool _isAdLoaded = false;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(
         length: 3, vsync: this, initialIndex: 2); // Set initial tab to Podcast
+
+    _bannerAd = AdService.instance.createBannerAd(
+      adUnitId: AdService.instance.podcastBannerAdUnitId,
+      onLoaded: () {
+        if (mounted) {
+          setState(() {
+            _isAdLoaded = true;
+          });
+        }
+      },
+      onFailed: (error) {
+        if (mounted) {
+          setState(() {
+            _isAdLoaded = false;
+          });
+        }
+      },
+    );
   }
 
   @override
   void dispose() {
+    _bannerAd?.dispose();
     _tabController.dispose();
     super.dispose();
   }
@@ -34,6 +56,15 @@ class _PodcastHomeScreenState extends State<PodcastHomeScreen>
 
     return Scaffold(
       backgroundColor: AppColors.neutral30,
+      bottomNavigationBar: _isAdLoaded && _bannerAd != null
+          ? SafeArea(
+              child: SizedBox(
+                height: _bannerAd!.size.height.toDouble(),
+                width: _bannerAd!.size.width.toDouble(),
+                child: AdWidget(ad: _bannerAd!),
+              ),
+            )
+          : null,
       body: SafeArea(
         child: Column(
           children: [
